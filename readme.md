@@ -1,17 +1,7 @@
-<p align="center">
-    <a href="https://packagist.org/packages/swe/space-sdk">
-        <img alt="Packagist Downloads" src="https://img.shields.io/packagist/dt/swe/space-sdk">
-    </a>
-    <a href="https://packagist.org/packages/swe/space-sdk">
-        <img alt="Packagist Version" src="https://img.shields.io/packagist/v/swe/space-sdk">
-    </a>
-    <a href="https://packagist.org/packages/swe/space-sdk">
-        <img alt="Packagist Version" src="https://img.shields.io/packagist/l/swe/space-sdk">
-    </a>
-    <a href="https://packagist.org/packages/swe/space-sdk">
-        <img alt="Packagist Version" src="https://img.shields.io/packagist/php-v/swe/space-sdk">
-    </a>
-</p>
+[![Packagist Downloads](https://img.shields.io/packagist/dt/swe/space-sdk)](https://packagist.org/packages/swe/space-sdk)
+[![Packagist Version](https://img.shields.io/packagist/v/swe/space-sdk)](https://packagist.org/packages/swe/space-sdk)
+[![License](https://img.shields.io/packagist/l/swe/space-sdk)](https://packagist.org/packages/swe/space-sdk)
+[![PHP Version](https://img.shields.io/packagist/php-v/swe/space-sdk)](https://packagist.org/packages/swe/space-sdk)
 
 ## Information coming soon...
 
