@@ -122,63 +122,6 @@ class RepositoryTest extends ClientTestCase
     /**
      * @depends testGetRepositoryGitRemoteUrl
      * @param array $repository
-     * @return array
-     * @throws GuzzleException
-     * @throws MissingArgumentException
-     */
-    public function testCommitChangesToRepository(array $repository): array
-    {
-        $this->markTestSkipped('This api call is bugged.');
-        $request = [
-            'key' => static::$projectKey,
-            'repository' => $repository['name'],
-            'baseCommit' => 'baseCommit',
-            'targetBranch' => static::$repositoryBranch,
-            'commitMessage' => 'This is a test commit',
-            'files' => [
-                [
-                    'path' => 'test.txt',
-                    'content' => [
-                        'className' => Repository::GIT_FILE_CONTENT_TEXT,
-                        'value' => 'Hello world!',
-                    ],
-                ],
-            ],
-        ];
-        $response = static::$repository->commitChangesToRepository($request);
-
-        $this->assertIsArray($response);
-        $this->assertArrayHasKey('success', $response);
-        $this->assertTrue($response['success']);
-
-        return $repository;
-    }
-
-    /**
-     * @depends testCommitChangesToRepository
-     * @param array $repository
-     * @return array
-     * @throws GuzzleException
-     * @throws MissingArgumentException
-     */
-    public function testListCommitsMatchingQuery(array $repository): array
-    {
-        $request = [
-            'key' => static::$projectKey,
-            'repository' => $repository['name'],
-        ];
-        $response = static::$repository->listCommitsMatchingQuery($request);
-
-        $this->assertIsArray($response);
-        $this->assertArrayHasKey('totalCount', $response);
-        $this->assertSame(1, $response['totalCount']);
-
-        return $repository;
-    }
-
-    /**
-     * @depends testListCommitsMatchingQuery
-     * @param array $repository
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
