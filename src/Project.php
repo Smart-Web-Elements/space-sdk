@@ -8,9 +8,9 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Project\Repository;
 
 /**
- * Class Projects
+ * Class Project
  *
- * @package Space
+ * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
 class Project extends AbstractApi

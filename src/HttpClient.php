@@ -9,7 +9,7 @@ use GuzzleHttp\Exception\GuzzleException;
 /**
  * Class HttpClient
  *
- * @package Space
+ * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
 class HttpClient

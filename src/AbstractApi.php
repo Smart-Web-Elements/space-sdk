@@ -8,7 +8,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 /**
  * Class AbstractApi
  *
- * @package Space
+ * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
 abstract class AbstractApi
