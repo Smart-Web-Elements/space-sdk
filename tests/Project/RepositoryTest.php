@@ -11,7 +11,7 @@ use Swe\SpaceSDK\Tests\ClientTestCase;
 /**
  * Class RepositoryTest
  *
- * @package Space\Test\Project
+ * @package Swe\SpaceSDK\Tests\Project
  * @author Luca Braun <l.braun@s-w-e.com>
  */
 class RepositoryTest extends ClientTestCase

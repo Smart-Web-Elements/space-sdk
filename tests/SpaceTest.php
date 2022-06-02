@@ -10,7 +10,7 @@ use Swe\SpaceSDK\ToDoItem;
 /**
  * Class SpaceTest
  *
- * @package Space\Test
+ * @package Swe\SpaceSDK\Tests
  * @author Luca Braun <l.braun@s-w-e.com>
  */
 class SpaceTest extends ClientTestCase

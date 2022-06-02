@@ -10,7 +10,7 @@ use Swe\SpaceSDK\HttpClient;
 /**
  * Class HttpClientTest
  *
- * @package Space\Test
+ * @package Swe\SpaceSDK\Tests
  * @author Luca Braun <l.braun@s-w-e.com>
  */
 class HttpClientTest extends TestCase

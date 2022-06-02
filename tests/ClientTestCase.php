@@ -11,7 +11,7 @@ use Swe\SpaceSDK\HttpClient;
 /**
  * Class ClientTestCase
  *
- * @package Space
+ * @package Swe\SpaceSDK\Tests
  * @author Luca Braun <l.braun@s-w-e.com>
  */
 abstract class ClientTestCase extends TestCase
@@ -34,5 +34,16 @@ abstract class ClientTestCase extends TestCase
         $url = $_ENV['URL'];
 
         static::$client = new HttpClient($url, $clientId, $clientSecret);
+    }
+
+    /**
+     * @param string $message
+     */
+    protected function skip(string $message = '')
+    {
+        $classNamespace = explode('\\', static::class);
+        $defaultMessage = sprintf('Skipping test class "%s"', array_pop($classNamespace));
+
+        $this->markTestSkipped(implode(' ', array_filter([$message, $defaultMessage])));
     }
 }
