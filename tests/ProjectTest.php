@@ -27,6 +27,11 @@ class ProjectTest extends SpaceTestCase
     public static string $projectName = 'Project Test';
 
     /**
+     * @var string
+     */
+    public static string $projectNameUpdated = 'Project Test Updated';
+
+    /**
      * @var Project
      */
     protected static Project $project;
@@ -44,7 +49,7 @@ class ProjectTest extends SpaceTestCase
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function testCreateProject(): array
+    public function testCreateProject()
     {
         $data = [
             'key' => [
@@ -56,64 +61,63 @@ class ProjectTest extends SpaceTestCase
 
         $this->assertIsArray($response);
         $this->assertArrayHasKey('id', $response);
-        $this->assertSame($data['name'], $response['name']);
-
-        return $response;
+        $this->assertSame(static::$projectName, $response['name']);
     }
 
     /**
      * @depends testCreateProject
-     * @param array $project
-     * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function testGetProject(array $project): array
+    public function testGetProject()
     {
         $request = [
-            'key' => $project['key']['key'],
+            'key' => static::$projectKey,
         ];
         $response = static::$project->getProject($request);
 
         $this->assertIsArray($response);
         $this->assertArrayHasKey('id', $response);
-        $this->assertSame($project['name'], $response['name']);
-
-        return $response;
+        $this->assertSame(static::$projectName, $response['name']);
     }
 
     /**
      * @depends testGetProject
-     * @param array $project
-     * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function testUpdateProject(array $project): array
+    public function testUpdateProject()
     {
+        $request = [
+            'key' => static::$projectKey,
+        ];
+        $project = static::$project->getProject($request);
+
         $request = [
             'id' => $project['id'],
         ];
         $data = [
-            'name' => 'Test Updated',
+            'name' => static::$projectNameUpdated,
         ];
         $response = static::$project->updateProject($request, $data);
 
         $this->assertIsArray($response);
         $this->assertArrayHasKey('name', $response);
-        $this->assertSame($data['name'], $response['name']);
-
-        return $response;
+        $this->assertSame(static::$projectNameUpdated, $response['name']);
     }
 
     /**
      * @depends testUpdateProject
-     * @param array $project
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function testRemoveProject(array $project)
+    public function testRemoveProject()
     {
+        $request = [
+            'key' => static::$projectKey,
+        ];
+        $project = static::$project->getProject($request);
+
         $request = [
             'id' => $project['id'],
         ];

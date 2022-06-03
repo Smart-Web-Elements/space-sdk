@@ -24,6 +24,11 @@ abstract class ClientTestCase extends TestCase
     /**
      * @var string
      */
+    protected static string $instanceName;
+
+    /**
+     * @var string
+     */
     protected static string $permissionMissingError = 'permission-denied';
 
     /**
@@ -37,6 +42,10 @@ abstract class ClientTestCase extends TestCase
         $clientId = $_ENV['CLIENT_ID'];
         $clientSecret = $_ENV['CLIENT_SECRET'];
         $url = $_ENV['URL'];
+        $urlParts = explode('//', $url);
+        $domain = array_pop($urlParts);
+        $domainParts = explode('.', $domain);
+        static::$instanceName = array_shift($domainParts);
 
         static::$client = new HttpClient($url, $clientId, $clientSecret);
     }

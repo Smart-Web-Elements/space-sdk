@@ -17,6 +17,8 @@ use Swe\SpaceSDK\Tests\SpaceTestCase;
  */
 class RepositoryTest extends SpaceTestCase
 {
+    const JB_GIT_DOMAIN = 'https://git.jetbrains.space';
+
     /**
      * @var string
      */
@@ -26,6 +28,11 @@ class RepositoryTest extends SpaceTestCase
      * @var string
      */
     public static string $repositoryBranch = 'test';
+
+    /**
+     * @var string
+     */
+    public static string $gitUrl;
 
     /**
      * @var Repository
@@ -44,6 +51,7 @@ class RepositoryTest extends SpaceTestCase
     public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
+        static::$gitUrl = sprintf('%s/%s/', self::JB_GIT_DOMAIN, static::$instanceName);
         static::$project = static::$space->project();
         static::$repository = static::$project->repository();
         $projectData = [
@@ -102,9 +110,7 @@ class RepositoryTest extends SpaceTestCase
             'repository' => $repository['name'],
         ];
         $response = static::$repository->getRepositoryGitRemoteUrl($request);
-        $httpUrl = 'https://git.jetbrains.space/swe/'.strtolower(
-                ProjectTest::$projectKey
-            ).'/'.$repository['name'].'.git';
+        $httpUrl = static::$gitUrl.strtolower(ProjectTest::$projectKey).'/'.$repository['name'].'.git';
         $this->assertIsArray($response);
         $this->assertArrayHasKey('httpUrl', $response);
         $this->assertSame($httpUrl, $response['httpUrl']);

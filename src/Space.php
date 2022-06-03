@@ -19,12 +19,4 @@ class Space extends AbstractApi
     {
         return new Project($this->client);
     }
-
-    /**
-     * @return ToDoItem
-     */
-    public function toDoItem(): ToDoItem
-    {
-        return new ToDoItem($this->client);
-    }
 }
