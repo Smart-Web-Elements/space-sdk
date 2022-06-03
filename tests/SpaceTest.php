@@ -2,9 +2,7 @@
 
 namespace Swe\SpaceSDK\Tests;
 
-use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\Project;
-use Swe\SpaceSDK\Space;
 use Swe\SpaceSDK\ToDoItem;
 
 /**
@@ -13,21 +11,8 @@ use Swe\SpaceSDK\ToDoItem;
  * @package Swe\SpaceSDK\Tests
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class SpaceTest extends ClientTestCase
+class SpaceTest extends SpaceTestCase
 {
-    /**
-     * @var Space
-     */
-    protected static Space $space;
-
-    /**
-     * @throws GuzzleException
-     */
-    public static function setUpBeforeClass(): void
-    {
-        parent::setUpBeforeClass();
-        static::$space = new Space(static::$client);
-    }
 
     /**
      *

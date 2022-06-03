@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Tests;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Project;
+use Swe\SpaceSDK\Project\Automation;
 use Swe\SpaceSDK\Project\Repository;
 
 /**
@@ -13,17 +14,17 @@ use Swe\SpaceSDK\Project\Repository;
  * @package Space\Test
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class ProjectTest extends ClientTestCase
+class ProjectTest extends SpaceTestCase
 {
     /**
      * @var string
      */
-    protected static string $projectKey = 'PROJECT_TEST';
+    public static string $projectKey = 'PROJECT_TEST';
 
     /**
      * @var string
      */
-    protected static string $projectName = 'Project Test';
+    public static string $projectName = 'Project Test';
 
     /**
      * @var Project
@@ -36,7 +37,7 @@ class ProjectTest extends ClientTestCase
     public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
-        static::$project = new Project(static::$client);
+        static::$project = static::$space->project();
     }
 
     /**
@@ -180,5 +181,13 @@ class ProjectTest extends ClientTestCase
     public function testRepository(): void
     {
         $this->assertInstanceOf(Repository::class, static::$project->repository());
+    }
+
+    /**
+     *
+     */
+    public function testAutomation(): void
+    {
+        $this->assertInstanceOf(Automation::class, static::$project->automation());
     }
 }

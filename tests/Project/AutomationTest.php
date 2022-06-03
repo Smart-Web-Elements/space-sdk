@@ -1,19 +1,20 @@
 <?php
 
-namespace Swe\SpaceSDK\Tests;
+namespace Swe\SpaceSDK\Tests\Project;
 
 use GuzzleHttp\Exception\GuzzleException;
-use Swe\SpaceSDK\Automation;
-use Swe\SpaceSDK\Automation\GraphExecution;
-use Swe\SpaceSDK\Automation\Job;
+use Swe\SpaceSDK\Project\Automation;
+use Swe\SpaceSDK\Project\Automation\GraphExecution;
+use Swe\SpaceSDK\Project\Automation\Job;
+use Swe\SpaceSDK\Tests\SpaceTestCase;
 
 /**
  * Class AutomationTest
  *
- * @package Swe\SpaceSDK\Tests
+ * @package Swe\SpaceSDK\Tests\Project
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class AutomationTest extends ClientTestCase
+class AutomationTest extends SpaceTestCase
 {
     /**
      * @var Automation
@@ -26,7 +27,7 @@ class AutomationTest extends ClientTestCase
     public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
-        static::$automation = new Automation(static::$client);
+        static::$automation = static::$space->project()->automation();
     }
 
     /**

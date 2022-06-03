@@ -22,6 +22,11 @@ abstract class ClientTestCase extends TestCase
     protected static HttpClient $client;
 
     /**
+     * @var string
+     */
+    protected static string $permissionMissingError = 'permission-denied';
+
+    /**
      * @throws GuzzleException
      */
     public static function setUpBeforeClass(): void
@@ -45,5 +50,13 @@ abstract class ClientTestCase extends TestCase
         $defaultMessage = sprintf('Skipping test class "%s"', array_pop($classNamespace));
 
         $this->markTestSkipped(implode(' ', array_filter([$message, $defaultMessage])));
+    }
+
+    /**
+     *
+     */
+    protected function permissionMismatch()
+    {
+        $this->markTestIncomplete('Missing permissions to complete this test.');
     }
 }

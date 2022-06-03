@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Project\Automation;
 use Swe\SpaceSDK\Project\Repository;
 
 /**
@@ -114,5 +115,13 @@ class Project extends AbstractApi
     public function repository(): Repository
     {
         return new Repository($this->client);
+    }
+
+    /**
+     * @return Automation
+     */
+    public function automation(): Automation
+    {
+        return new Automation($this->client);
     }
 }

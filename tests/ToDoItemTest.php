@@ -13,7 +13,7 @@ use Swe\SpaceSDK\ToDoItem;
  * @package Swe\SpaceSDK\Tests
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class ToDoItemTest extends ClientTestCase
+class ToDoItemTest extends SpaceTestCase
 {
     /**
      * @var string
@@ -41,7 +41,7 @@ class ToDoItemTest extends ClientTestCase
     public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
-        static::$toDoItem = new ToDoItem(static::$client);
+        static::$toDoItem = static::$space->toDoItem();
     }
 
     /**
