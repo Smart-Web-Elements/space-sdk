@@ -10,7 +10,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 /**
  * Class Repository
  *
- * @package Space\Project
+ * @package Swe\SpaceSDK\Project
  * @author Luca Braun <l.braun@s-w-e.com>
  */
 class Repository extends AbstractApi

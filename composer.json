@@ -1,6 +1,6 @@
 {
   "name": "swe/space-sdk",
-  "description": "An PHP package to interact with JetBrains Space.",
+  "description": "A PHP package to interact with JetBrains Space.",
   "license": "MIT",
   "type": "library",
   "keywords": [

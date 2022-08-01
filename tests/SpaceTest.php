@@ -2,32 +2,16 @@
 
 namespace Swe\SpaceSDK\Tests;
 
-use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\Project;
-use Swe\SpaceSDK\Space;
-use Swe\SpaceSDK\ToDoItem;
 
 /**
  * Class SpaceTest
  *
- * @package Space\Test
+ * @package Swe\SpaceSDK\Tests
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class SpaceTest extends ClientTestCase
+class SpaceTest extends SpaceTestCase
 {
-    /**
-     * @var Space
-     */
-    protected static Space $space;
-
-    /**
-     * @throws GuzzleException
-     */
-    public static function setUpBeforeClass(): void
-    {
-        parent::setUpBeforeClass();
-        static::$space = new Space(static::$client);
-    }
 
     /**
      *
@@ -35,13 +19,5 @@ class SpaceTest extends ClientTestCase
     public function testProject()
     {
         $this->assertInstanceOf(Project::class, static::$space->project());
-    }
-
-    /**
-     *
-     */
-    public function testToDoItem()
-    {
-        $this->assertInstanceOf(ToDoItem::class, static::$space->toDoItem());
     }
 }

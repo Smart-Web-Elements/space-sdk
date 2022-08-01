@@ -8,7 +8,7 @@ use Exception;
 /**
  * Class MissingArgumentException
  *
- * @package Space\Exception
+ * @package Swe\SpaceSDK\Exception
  * @author Luca Braun <l.braun@s-w-e.com>
  */
 class MissingArgumentException extends Exception

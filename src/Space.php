@@ -6,7 +6,7 @@ namespace Swe\SpaceSDK;
 /**
  * Class Space
  *
- * @package Space
+ * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
 class Space extends AbstractApi
@@ -18,13 +18,5 @@ class Space extends AbstractApi
     public function project(): Project
     {
         return new Project($this->client);
-    }
-
-    /**
-     * @return ToDoItem
-     */
-    public function toDoItem(): ToDoItem
-    {
-        return new ToDoItem($this->client);
     }
 }

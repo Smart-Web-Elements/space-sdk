@@ -1,6 +1,6 @@
 <?php
 
-namespace Swe\SpaceSDK\Automation;
+namespace Swe\SpaceSDK\Project\Automation;
 
 
 use GuzzleHttp\Exception\GuzzleException;
@@ -10,7 +10,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 /**
  * Class Job
  *
- * @package Swe\SpaceSDK\Automation
+ * @package Swe\SpaceSDK\Project\Automation
  * @author Luca Braun <l.braun@s-w-e.com>
  */
 class Job extends AbstractApi

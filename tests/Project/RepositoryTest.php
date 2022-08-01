@@ -6,35 +6,33 @@ use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Project;
 use Swe\SpaceSDK\Project\Repository;
-use Swe\SpaceSDK\Tests\ClientTestCase;
+use Swe\SpaceSDK\Tests\ProjectTest;
+use Swe\SpaceSDK\Tests\SpaceTestCase;
 
 /**
  * Class RepositoryTest
  *
- * @package Space\Test\Project
+ * @package Swe\SpaceSDK\Tests\Project
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class RepositoryTest extends ClientTestCase
+class RepositoryTest extends SpaceTestCase
 {
-    /**
-     * @var string
-     */
-    protected static string $projectKey = 'REPOSITORY_TEST';
+    const JB_GIT_DOMAIN = 'https://git.jetbrains.space';
 
     /**
      * @var string
      */
-    protected static string $projectName = 'Repository Test';
+    public static string $repositoryName = 'my-test-repository';
 
     /**
      * @var string
      */
-    protected static string $repositoryName = 'my-test-repository';
+    public static string $repositoryBranch = 'test';
 
     /**
      * @var string
      */
-    protected static string $repositoryBranch = 'test';
+    public static string $gitUrl;
 
     /**
      * @var Repository
@@ -53,13 +51,14 @@ class RepositoryTest extends ClientTestCase
     public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
-        static::$project = new Project(static::$client);
-        static::$repository = new Repository(static::$client);
+        static::$gitUrl = sprintf('%s/%s/', self::JB_GIT_DOMAIN, static::$instanceName);
+        static::$project = static::$space->project();
+        static::$repository = static::$project->repository();
         $projectData = [
             'key' => [
-                'key' => static::$projectKey,
+                'key' => ProjectTest::$projectKey,
             ],
-            'name' => static::$projectName,
+            'name' => ProjectTest::$projectName,
         ];
         static::$project->createProject($projectData);
     }
@@ -71,7 +70,7 @@ class RepositoryTest extends ClientTestCase
     public static function tearDownAfterClass(): void
     {
         $projectData = [
-            'key' => static::$projectKey,
+            'key' => ProjectTest::$projectKey,
         ];
         static::$project->deleteProject($projectData);
         parent::tearDownAfterClass();
@@ -85,7 +84,7 @@ class RepositoryTest extends ClientTestCase
     public function testCreateRepository(): array
     {
         $data = [
-            'key' => static::$projectKey,
+            'key' => ProjectTest::$projectKey,
             'repository' => static::$repositoryName,
             'defaultBranch' => static::$repositoryBranch,
         ];
@@ -107,11 +106,11 @@ class RepositoryTest extends ClientTestCase
     public function testGetRepositoryGitRemoteUrl(array $repository): array
     {
         $request = [
-            'key' => static::$projectKey,
+            'key' => ProjectTest::$projectKey,
             'repository' => $repository['name'],
         ];
         $response = static::$repository->getRepositoryGitRemoteUrl($request);
-        $httpUrl = 'https://git.jetbrains.space/swe/'.strtolower(static::$projectKey).'/'.$repository['name'].'.git';
+        $httpUrl = static::$gitUrl.strtolower(ProjectTest::$projectKey).'/'.$repository['name'].'.git';
         $this->assertIsArray($response);
         $this->assertArrayHasKey('httpUrl', $response);
         $this->assertSame($httpUrl, $response['httpUrl']);
@@ -122,70 +121,13 @@ class RepositoryTest extends ClientTestCase
     /**
      * @depends testGetRepositoryGitRemoteUrl
      * @param array $repository
-     * @return array
-     * @throws GuzzleException
-     * @throws MissingArgumentException
-     */
-    public function testCommitChangesToRepository(array $repository): array
-    {
-        $this->markTestSkipped('This api call is bugged.');
-        $request = [
-            'key' => static::$projectKey,
-            'repository' => $repository['name'],
-            'baseCommit' => 'baseCommit',
-            'targetBranch' => static::$repositoryBranch,
-            'commitMessage' => 'This is a test commit',
-            'files' => [
-                [
-                    'path' => 'test.txt',
-                    'content' => [
-                        'className' => Repository::GIT_FILE_CONTENT_TEXT,
-                        'value' => 'Hello world!',
-                    ],
-                ],
-            ],
-        ];
-        $response = static::$repository->commitChangesToRepository($request);
-
-        $this->assertIsArray($response);
-        $this->assertArrayHasKey('success', $response);
-        $this->assertTrue($response['success']);
-
-        return $repository;
-    }
-
-    /**
-     * @depends testCommitChangesToRepository
-     * @param array $repository
-     * @return array
-     * @throws GuzzleException
-     * @throws MissingArgumentException
-     */
-    public function testListCommitsMatchingQuery(array $repository): array
-    {
-        $request = [
-            'key' => static::$projectKey,
-            'repository' => $repository['name'],
-        ];
-        $response = static::$repository->listCommitsMatchingQuery($request);
-
-        $this->assertIsArray($response);
-        $this->assertArrayHasKey('totalCount', $response);
-        $this->assertSame(1, $response['totalCount']);
-
-        return $repository;
-    }
-
-    /**
-     * @depends testListCommitsMatchingQuery
-     * @param array $repository
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
     public function testDeleteRepository(array $repository)
     {
         $request = [
-            'key' => static::$projectKey,
+            'key' => ProjectTest::$projectKey,
             'repository' => $repository['name'],
         ];
         $response = static::$repository->deleteRepository($request);
