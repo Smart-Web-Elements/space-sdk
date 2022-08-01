@@ -19,4 +19,12 @@ class Space extends AbstractApi
     {
         return new Project($this->client);
     }
+
+    /**
+     * @return Chats
+     */
+    public function chats(): Chats
+    {
+        return new Chats($this->client);
+    }
 }
