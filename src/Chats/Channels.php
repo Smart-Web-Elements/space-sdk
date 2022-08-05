@@ -6,6 +6,9 @@ use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 
+/**
+ *
+ */
 class Channels extends AbstractApi
 {
     /**
@@ -28,5 +31,22 @@ class Channels extends AbstractApi
         $this->throwIfInvalid($required, $data);
 
         return $this->client->post($this->buildUrl($url), $data, $response);
+    }
+
+    /**
+     * Check whether a channel name is available. Returns true when the channel name can be used to create a new channel, false otherwise.
+     *
+     * @param string $name
+     * @return bool
+     * @throws GuzzleException
+     */
+    public function isNameFree(string $name): bool
+    {
+        $url = 'chats/channels/is-name-free';
+        $data = [
+            'name' => $name,
+        ];
+
+        return $this->client->post($this->buildUrl($url), $data)[0];
     }
 }

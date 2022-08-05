@@ -65,8 +65,9 @@ class HttpClient
     public function get(string $uri, array $responseFields = [], array $requestFields = []): array
     {
         $response = $this->getClient()->get($this->getUri($uri, $responseFields, $requestFields));
+        $jsonResponse = json_decode($response->getBody()->getContents(), true);
 
-        return json_decode($response->getBody()->getContents(), true);
+        return is_array($jsonResponse) ? $jsonResponse : [$jsonResponse];
     }
 
     /**
@@ -92,8 +93,9 @@ class HttpClient
     public function post(string $uri, array $data = [], array $responseFields = [], array $requestFields = []): array
     {
         $response = $this->getClient()->post($this->getUri($uri, $responseFields, $requestFields), ['json' => $data]);
+        $jsonResponse = json_decode($response->getBody()->getContents(), true);
 
-        return json_decode($response->getBody()->getContents(), true);
+        return is_array($jsonResponse) ? $jsonResponse : [$jsonResponse];
     }
 
     /**
@@ -107,8 +109,9 @@ class HttpClient
     public function patch(string $uri, array $data = [], array $responseFields = [], array $requestFields = []): array
     {
         $response = $this->getClient()->patch($this->getUri($uri, $responseFields, $requestFields), ['json' => $data]);
+        $jsonResponse = json_decode($response->getBody()->getContents(), true);
 
-        return json_decode($response->getBody()->getContents(), true);
+        return is_array($jsonResponse) ? $jsonResponse : [$jsonResponse];
     }
 
     /**
