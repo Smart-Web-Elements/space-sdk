@@ -94,44 +94,32 @@ abstract class AbstractApi
     }
 
     /**
+     * @param array $oneOfThose
      * @param array $request
      * @return string
      * @throws MissingArgumentException
      */
-    protected function throwIfKeyIdMissing(array $request): string
+    protected function throwIfMissing(array $oneOfThose, array $request): string
     {
         $value = '';
 
-        if (isset($request['id'])) {
-            $value = 'id:'.$request['id'];
-        }
-
-        if (isset($request['key'])) {
-            $value = 'key:'.$request['key'];
-        }
-
-        if (empty($value)) {
-            throw new MissingArgumentException('Missing either "id" or "key"!');
-        }
-
-        return $value;
-    }
-
-    /**
-     * @param array $request
-     * @return string
-     * @throws MissingArgumentException
-     */
-    protected function throwIfIdMissing(array $request): string
-    {
-        $value = '';
-
-        if (isset($request['id'])) {
-            $value = $request['id'];
+        foreach ($oneOfThose as $that) {
+            if (isset($request[$that])) {
+                $value = $that . ':' . $request[$that];
+            }
         }
 
         if (empty($value)) {
-            throw new MissingArgumentException('Missing "id"!');
+            $message = 'Missing either %s!';
+            $last = array_pop($oneOfThose);
+
+            if (!empty($oneOfThose)) {
+                $values = '"' . implode('", "', $oneOfThose) . '" or "' . $last . '"';
+            } else {
+                $values = '"' . $last . '"';
+            }
+
+            throw new MissingArgumentException(sprintf($message, $values));
         }
 
         return $value;

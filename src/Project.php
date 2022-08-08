@@ -55,7 +55,11 @@ class Project extends AbstractApi
     public function updateProject(array $request, array $data, array $response = []): array
     {
         $url = 'projects/{project}';
-        $project = $this->throwIfKeyIdMissing($request);
+        $missing = [
+            'key',
+            'id',
+        ];
+        $project = $this->throwIfMissing($missing, $request);
 
         return $this->client->patch($this->buildUrl($url, ['project' => $project]), $data, $response);
     }
@@ -73,7 +77,11 @@ class Project extends AbstractApi
     public function deleteProject(array $request): bool
     {
         $url = 'projects/{project}';
-        $project = $this->throwIfKeyIdMissing($request);
+        $missing = [
+            'key',
+            'id',
+        ];
+        $project = $this->throwIfMissing($missing, $request);
 
         return $this->client->delete($this->buildUrl($url, ['project' => $project]));
     }
@@ -104,7 +112,11 @@ class Project extends AbstractApi
     public function getProject(array $request, array $response = []): array
     {
         $url = 'projects/{project}';
-        $project = $this->throwIfKeyIdMissing($request);
+        $missing = [
+            'key',
+            'id',
+        ];
+        $project = $this->throwIfMissing($missing, $request);
 
         return $this->client->get($this->buildUrl($url, ['project' => $project]), $response);
     }

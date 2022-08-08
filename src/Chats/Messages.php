@@ -4,6 +4,7 @@ namespace Swe\SpaceSDK\Chats;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
+use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  *
@@ -24,5 +25,27 @@ class Messages extends AbstractApi
         $url = 'chats/messages/import';
 
         $this->client->post($this->buildUrl($url), $data);
+    }
+
+    /**
+     * @param array $data
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    public function getMessage(array $data, array $response = []): array
+    {
+        $url = 'chats/messages/{message}';
+        $required = [
+            'channel' => 'string',
+        ];
+        $this->throwIfInvalid($required, $data);
+        $message = $this->throwIfMissing(['externalId', 'id'], $data);
+        $urlArguments = [
+            'message' => $message,
+        ];
+
+        return $this->client->post($this->buildUrl($url, $urlArguments), $data, $response);
     }
 }

@@ -38,7 +38,11 @@ class Repository extends AbstractApi
             'repository' => 'string',
         ];
         $this->throwIfInvalid($required, $data);
-        $project = $this->throwIfKeyIdMissing($data);
+        $missing = [
+            'key',
+            'id',
+        ];
+        $project = $this->throwIfMissing($missing, $data);
         $repository = $data['repository'];
         $urlArguments = [
             'project' => $project,
@@ -61,7 +65,11 @@ class Repository extends AbstractApi
             'repository' => 'string',
         ];
         $this->throwIfInvalid($required, $request);
-        $project = $this->throwIfKeyIdMissing($request);
+        $missing = [
+            'key',
+            'id',
+        ];
+        $project = $this->throwIfMissing($missing, $request);
         $repository = $request['repository'];
         $urlArguments = [
             'project' => $project,
@@ -85,7 +93,11 @@ class Repository extends AbstractApi
             'repository' => 'string',
         ];
         $this->throwIfInvalid($required, $request);
-        $project = $this->throwIfKeyIdMissing($request);
+        $missing = [
+            'key',
+            'id',
+        ];
+        $project = $this->throwIfMissing($missing, $request);
         $repository = $request['repository'];
         $urlArguments = [
             'project' => $project,
@@ -109,7 +121,11 @@ class Repository extends AbstractApi
             'repository' => 'string',
         ];
         $this->throwIfInvalid($required, $request);
-        $project = $this->throwIfKeyIdMissing($request);
+        $missing = [
+            'key',
+            'id',
+        ];
+        $project = $this->throwIfMissing($missing, $request);
         $repository = $request['repository'];
         $urlArguments = [
             'project' => $project,
@@ -136,7 +152,16 @@ class Repository extends AbstractApi
             'commitMessage' => 'string',
         ];
         $this->throwIfInvalid($required, $request);
-        $project = str_replace('key:', '', str_replace('id:', '', $this->throwIfKeyIdMissing($request)));
+        $missing = [
+            'key',
+            'id',
+        ];
+        $project = $this->throwIfMissing($missing, $request);
+
+        foreach ($missing as $item) {
+            $project = str_replace($item, '', $project);
+        }
+
         $project = strtolower($project);
         $repository = $request['repository'];
         $urlArguments = [

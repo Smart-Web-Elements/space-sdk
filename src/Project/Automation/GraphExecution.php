@@ -33,7 +33,11 @@ class GraphExecution extends AbstractApi
             'jobId' => 'string',
         ];
 
-        $project = $this->throwIfKeyIdMissing($request);
+        $missing = [
+            'key',
+            'id',
+        ];
+        $project = $this->throwIfMissing($missing, $request);
         $this->throwIfInvalid($requiredFields, $request);
 
         return $this->client->get($this->buildUrl($url, ['project' => $project]), $response, $request);
