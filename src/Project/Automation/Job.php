@@ -33,8 +33,11 @@ class Job extends AbstractApi
             'repoFilter' => 'string',
             'branchFilter' => 'string',
         ];
-
-        $project = $this->throwIfKeyIdMissing($request);
+        $missing = [
+            'key',
+            'id',
+        ];
+        $project = $this->throwIfMissing($missing, $request);
         $this->throwIfInvalid($requiredFields, $request);
 
         return $this->client->get($this->buildUrl($url, ['project' => $project]), $response, $request);
@@ -56,7 +59,11 @@ class Job extends AbstractApi
             'jobId' => 'string',
         ];
 
-        $project = $this->throwIfKeyIdMissing($request);
+        $missing = [
+            'key',
+            'id',
+        ];
+        $project = $this->throwIfMissing($missing, $request);
         $this->throwIfInvalid($requiredFields, $request);
         $urlArguments = [
             'project' => $project,
@@ -88,7 +95,11 @@ class Job extends AbstractApi
             ],
         ];
 
-        $project = $this->throwIfKeyIdMissing($data);
+        $missing = [
+            'key',
+            'id',
+        ];
+        $project = $this->throwIfMissing($missing, $data);
         $this->throwIfInvalid($requiredFields, $data);
         $urlArguments = [
             'project' => $project,
