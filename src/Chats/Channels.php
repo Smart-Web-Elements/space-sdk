@@ -49,4 +49,29 @@ class Channels extends AbstractApi
 
         return $this->client->post($this->buildUrl($url), $data)[0];
     }
+
+    /**
+     * Permissions that may be checked: Channel.AddMembersOrTeams
+     *
+     * @param array $data
+     * @return void
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    public function addUsers(array $data): void
+    {
+        $url = 'chats/channels/{channel}/subscribers/users';
+        $required = [
+            'channel' => 'string',
+            'profiles' => 'array',
+        ];
+        $this->throwIfInvalid($required, $data);
+        $urlArguments = [
+            'channel' => $data['channel'],
+        ];
+
+        unset($data['channel']);
+
+        $this->client->post($this->buildUrl($url, $urlArguments), $data);
+    }
 }
