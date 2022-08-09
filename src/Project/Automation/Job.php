@@ -28,7 +28,7 @@ class Job extends AbstractApi
      */
     public function getAllJobs(array $request, array $response = []): array
     {
-        $url = 'projects/{project}/automation/jobs';
+        $uri = 'projects/{project}/automation/jobs';
         $requiredFields = [
             'repoFilter' => 'string',
             'branchFilter' => 'string',
@@ -40,7 +40,7 @@ class Job extends AbstractApi
         $project = $this->throwIfMissing($missing, $request);
         $this->throwIfInvalid($requiredFields, $request);
 
-        return $this->client->get($this->buildUrl($url, ['project' => $project]), $response, $request);
+        return $this->client->get($this->buildUrl($uri, ['project' => $project]), $response, $request);
     }
 
     /**
@@ -54,7 +54,7 @@ class Job extends AbstractApi
      */
     public function getJob(array $request, array $response = []): array
     {
-        $url = 'projects/{project}/automation/jobs/{job}';
+        $uri = 'projects/{project}/automation/jobs/{job}';
         $requiredFields = [
             'jobId' => 'string',
         ];
@@ -65,12 +65,12 @@ class Job extends AbstractApi
         ];
         $project = $this->throwIfMissing($missing, $request);
         $this->throwIfInvalid($requiredFields, $request);
-        $urlArguments = [
+        $uriArguments = [
             'project' => $project,
             'job' => $request['jobId'],
         ];
 
-        return $this->client->get($this->buildUrl($url, $urlArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
     }
 
     /**
@@ -87,7 +87,7 @@ class Job extends AbstractApi
      */
     public function startJob(array $data, array $response = []): array
     {
-        $url = 'projects/{project}/automation/jobs/{jobId}/start';
+        $uri = 'projects/{project}/automation/jobs/{jobId}/start';
         $requiredFields = [
             'jobId' => 'string',
             'branch' => [
@@ -101,11 +101,11 @@ class Job extends AbstractApi
         ];
         $project = $this->throwIfMissing($missing, $data);
         $this->throwIfInvalid($requiredFields, $data);
-        $urlArguments = [
+        $uriArguments = [
             'project' => $project,
             'jobId' => $data['jobId'],
         ];
 
-        return $this->client->post($this->buildUrl($url, $urlArguments), $data, $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
     }
 }

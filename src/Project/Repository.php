@@ -33,7 +33,7 @@ class Repository extends AbstractApi
      */
     public function createRepository(array $data, array $response = []): array
     {
-        $url = 'projects/{project}/repositories/{repository}';
+        $uri = 'projects/{project}/repositories/{repository}';
         $required = [
             'repository' => 'string',
         ];
@@ -44,12 +44,12 @@ class Repository extends AbstractApi
         ];
         $project = $this->throwIfMissing($missing, $data);
         $repository = $data['repository'];
-        $urlArguments = [
+        $uriArguments = [
             'project' => $project,
             'repository' => $repository,
         ];
 
-        return $this->client->post($this->buildUrl($url, $urlArguments), $data, $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
     }
 
     /**
@@ -60,7 +60,7 @@ class Repository extends AbstractApi
      */
     public function deleteRepository(array $request): bool
     {
-        $url = 'projects/{project}/repositories/{repository}';
+        $uri = 'projects/{project}/repositories/{repository}';
         $required = [
             'repository' => 'string',
         ];
@@ -71,12 +71,12 @@ class Repository extends AbstractApi
         ];
         $project = $this->throwIfMissing($missing, $request);
         $repository = $request['repository'];
-        $urlArguments = [
+        $uriArguments = [
             'project' => $project,
             'repository' => $repository,
         ];
 
-        return $this->client->delete($this->buildUrl($url, $urlArguments));
+        return $this->client->delete($this->buildUrl($uri, $uriArguments));
     }
 
     /**
@@ -88,7 +88,7 @@ class Repository extends AbstractApi
      */
     public function getRepositoryGitRemoteUrl(array $request, array $response = []): array
     {
-        $url = 'projects/{project}/repositories/{repository}/url';
+        $uri = 'projects/{project}/repositories/{repository}/url';
         $required = [
             'repository' => 'string',
         ];
@@ -99,12 +99,12 @@ class Repository extends AbstractApi
         ];
         $project = $this->throwIfMissing($missing, $request);
         $repository = $request['repository'];
-        $urlArguments = [
+        $uriArguments = [
             'project' => $project,
             'repository' => $repository,
         ];
 
-        return $this->client->get($this->buildUrl($url, $urlArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
     }
 
     /**
@@ -116,7 +116,7 @@ class Repository extends AbstractApi
      */
     public function listCommitsMatchingQuery(array $request, array $response = []): array
     {
-        $url = 'projects/{project}/repositories/{repository}/commits';
+        $uri = 'projects/{project}/repositories/{repository}/commits';
         $required = [
             'repository' => 'string',
         ];
@@ -127,12 +127,12 @@ class Repository extends AbstractApi
         ];
         $project = $this->throwIfMissing($missing, $request);
         $repository = $request['repository'];
-        $urlArguments = [
+        $uriArguments = [
             'project' => $project,
             'repository' => $repository,
         ];
 
-        return $this->client->get($this->buildUrl($url, $urlArguments), $request, $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
@@ -144,7 +144,7 @@ class Repository extends AbstractApi
      */
     public function commitChangesToRepository(array $request, array $response = []): array
     {
-        $url = 'projects/{project}/repositories/{repository}/commit';
+        $uri = 'projects/{project}/repositories/{repository}/commit';
         $required = [
             'repository' => 'string',
             'baseCommit' => 'string',
@@ -164,11 +164,11 @@ class Repository extends AbstractApi
 
         $project = strtolower($project);
         $repository = $request['repository'];
-        $urlArguments = [
+        $uriArguments = [
             'project' => $project,
             'repository' => $repository,
         ];
 
-        return $this->client->post($this->buildUrl($url, $urlArguments), $request, $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 }
