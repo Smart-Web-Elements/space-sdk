@@ -29,7 +29,7 @@ class Project extends AbstractApi
      */
     public function createProject(array $data, array $response = []): array
     {
-        $url = 'projects';
+        $uri = 'projects';
         $requiredFields = [
             'key' => [
                 'key' => 'string',
@@ -39,7 +39,7 @@ class Project extends AbstractApi
 
         $this->throwIfInvalid($requiredFields, $data);
 
-        return $this->client->post($this->buildUrl($url), $data, $response);
+        return $this->client->post($this->buildUrl($uri), $data, $response);
     }
 
     /**
@@ -54,14 +54,14 @@ class Project extends AbstractApi
      */
     public function updateProject(array $request, array $data, array $response = []): array
     {
-        $url = 'projects/{project}';
+        $uri = 'projects/{project}';
         $missing = [
             'key',
             'id',
         ];
         $project = $this->throwIfMissing($missing, $request);
 
-        return $this->client->patch($this->buildUrl($url, ['project' => $project]), $data, $response);
+        return $this->client->patch($this->buildUrl($uri, ['project' => $project]), $data, $response);
     }
 
     /**
@@ -76,14 +76,14 @@ class Project extends AbstractApi
      */
     public function deleteProject(array $request): bool
     {
-        $url = 'projects/{project}';
+        $uri = 'projects/{project}';
         $missing = [
             'key',
             'id',
         ];
         $project = $this->throwIfMissing($missing, $request);
 
-        return $this->client->delete($this->buildUrl($url, ['project' => $project]));
+        return $this->client->delete($this->buildUrl($uri, ['project' => $project]));
     }
 
     /**
@@ -96,8 +96,8 @@ class Project extends AbstractApi
      */
     public function getAllProjects(array $request = [], array $response = []): array
     {
-        $url = 'projects';
-        return $this->client->get($this->buildUrl($url), $request, $response);
+        $uri = 'projects';
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 
     /**
@@ -111,14 +111,14 @@ class Project extends AbstractApi
      */
     public function getProject(array $request, array $response = []): array
     {
-        $url = 'projects/{project}';
+        $uri = 'projects/{project}';
         $missing = [
             'key',
             'id',
         ];
         $project = $this->throwIfMissing($missing, $request);
 
-        return $this->client->get($this->buildUrl($url, ['project' => $project]), $response);
+        return $this->client->get($this->buildUrl($uri, ['project' => $project]), $response);
     }
 
     /**

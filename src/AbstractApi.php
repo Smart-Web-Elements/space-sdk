@@ -124,4 +124,16 @@ abstract class AbstractApi
 
         return $value;
     }
+
+    /**
+     * @param array $uriArguments
+     * @param array $data
+     * @return void
+     */
+    protected function removeUrlArgumentsFromData(array $uriArguments, array &$data): void
+    {
+        foreach (array_keys($uriArguments) as $key) {
+            unset($data[$key]);
+        }
+    }
 }

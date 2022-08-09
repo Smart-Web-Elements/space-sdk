@@ -28,7 +28,7 @@ class GraphExecution extends AbstractApi
      */
     public function getAllGraphExecutions(array $request, array $response = []): array
     {
-        $url = 'projects/{project}/automation/graph-executions';
+        $uri = 'projects/{project}/automation/graph-executions';
         $requiredFields = [
             'jobId' => 'string',
         ];
@@ -40,7 +40,7 @@ class GraphExecution extends AbstractApi
         $project = $this->throwIfMissing($missing, $request);
         $this->throwIfInvalid($requiredFields, $request);
 
-        return $this->client->get($this->buildUrl($url, ['project' => $project]), $response, $request);
+        return $this->client->get($this->buildUrl($uri, ['project' => $project]), $response, $request);
     }
 
     /**
@@ -54,7 +54,7 @@ class GraphExecution extends AbstractApi
      */
     public function getGraphExecution(array $request, array $response = []): array
     {
-        $url = 'projects/automation/graph-executions/{id}';
+        $uri = 'projects/automation/graph-executions/{id}';
         $requiredFields = [
             'id' => 'string',
         ];
@@ -62,7 +62,7 @@ class GraphExecution extends AbstractApi
         $this->throwIfInvalid($requiredFields, $request);
         $id = $request['id'];
 
-        return $this->client->get($this->buildUrl($url, ['id' => $id]), $response);
+        return $this->client->get($this->buildUrl($uri, ['id' => $id]), $response);
     }
 
     /**
@@ -76,13 +76,13 @@ class GraphExecution extends AbstractApi
      */
     public function stopExecution(array $data): void
     {
-        $url = 'projects/automation/graph-executions/{id}/stop';
+        $uri = 'projects/automation/graph-executions/{id}/stop';
         $requiredFields = [
             'id' => 'string',
         ];
 
         $this->throwIfInvalid($requiredFields, $data);
         $id = $data['id'];
-        $this->client->get($this->buildUrl($url, ['id' => $id]));
+        $this->client->get($this->buildUrl($uri, ['id' => $id]));
     }
 }

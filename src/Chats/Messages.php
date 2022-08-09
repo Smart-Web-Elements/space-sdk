@@ -22,9 +22,9 @@ class Messages extends AbstractApi
      */
     public function importMessages(array $data): void
     {
-        $url = 'chats/messages/import';
+        $uri = 'chats/messages/import';
 
-        $this->client->post($this->buildUrl($url), $data);
+        $this->client->post($this->buildUrl($uri), $data);
     }
 
     /**
@@ -36,16 +36,16 @@ class Messages extends AbstractApi
      */
     public function getMessage(array $data, array $response = []): array
     {
-        $url = 'chats/messages/{message}';
+        $uri = 'chats/messages/{message}';
         $required = [
             'channel' => 'string',
         ];
         $this->throwIfInvalid($required, $data);
         $message = $this->throwIfMissing(['externalId', 'id'], $data);
-        $urlArguments = [
+        $uriArguments = [
             'message' => $message,
         ];
 
-        return $this->client->post($this->buildUrl($url, $urlArguments), $data, $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
     }
 }
