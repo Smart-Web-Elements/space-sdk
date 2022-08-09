@@ -38,33 +38,33 @@ if ($space->chats()->channels()->isNameFree('General')) {
 
 ## Status
 
-- [ ] Absences
-- [ ] Administration
-- [ ] Applications
-- [ ] Auth Modules
-- [ ] Billing Admin
-- [ ] Blog
-- [ ] Calendars
-- [ ] Calls
-- [ ] **Chats *(WIP)***
-  - [ ] **Channels *(Channels itself done)***
-  - [ ] **Messages *(WIP)***
-- [ ] Custom Fields
-- [ ] Emojis
-- [ ] External Link Patterns
-- [ ] HTTP API Model
-- [ ] Notifications
-- [ ] Organization
-- [ ] Permission Roles
-- [ ] Permissions
-- [ ] **Projects *(Project itself done)***
-  - [x] **Repositories**
-- [ ] Public Holidays
-- [ ] Rd
-- [ ] Reactions
-- [ ] Rich Text
-- [ ] Team Directory
-- [ ] ~~To-Do Items~~ *(An application is not allowed to do anything with To-Do Items)*
-- [ ] Trusted Certificates
-- [ ] Unfurls
-- [ ] Uploads
+- Absences *(ToDo)*
+- Administration *(ToDo)*
+- Applications *(ToDo)*
+- Auth Modules *(ToDo)*
+- Billing Admin *(ToDo)*
+- Blog *(ToDo)*
+- Calendars *(ToDo)*
+- Calls *(ToDo)*
+- **Chats *(WIP)***
+  - **Channels *(Channels itself done)***
+  - **Messages *(WIP)***
+- Custom Fields *(ToDo)*
+- Emojis *(ToDo)*
+- External Link Patterns *(ToDo)*
+- HTTP API Model *(ToDo)*
+- Notifications *(ToDo)*
+- Organization *(ToDo)*
+- Permission Roles *(ToDo)*
+- Permissions *(ToDo)*
+- **Projects *(Project itself done)***
+  - **Repositories (Done)**
+- Public Holidays *(ToDo)*
+- Rd *(ToDo)*
+- Reactions *(ToDo)*
+- Rich Text *(ToDo)*
+- Team Directory *(ToDo)*
+- ~~To-Do Items~~ *(An application is not allowed to do anything with To-Do Items)*
+- Trusted Certificates *(ToDo)*
+- Unfurls *(ToDo)*
+- Uploads *(ToDo)*
