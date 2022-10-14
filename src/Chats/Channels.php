@@ -4,6 +4,7 @@ namespace Swe\SpaceSDK\Chats;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
+use Swe\SpaceSDK\Chats\Channels\Administrator;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
@@ -189,5 +190,13 @@ class Channels extends AbstractApi
         $this->removeUrlArgumentsFromData($uriArguments, $data);
 
         $this->client->post($this->buildUrl($uri, $uriArguments), $data);
+    }
+
+    /**
+     * @return Administrator
+     */
+    public function administrator(): Administrator
+    {
+        return new Administrator($this->client);
     }
 }
