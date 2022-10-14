@@ -14,12 +14,13 @@
   "authors": [
     {
       "name": "Luca Braun",
-      "email": "l.braun@s-w-e.com"
+      "email": "l.braun@s-w-e.com",
+      "role": "Developer"
     }
   ],
   "homepage": "https://www.smart-web-elements.com",
   "require": {
-    "php": "^7.4 || ^8.0",
+    "php": "^7.4 || ^8.0 || ^8.1",
     "ext-json": "*",
     "guzzlehttp/guzzle": "^7"
   },
