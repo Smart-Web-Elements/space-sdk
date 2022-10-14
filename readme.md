@@ -39,9 +39,9 @@ if ($space->chats()->channels()->isNameFree('General')) {
 ## Information
 
 The classes and methods are named like in the Space API defined.
-Breaking changes are possible, so beware!
+This package uses [Semantic Versioning](https://semver.org/lang/) as soon as reaching v1.
 
-## Status
+## Status Space API
 
 - [ ] Absences
   - [ ] Absences
