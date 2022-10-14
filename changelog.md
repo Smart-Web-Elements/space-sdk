@@ -1,13 +1,13 @@
 # Space SDK Changelog
 
-## Space SDK v0.1.0
+## Space SDK v0.1.0 [BREAKING]
 
 - Added class `Chats/Channels/Administrator`
 - Added method `assignChannelAdministrator` in `Administrator`
 - Added method `getChannelAdministrator` in `Administrator`
-- Renamed method and class `GraphExecution` to `GraphExecutions`
-- Renamed method and class `Job` to `Jobs`
-- Renamed method and class `Repository` to `Repositories`
+- **[BREAKING]** Renamed method and class `GraphExecution` to `GraphExecutions`
+- **[BREAKING]** Renamed method and class `Job` to `Jobs`
+- **[BREAKING]** Renamed method and class `Repository` to `Repositories`
 
 ## Space SDK v0.0.8
 
