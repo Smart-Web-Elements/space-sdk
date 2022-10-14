@@ -1,0 +1,51 @@
+# Space SDK Changelog
+
+## Space SDK v0.1.0
+
+- Added class `Chats/Channels/Administrator`
+- Added method `assignChannelAdministrator` in `Administrator`
+- Added method `getChannelAdministrator` in `Administrator`
+- Renamed method and class `GraphExecution` to `GraphExecutions`
+- Renamed method and class `Job` to `Jobs`
+- Renamed method and class `Repository` to `Repositories`
+
+## Space SDK v0.0.8
+
+- Added PHP 8.1 support
+
+## Space SDK v0.0.7
+
+- Added method `getChannel` in `Channels`
+- Added method `deleteChannel` in `Channels`
+- Added method `listAllChannels` in `Channels`
+- Added method `restoreArchivedChannel` in `Channels`
+- Added method `archiveChannel` in `Channels`
+
+## Space SDK v0.0.6
+
+- Added method `addUsers` in `Channels`
+
+## Space SDK v0.0.5
+
+- Improved missing validation
+- Added method `getMessage` in `Messages`
+
+## Space SDK v0.0.4
+
+- Added method `isNameFree` in `Channels`
+
+## Space SDK v0.0.3
+
+- Fixed missing chat relation to space
+
+## Space SDK v0.0.2
+
+- Changed structure
+- Added `Automation` in `Project`
+- Added `Chats`
+- Added `Channels` in `Chats`
+- Added `Messages` in `Chats`
+
+## Space SDK v0.0.1
+
+- Initiate
