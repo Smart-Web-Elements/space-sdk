@@ -6,7 +6,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Project;
 use Swe\SpaceSDK\Project\Automation;
-use Swe\SpaceSDK\Project\Repository;
+use Swe\SpaceSDK\Project\Repositories;
 
 /**
  * Class ProjectTest
@@ -184,7 +184,7 @@ class ProjectTest extends SpaceTestCase
      */
     public function testRepository(): void
     {
-        $this->assertInstanceOf(Repository::class, static::$project->repository());
+        $this->assertInstanceOf(Repositories::class, static::$project->repositories());
     }
 
     /**

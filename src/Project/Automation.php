@@ -4,8 +4,8 @@ namespace Swe\SpaceSDK\Project;
 
 
 use Swe\SpaceSDK\AbstractApi;
-use Swe\SpaceSDK\Project\Automation\GraphExecution;
-use Swe\SpaceSDK\Project\Automation\Job;
+use Swe\SpaceSDK\Project\Automation\GraphExecutions;
+use Swe\SpaceSDK\Project\Automation\Jobs;
 
 /**
  * Class Automation
@@ -16,18 +16,18 @@ use Swe\SpaceSDK\Project\Automation\Job;
 class Automation extends AbstractApi
 {
     /**
-     * @return Job
+     * @return Jobs
      */
-    public function job(): Job
+    public function jobs(): Jobs
     {
-        return new Job($this->client);
+        return new Jobs($this->client);
     }
 
     /**
-     * @return GraphExecution
+     * @return GraphExecutions
      */
-    public function graphExecution(): GraphExecution
+    public function graphExecutions(): GraphExecutions
     {
-        return new GraphExecution($this->client);
+        return new GraphExecutions($this->client);
     }
 }

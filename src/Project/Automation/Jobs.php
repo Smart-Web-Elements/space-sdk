@@ -8,12 +8,12 @@ use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
- * Class Job
+ * Class Jobs
  *
  * @package Swe\SpaceSDK\Project\Automation
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Job extends AbstractApi
+class Jobs extends AbstractApi
 {
     /**
      * List jobs. Parameters are applied as 'AND' filters.
@@ -83,7 +83,7 @@ class Job extends AbstractApi
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
-     * @see GraphExecution::getGraphExecution()
+     * @see GraphExecutions::getGraphExecution()
      */
     public function startJob(array $data, array $response = []): array
     {

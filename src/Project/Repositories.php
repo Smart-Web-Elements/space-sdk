@@ -8,12 +8,12 @@ use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
- * Class Repository
+ * Class Repositories
  *
  * @package Swe\SpaceSDK\Project
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Repository extends AbstractApi
+class Repositories extends AbstractApi
 {
     const GIT_FILE_CONTENT_TEXT = 'GitFileContent.Text';
     const GIT_FILE_CONTENT_BASE64 = 'GitFileContent.Base64';
@@ -31,7 +31,7 @@ class Repository extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createRepository(array $data, array $response = []): array
+    public function createNewRepository(array $data, array $response = []): array
     {
         $uri = 'projects/{project}/repositories/{repository}';
         $required = [

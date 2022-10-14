@@ -4,8 +4,8 @@ namespace Swe\SpaceSDK\Tests\Project;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\Project\Automation;
-use Swe\SpaceSDK\Project\Automation\GraphExecution;
-use Swe\SpaceSDK\Project\Automation\Job;
+use Swe\SpaceSDK\Project\Automation\GraphExecutions;
+use Swe\SpaceSDK\Project\Automation\Jobs;
 use Swe\SpaceSDK\Tests\SpaceTestCase;
 
 /**
@@ -35,7 +35,7 @@ class AutomationTest extends SpaceTestCase
      */
     public function testJob()
     {
-        $this->assertInstanceOf(Job::class, static::$automation->job());
+        $this->assertInstanceOf(Jobs::class, static::$automation->jobs());
     }
 
     /**
@@ -43,6 +43,6 @@ class AutomationTest extends SpaceTestCase
      */
     public function testGraphExecution()
     {
-        $this->assertInstanceOf(GraphExecution::class, static::$automation->graphExecution());
+        $this->assertInstanceOf(GraphExecutions::class, static::$automation->graphExecutions());
     }
 }

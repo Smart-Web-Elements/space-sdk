@@ -8,12 +8,12 @@ use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
- * Class GraphExecution
+ * Class GraphExecutions
  *
  * @package Swe\SpaceSDK\Project\Automation
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class GraphExecution extends AbstractApi
+class GraphExecutions extends AbstractApi
 {
     /**
      * Search executions. Parameters are applied as 'AND' filters.

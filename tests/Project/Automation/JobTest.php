@@ -6,8 +6,8 @@ use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Project;
-use Swe\SpaceSDK\Project\Automation\Job;
-use Swe\SpaceSDK\Project\Repository;
+use Swe\SpaceSDK\Project\Automation\Jobs;
+use Swe\SpaceSDK\Project\Repositories;
 use Swe\SpaceSDK\Tests\Project\RepositoryTest;
 use Swe\SpaceSDK\Tests\ProjectTest;
 use Swe\SpaceSDK\Tests\SpaceTestCase;
@@ -21,14 +21,14 @@ use Swe\SpaceSDK\Tests\SpaceTestCase;
 class JobTest extends SpaceTestCase
 {
     /**
-     * @var Job
+     * @var Jobs
      */
-    protected static Job $job;
+    protected static Jobs $job;
 
     /**
-     * @var Repository
+     * @var Repositories
      */
-    protected static Repository $repository;
+    protected static Repositories $repository;
 
     /**
      * @var Project
@@ -43,11 +43,11 @@ class JobTest extends SpaceTestCase
     {
         parent::setUpBeforeClass();
         static::$project = static::$space->project();
-        static::$job = static::$project->automation()->job();
-        static::$repository = static::$project->repository();
+        static::$job = static::$project->automation()->jobs();
+        static::$repository = static::$project->repositories();
         $projectData = [
             'key' => [
-                'key' => ProjectTest::$projectKey
+                'key' => ProjectTest::$projectKey,
             ],
             'name' => ProjectTest::$projectName,
         ];
@@ -57,7 +57,7 @@ class JobTest extends SpaceTestCase
             'repository' => RepositoryTest::$repositoryName,
             'branch' => RepositoryTest::$repositoryBranch,
         ];
-        static::$repository->createRepository($repositoryData);
+        static::$repository->createNewRepository($repositoryData);
     }
 
     /**

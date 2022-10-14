@@ -5,7 +5,7 @@ namespace Swe\SpaceSDK\Tests\Project;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Project;
-use Swe\SpaceSDK\Project\Repository;
+use Swe\SpaceSDK\Project\Repositories;
 use Swe\SpaceSDK\Tests\ProjectTest;
 use Swe\SpaceSDK\Tests\SpaceTestCase;
 
@@ -35,9 +35,9 @@ class RepositoryTest extends SpaceTestCase
     public static string $gitUrl;
 
     /**
-     * @var Repository
+     * @var Repositories
      */
-    protected static Repository $repository;
+    protected static Repositories $repository;
 
     /**
      * @var Project
@@ -53,7 +53,7 @@ class RepositoryTest extends SpaceTestCase
         parent::setUpBeforeClass();
         static::$gitUrl = sprintf('%s/%s/', self::JB_GIT_DOMAIN, static::$instanceName);
         static::$project = static::$space->project();
-        static::$repository = static::$project->repository();
+        static::$repository = static::$project->repositories();
         $projectData = [
             'key' => [
                 'key' => ProjectTest::$projectKey,
@@ -88,7 +88,7 @@ class RepositoryTest extends SpaceTestCase
             'repository' => static::$repositoryName,
             'defaultBranch' => static::$repositoryBranch,
         ];
-        $response = static::$repository->createRepository($data);
+        $response = static::$repository->createNewRepository($data);
         $this->assertIsArray($response);
         $this->assertArrayHasKey('id', $response);
         $this->assertSame($data['repository'], $response['name']);
