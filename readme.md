@@ -158,7 +158,7 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
   - [ ] Profiles
   - [ ] Teams
 - [x] **Permissions**
-- [ ] Projects
+- [ ] Projects *(WIP)*
   - [x] **Projects**
   - [ ] Access
     - [ ] Admins
@@ -256,7 +256,7 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
     - [x] **Default Bundle**
   - [x] **Tags**
   - [ ] Topics
-  - [ ] Vault
+  - [x] **Vault**
 - [ ] Public Holidays
   - [ ] Calendars
   - [ ] Holidays
