@@ -237,7 +237,7 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
         - [ ] Distribution
       - [ ] Tags
     - [ ] Tags
-  - [ ] Private Projects
+  - [x] **Private Projects**
   - [x] **Repositories**
     - [x] **Repositories**
     - [x] **Find**

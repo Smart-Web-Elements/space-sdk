@@ -1,0 +1,50 @@
+<?php
+
+namespace Swe\SpaceSDK\Project;
+
+use GuzzleHttp\Exception\GuzzleException;
+use Swe\SpaceSDK\AbstractApi;
+
+/**
+ * Class PrivateProjects
+ *
+ * @package Swe\SpaceSDK\Project
+ * @author Luca Braun <l.braun@s-w-e.com>
+ */
+class PrivateProjects extends AbstractApi
+{
+    /**
+     * Request access to a project.
+     *
+     * Permissions that may be checked: Project.ViewPrivate
+     *
+     * @param string $project
+     * @return void
+     * @throws GuzzleException
+     */
+    public function requestAccessToProject(string $project): void
+    {
+        $uri = 'projects/private-projects/{project}/request-access';
+        $uriArguments = [
+            'project' => $project,
+        ];
+
+        $this->client->post($this->buildUrl($uri, $uriArguments));
+    }
+
+    /**
+     * List private projects in the current organization.
+     *
+     * Permissions that may be checked: Project.ViewPrivate, Project.View
+     *
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     */
+    public function getAllPrivateProjects(array $response = []): array
+    {
+        $uri = 'projects/private-projects';
+
+        return $this->client->get($this->buildUrl($uri), $response);
+    }
+}

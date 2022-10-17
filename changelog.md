@@ -38,6 +38,7 @@
 - Added class `Projects/Repositories/RepositoryReadonly`
 - Added class `Projects/Repositories/Revisions`
 - Added class `Projects/Repositories/Revisions/ExternalChecks`
+- Added class `Projects/PrivateProjects`
 - **[BREAKING]** Renamed method and class `GraphExecution` to `GraphExecutions`
 - **[BREAKING]** Renamed method and class `Job` to `Jobs`
 - **[BREAKING]** Renamed method and class `Repository` to `Repositories`
