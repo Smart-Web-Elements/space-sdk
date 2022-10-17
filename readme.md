@@ -126,9 +126,9 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
     - [ ] Subscribers
       - [ ] Teams
       - [ ] Users
-  - [ ] Messages *(WIP)*
+  - [x] **Messages**
     - [x] **Messages**
-    - [ ] Pinned Messages
+    - [x] **Pinned Messages**
 - [ ] Checklists
   - [ ] Items
 - [ ] Custom Fields
