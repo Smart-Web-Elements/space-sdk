@@ -22,6 +22,7 @@
 - Added class `Chats/Channels/Attachments/Images`
 - Added class `Chats/Channels/Attachments/Links`
 - Added class `Chats/Channels/Attachments/Videos`
+- Added class `Calls`
 - **[BREAKING]** Renamed method and class `GraphExecution` to `GraphExecutions`
 - **[BREAKING]** Renamed method and class `Job` to `Jobs`
 - **[BREAKING]** Renamed method and class `Repository` to `Repositories`

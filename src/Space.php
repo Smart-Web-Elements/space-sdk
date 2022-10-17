@@ -27,4 +27,12 @@ class Space extends AbstractApi
     {
         return new Chats($this->client);
     }
+
+    /**
+     * @return Calls
+     */
+    public function calls(): Calls
+    {
+        return new Calls($this->client);
+    }
 }

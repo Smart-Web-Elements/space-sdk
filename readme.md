@@ -106,7 +106,7 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
     - [ ] Participation Status
   - [ ] Membership Events
   - [ ] Non Working Day Events
-- [ ] Calls
+- [x] **Calls**
 - [x] **Chats**
   - [x] **Channels**
     - [x] **Channels**
