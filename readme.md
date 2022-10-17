@@ -155,7 +155,7 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
   - [ ] Permissions
   - [ ] Profiles
   - [ ] Teams
-- [ ] Permissions
+- [x] **Permissions**
 - [ ] Projects
   - [ ] Projects *(WIP)*
   - [ ] Access

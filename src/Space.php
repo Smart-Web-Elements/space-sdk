@@ -75,4 +75,12 @@ class Space extends AbstractApi
     {
         return new Blog($this->client);
     }
+
+    /**
+     * @return Permissions
+     */
+    public function permissions(): Permissions
+    {
+        return new Permissions($this->client);
+    }
 }
