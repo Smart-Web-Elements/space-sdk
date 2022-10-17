@@ -8,6 +8,11 @@
 - Added class `Chats/Channels/Description`
 - Added method `changeChannelDescription` in `Description`
 - Added method `deleteMessage` in `Messages`
+- Added method `editMessage` in `Messages`
+- Added method `sendMessage` in `Messages`
+- Added method `getChannelMessages` in `Messages`
+- Added method `pinMessages` in `Messages`
+- Added method `unpinMessages` in `Messages`
 - **[BREAKING]** Renamed method and class `GraphExecution` to `GraphExecutions`
 - **[BREAKING]** Renamed method and class `Job` to `Jobs`
 - **[BREAKING]** Renamed method and class `Repository` to `Repositories`

@@ -60,6 +60,10 @@ abstract class AbstractApi
                     return false;
                 }
             }
+
+            if (strtolower($type) === 'array' && !is_array($fields[$field])) {
+                return false;
+            }
         }
 
         return true;
