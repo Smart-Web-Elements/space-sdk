@@ -25,6 +25,7 @@
 - Added class `Calls`
 - Added class `Checklists`
 - Added class `Checklists/Items`
+- Added class `ExternalLinkPatterns`
 - **[BREAKING]** Renamed method and class `GraphExecution` to `GraphExecutions`
 - **[BREAKING]** Renamed method and class `Job` to `Jobs`
 - **[BREAKING]** Renamed method and class `Repository` to `Repositories`

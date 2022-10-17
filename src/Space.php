@@ -43,4 +43,12 @@ class Space extends AbstractApi
     {
         return new Checklists($this->client);
     }
+
+    /**
+     * @return ExternalLinkPatterns
+     */
+    public function externalLinkPatterns(): ExternalLinkPatterns
+    {
+        return new ExternalLinkPatterns($this->client);
+    }
 }
