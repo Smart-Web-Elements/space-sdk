@@ -59,4 +59,12 @@ class Space extends AbstractApi
     {
         return new HttpApiModel($this->client);
     }
+
+    /**
+     * @return ToDoItems
+     */
+    public function toDoItems(): ToDoItems
+    {
+        return new ToDoItems($this->client);
+    }
 }
