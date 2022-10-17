@@ -249,9 +249,9 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
     - [ ] Assignees
     - [ ] Scheme
     - [ ] Subjects
-  - [ ] Secrets
-    - [ ] Secrets
-    - [ ] Default Bundle
+  - [x] **Secrets**
+    - [x] **Secrets**
+    - [x] **Default Bundle**
   - [ ] Tags
   - [ ] Topics
   - [ ] Vault

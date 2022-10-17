@@ -39,6 +39,8 @@
 - Added class `Projects/Repositories/Revisions`
 - Added class `Projects/Repositories/Revisions/ExternalChecks`
 - Added class `Projects/PrivateProjects`
+- Added class `Projects/Secrets`
+- Added class `Projects/Secrets/DefaultBundle`
 - **[BREAKING]** Renamed method and class `GraphExecution` to `GraphExecutions`
 - **[BREAKING]** Renamed method and class `Job` to `Jobs`
 - **[BREAKING]** Renamed method and class `Repository` to `Repositories`

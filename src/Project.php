@@ -8,6 +8,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Project\Automation;
 use Swe\SpaceSDK\Project\PrivateProjects;
 use Swe\SpaceSDK\Project\Repositories;
+use Swe\SpaceSDK\Project\Secrets;
 
 /**
  * Class Project
@@ -242,5 +243,13 @@ class Project extends AbstractApi
     public function privateProjects(): PrivateProjects
     {
         return new PrivateProjects($this->client);
+    }
+
+    /**
+     * @return Secrets
+     */
+    public function secrets(): Secrets
+    {
+        return new Secrets($this->client);
     }
 }
