@@ -126,36 +126,4 @@ abstract class AbstractApi
 
         throw MissingArgumentException::throwWithFields($required);
     }
-
-    /**
-     * @param array $oneOfThose
-     * @param array $request
-     * @return string
-     * @throws MissingArgumentException
-     */
-    protected function throwIfMissing(array $oneOfThose, array $request): string
-    {
-        $value = '';
-
-        foreach ($oneOfThose as $that) {
-            if (isset($request[$that])) {
-                $value = $that . ':' . $request[$that];
-            }
-        }
-
-        if (empty($value)) {
-            $message = 'Missing either %s!';
-            $last = array_pop($oneOfThose);
-
-            if (!empty($oneOfThose)) {
-                $values = '"' . implode('", "', $oneOfThose) . '" or "' . $last . '"';
-            } else {
-                $values = '"' . $last . '"';
-            }
-
-            throw new MissingArgumentException(sprintf($message, $values));
-        }
-
-        return $value;
-    }
 }
