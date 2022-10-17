@@ -13,6 +13,8 @@
 - Added method `getChannelMessages` in `Messages`
 - Added method `pinMessages` in `Messages`
 - Added method `unpinMessages` in `Messages`
+- Added class `Chats/Messages/PinnedMessages`
+- Added method `listPinnedMessagesInChannel` in `PinnedMessages`
 - **[BREAKING]** Renamed method and class `GraphExecution` to `GraphExecutions`
 - **[BREAKING]** Renamed method and class `Job` to `Jobs`
 - **[BREAKING]** Renamed method and class `Repository` to `Repositories`

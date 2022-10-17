@@ -4,6 +4,7 @@ namespace Swe\SpaceSDK\Chats;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
+use Swe\SpaceSDK\Chats\Messages\PinnedMessages;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
@@ -192,5 +193,13 @@ class Messages extends AbstractApi
         $this->throwIfInvalid($required, $data);
 
         $this->client->patch($this->buildUrl($uri), $data);
+    }
+
+    /**
+     * @return PinnedMessages
+     */
+    public function pinnedMessages(): PinnedMessages
+    {
+        return new PinnedMessages($this->client);
     }
 }
