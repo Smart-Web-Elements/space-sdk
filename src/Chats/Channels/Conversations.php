@@ -28,7 +28,7 @@ class Conversations extends AbstractApi
     {
         $uri = 'chats/channels/conversations';
         $required = [
-            'profileIds' => 'array',
+            'profileIds' => self::TYPE_ARRAY,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -48,8 +48,8 @@ class Conversations extends AbstractApi
     {
         $uri = 'chats/channels/conversations/{channel}/convers';
         $required = [
-            'channel' => 'string',
-            'channelName' => 'string',
+            'channel' => self::TYPE_STRING,
+            'channelName' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

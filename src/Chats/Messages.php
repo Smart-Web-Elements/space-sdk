@@ -26,8 +26,8 @@ class Messages extends AbstractApi
     {
         $uri = 'chats/messages/delete-message';
         $required = [
-            'channel' => 'string',
-            'id' => 'string',
+            'channel' => self::TYPE_STRING,
+            'id' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -48,9 +48,9 @@ class Messages extends AbstractApi
     {
         $uri = 'chats/messages/edit-message';
         $required = [
-            'channel' => 'string',
-            'message' => 'string',
-            'content' => 'array',
+            'channel' => self::TYPE_STRING,
+            'message' => self::TYPE_STRING,
+            'content' => self::TYPE_ARRAY,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -72,8 +72,8 @@ class Messages extends AbstractApi
     {
         $uri = 'chats/messages/import';
         $required = [
-            'channel' => 'string',
-            'messages' => 'string',
+            'channel' => self::TYPE_STRING,
+            'messages' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -96,7 +96,7 @@ class Messages extends AbstractApi
     {
         $uri = 'chats/messages/send-message';
         $required = [
-            'content' => 'array',
+            'content' => self::TYPE_ARRAY,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -122,9 +122,9 @@ class Messages extends AbstractApi
     {
         $uri = 'chats/messages';
         $required = [
-            'channel' => 'string',
-            'sorting' => 'string',
-            'batchSize' => 'int',
+            'channel' => self::TYPE_STRING,
+            'sorting' => self::TYPE_STRING,
+            'batchSize' => self::TYPE_INTEGER,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -144,7 +144,7 @@ class Messages extends AbstractApi
     {
         $uri = 'chats/messages/{message}';
         $required = [
-            'channel' => 'string',
+            'channel' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $message = $this->throwIfMissing(['externalId', 'id'], $data);
@@ -167,8 +167,8 @@ class Messages extends AbstractApi
     {
         $uri = 'chats/messages/pin';
         $required = [
-            'channel' => 'string',
-            'message' => 'string',
+            'channel' => self::TYPE_STRING,
+            'message' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -187,8 +187,8 @@ class Messages extends AbstractApi
     {
         $uri = 'chats/messages/unpin';
         $required = [
-            'channel' => 'string',
-            'message' => 'string',
+            'channel' => self::TYPE_STRING,
+            'message' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
 

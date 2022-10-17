@@ -27,7 +27,7 @@ class Links extends AbstractApi
     {
         $uri = 'chats/channels/{channel}/attachments/links';
         $required = [
-            'channel' => 'string',
+            'channel' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

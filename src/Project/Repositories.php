@@ -35,7 +35,7 @@ class Repositories extends AbstractApi
     {
         $uri = 'projects/{project}/repositories/{repository}';
         $required = [
-            'repository' => 'string',
+            'repository' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $missing = [
@@ -62,7 +62,7 @@ class Repositories extends AbstractApi
     {
         $uri = 'projects/{project}/repositories/{repository}';
         $required = [
-            'repository' => 'string',
+            'repository' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $request);
         $missing = [
@@ -90,7 +90,7 @@ class Repositories extends AbstractApi
     {
         $uri = 'projects/{project}/repositories/{repository}/url';
         $required = [
-            'repository' => 'string',
+            'repository' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $request);
         $missing = [
@@ -118,7 +118,7 @@ class Repositories extends AbstractApi
     {
         $uri = 'projects/{project}/repositories/{repository}/commits';
         $required = [
-            'repository' => 'string',
+            'repository' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $request);
         $missing = [
@@ -146,10 +146,10 @@ class Repositories extends AbstractApi
     {
         $uri = 'projects/{project}/repositories/{repository}/commit';
         $required = [
-            'repository' => 'string',
-            'baseCommit' => 'string',
-            'targetBranch' => 'string',
-            'commitMessage' => 'string',
+            'repository' => self::TYPE_STRING,
+            'baseCommit' => self::TYPE_STRING,
+            'targetBranch' => self::TYPE_STRING,
+            'commitMessage' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $request);
         $missing = [

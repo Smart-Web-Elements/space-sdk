@@ -26,8 +26,8 @@ class Description extends AbstractApi
     {
         $uri = 'chats/channels/{channel}/description';
         $required = [
-            'channel' => 'string',
-            'description' => 'string',
+            'channel' => self::TYPE_STRING,
+            'description' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

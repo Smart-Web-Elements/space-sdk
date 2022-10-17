@@ -28,8 +28,8 @@ class Items extends AbstractApi
     {
         $uri = 'checklists/{checklist}/items';
         $required = [
-            'checklist' => 'string',
-            'itemText' => 'string',
+            'checklist' => self::TYPE_STRING,
+            'itemText' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -53,9 +53,9 @@ class Items extends AbstractApi
     {
         $uri = 'checklists/{checklist}/items/{planItem}/move';
         $required = [
-            'checklist' => 'string',
-            'planItem' => 'string',
-            'targetParent' => 'string',
+            'checklist' => self::TYPE_STRING,
+            'planItem' => self::TYPE_STRING,
+            'targetParent' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -80,8 +80,8 @@ class Items extends AbstractApi
     {
         $uri = 'checklists/{checklist}/items/{planItem}';
         $required = [
-            'checklist' => 'string',
-            'planItem' => 'string',
+            'checklist' => self::TYPE_STRING,
+            'planItem' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -106,8 +106,8 @@ class Items extends AbstractApi
     {
         $uri = 'checklists/{checklist}/items/{planItem}';
         $required = [
-            'checklist' => 'string',
-            'planItem' => 'string',
+            'checklist' => self::TYPE_STRING,
+            'planItem' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -131,8 +131,8 @@ class Items extends AbstractApi
     {
         $uri = 'checklists/{checklist}/items/{planItem}';
         $required = [
-            'checklist' => 'string',
-            'planItem' => 'string',
+            'checklist' => self::TYPE_STRING,
+            'planItem' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

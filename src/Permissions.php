@@ -23,10 +23,10 @@ class Permissions extends AbstractApi
     {
         $uri = 'permissions/check-permission';
         $required = [
-            'principal' => 'string',
-            'uniqueRightCode' => 'string',
+            'principal' => self::TYPE_STRING,
+            'uniqueRightCode' => self::TYPE_STRING,
             'target' => [
-                'className' => 'string',
+                'className' => self::TYPE_STRING,
             ],
         ];
         $this->throwIfInvalid($required, $data);

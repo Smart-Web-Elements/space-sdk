@@ -30,7 +30,7 @@ class GraphExecutions extends AbstractApi
     {
         $uri = 'projects/{project}/automation/graph-executions';
         $requiredFields = [
-            'jobId' => 'string',
+            'jobId' => self::TYPE_STRING,
         ];
 
         $missing = [
@@ -56,7 +56,7 @@ class GraphExecutions extends AbstractApi
     {
         $uri = 'projects/automation/graph-executions/{id}';
         $requiredFields = [
-            'id' => 'string',
+            'id' => self::TYPE_STRING,
         ];
 
         $this->throwIfInvalid($requiredFields, $request);
@@ -78,7 +78,7 @@ class GraphExecutions extends AbstractApi
     {
         $uri = 'projects/automation/graph-executions/{id}/stop';
         $requiredFields = [
-            'id' => 'string',
+            'id' => self::TYPE_STRING,
         ];
 
         $this->throwIfInvalid($requiredFields, $data);

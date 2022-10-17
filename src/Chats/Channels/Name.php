@@ -26,8 +26,8 @@ class Name extends AbstractApi
     {
         $uri = 'chats/channels/{channel}/name';
         $required = [
-            'channel' => 'string',
-            'name' => 'string',
+            'channel' => self::TYPE_STRING,
+            'name' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

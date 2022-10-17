@@ -27,7 +27,7 @@ class Files extends AbstractApi
     {
         $uri = 'chats/channels/{channel}/attachments/files';
         $required = [
-            'channel' => 'string',
+            'channel' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

@@ -31,7 +31,7 @@ class Channels extends AbstractApi
     {
         $uri = 'chats/channels';
         $required = [
-            'private' => 'boolean',
+            'private' => self::TYPE_BOOLEAN,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -51,7 +51,7 @@ class Channels extends AbstractApi
     {
         $uri = 'chats/channels/{channel}';
         $required = [
-            'channel' => 'string',
+            'channel' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -76,7 +76,7 @@ class Channels extends AbstractApi
     {
         $uri = 'chats/channels/{channel}';
         $required = [
-            'channel' => 'string',
+            'channel' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -133,7 +133,7 @@ class Channels extends AbstractApi
     {
         $uri = 'chats/channels/{channel}/restore-archived';
         $required = [
-            'channel' => 'string',
+            'channel' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -161,7 +161,7 @@ class Channels extends AbstractApi
     {
         $uri = 'chats/channels/{channel}/archive';
         $required = [
-            'channel' => 'string',
+            'channel' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

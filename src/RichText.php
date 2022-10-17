@@ -27,7 +27,7 @@ class RichText extends AbstractApi
     {
         $uri = 'rich-text/parse-markdown';
         $required = [
-            'text' => 'string',
+            'text' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
 

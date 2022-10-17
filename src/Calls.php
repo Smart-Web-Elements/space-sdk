@@ -23,8 +23,8 @@ class Calls extends AbstractApi
     {
         $uri = 'calls';
         $required = [
-            'participants' => 'array',
-            'private' => 'boolean',
+            'participants' => self::TYPE_ARRAY,
+            'private' => self::TYPE_BOOLEAN,
         ];
         $this->throwIfInvalid($required, $data);
 

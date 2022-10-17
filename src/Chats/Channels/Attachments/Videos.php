@@ -27,7 +27,7 @@ class Videos extends AbstractApi
     {
         $uri = 'chats/channels/{channel}/attachments/videos';
         $required = [
-            'channel' => 'string',
+            'channel' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

@@ -13,6 +13,11 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  */
 abstract class AbstractApi
 {
+    public const TYPE_INTEGER = 'integer';
+    public const TYPE_STRING = 'string';
+    public const TYPE_ARRAY = 'array';
+    public const TYPE_BOOLEAN = 'boolean';
+
     /**
      * @var self|null
      */
@@ -51,22 +56,43 @@ abstract class AbstractApi
                 return false;
             }
 
+            $value = $fields[$field];
+
+            switch ($type) {
+                case self::TYPE_STRING:
+                    if (!is_string($value)) {
+                        return false;
+                    }
+
+                    break;
+                case self::TYPE_INTEGER:
+                    if (!is_numeric($value)) {
+                        return false;
+                    }
+
+                    break;
+                case self::TYPE_ARRAY:
+                    if (!is_array($value)) {
+                        return false;
+                    }
+
+                    break;
+                case self::TYPE_BOOLEAN:
+                    if (!is_bool($value)) {
+                        return false;
+                    }
+
+                    break;
+            }
+
             if (is_array($type)) {
-                if (!is_array($fields[$field])) {
+                if (!is_array($value)) {
                     return false;
                 }
 
-                if (!$this->validateRequiredPost($type, $fields[$field])) {
+                if (!$this->validateRequiredPost($type, $value)) {
                     return false;
                 }
-            }
-
-            if (strtolower($type) === 'array' && !is_array($fields[$field])) {
-                return false;
-            }
-
-            if ($type === 'boolean' && !is_bool($fields[$field])) {
-                return false;
             }
         }
 

@@ -26,8 +26,8 @@ class Blog extends AbstractApi
     {
         $uri = 'blog';
         $required = [
-            'title' => 'string',
-            'content' => 'string',
+            'title' => self::TYPE_STRING,
+            'content' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -48,9 +48,9 @@ class Blog extends AbstractApi
         $uri = 'blog/import';
         $required = [
             'metadata' => [
-                'importSource' => 'string',
+                'importSource' => self::TYPE_STRING,
             ],
-            'articles' => 'array',
+            'articles' => self::TYPE_ARRAY,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -100,7 +100,7 @@ class Blog extends AbstractApi
     {
         $uri = 'blog/alias:{alias}';
         $required = [
-            'alias' => 'string',
+            'alias' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -124,7 +124,7 @@ class Blog extends AbstractApi
     {
         $uri = 'blog/external-id:{id}';
         $required = [
-            'id' => 'string',
+            'id' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -148,7 +148,7 @@ class Blog extends AbstractApi
     {
         $uri = 'blog/{id}';
         $required = [
-            'id' => 'string',
+            'id' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -172,7 +172,7 @@ class Blog extends AbstractApi
     {
         $uri = 'blog/{id}';
         $required = [
-            'id' => 'string',
+            'id' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -195,7 +195,7 @@ class Blog extends AbstractApi
     {
         $uri = 'blog/{id}';
         $required = [
-            'id' => 'string',
+            'id' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

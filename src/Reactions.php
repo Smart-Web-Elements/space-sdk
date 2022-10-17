@@ -26,8 +26,8 @@ class Reactions extends AbstractApi
     {
         $uri = 'reactions/{item}/{emoji}';
         $required = [
-            'item' => 'string',
-            'emoji' => 'string',
+            'item' => self::TYPE_STRING,
+            'emoji' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -53,7 +53,7 @@ class Reactions extends AbstractApi
     {
         $uri = 'reactions/{item}';
         $required = [
-            'item' => 'string',
+            'item' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -78,8 +78,8 @@ class Reactions extends AbstractApi
     {
         $uri = 'reactions/{item}/{emoji}';
         $required = [
-            'item' => 'string',
-            'emoji' => 'string',
+            'item' => self::TYPE_STRING,
+            'emoji' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -104,8 +104,8 @@ class Reactions extends AbstractApi
     {
         $uri = 'reactions/{item}/{emoji}';
         $required = [
-            'item' => 'string',
-            'emoji' => 'string',
+            'item' => self::TYPE_STRING,
+            'emoji' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

@@ -24,9 +24,9 @@ class TrustedCertificates extends AbstractApi
     {
         $uri = 'trusted-certificates';
         $required = [
-            'alias' => 'string',
-            'data' => 'string',
-            'archived' => 'boolean',
+            'alias' => self::TYPE_STRING,
+            'data' => self::TYPE_STRING,
+            'archived' => self::TYPE_BOOLEAN,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -56,7 +56,7 @@ class TrustedCertificates extends AbstractApi
     {
         $uri = 'trusted-certificate/info';
         $required = [
-            'data' => 'string',
+            'data' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -73,7 +73,7 @@ class TrustedCertificates extends AbstractApi
     {
         $uri = 'trusted-certificate/{id}';
         $required = [
-            'id' => 'string',
+            'id' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -94,7 +94,7 @@ class TrustedCertificates extends AbstractApi
     {
         $uri = 'trusted-certificate/{id}';
         $required = [
-            'id' => 'string',
+            'id' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

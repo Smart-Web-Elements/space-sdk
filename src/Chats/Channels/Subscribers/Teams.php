@@ -26,8 +26,8 @@ class Teams extends AbstractApi
     {
         $uri = 'chats/channels/{channel}/subscribers/teams';
         $required = [
-            'channel' => 'string',
-            'teams' => 'array',
+            'channel' => self::TYPE_STRING,
+            'teams' => self::TYPE_ARRAY,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -51,8 +51,8 @@ class Teams extends AbstractApi
     {
         $uri = 'chats/channels/{channel}/subscribers/teams';
         $required = [
-            'channel' => 'string',
-            'query' => 'string',
+            'channel' => self::TYPE_STRING,
+            'query' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -75,8 +75,8 @@ class Teams extends AbstractApi
     {
         $uri = 'chats/channels/{channel}/subscribers/teams';
         $required = [
-            'channel' => 'string',
-            'teams' => 'array',
+            'channel' => self::TYPE_STRING,
+            'teams' => self::TYPE_ARRAY,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

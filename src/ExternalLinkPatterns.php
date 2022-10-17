@@ -27,8 +27,8 @@ class ExternalLinkPatterns extends AbstractApi
     {
         $uri = 'external-link-patterns';
         $required = [
-            'pattern' => 'string',
-            'linkReplacement' => 'string',
+            'pattern' => self::TYPE_STRING,
+            'linkReplacement' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -67,7 +67,7 @@ class ExternalLinkPatterns extends AbstractApi
     {
         $uri = 'external-link-patterns';
         $required = [
-            'pattern' => 'string',
+            'pattern' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
 

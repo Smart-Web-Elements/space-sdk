@@ -26,7 +26,7 @@ class Icon extends AbstractApi
     {
         $uri = 'chats/channels/{channel}/icons';
         $required = [
-            'channel' => 'string',
+            'channel' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

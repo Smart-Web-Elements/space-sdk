@@ -30,8 +30,8 @@ class Jobs extends AbstractApi
     {
         $uri = 'projects/{project}/automation/jobs';
         $requiredFields = [
-            'repoFilter' => 'string',
-            'branchFilter' => 'string',
+            'repoFilter' => self::TYPE_STRING,
+            'branchFilter' => self::TYPE_STRING,
         ];
         $missing = [
             'key',
@@ -56,7 +56,7 @@ class Jobs extends AbstractApi
     {
         $uri = 'projects/{project}/automation/jobs/{job}';
         $requiredFields = [
-            'jobId' => 'string',
+            'jobId' => self::TYPE_STRING,
         ];
 
         $missing = [
@@ -89,9 +89,9 @@ class Jobs extends AbstractApi
     {
         $uri = 'projects/{project}/automation/jobs/{jobId}/start';
         $requiredFields = [
-            'jobId' => 'string',
+            'jobId' => self::TYPE_STRING,
             'branch' => [
-                'branchName' => 'string',
+                'branchName' => self::TYPE_STRING,
             ],
         ];
 

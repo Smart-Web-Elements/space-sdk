@@ -27,7 +27,7 @@ class PinnedMessages extends AbstractApi
     {
         $uri = 'chats/messages/pinned-messages';
         $required = [
-            'channel' => 'string',
+            'channel' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
 

@@ -25,8 +25,8 @@ class Emojis extends AbstractApi
     {
         $uri = 'emojis/add';
         $required = [
-            'emoji' => 'string',
-            'attachmentId' => 'string',
+            'emoji' => self::TYPE_STRING,
+            'attachmentId' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -45,7 +45,7 @@ class Emojis extends AbstractApi
     {
         $uri = 'emojis/delete';
         $required = [
-            'emoji' => 'string',
+            'emoji' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -64,7 +64,7 @@ class Emojis extends AbstractApi
     {
         $uri = 'emojis/record-usage';
         $required = [
-            'emojis' => 'array',
+            'emojis' => self::TYPE_ARRAY,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -83,7 +83,7 @@ class Emojis extends AbstractApi
     {
         $uri = 'emojis/exists';
         $required = [
-            'emoji' => 'string',
+            'emoji' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -116,7 +116,7 @@ class Emojis extends AbstractApi
     {
         $uri = 'emojis/search';
         $required = [
-            'query' => 'string',
+            'query' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
 

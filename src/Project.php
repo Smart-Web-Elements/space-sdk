@@ -32,9 +32,9 @@ class Project extends AbstractApi
         $uri = 'projects';
         $requiredFields = [
             'key' => [
-                'key' => 'string',
+                'key' => self::TYPE_STRING,
             ],
-            'name' => 'string',
+            'name' => self::TYPE_STRING,
         ];
 
         $this->throwIfInvalid($requiredFields, $data);

@@ -26,7 +26,7 @@ class Subject extends AbstractApi
     {
         $uri = 'chats/channels/conversations/{channel}/subject';
         $required = [
-            'channel' => 'string',
+            'channel' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

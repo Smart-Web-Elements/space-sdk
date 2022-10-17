@@ -28,7 +28,7 @@ class ToDoItems extends AbstractApi
     {
         $uri = 'todo';
         $required = [
-            'text' => 'string',
+            'text' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -66,7 +66,7 @@ class ToDoItems extends AbstractApi
     {
         $uri = 'todo/{id}';
         $required = [
-            'id' => 'string',
+            'id' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -91,7 +91,7 @@ class ToDoItems extends AbstractApi
     {
         $uri = 'todo/{id}';
         $required = [
-            'id' => 'string',
+            'id' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

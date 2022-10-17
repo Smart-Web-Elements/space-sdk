@@ -26,8 +26,8 @@ class Administrator extends AbstractApi
     {
         $uri = 'chats/channels/{channel}/administrator';
         $required = [
-            'channel' => 'string',
-            'profile' => 'string',
+            'channel' => self::TYPE_STRING,
+            'profile' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -51,7 +51,7 @@ class Administrator extends AbstractApi
     {
         $uri = 'chats/channels/{channel}/administrator';
         $required = [
-            'channel' => 'string',
+            'channel' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
