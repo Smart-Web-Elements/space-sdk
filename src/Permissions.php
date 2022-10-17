@@ -39,7 +39,7 @@ class Permissions extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getAllPermissions(array $response): array
+    public function getAllPermissions(array $response = []): array
     {
         $uri = 'permissions';
 

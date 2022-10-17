@@ -23,7 +23,7 @@ class RichText extends AbstractApi
      * @throws MissingArgumentException
      * @throws GuzzleException
      */
-    public function parseMarkdown(array $data, array $response): array
+    public function parseMarkdown(array $data, array $response = []): array
     {
         $uri = 'rich-text/parse-markdown';
         $required = [

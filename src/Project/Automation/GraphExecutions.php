@@ -16,73 +16,64 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 class GraphExecutions extends AbstractApi
 {
     /**
+     * Stop execution by ExecutionId.
+     *
+     * Permissions that may be checked: Automation.Execution.Stop
+     *
+     * @param string $id
+     * @throws GuzzleException
+     */
+    public function stopExecution(string $id): void
+    {
+        $uri = 'projects/automation/graph-executions/{id}/stop';
+        $uriArguments = [
+            'id' => $id,
+        ];
+
+        $this->client->get($this->buildUrl($uri, $uriArguments));
+    }
+
+    /**
+     * Permissions that may be checked: Automation.Execution.View
+     *
+     * @param string $id
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     */
+    public function getGraphExecution(string $id, array $response = []): array
+    {
+        $uri = 'projects/automation/graph-executions/{id}';
+        $uriArguments = [
+            'id' => $id,
+        ];
+
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+    }
+
+    /**
      * Search executions. Parameters are applied as 'AND' filters.
      *
      * Permissions that may be checked: Automation.Execution.View
      *
+     * @param string $project
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function getAllGraphExecutions(array $request, array $response = []): array
+    public function getAllGraphExecutions(string $project, array $request, array $response = []): array
     {
         $uri = 'projects/{project}/automation/graph-executions';
         $requiredFields = [
             'jobId' => self::TYPE_STRING,
         ];
-
-        $missing = [
-            'key',
-            'id',
-        ];
-        $project = $this->throwIfMissing($missing, $request);
         $this->throwIfInvalid($requiredFields, $request);
-
-        return $this->client->get($this->buildUrl($uri, ['project' => $project]), $response, $request);
-    }
-
-    /**
-     * Permissions that may be checked: Automation.Execution.View
-     *
-     * @param array $request
-     * @param array $response
-     * @return array
-     * @throws GuzzleException
-     * @throws MissingArgumentException
-     */
-    public function getGraphExecution(array $request, array $response = []): array
-    {
-        $uri = 'projects/automation/graph-executions/{id}';
-        $requiredFields = [
-            'id' => self::TYPE_STRING,
+        $uriArguments = [
+            'project' => $project,
         ];
 
-        $this->throwIfInvalid($requiredFields, $request);
-        $id = $request['id'];
-
-        return $this->client->get($this->buildUrl($uri, ['id' => $id]), $response);
-    }
-
-    /**
-     * Stop execution by ExecutionId.
-     *
-     * Permissions that may be checked: Automation.Execution.Stop
-     *
-     * @param array $data
-     * @throws GuzzleException
-     * @throws MissingArgumentException
-     */
-    public function stopExecution(array $data): void
-    {
-        $uri = 'projects/automation/graph-executions/{id}/stop';
-        $requiredFields = [
-            'id' => self::TYPE_STRING,
-        ];
-
-        $this->throwIfInvalid($requiredFields, $data);
-        $id = $data['id'];
-        $this->client->get($this->buildUrl($uri, ['id' => $id]));
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
     }
 }

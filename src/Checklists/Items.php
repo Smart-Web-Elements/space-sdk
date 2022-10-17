@@ -18,24 +18,23 @@ class Items extends AbstractApi
      * Create plan item as the last element of the top level in a checklist if parent plan item is null, or as the last
      * child if parent plan item is provided.
      *
+     * @param string $checklist
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createPlanItem(array $data, array $response): array
+    public function createPlanItem(string $checklist, array $data, array $response = []): array
     {
         $uri = 'checklists/{checklist}/items';
         $required = [
-            'checklist' => self::TYPE_STRING,
             'itemText' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'checklist' => $data['checklist'],
+            'checklist' => $checklist,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
         return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
     }
@@ -43,26 +42,25 @@ class Items extends AbstractApi
     /**
      * Move plan item in a checklist.
      *
+     * @param string $checklist
+     * @param string $planItem
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function movePlanItem(array $data, array $response): array
+    public function movePlanItem(string $checklist, string $planItem, array $data, array $response = []): array
     {
         $uri = 'checklists/{checklist}/items/{planItem}/move';
         $required = [
-            'checklist' => self::TYPE_STRING,
-            'planItem' => self::TYPE_STRING,
             'targetParent' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'checklist' => $data['checklist'],
-            'planItem' => $data['planItem'],
+            'checklist' => $checklist,
+            'planItem' => $planItem,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
         return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
     }
@@ -70,25 +68,19 @@ class Items extends AbstractApi
     /**
      * Get plan item by its identifier in a checklist.
      *
-     * @param array $data
+     * @param string $checklist
+     * @param string $planItem
      * @param array $response
      * @return array
      * @throws GuzzleException
-     * @throws MissingArgumentException
      */
-    public function getPlanItem(array $data, array $response): array
+    public function getPlanItem(string $checklist, string $planItem, array $response = []): array
     {
         $uri = 'checklists/{checklist}/items/{planItem}';
-        $required = [
-            'checklist' => self::TYPE_STRING,
-            'planItem' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'checklist' => $data['checklist'],
-            'planItem' => $data['planItem'],
+            'checklist' => $checklist,
+            'planItem' => $planItem,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
         return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
     }
@@ -96,25 +88,20 @@ class Items extends AbstractApi
     /**
      * Update plan item in a checklist.
      *
+     * @param string $checklist
+     * @param string $planItem
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
-     * @throws MissingArgumentException
      */
-    public function updatePlanItem(array $data, array $response): array
+    public function updatePlanItem(string $checklist, string $planItem, array $data = [], array $response = []): array
     {
         $uri = 'checklists/{checklist}/items/{planItem}';
-        $required = [
-            'checklist' => self::TYPE_STRING,
-            'planItem' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'checklist' => $data['checklist'],
-            'planItem' => $data['planItem'],
+            'checklist' => $checklist,
+            'planItem' => $planItem,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
         return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, $response);
     }
@@ -122,24 +109,18 @@ class Items extends AbstractApi
     /**
      * Delete plan item and its children from a checklist.
      *
-     * @param array $data
+     * @param string $checklist
+     * @param string $planItem
      * @return void
      * @throws GuzzleException
-     * @throws MissingArgumentException
      */
-    public function deletePlanItem(array $data): void
+    public function deletePlanItem(string $checklist, string $planItem): void
     {
         $uri = 'checklists/{checklist}/items/{planItem}';
-        $required = [
-            'checklist' => self::TYPE_STRING,
-            'planItem' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'checklist' => $data['checklist'],
-            'planItem' => $data['planItem'],
+            'checklist' => $checklist,
+            'planItem' => $planItem,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
         $this->client->delete($this->buildUrl($uri, $uriArguments));
     }

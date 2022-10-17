@@ -34,9 +34,14 @@
 - Added class `Reactions`
 - Added class `Emojis`
 - Added class `TrustedCertificates`
+- Added class `Projects/Repositories/Find`
+- Added class `Projects/Repositories/RepositoryReadonly`
+- Added class `Projects/Repositories/Revisions`
+- Added class `Projects/Repositories/Revisions/ExternalChecks`
 - **[BREAKING]** Renamed method and class `GraphExecution` to `GraphExecutions`
 - **[BREAKING]** Renamed method and class `Job` to `Jobs`
 - **[BREAKING]** Renamed method and class `Repository` to `Repositories`
+- **[BREAKING]** Changed parameters in a lot of methods for easier handling
 
 ## Space SDK v0.0.8
 

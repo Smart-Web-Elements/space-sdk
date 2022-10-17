@@ -17,23 +17,22 @@ class Description extends AbstractApi
     /**
      * Permissions that may be checked: Channel.UpdateChannelInfo
      *
+     * @param string $channel
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function changeChannelDescription(array $data): void
+    public function changeChannelDescription(string $channel, array $data): void
     {
         $uri = 'chats/channels/{channel}/description';
         $required = [
-            'channel' => self::TYPE_STRING,
             'description' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'channel' => $data['channel'],
+            'channel' => $channel,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
         $this->client->patch($this->buildUrl($uri, $uriArguments), $data);
     }

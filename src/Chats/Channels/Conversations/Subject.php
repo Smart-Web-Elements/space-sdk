@@ -17,22 +17,22 @@ class Subject extends AbstractApi
     /**
      * Permissions that may be checked: Channel.UpdateChannelInfo
      *
+     * @param string $channel
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function changeConversationSubject(array $data): void
+    public function changeConversationSubject(string $channel, array $data): void
     {
         $uri = 'chats/channels/conversations/{channel}/subject';
         $required = [
-            'channel' => self::TYPE_STRING,
+            'subject' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'channel' => $data['channel'],
+            'channel' => $channel,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
         $this->client->patch($this->buildUrl($uri, $uriArguments), $data);
     }

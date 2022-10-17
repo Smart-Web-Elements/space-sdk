@@ -19,7 +19,7 @@ class Calls extends AbstractApi
      * @throws Exception\MissingArgumentException
      * @throws GuzzleException
      */
-    public function createCall(array $data, array $response): array
+    public function createCall(array $data, array $response = []): array
     {
         $uri = 'calls';
         $required = [

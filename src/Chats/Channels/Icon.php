@@ -4,7 +4,6 @@ namespace Swe\SpaceSDK\Chats\Channels;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
-use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class Icon
@@ -17,22 +16,17 @@ class Icon extends AbstractApi
     /**
      * Permissions may be checked: Channel.UpdateChannelInfo
      *
+     * @param string $channel
      * @param array $data
      * @return void
      * @throws GuzzleException
-     * @throws MissingArgumentException
      */
-    public function changeChannelIcon(array $data): void
+    public function changeChannelIcon(string $channel, array $data = []): void
     {
         $uri = 'chats/channels/{channel}/icons';
-        $required = [
-            'channel' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'channel' => $data['channel'],
+            'channel' => $channel,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
         $this->client->patch($this->buildUrl($uri, $uriArguments), $data);
     }

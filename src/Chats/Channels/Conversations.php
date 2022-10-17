@@ -24,7 +24,7 @@ class Conversations extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createConversation(array $data, array $response): array
+    public function createConversation(array $data, array $response = []): array
     {
         $uri = 'chats/channels/conversations';
         $required = [
@@ -38,24 +38,23 @@ class Conversations extends AbstractApi
     /**
      * Permissions that may be checked: Channel.Admin
      *
+     * @param string $channel
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function convertConversationToPrivateChannel(array $data, array $response): array
+    public function convertConversationToPrivateChannel(string $channel, array $data, array $response = []): array
     {
-        $uri = 'chats/channels/conversations/{channel}/convers';
+        $uri = 'chats/channels/conversations/{channel}/convert';
         $required = [
-            'channel' => self::TYPE_STRING,
             'channelName' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'channel' => $data['channel'],
+            'channel' => $channel,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
         return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
     }

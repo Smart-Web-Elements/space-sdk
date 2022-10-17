@@ -4,7 +4,6 @@ namespace Swe\SpaceSDK\Chats\Channels\Attachments;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
-use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class Links
@@ -17,24 +16,19 @@ class Links extends AbstractApi
     /**
      * Permissions that may be checked: Channel.ViewMessages
      *
-     * @param array $data
+     * @param string $channel
+     * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
-     * @throws MissingArgumentException
      */
-    public function listLinksInChannel(array $data, array $response): array
+    public function listLinksInChannel(string $channel, array $request = [], array $response = []): array
     {
         $uri = 'chats/channels/{channel}/attachments/links';
-        $required = [
-            'channel' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'channel' => $data['channel'],
+            'channel' => $channel,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
     }
 }

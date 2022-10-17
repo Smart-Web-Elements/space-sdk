@@ -157,7 +157,7 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
   - [ ] Teams
 - [x] **Permissions**
 - [ ] Projects
-  - [ ] Projects *(WIP)*
+  - [x] **Projects**
   - [ ] Access
     - [ ] Admins
       - [ ] Admins
@@ -238,12 +238,12 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
       - [ ] Tags
     - [ ] Tags
   - [ ] Private Projects
-  - [ ] Repositories
-    - [ ] Repositories *(WIP)*
-    - [ ] Find
-    - [ ] Readonly
-    - [ ] Revisions
-      - [ ] External Checks
+  - [x] **Repositories**
+    - [x] **Repositories**
+    - [x] **Find**
+    - [x] **Readonly**
+    - [x] **Revisions**
+      - [x] **External Checks**
   - [ ] Responsibilities
     - [ ] Responsibilities
     - [ ] Assignees

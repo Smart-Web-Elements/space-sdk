@@ -92,7 +92,7 @@ class Messages extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function sendMessage(array $data, array $response): array
+    public function sendMessage(array $data, array $response = []): array
     {
         $uri = 'chats/messages/send-message';
         $required = [
@@ -112,13 +112,13 @@ class Messages extends AbstractApi
      *
      * Permissions that may be checked: Channel.ViewMessages
      *
-     * @param array $data
+     * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function getChannelMessages(array $data, array $response): array
+    public function getChannelMessages(array $request, array $response = []): array
     {
         $uri = 'chats/messages';
         $required = [
@@ -126,33 +126,31 @@ class Messages extends AbstractApi
             'sorting' => self::TYPE_STRING,
             'batchSize' => self::TYPE_INTEGER,
         ];
-        $this->throwIfInvalid($required, $data);
+        $this->throwIfInvalid($required, $request);
 
-        return $this->client->get($this->buildUrl($uri), $response, $data);
+        return $this->client->get($this->buildUrl($uri), $response, $request);
     }
 
     /**
      * Permissions that may be checked: Channel.ViewMessages
      *
-     * @param array $data
+     * @param string $channel
+     * @param string $message
      * @param array $response
      * @return array
      * @throws GuzzleException
-     * @throws MissingArgumentException
      */
-    public function getMessage(array $data, array $response = []): array
+    public function getMessage(string $channel, string $message, array $response = []): array
     {
         $uri = 'chats/messages/{message}';
-        $required = [
-            'channel' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $data);
-        $message = $this->throwIfMissing(['externalId', 'id'], $data);
         $uriArguments = [
             'message' => $message,
         ];
+        $request = [
+            'channel' => $channel,
+        ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
     }
 
     /**

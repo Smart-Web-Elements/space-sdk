@@ -22,7 +22,7 @@ class Blog extends AbstractApi
      * @throws MissingArgumentException
      * @throws GuzzleException
      */
-    public function publishBlogPost(array $data, array $response): array
+    public function publishBlogPost(array $data, array $response = []): array
     {
         $uri = 'blog';
         $required = [
@@ -43,7 +43,7 @@ class Blog extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function importBlogPosts(array $data, array $response): array
+    public function importBlogPosts(array $data, array $response = []): array
     {
         $uri = 'blog/import';
         $required = [
@@ -60,53 +60,47 @@ class Blog extends AbstractApi
     /**
      * Permissions that may be checked: Article.View
      *
-     * @param array $data
+     * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getAllBlogPosts(array $data, array $response): array
+    public function getAllBlogPosts(array $request = [], array $response = []): array
     {
         $uri = 'blog';
 
-        return $this->client->get($this->buildUrl($uri), $response, $data);
+        return $this->client->get($this->buildUrl($uri), $response, $request);
     }
 
     /**
      * Permissions that may be checked: Article.View
      *
-     * @param array $data
+     * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getStats(array $data, array $response): array
+    public function getStats(array $request = [], array $response = []): array
     {
         $uri = 'blog/stats';
 
-        return $this->client->get($this->buildUrl($uri), $response, $data);
+        return $this->client->get($this->buildUrl($uri), $response, $request);
     }
 
     /**
      * Permissions that may be checked: Article.View
      *
-     * @param array $data
+     * @param string $alias
      * @param array $response
      * @return array
      * @throws GuzzleException
-     * @throws MissingArgumentException
      */
-    public function getBlogPostByAlias(array $data, array $response): array
+    public function getBlogPostByAlias(string $alias, array $response = []): array
     {
         $uri = 'blog/alias:{alias}';
-        $required = [
-            'alias' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'alias' => $data['alias'],
+            'alias' => $alias,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
         return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
     }
@@ -114,23 +108,17 @@ class Blog extends AbstractApi
     /**
      * Permissions that may be checked: Article.View
      *
-     * @param array $data
+     * @param string $id
      * @param array $response
      * @return array
      * @throws GuzzleException
-     * @throws MissingArgumentException
      */
-    public function getBlogPostByExternalId(array $data, array $response): array
+    public function getBlogPostByExternalId(string $id, array $response = []): array
     {
         $uri = 'blog/external-id:{id}';
-        $required = [
-            'id' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'id' => $data['id'],
+            'id' => $id,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
         return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
     }
@@ -138,23 +126,17 @@ class Blog extends AbstractApi
     /**
      * Permissions that may be checked: Article.View
      *
-     * @param array $data
+     * @param string $id
      * @param array $response
      * @return array
      * @throws GuzzleException
-     * @throws MissingArgumentException
      */
-    public function getBlogPost(array $data, array $response): array
+    public function getBlogPost(string $id, array $response = []): array
     {
         $uri = 'blog/{id}';
-        $required = [
-            'id' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'id' => $data['id'],
+            'id' => $id,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
         return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
     }
@@ -162,23 +144,18 @@ class Blog extends AbstractApi
     /**
      * Permissions that may be checked: Article.Publish
      *
+     * @param string $id
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
-     * @throws MissingArgumentException
      */
-    public function updateBlogPost(array $data, array $response): array
+    public function updateBlogPost(string $id, array $data = [], array $response = []): array
     {
         $uri = 'blog/{id}';
-        $required = [
-            'id' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'id' => $data['id'],
+            'id' => $id,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
         return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, $response);
     }
@@ -186,22 +163,16 @@ class Blog extends AbstractApi
     /**
      * Permissions that may be checked: Article.Unpublish
      *
-     * @param array $data
+     * @param string $id
      * @return void
      * @throws GuzzleException
-     * @throws MissingArgumentException
      */
-    public function unpublishBlogPost(array $data): void
+    public function unpublishBlogPost(string $id): void
     {
         $uri = 'blog/{id}';
-        $required = [
-            'id' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'id' => $data['id'],
+            'id' => $id,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
         $this->client->delete($this->buildUrl($uri, $uriArguments));
     }

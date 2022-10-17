@@ -17,20 +17,20 @@ class PinnedMessages extends AbstractApi
     /**
      * Permissions that may be checked: Channel.ViewMessages
      *
-     * @param array $data
+     * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function listPinnedMessagesInChannel(array $data, array $response): array
+    public function listPinnedMessagesInChannel(array $request, array $response = []): array
     {
         $uri = 'chats/messages/pinned-messages';
         $required = [
             'channel' => self::TYPE_STRING,
         ];
-        $this->throwIfInvalid($required, $data);
+        $this->throwIfInvalid($required, $request);
 
-        return $this->client->get($this->buildUrl($uri), $data, $response);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 }

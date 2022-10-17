@@ -8,7 +8,6 @@ use Swe\SpaceSDK\Chats\Channels\Attachments\Files;
 use Swe\SpaceSDK\Chats\Channels\Attachments\Images;
 use Swe\SpaceSDK\Chats\Channels\Attachments\Links;
 use Swe\SpaceSDK\Chats\Channels\Attachments\Videos;
-use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class Attachments
@@ -21,25 +20,20 @@ class Attachments extends AbstractApi
     /**
      * Permissions that may be checked: Channel.ViewMessages
      *
-     * @param array $data
+     * @param string $channel
+     * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
-     * @throws MissingArgumentException
      */
-    public function listAttachmentsInChannel(array $data, array $response): array
+    public function listAttachmentsInChannel(string $channel, array $request = [], array $response = []): array
     {
         $uri = 'chats/channels/{channel}/attachments';
-        $required = [
-            'channel' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'channel' => $data['channel'],
+            'channel' => $channel,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
     }
 
     /**

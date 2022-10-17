@@ -3,7 +3,6 @@
 namespace Swe\SpaceSDK;
 
 use GuzzleHttp\Exception\GuzzleException;
-use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class ToDoItems
@@ -24,7 +23,7 @@ class ToDoItems extends AbstractApi
      * @throws Exception\MissingArgumentException
      * @throws GuzzleException
      */
-    public function createToDoItem(array $data, array $response): array
+    public function createToDoItem(array $data, array $response = []): array
     {
         $uri = 'todo';
         $required = [
@@ -40,16 +39,16 @@ class ToDoItems extends AbstractApi
      *
      * Permissions that may be checked: Todo.Task.View
      *
-     * @param array $data
+     * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getAllToDoItems(array $data, array $response): array
+    public function getAllToDoItems(array $request = [], array $response = []): array
     {
         $uri = 'todo';
 
-        return $this->client->get($this->buildUrl($uri), $response, $data);
+        return $this->client->get($this->buildUrl($uri), $response, $request);
     }
 
     /**
@@ -57,22 +56,17 @@ class ToDoItems extends AbstractApi
      *
      * Permissions that may be checked: Todo.Task.Edit
      *
+     * @param string $id
      * @param array $data
      * @return void
-     * @throws MissingArgumentException
      * @throws GuzzleException
      */
-    public function updateToDoItem(array $data): void
+    public function updateToDoItem(string $id, array $data): void
     {
         $uri = 'todo/{id}';
-        $required = [
-            'id' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'id' => $data['id'],
+            'id' => $id,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
         $this->client->patch($this->buildUrl($uri, $uriArguments), $data);
     }
@@ -82,22 +76,16 @@ class ToDoItems extends AbstractApi
      *
      * Permissions that may be checked: Todo.Task.Edit
      *
-     * @param array $data
+     * @param string $id
      * @return void
      * @throws GuzzleException
-     * @throws MissingArgumentException
      */
-    public function deleteToDoItem(array $data): void
+    public function deleteToDoItem(string $id): void
     {
         $uri = 'todo/{id}';
-        $required = [
-            'id' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'id' => $data['id'],
+            'id' => $id,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
         $this->client->delete($this->buildUrl($uri, $uriArguments));
     }

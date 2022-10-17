@@ -6,6 +6,9 @@ namespace Swe\SpaceSDK\Project;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Project\Repositories\Find;
+use Swe\SpaceSDK\Project\Repositories\RepositoryReadonly;
+use Swe\SpaceSDK\Project\Repositories\Revisions;
 
 /**
  * Class Repositories
@@ -25,25 +28,20 @@ class Repositories extends AbstractApi
     ];
 
     /**
+     * @param string $project
+     * @param string $repository
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
-     * @throws MissingArgumentException
      */
-    public function createNewRepository(array $data, array $response = []): array
-    {
+    public function createNewRepository(
+        string $project,
+        string $repository,
+        array $data = [],
+        array $response = []
+    ): array {
         $uri = 'projects/{project}/repositories/{repository}';
-        $required = [
-            'repository' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $data);
-        $missing = [
-            'key',
-            'id',
-        ];
-        $project = $this->throwIfMissing($missing, $data);
-        $repository = $data['repository'];
         $uriArguments = [
             'project' => $project,
             'repository' => $repository,
@@ -53,80 +51,98 @@ class Repositories extends AbstractApi
     }
 
     /**
-     * @param array $request
-     * @return bool
-     * @throws GuzzleException
-     * @throws MissingArgumentException
-     */
-    public function deleteRepository(array $request): bool
-    {
-        $uri = 'projects/{project}/repositories/{repository}';
-        $required = [
-            'repository' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $request);
-        $missing = [
-            'key',
-            'id',
-        ];
-        $project = $this->throwIfMissing($missing, $request);
-        $repository = $request['repository'];
-        $uriArguments = [
-            'project' => $project,
-            'repository' => $repository,
-        ];
-
-        return $this->client->delete($this->buildUrl($uri, $uriArguments));
-    }
-
-    /**
+     * @param string $project
+     * @param string $repository
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function getRepositoryGitRemoteUrl(array $request, array $response = []): array
-    {
-        $uri = 'projects/{project}/repositories/{repository}/url';
+    public function commitChangesToRepository(
+        string $project,
+        string $repository,
+        array $request,
+        array $response = []
+    ): array {
+        $uri = 'projects/{project}/repositories/{repository}/commit';
         $required = [
-            'repository' => self::TYPE_STRING,
+            'baseCommit' => self::TYPE_STRING,
+            'targetBranch' => self::TYPE_STRING,
+            'commitMessage' => self::TYPE_STRING,
+            'files' => self::TYPE_ARRAY,
         ];
         $this->throwIfInvalid($required, $request);
-        $missing = [
-            'key',
-            'id',
-        ];
-        $project = $this->throwIfMissing($missing, $request);
-        $repository = $request['repository'];
         $uriArguments = [
             'project' => $project,
             'repository' => $repository,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
+     * Not available in multi-org mode.
+     *
+     * @param string $project
+     * @param string $repository
+     * @return void
+     * @throws GuzzleException
+     */
+    public function invokeGarbageCollectionOnRepository(string $project, string $repository): void
+    {
+        $uri = 'projects/{project}/repositories/{repository}/gc';
+        $uriArguments = [
+            'project' => $project,
+            'repository' => $repository,
+        ];
+
+        $this->client->post($this->buildUrl($uri, $uriArguments));
+    }
+
+    /**
+     * @param string $project
+     * @param string $repository
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function listCommitsMatchingQuery(array $request, array $response = []): array
-    {
+    public function listTheHeadsWhichContainsGivenCommit(
+        string $project,
+        string $repository,
+        array $request,
+        array $response = []
+    ): array {
+        $uri = 'projects/{project}/repositories/{repository}/commit-branches';
+        $required = [
+            'commit' => self::TYPE_STRING,
+        ];
+        $this->throwIfInvalid($required, $request);
+        $uriArguments = [
+            'project' => $project,
+            'repository' => $repository,
+        ];
+
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+    }
+
+    /**
+     * @param string $project
+     * @param string $repository
+     * @param array $request
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     */
+    public function listCommitsMatchingQuery(
+        string $project,
+        string $repository,
+        array $request = [],
+        array $response = []
+    ): array {
         $uri = 'projects/{project}/repositories/{repository}/commits';
-        $required = [
-            'repository' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $request);
-        $missing = [
-            'key',
-            'id',
-        ];
-        $project = $this->throwIfMissing($missing, $request);
-        $repository = $request['repository'];
         $uriArguments = [
             'project' => $project,
             'repository' => $repository,
@@ -136,39 +152,90 @@ class Repositories extends AbstractApi
     }
 
     /**
+     * @param string $project
+     * @param string $repository
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function commitChangesToRepository(array $request, array $response = []): array
-    {
-        $uri = 'projects/{project}/repositories/{repository}/commit';
+    public function listFilesInDirectory(
+        string $project,
+        string $repository,
+        array $request,
+        array $response = []
+    ): array {
+        $uri = 'projects/{project}/repositories/{repository}/files';
         $required = [
-            'repository' => self::TYPE_STRING,
-            'baseCommit' => self::TYPE_STRING,
-            'targetBranch' => self::TYPE_STRING,
-            'commitMessage' => self::TYPE_STRING,
+            'commit' => self::TYPE_STRING,
+            'path' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $request);
-        $missing = [
-            'key',
-            'id',
-        ];
-        $project = $this->throwIfMissing($missing, $request);
-
-        foreach ($missing as $item) {
-            $project = str_replace($item, '', $project);
-        }
-
-        $project = strtolower($project);
-        $repository = $request['repository'];
         $uriArguments = [
             'project' => $project,
             'repository' => $repository,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $request, $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+    }
+
+    /**
+     * @param string $project
+     * @param string $repository
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     */
+    public function getRepositoryGitRemoteUrl(string $project, string $repository, array $response = []): array
+    {
+        $uri = 'projects/{project}/repositories/{repository}/url';
+        $uriArguments = [
+            'project' => $project,
+            'repository' => $repository,
+        ];
+
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+    }
+
+    /**
+     * @param string $project
+     * @param string $repository
+     * @return bool
+     * @throws GuzzleException
+     */
+    public function deleteRepository(string $project, string $repository): bool
+    {
+        $uri = 'projects/{project}/repositories/{repository}';
+        $uriArguments = [
+            'project' => $project,
+            'repository' => $repository,
+        ];
+
+        return $this->client->delete($this->buildUrl($uri, $uriArguments));
+    }
+
+    /**
+     * @return Find
+     */
+    public function find(): Find
+    {
+        return new Find($this->client);
+    }
+
+    /**
+     * @return RepositoryReadonly
+     */
+    public function readonly(): RepositoryReadonly
+    {
+        return new RepositoryReadonly($this->client);
+    }
+
+    /**
+     * @return Revisions
+     */
+    public function revisions(): Revisions
+    {
+        return new Revisions($this->client);
     }
 }

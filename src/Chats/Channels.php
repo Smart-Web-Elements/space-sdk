@@ -31,75 +31,13 @@ class Channels extends AbstractApi
     {
         $uri = 'chats/channels';
         $required = [
+            'name' => self::TYPE_STRING,
+            'description' => self::TYPE_STRING,
             'private' => self::TYPE_BOOLEAN,
         ];
         $this->throwIfInvalid($required, $data);
 
         return $this->client->post($this->buildUrl($uri), $data, $response);
-    }
-
-    /**
-     * Permissions that may be checked: Channel.ViewChannel
-     *
-     * @param array $data
-     * @param array $response
-     * @return array
-     * @throws GuzzleException
-     * @throws MissingArgumentException
-     */
-    public function getChannel(array $data, array $response = []): array
-    {
-        $uri = 'chats/channels/{channel}';
-        $required = [
-            'channel' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $data);
-        $uriArguments = [
-            'channel' => $data['channel'],
-        ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
-
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
-    }
-
-    /**
-     * Delete a channel. No one will be able to view this channel or its threads. This action cannot be undone.
-     *
-     * Permissions that may be checked: Channel.Admin
-     *
-     * @param array $data
-     * @return bool
-     * @throws GuzzleException
-     * @throws MissingArgumentException
-     */
-    public function deleteChannel(array $data): bool
-    {
-        $uri = 'chats/channels/{channel}';
-        $required = [
-            'channel' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $data);
-        $uriArguments = [
-            'channel' => $data['channel'],
-        ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
-
-        return $this->client->delete($this->buildUrl($uri, $uriArguments));
-    }
-
-    /**
-     * Permissions that may be checked: Channel.ViewChannel
-     *
-     * @param array $request
-     * @param array $response
-     * @return array
-     * @throws GuzzleException
-     */
-    public function listAllChannels(array $request, array $response = []): array
-    {
-        $uri = 'chats/channels/all-channels';
-
-        return $this->client->get($this->buildUrl($uri), $response, $request);
     }
 
     /**
@@ -124,26 +62,77 @@ class Channels extends AbstractApi
      *
      * Permissions that may be checked: Channel.Admin
      *
-     * @param array $data
+     * @param string $channel
      * @return bool
      * @throws GuzzleException
-     * @throws MissingArgumentException
      */
-    public function restoreArchivedChannel(array $data): bool
+    public function restoreArchivedChannel(string $channel): bool
     {
         $uri = 'chats/channels/{channel}/restore-archived';
-        $required = [
-            'channel' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'channel' => $data['channel'],
+            'channel' => $channel,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
         $this->client->post($this->buildUrl($uri, $uriArguments));
 
         return true;
+    }
+
+    /**
+     * Permissions that may be checked: Channel.ViewChannel
+     *
+     * @param array $request
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    public function listAllChannels(array $request, array $response = []): array
+    {
+        $uri = 'chats/channels/all-channels';
+        $required = [
+            'query' => self::TYPE_STRING,
+        ];
+        $this->throwIfInvalid($required, $request);
+
+        return $this->client->get($this->buildUrl($uri), $response, $request);
+    }
+
+    /**
+     * Permissions that may be checked: Channel.ViewChannel
+     *
+     * @param string $channel
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     */
+    public function getChannel(string $channel, array $response = []): array
+    {
+        $uri = 'chats/channels/{channel}';
+        $uriArguments = [
+            'channel' => $channel,
+        ];
+
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+    }
+
+    /**
+     * Delete a channel. No one will be able to view this channel or its threads. This action cannot be undone.
+     *
+     * Permissions that may be checked: Channel.Admin
+     *
+     * @param string $channel
+     * @return bool
+     * @throws GuzzleException
+     */
+    public function deleteChannel(string $channel): bool
+    {
+        $uri = 'chats/channels/{channel}';
+        $uriArguments = [
+            'channel' => $channel,
+        ];
+
+        return $this->client->delete($this->buildUrl($uri, $uriArguments));
     }
 
     /**
@@ -152,22 +141,16 @@ class Channels extends AbstractApi
      *
      * Permissions may be checked: Channel.Admin
      *
-     * @param array $data
+     * @param string $channel
      * @return bool
      * @throws GuzzleException
-     * @throws MissingArgumentException
      */
-    public function archiveChannel(array $data): bool
+    public function archiveChannel(string $channel): bool
     {
         $uri = 'chats/channels/{channel}/archive';
-        $required = [
-            'channel' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'channel' => $data['channel'],
+            'channel' => $channel,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
         return $this->client->delete($this->buildUrl($uri, $uriArguments));
     }

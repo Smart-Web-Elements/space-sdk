@@ -3,7 +3,6 @@
 namespace Swe\SpaceSDK;
 
 use GuzzleHttp\Exception\GuzzleException;
-use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class Reactions
@@ -17,24 +16,18 @@ class Reactions extends AbstractApi
      * Permissions that may be checked: Channel.AddMessageReactions, Profile.DirectMessages.AddReactions,
      * Article.Comments.AddReactions, Project.CodeReview.AddReactions
      *
-     * @param array $data
+     * @param string $item
+     * @param string $emoji
      * @return void
-     * @throws MissingArgumentException
      * @throws GuzzleException
      */
-    public function addReaction(array $data): void
+    public function addReaction(string $item, string $emoji): void
     {
         $uri = 'reactions/{item}/{emoji}';
-        $required = [
-            'item' => self::TYPE_STRING,
-            'emoji' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'item' => $data['item'],
-            'emoji' => $data['emoji'],
+            'item' => $item,
+            'emoji' => $emoji,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
         $this->client->post($this->buildUrl($uri, $uriArguments));
     }
@@ -43,23 +36,17 @@ class Reactions extends AbstractApi
      * Permissions that may be checked: Channel.ViewMessageReactions, Profile.DirectMessages.ViewReactions,
      * Project.CodeReview.ViewReactions, Article.Comments.ViewReactions
      *
-     * @param array $data
+     * @param string $item
      * @param array $response
      * @return array
      * @throws GuzzleException
-     * @throws MissingArgumentException
      */
-    public function listReactions(array $data, array $response): array
+    public function listReactions(string $item, array $response = []): array
     {
         $uri = 'reactions/{item}';
-        $required = [
-            'item' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'item' => $data['item'],
+            'item' => $item,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
         return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
     }
@@ -68,25 +55,19 @@ class Reactions extends AbstractApi
      * Permissions that may be checked: Channel.ViewMessageReactions, Profile.DirectMessages.ViewReactions,
      * Project.CodeReview.ViewReactions, Article.Comments.ViewReactions
      *
-     * @param array $data
+     * @param string $item
+     * @param string $emoji
      * @param array $response
      * @return array
      * @throws GuzzleException
-     * @throws MissingArgumentException
      */
-    public function listReactedUsersAndApplications(array $data, array $response): array
+    public function listReactedUsersAndApplications(string $item, string $emoji, array $response = []): array
     {
         $uri = 'reactions/{item}/{emoji}';
-        $required = [
-            'item' => self::TYPE_STRING,
-            'emoji' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'item' => $data['item'],
-            'emoji' => $data['emoji'],
+            'item' => $item,
+            'emoji' => $emoji,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
         return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
     }
@@ -95,24 +76,18 @@ class Reactions extends AbstractApi
      * Permissions that may be checked: Channel.AddMessageReactions, Profile.DirectMessages.AddReactions,
      * Article.Comments.AddReactions, Project.CodeReview.AddReactions
      *
-     * @param array $data
+     * @param string $item
+     * @param string $emoji
      * @return void
      * @throws GuzzleException
-     * @throws MissingArgumentException
      */
-    public function removeReaction(array $data): void
+    public function removeReaction(string $item, string $emoji): void
     {
         $uri = 'reactions/{item}/{emoji}';
-        $required = [
-            'item' => self::TYPE_STRING,
-            'emoji' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'item' => $data['item'],
-            'emoji' => $data['emoji'],
+            'item' => $item,
+            'emoji' => $emoji,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
         $this->client->delete($this->buildUrl($uri, $uriArguments));
     }

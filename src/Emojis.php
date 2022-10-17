@@ -36,18 +36,16 @@ class Emojis extends AbstractApi
     /**
      * Delete an emoji by name.
      *
-     * @param array $data
+     * @param string $emoji
      * @return void
      * @throws GuzzleException
-     * @throws MissingArgumentException
      */
-    public function deleteEmoji(array $data): void
+    public function deleteEmoji(string $emoji): void
     {
         $uri = 'emojis/delete';
-        $required = [
-            'emoji' => self::TYPE_STRING,
+        $data = [
+            'emoji' => $emoji,
         ];
-        $this->throwIfInvalid($required, $data);
 
         $this->client->post($this->buildUrl($uri), $data);
     }
@@ -74,20 +72,18 @@ class Emojis extends AbstractApi
     /**
      * Check whether a given emoji name exists.
      *
-     * @param array $data
+     * @param string $emoji
      * @return bool
      * @throws GuzzleException
-     * @throws MissingArgumentException
      */
-    public function checkIfEmojiExists(array $data): bool
+    public function checkIfEmojiExists(string $emoji): bool
     {
         $uri = 'emojis/exists';
-        $required = [
-            'emoji' => self::TYPE_STRING,
+        $request = [
+            'emoji' => $emoji,
         ];
-        $this->throwIfInvalid($required, $data);
 
-        return (bool)$this->client->get($this->buildUrl($uri), [], $data)[0];
+        return (bool)$this->client->get($this->buildUrl($uri), [], $request)[0];
     }
 
     /**
@@ -106,20 +102,20 @@ class Emojis extends AbstractApi
     /**
      * Search for emojis.
      *
-     * @param array $data
+     * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function searchEmoji(array $data, array $response): array
+    public function searchEmoji(array $request, array $response = []): array
     {
         $uri = 'emojis/search';
         $required = [
             'query' => self::TYPE_STRING,
         ];
-        $this->throwIfInvalid($required, $data);
+        $this->throwIfInvalid($required, $request);
 
-        return $this->client->get($this->buildUrl($uri), $response, $data);
+        return $this->client->get($this->buildUrl($uri), $response, $request);
     }
 }

@@ -21,7 +21,7 @@ class HttpApiModel extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getHttpApiModel(array $response): array
+    public function getHttpApiModel(array $response = []): array
     {
         $uri = 'http-api-model';
 

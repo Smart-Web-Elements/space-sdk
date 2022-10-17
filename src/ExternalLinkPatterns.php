@@ -45,7 +45,7 @@ class ExternalLinkPatterns extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getAllExternalLinkPatterns(array $response): array
+    public function getAllExternalLinkPatterns(array $response = []): array
     {
         $uri = 'external-link-patterns';
 
@@ -58,19 +58,17 @@ class ExternalLinkPatterns extends AbstractApi
      *
      * Permissions that may be checked: Unfurl.ExternalLinkPatterns.Manage
      *
-     * @param array $data
+     * @param string $pattern
      * @return void
-     * @throws Exception\MissingArgumentException
      * @throws GuzzleException
      */
-    public function deleteExternalLinkPattern(array $data): void
+    public function deleteExternalLinkPattern(string $pattern): void
     {
         $uri = 'external-link-patterns';
-        $required = [
-            'pattern' => self::TYPE_STRING,
+        $request = [
+            'pattern' => $pattern,
         ];
-        $this->throwIfInvalid($required, $data);
 
-        $this->client->delete($this->buildUrl($uri), $data);
+        $this->client->delete($this->buildUrl($uri), $request);
     }
 }

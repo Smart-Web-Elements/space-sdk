@@ -17,23 +17,22 @@ class Teams extends AbstractApi
     /**
      * Permissions that may be checked: Channel.AddMembersOrTeams
      *
+     * @param string $channel
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function addTeamsToChannel(array $data): void
+    public function addTeamsToChannel(string $channel, array $data): void
     {
         $uri = 'chats/channels/{channel}/subscribers/teams';
         $required = [
-            'channel' => self::TYPE_STRING,
             'teams' => self::TYPE_ARRAY,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'channel' => $data['channel'],
+            'channel' => $channel,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
         $this->client->post($this->buildUrl($uri, $uriArguments), $data);
     }
@@ -41,49 +40,47 @@ class Teams extends AbstractApi
     /**
      * Permissions that may be checked: Channel.ViewChannelParticipants
      *
-     * @param array $data
+     * @param string $channel
+     * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function listTeamsSubscribedToChannel(array $data, array $response): array
+    public function listTeamsSubscribedToChannel(string $channel, array $request, array $response = []): array
     {
         $uri = 'chats/channels/{channel}/subscribers/teams';
         $required = [
-            'channel' => self::TYPE_STRING,
             'query' => self::TYPE_STRING,
         ];
-        $this->throwIfInvalid($required, $data);
+        $this->throwIfInvalid($required, $request);
         $uriArguments = [
-            'channel' => $data['channel'],
+            'channel' => $channel,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
     }
 
     /**
      * Permissions that may be checked: Channel.RemoveMembersOfTeams
      *
-     * @param array $data
+     * @param string $channel
+     * @param array $request
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function removeTeamsFromChannel(array $data): void
+    public function removeTeamsFromChannel(string $channel, array $request): void
     {
         $uri = 'chats/channels/{channel}/subscribers/teams';
         $required = [
-            'channel' => self::TYPE_STRING,
             'teams' => self::TYPE_ARRAY,
         ];
-        $this->throwIfInvalid($required, $data);
+        $this->throwIfInvalid($required, $request);
         $uriArguments = [
-            'channel' => $data['channel'],
+            'channel' => $channel,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
-        $this->client->delete($this->buildUrl($uri, $uriArguments), $data);
+        $this->client->delete($this->buildUrl($uri, $uriArguments), $request);
     }
 }

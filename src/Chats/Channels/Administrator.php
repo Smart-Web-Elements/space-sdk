@@ -15,50 +15,43 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 class Administrator extends AbstractApi
 {
     /**
+     * Permissions that may be checked: Channel.ViewChannelParticipants
+     *
+     * @param string $channel
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     */
+    public function getChannelAdministrator(string $channel, array $response = []): array
+    {
+        $uri = 'chats/channels/{channel}/administrator';
+        $uriArguments = [
+            'channel' => $channel,
+        ];
+
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+    }
+
+    /**
      * Permissions that may be checked: Channel.Admin
      *
+     * @param string $channel
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function assignChannelAdministrator(array $data): void
+    public function assignChannelAdministrator(string $channel, array $data): void
     {
         $uri = 'chats/channels/{channel}/administrator';
         $required = [
-            'channel' => self::TYPE_STRING,
             'profile' => self::TYPE_STRING,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'channel' => $data['channel'],
+            'channel' => $channel,
         ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
 
         $this->client->patch($this->buildUrl($uri, $uriArguments), $data);
-    }
-
-    /**
-     * Permissions that may be checked: Channel.ViewChannelParticipants
-     *
-     * @param array $data
-     * @param array $response
-     * @return array
-     * @throws GuzzleException
-     * @throws MissingArgumentException
-     */
-    public function getChannelAdministrator(array $data, array $response = []): array
-    {
-        $uri = 'chats/channels/{channel}/administrator';
-        $required = [
-            'channel' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $data);
-        $uriArguments = [
-            'channel' => $data['channel'],
-        ];
-        $this->removeUrlArgumentsFromData($uriArguments, $data);
-
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
     }
 }
