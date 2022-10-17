@@ -10,6 +10,7 @@ use Swe\SpaceSDK\Project\PrivateProjects;
 use Swe\SpaceSDK\Project\Repositories;
 use Swe\SpaceSDK\Project\Secrets;
 use Swe\SpaceSDK\Project\Tags;
+use Swe\SpaceSDK\Project\Topics;
 use Swe\SpaceSDK\Project\Vault;
 
 /**
@@ -269,5 +270,13 @@ class Project extends AbstractApi
     public function vault(): Vault
     {
         return new Vault($this->client);
+    }
+
+    /**
+     * @return Topics
+     */
+    public function topics(): Topics
+    {
+        return new Topics($this->client);
     }
 }
