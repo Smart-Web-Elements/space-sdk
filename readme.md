@@ -261,7 +261,7 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
     - [ ] Holidays
     - [ ] Profile Holidays
     - [ ] Related Holidays
-- [ ] Reactions
+- [x] **Reactions**
 - [x] **Rich Text**
 - [ ] Team Directory
   - [ ] Invitation Links

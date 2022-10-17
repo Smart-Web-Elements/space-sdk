@@ -91,4 +91,12 @@ class Space extends AbstractApi
     {
         return new RichText($this->client);
     }
+
+    /**
+     * @return Reactions
+     */
+    public function reactions(): Reactions
+    {
+        return new Reactions($this->client);
+    }
 }
