@@ -120,7 +120,7 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
     - [ ] Conversations
       - [ ] Conversations
       - [ ] Subject
-    - [ ] Description
+    - [x] **Description**
     - [ ] Icon
     - [ ] Name
     - [ ] Subscribers
