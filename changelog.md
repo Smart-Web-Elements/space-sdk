@@ -30,6 +30,7 @@
 - Added class `ToDoItems`
 - Added class `Blog`
 - Added class `Permissions`
+- Added class `RichText`
 - **[BREAKING]** Renamed method and class `GraphExecution` to `GraphExecutions`
 - **[BREAKING]** Renamed method and class `Job` to `Jobs`
 - **[BREAKING]** Renamed method and class `Repository` to `Repositories`

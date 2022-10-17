@@ -83,4 +83,12 @@ class Space extends AbstractApi
     {
         return new Permissions($this->client);
     }
+
+    /**
+     * @return RichText
+     */
+    public function richText(): RichText
+    {
+        return new RichText($this->client);
+    }
 }
