@@ -92,7 +92,7 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
   - [ ] Reports
     - [ ] Reports
     - [ ] Today
-- [ ] Blog
+- [x] **Blog**
 - [ ] Calendars
   - [ ] Absence Events
   - [ ] Birthday Events

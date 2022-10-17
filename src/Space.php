@@ -67,4 +67,12 @@ class Space extends AbstractApi
     {
         return new ToDoItems($this->client);
     }
+
+    /**
+     * @return Blog
+     */
+    public function blog(): Blog
+    {
+        return new Blog($this->client);
+    }
 }
