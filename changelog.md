@@ -32,6 +32,7 @@
 - Added class `Permissions`
 - Added class `RichText`
 - Added class `Reactions`
+- Added class `Emojis`
 - **[BREAKING]** Renamed method and class `GraphExecution` to `GraphExecutions`
 - **[BREAKING]** Renamed method and class `Job` to `Jobs`
 - **[BREAKING]** Renamed method and class `Repository` to `Repositories`

@@ -99,4 +99,12 @@ class Space extends AbstractApi
     {
         return new Reactions($this->client);
     }
+
+    /**
+     * @return Emojis
+     */
+    public function emojis(): Emojis
+    {
+        return new Emojis($this->client);
+    }
 }
