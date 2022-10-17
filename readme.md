@@ -138,7 +138,7 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
   - [ ] Values
 - [ ] Emojis
 - [x] **External Link Patterns**
-- [ ] HTTP API Model
+- [x] **HTTP API Model**
 - [ ] Notifications
   - [ ] Notifications
   - [ ] Channel Subscriptions

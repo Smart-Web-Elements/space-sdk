@@ -51,4 +51,12 @@ class Space extends AbstractApi
     {
         return new ExternalLinkPatterns($this->client);
     }
+
+    /**
+     * @return HttpApiModel
+     */
+    public function httpApiModel(): HttpApiModel
+    {
+        return new HttpApiModel($this->client);
+    }
 }
