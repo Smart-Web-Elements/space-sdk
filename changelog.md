@@ -3,10 +3,7 @@
 ## Space SDK v0.1.0 [BREAKING]
 
 - Added class `Chats/Channels/Administrator`
-- Added method `assignChannelAdministrator` in `Administrator`
-- Added method `getChannelAdministrator` in `Administrator`
 - Added class `Chats/Channels/Description`
-- Added method `changeChannelDescription` in `Description`
 - Added method `deleteMessage` in `Messages`
 - Added method `editMessage` in `Messages`
 - Added method `sendMessage` in `Messages`
@@ -14,15 +11,17 @@
 - Added method `pinMessages` in `Messages`
 - Added method `unpinMessages` in `Messages`
 - Added class `Chats/Messages/PinnedMessages`
-- Added method `listPinnedMessagesInChannel` in `PinnedMessages`
 - Added class `Chats/Channels/Subscribers/Users`
-- Added method `addUsersToChannel` in `Users`
-- Added method `listUsersSubscribedToChannel` in `Users`
-- Added method `removeUsersFromChannel` in `Users`
 - Added class `Chats/Channels/Subscribers/Teams`
-- Added method `addTeamsToChannel` in `Teams`
-- Added method `listTeamsSubscribedToChannel` in `Teams`
-- Added method `removeTeamsFromChannel` in `Teams`
+- Added class `Chats/Channels/Name`
+- Added class `Chats/Channels/Icon`
+- Added class `Chats/Channels/Conversations`
+- Added class `Chats/Channels/Conversations/Subject`
+- Added class `Chats/Channels/Attachments`
+- Added class `Chats/Channels/Attachments/Files`
+- Added class `Chats/Channels/Attachments/Images`
+- Added class `Chats/Channels/Attachments/Links`
+- Added class `Chats/Channels/Attachments/Videos`
 - **[BREAKING]** Renamed method and class `GraphExecution` to `GraphExecutions`
 - **[BREAKING]** Renamed method and class `Job` to `Jobs`
 - **[BREAKING]** Renamed method and class `Repository` to `Repositories`

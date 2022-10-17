@@ -107,22 +107,22 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
   - [ ] Membership Events
   - [ ] Non Working Day Events
 - [ ] Calls
-- [ ] Chats *(WIP)*
-  - [ ] Channels *(WIP)*
+- [x] **Chats**
+  - [x] **Channels**
     - [x] **Channels**
     - [x] **Administrator**
-    - [ ] Attachments
-      - [ ] Attachments
-      - [ ] Files
-      - [ ] Images
-      - [ ] Links
-      - [ ] Videos
-    - [ ] Conversations
-      - [ ] Conversations
-      - [ ] Subject
+    - [x] **Attachments**
+      - [x] **Attachments**
+      - [x] **Files**
+      - [x] **Images**
+      - [x] **Links**
+      - [x] **Videos**
+    - [x] **Conversations**
+      - [x] **Conversations**
+      - [x] **Subject**
     - [x] **Description**
-    - [ ] Icon
-    - [ ] Name
+    - [x] **Icon**
+    - [x] **Name**
     - [x] **Subscribers**
       - [x] **Teams**
       - [x] **Users**

@@ -5,6 +5,10 @@ namespace Swe\SpaceSDK\Chats;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Chats\Channels\Administrator;
+use Swe\SpaceSDK\Chats\Channels\Attachments;
+use Swe\SpaceSDK\Chats\Channels\Conversations;
+use Swe\SpaceSDK\Chats\Channels\Icon;
+use Swe\SpaceSDK\Chats\Channels\Name;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
@@ -174,5 +178,37 @@ class Channels extends AbstractApi
     public function administrator(): Administrator
     {
         return new Administrator($this->client);
+    }
+
+    /**
+     * @return Name
+     */
+    public function name(): Name
+    {
+        return new Name($this->client);
+    }
+
+    /**
+     * @return Icon
+     */
+    public function icon(): Icon
+    {
+        return new Icon($this->client);
+    }
+
+    /**
+     * @return Conversations
+     */
+    public function conversations(): Conversations
+    {
+        return new Conversations($this->client);
+    }
+
+    /**
+     * @return Attachments
+     */
+    public function attachments(): Attachments
+    {
+        return new Attachments($this->client);
     }
 }
