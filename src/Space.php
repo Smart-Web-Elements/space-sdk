@@ -35,4 +35,12 @@ class Space extends AbstractApi
     {
         return new Calls($this->client);
     }
+
+    /**
+     * @return Checklists
+     */
+    public function checklists(): Checklists
+    {
+        return new Checklists($this->client);
+    }
 }

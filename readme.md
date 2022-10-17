@@ -129,8 +129,8 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
   - [x] **Messages**
     - [x] **Messages**
     - [x] **Pinned Messages**
-- [ ] Checklists
-  - [ ] Items
+- [x] **Checklists**
+  - [x] **Items**
 - [ ] Custom Fields
   - [ ] Fields
     - [ ] Fields
