@@ -43,6 +43,8 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
 
 ## Status Space API
 
+(Bold is finished)
+
 - [ ] Absences
   - [ ] Absences
   - [ ] Absence Reasons
