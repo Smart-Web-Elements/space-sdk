@@ -34,6 +34,29 @@ class Messages extends AbstractApi
     }
 
     /**
+     * Edit an existing message. Message content can be a string, or a block with one or several sections of information.
+     *
+     * Permissions that may be checked: Channel.PostMessages, Channel.PostMessagesInThreads
+     *
+     * @param array $data
+     * @return void
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    public function editMessage(array $data): void
+    {
+        $uri = 'chats/messages/edit-message';
+        $required = [
+            'channel' => 'string',
+            'message' => 'string',
+            'content' => 'array',
+        ];
+        $this->throwIfInvalid($required, $data);
+
+        $this->client->post($this->buildUrl($uri), $data);
+    }
+
+    /**
      * This API method is intended to be used only by applications.
      *
      * Permissions that may be checked: Channel.ImportMessages
