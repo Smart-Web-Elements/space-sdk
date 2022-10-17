@@ -252,7 +252,7 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
   - [x] **Secrets**
     - [x] **Secrets**
     - [x] **Default Bundle**
-  - [ ] Tags
+  - [x] **Tags**
   - [ ] Topics
   - [ ] Vault
 - [ ] Public Holidays

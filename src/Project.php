@@ -9,6 +9,7 @@ use Swe\SpaceSDK\Project\Automation;
 use Swe\SpaceSDK\Project\PrivateProjects;
 use Swe\SpaceSDK\Project\Repositories;
 use Swe\SpaceSDK\Project\Secrets;
+use Swe\SpaceSDK\Project\Tags;
 
 /**
  * Class Project
@@ -251,5 +252,13 @@ class Project extends AbstractApi
     public function secrets(): Secrets
     {
         return new Secrets($this->client);
+    }
+
+    /**
+     * @return Tags
+     */
+    public function tags(): Tags
+    {
+        return new Tags($this->client);
     }
 }
