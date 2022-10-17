@@ -123,9 +123,9 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
     - [x] **Description**
     - [ ] Icon
     - [ ] Name
-    - [ ] Subscribers
-      - [ ] Teams
-      - [ ] Users
+    - [x] **Subscribers**
+      - [x] **Teams**
+      - [x] **Users**
   - [x] **Messages**
     - [x] **Messages**
     - [x] **Pinned Messages**

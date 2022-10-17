@@ -15,6 +15,14 @@
 - Added method `unpinMessages` in `Messages`
 - Added class `Chats/Messages/PinnedMessages`
 - Added method `listPinnedMessagesInChannel` in `PinnedMessages`
+- Added class `Chats/Channels/Subscribers/Users`
+- Added method `addUsersToChannel` in `Users`
+- Added method `listUsersSubscribedToChannel` in `Users`
+- Added method `removeUsersFromChannel` in `Users`
+- Added class `Chats/Channels/Subscribers/Teams`
+- Added method `addTeamsToChannel` in `Teams`
+- Added method `listTeamsSubscribedToChannel` in `Teams`
+- Added method `removeTeamsFromChannel` in `Teams`
 - **[BREAKING]** Renamed method and class `GraphExecution` to `GraphExecutions`
 - **[BREAKING]** Renamed method and class `Job` to `Jobs`
 - **[BREAKING]** Renamed method and class `Repository` to `Repositories`

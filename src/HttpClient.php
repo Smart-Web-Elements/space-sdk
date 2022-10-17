@@ -72,12 +72,13 @@ class HttpClient
 
     /**
      * @param string $uri
+     * @param array $requestFields
      * @return bool
      * @throws GuzzleException
      */
-    public function delete(string $uri): bool
+    public function delete(string $uri, array $requestFields = []): bool
     {
-        $response = $this->getClient()->delete($this->getUri($uri));
+        $response = $this->getClient()->delete($this->getUri($uri, [], $requestFields));
 
         return $response->getStatusCode() === 200;
     }
