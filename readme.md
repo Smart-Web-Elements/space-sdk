@@ -328,7 +328,7 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
     - [ ] Teams
     - [ ] Direct Members
 - [x] **To-Do Items**
-- [ ] Trusted Certificates
+- [x] **Trusted Certificates**
 - [ ] Unfurls
 - [ ] Uploads
   - [ ] Uploads

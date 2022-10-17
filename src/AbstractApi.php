@@ -64,6 +64,10 @@ abstract class AbstractApi
             if (strtolower($type) === 'array' && !is_array($fields[$field])) {
                 return false;
             }
+
+            if ($type === 'boolean' && !is_bool($fields[$field])) {
+                return false;
+            }
         }
 
         return true;

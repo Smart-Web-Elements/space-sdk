@@ -107,4 +107,12 @@ class Space extends AbstractApi
     {
         return new Emojis($this->client);
     }
+
+    /**
+     * @return TrustedCertificates
+     */
+    public function trustedCertificates(): TrustedCertificates
+    {
+        return new TrustedCertificates($this->client);
+    }
 }
