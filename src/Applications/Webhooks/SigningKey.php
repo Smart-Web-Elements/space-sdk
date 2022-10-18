@@ -1,0 +1,54 @@
+<?php
+
+namespace Swe\SpaceSDK\Applications\Webhooks;
+
+use GuzzleHttp\Exception\GuzzleException;
+use Swe\SpaceSDK\AbstractApi;
+
+/**
+ * Class SigningKey
+ *
+ * @package Swe\SpaceSDK\Applications\Webhooks
+ * @author Luca Braun <l.braun@s-w-e.com>
+ */
+class SigningKey extends AbstractApi
+{
+
+    /**
+     * Permissions that may be checked: Applications.Edit
+     *
+     * @param string $application
+     * @param string $webhookId
+     * @return void
+     * @throws GuzzleException
+     */
+    public function regenerate(string $application, string $webhookId): void
+    {
+        $uri = 'applications/{application}/webhooks/{webhookId}/signing-key/regenerate';
+        $uriArguments = [
+            'application' => $application,
+            'webhookId' => $webhookId,
+        ];
+
+        $this->client->post($this->buildUrl($uri, $uriArguments));
+    }
+
+    /**
+     * Permissions that may be checked: Applications.ViewSecrets
+     *
+     * @param string $application
+     * @param string $webhookId
+     * @return string|null
+     * @throws GuzzleException
+     */
+    public function getSigningKey(string $application, string $webhookId): ?string
+    {
+        $uri = 'applications/{application}/webhooks/{webhookId}/signing-key';
+        $uriArguments = [
+            'application' => $application,
+            'webhookId' => $webhookId,
+        ];
+
+        return $this->client->get($this->buildUrl($uri, $uriArguments))[0];
+    }
+}

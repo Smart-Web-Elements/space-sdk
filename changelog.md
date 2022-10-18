@@ -1,6 +1,6 @@
 # Space SDK Changelog
 
-## Space SDK v0.1.0 [BREAKING]
+## Space SDK v1.0.0 [BREAKING]
 
 - Added class `Chats/Channels/Administrator`
 - Added class `Chats/Channels/Description`
@@ -67,6 +67,27 @@
 - Added class `BillingAdmin/Reports`
 - Added class `BillingAdmin/Reports/Today`
 - Added class `BillingAdmin/Overdrafts`
+- Added class `Applications`
+- Added class `Applications/Authorizations`
+- Added class `Applications/Authorizations/Authorized Rights`
+- Added class `Applications/Authorizations/Required Rights`
+- Added class `Applications/ClientSecret`
+- Added class `Applications/PermanentTokens`
+- Added class `Applications/PermanentTokens/Current`
+- Added class `Applications/SigningKey`
+- Added class `Applications/SshKeys`
+- Added class `Applications/UiExtensions`
+- Added class `Applications/UnfurlDomains`
+- Added class `Applications/UnfurlPatterns`
+- Added class `Applications/Unfurls`
+- Added class `Applications/Unfurls/Domains`
+- Added class `Applications/Unfurls/Patterns`
+- Added class `Applications/Unfurls/Queue`
+- Added class `Applications/VerificationToken`
+- Added class `Applications/Webhooks`
+- Added class `Applications/Webhooks/CustomHeaders`
+- Added class `Applications/Webhooks/SigningKey`
+- Added class `Applications/Webhooks/Subscriptions`
 - **[BREAKING]** Renamed method and class `GraphExecution` to `GraphExecutions`
 - **[BREAKING]** Renamed method and class `Job` to `Jobs`
 - **[BREAKING]** Renamed method and class `Repository` to `Repositories`

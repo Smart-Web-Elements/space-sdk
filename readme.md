@@ -54,31 +54,31 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
     - [x] **User Agreement**
     - [x] **Enabled**
     - [x] **Status**
-- [ ] Applications
-  - [ ] Applications
-  - [ ] Authorizations
-    - [ ] Authorizations
-    - [ ] Authorized Rights
-    - [ ] Required Rights
-  - [ ] Client Secret
-  - [ ] Permanent Tokens
-    - [ ] Permanent Tokens
-    - [ ] Current
-  - [ ] Signing Key
-  - [ ] Ssh Keys
-  - [ ] Ui Extensions
-  - [ ] Unfurl Domains
-  - [ ] Unfurl Patterns
-  - [ ] Unfurls
-    - [ ] Domains
-    - [ ] Patterns
-    - [ ] Queue
-  - [ ] Verification Token
-  - [ ] Webhooks
-    - [ ] Webhooks
-    - [ ] Custom Headers
-    - [ ] Signing Key
-    - [ ] Subscriptions
+- [x] **Applications**
+  - [x] **Applications**
+  - [x] **Authorizations**
+    - [x] **Authorizations**
+    - [x] **Authorized Rights**
+    - [x] **Required Rights**
+  - [x] **Client Secret**
+  - [x] **Permanent Tokens**
+    - [x] **Permanent Tokens**
+    - [x] **Current**
+  - [x] **Signing Key**
+  - [x] **Ssh Keys**
+  - [x] **Ui Extensions**
+  - [x] **Unfurl Domains**
+  - [x] **Unfurl Patterns**
+  - [x] **Unfurls**
+    - [x] **Domains**
+    - [x] **Patterns**
+    - [x] **Queue**
+  - [x] **Verification Token**
+  - [x] **Webhooks**
+    - [x] **Webhooks**
+    - [x] **Custom Headers**
+    - [x] **Signing Key**
+    - [x] **Subscriptions**
 - [x] **Auth Modules**
   - [x] **Auth Modules**
   - [x] **Config**
