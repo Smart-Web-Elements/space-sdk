@@ -29,6 +29,14 @@ class Space extends AbstractApi
     }
 
     /**
+     * @return AuthModules
+     */
+    public function authModules(): AuthModules
+    {
+        return new AuthModules($this->client);
+    }
+
+    /**
      * @return Blog
      */
     public function blog(): Blog

@@ -79,15 +79,15 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
     - [ ] Custom Headers
     - [ ] Signing Key
     - [ ] Subscriptions
-- [ ] Auth Modules
-  - [ ] Auth Modules
-  - [ ] Config
-  - [ ] Logins
-  - [ ] Test
-  - [ ] Throttled Logins
-    - [ ] Throttled Logins
-    - [ ] Org Status
-  - [ ] Usages
+- [x] **Auth Modules**
+  - [x] **Auth Modules**
+  - [x] **Config**
+  - [x] **Logins**
+  - [x] **Test**
+  - [x] **Throttled Logins**
+    - [x] **Throttled Logins**
+    - [x] **Org Status**
+  - [x] **Usages**
 - [ ] Billing Admin
   - [ ] Billing Admin
   - [ ] Overdrafts

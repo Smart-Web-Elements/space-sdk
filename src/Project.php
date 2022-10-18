@@ -211,17 +211,17 @@ class Project extends AbstractApi
      * Permissions that may be checked: Project.Admin
      *
      * @param string $project
-     * @return bool
+     * @return void
      * @throws GuzzleException
      */
-    public function deleteProject(string $project): bool
+    public function deleteProject(string $project): void
     {
         $uri = 'projects/{project}';
         $uriArguments = [
             'project' => $project,
         ];
 
-        return $this->client->delete($this->buildUrl($uri, $uriArguments));
+        $this->client->delete($this->buildUrl($uri, $uriArguments));
     }
 
     /**

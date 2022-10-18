@@ -122,17 +122,17 @@ class Channels extends AbstractApi
      * Permissions that may be checked: Channel.Admin
      *
      * @param string $channel
-     * @return bool
+     * @return void
      * @throws GuzzleException
      */
-    public function deleteChannel(string $channel): bool
+    public function deleteChannel(string $channel): void
     {
         $uri = 'chats/channels/{channel}';
         $uriArguments = [
             'channel' => $channel,
         ];
 
-        return $this->client->delete($this->buildUrl($uri, $uriArguments));
+        $this->client->delete($this->buildUrl($uri, $uriArguments));
     }
 
     /**
@@ -142,17 +142,17 @@ class Channels extends AbstractApi
      * Permissions may be checked: Channel.Admin
      *
      * @param string $channel
-     * @return bool
+     * @return void
      * @throws GuzzleException
      */
-    public function archiveChannel(string $channel): bool
+    public function archiveChannel(string $channel): void
     {
         $uri = 'chats/channels/{channel}/archive';
         $uriArguments = [
             'channel' => $channel,
         ];
 
-        return $this->client->delete($this->buildUrl($uri, $uriArguments));
+        $this->client->delete($this->buildUrl($uri, $uriArguments));
     }
 
     /**

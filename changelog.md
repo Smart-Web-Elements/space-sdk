@@ -56,6 +56,13 @@
 - Added class `Uploads/Image`
 - Added class `Uploads/Chat`
 - Added class `Uploads/Chat/PublicUrls`
+- Added class `AuthModules`
+- Added class `AuthModules/Config`
+- Added class `AuthModules/Logins`
+- Added class `AuthModules/Test`
+- Added class `AuthModules/Usages`
+- Added class `AuthModules/ThrottledLogins`
+- Added class `AuthModules/ThrottledLogins/OrgStatus`
 - **[BREAKING]** Renamed method and class `GraphExecution` to `GraphExecutions`
 - **[BREAKING]** Renamed method and class `Job` to `Jobs`
 - **[BREAKING]** Renamed method and class `Repository` to `Repositories`

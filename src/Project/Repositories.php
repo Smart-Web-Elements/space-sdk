@@ -201,10 +201,10 @@ class Repositories extends AbstractApi
     /**
      * @param string $project
      * @param string $repository
-     * @return bool
+     * @return void
      * @throws GuzzleException
      */
-    public function deleteRepository(string $project, string $repository): bool
+    public function deleteRepository(string $project, string $repository): void
     {
         $uri = 'projects/{project}/repositories/{repository}';
         $uriArguments = [
@@ -212,7 +212,7 @@ class Repositories extends AbstractApi
             'repository' => $repository,
         ];
 
-        return $this->client->delete($this->buildUrl($uri, $uriArguments));
+        $this->client->delete($this->buildUrl($uri, $uriArguments));
     }
 
     /**

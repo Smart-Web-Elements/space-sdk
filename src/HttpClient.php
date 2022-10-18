@@ -73,14 +73,16 @@ class HttpClient
     /**
      * @param string $uri
      * @param array $requestFields
-     * @return bool
+     * @param array $responseFields
+     * @return array
      * @throws GuzzleException
      */
-    public function delete(string $uri, array $requestFields = []): bool
+    public function delete(string $uri, array $requestFields = [], array $responseFields = []): array
     {
-        $response = $this->getClient()->delete($this->getUri($uri, [], $requestFields));
+        $response = $this->getClient()->delete($this->getUri($uri, $responseFields, $requestFields));
+        $jsonResponse = json_decode($response->getBody()->getContents(), true);
 
-        return $response->getStatusCode() === 200;
+        return is_array($jsonResponse) ? $jsonResponse : [$jsonResponse];
     }
 
     /**
@@ -124,7 +126,7 @@ class HttpClient
     protected function getUri(string $uri, array $responseFields = [], array $requestFields = []): string
     {
         if (substr($uri, 0, 1) !== '/') {
-            $uri = '/api/http/'.$uri;
+            $uri = '/api/http/' . $uri;
         }
 
         $additional = [
@@ -138,7 +140,7 @@ class HttpClient
             return $uri;
         }
 
-        return $uri.'?'.implode('&', $additional);
+        return $uri . '?' . implode('&', $additional);
     }
 
     /**
@@ -150,7 +152,7 @@ class HttpClient
         $string = [];
 
         foreach ($fields as $field => $value) {
-            $string[] = $field.'='.$value;
+            $string[] = $field . '=' . $value;
         }
 
         return implode('&', $string);
@@ -166,7 +168,7 @@ class HttpClient
 
         foreach ($fields as $field => $value) {
             if (is_array($value)) {
-                $result[] = $field.'('.$this->parseResponseFields($value).')';
+                $result[] = $field . '(' . $this->parseResponseFields($value) . ')';
                 continue;
             }
 
@@ -198,7 +200,7 @@ class HttpClient
         $options['headers']['Accept'] = 'application/json';
 
         if ($withAuth && !isset($options['headers']['Authorization'])) {
-            $options['headers']['Authorization'] = $this->tokenType.' '.$this->token;
+            $options['headers']['Authorization'] = $this->tokenType . ' ' . $this->token;
         }
 
         return new Client($options);
@@ -211,7 +213,7 @@ class HttpClient
     {
         $options = [
             'headers' => [
-                'Authorization' => 'Basic '.base64_encode($this->clientId.':'.$this->clientSecret),
+                'Authorization' => 'Basic ' . base64_encode($this->clientId . ':' . $this->clientSecret),
                 'Content-Type' => 'application/x-www-form-urlencoded',
             ],
         ];
