@@ -37,6 +37,14 @@ class Space extends AbstractApi
     }
 
     /**
+     * @return BillingAdmin
+     */
+    public function billingAdmin(): BillingAdmin
+    {
+        return new BillingAdmin($this->client);
+    }
+
+    /**
      * @return Blog
      */
     public function blog(): Blog

@@ -88,12 +88,12 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
     - [x] **Throttled Logins**
     - [x] **Org Status**
   - [x] **Usages**
-- [ ] Billing Admin
-  - [ ] Billing Admin
-  - [ ] Overdrafts
-  - [ ] Reports
-    - [ ] Reports
-    - [ ] Today
+- [x] **Billing Admin**
+  - [x] **Billing Admin**
+  - [x] **Overdrafts**
+  - [x] **Reports**
+    - [x] **Reports**
+    - [x] **Today**
 - [x] **Blog**
 - [ ] Calendars
   - [ ] Absence Events

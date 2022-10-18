@@ -63,6 +63,10 @@
 - Added class `AuthModules/Usages`
 - Added class `AuthModules/ThrottledLogins`
 - Added class `AuthModules/ThrottledLogins/OrgStatus`
+- Added class `BillingAdmin`
+- Added class `BillingAdmin/Reports`
+- Added class `BillingAdmin/Reports/Today`
+- Added class `BillingAdmin/Overdrafts`
 - **[BREAKING]** Renamed method and class `GraphExecution` to `GraphExecutions`
 - **[BREAKING]** Renamed method and class `Job` to `Jobs`
 - **[BREAKING]** Renamed method and class `Repository` to `Repositories`
