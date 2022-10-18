@@ -142,21 +142,21 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
 - [x] **External Link Patterns**
 - [x] **HTTP API Model**
 - [ ] Notifications
-  - [ ] Notifications
-  - [ ] Channel Subscriptions
-  - [ ] Personal Custom Subscriptions
-  - [ ] Personal Subscriptions
-  - [ ] Private Feeds
-- [ ] Organization
-  - [ ] Organization
-  - [ ] Domains
-  - [ ] Jet Sales
+    - [ ] Notifications
+    - [ ] Channel Subscriptions
+    - [ ] Personal Custom Subscriptions
+    - [ ] Personal Subscriptions
+    - [ ] Private Feeds
+- [x] **Organization**
+    - [x] **Organization**
+    - [x] **Domains**
+    - [x] **Jet Sales**
 - [ ] Permission Roles
-  - [ ] Permission Roles
-  - [ ] 2 Fa Requirement
-  - [ ] Permissions
-  - [ ] Profiles
-  - [ ] Teams
+    - [ ] Permission Roles
+    - [ ] 2 Fa Requirement
+    - [ ] Permissions
+    - [ ] Profiles
+    - [ ] Teams
 - [x] **Permissions**
 - [ ] Projects *(WIP)*
   - [x] **Projects**
