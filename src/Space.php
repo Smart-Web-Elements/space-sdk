@@ -133,6 +133,14 @@ class Space extends AbstractApi
     }
 
     /**
+     * @return Uploads
+     */
+    public function uploads(): Uploads
+    {
+        return new Uploads($this->client);
+    }
+
+    /**
      * @return Unfurls
      */
     public function unfurls(): Unfurls

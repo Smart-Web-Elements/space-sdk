@@ -52,6 +52,10 @@
 - Added class `Administration/UserAgreement/Enabled`
 - Added class `Administration/UserAgreement/Status`
 - Added class `Unfurls`
+- Added class `Uploads`
+- Added class `Uploads/Image`
+- Added class `Uploads/Chat`
+- Added class `Uploads/Chat/PublicUrls`
 - **[BREAKING]** Renamed method and class `GraphExecution` to `GraphExecutions`
 - **[BREAKING]** Renamed method and class `Job` to `Jobs`
 - **[BREAKING]** Renamed method and class `Repository` to `Repositories`

@@ -332,8 +332,8 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
 - [x] **To-Do Items**
 - [x] **Trusted Certificates**
 - [x] **Unfurls**
-- [ ] Uploads
-  - [ ] Uploads
-    - [ ] Public Urls
-  - [ ] Chat
-  - [ ] Image
+- [x] **Uploads**
+  - [x] **Uploads**
+    - [x] **Public Urls**
+  - [x] **Chat**
+  - [x] **Image**
