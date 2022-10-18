@@ -125,6 +125,14 @@ class Space extends AbstractApi
     }
 
     /**
+     * @return Organization
+     */
+    public function organization(): Organization
+    {
+        return new Organization($this->client);
+    }
+
+    /**
      * @return Permissions
      */
     public function permissions(): Permissions

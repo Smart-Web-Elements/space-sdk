@@ -103,6 +103,9 @@
 - Added class `CustomFields/Fields`
 - Added class `CustomFields/Fields/EnumValues`
 - Added class `CustomFields/Values`
+- Added class `Organization`
+- Added class `Organization/Domains`
+- Added class `Organization/JetSales`
 - **[BREAKING]** Renamed method and class `GraphExecution` to `GraphExecutions`
 - **[BREAKING]** Renamed method and class `Job` to `Jobs`
 - **[BREAKING]** Renamed method and class `Repository` to `Repositories`
