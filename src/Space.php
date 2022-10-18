@@ -131,4 +131,12 @@ class Space extends AbstractApi
     {
         return new TrustedCertificates($this->client);
     }
+
+    /**
+     * @return Unfurls
+     */
+    public function unfurls(): Unfurls
+    {
+        return new Unfurls($this->client);
+    }
 }

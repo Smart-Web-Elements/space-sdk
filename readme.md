@@ -331,7 +331,7 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
     - [ ] Direct Members
 - [x] **To-Do Items**
 - [x] **Trusted Certificates**
-- [ ] Unfurls
+- [x] **Unfurls**
 - [ ] Uploads
   - [ ] Uploads
     - [ ] Public Urls
