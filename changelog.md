@@ -44,6 +44,8 @@
 - Added class `Projects/Tags`
 - Added class `Projects/Vault`
 - Added class `Projects/Topics`
+- Added class `Absences`
+- Added class `Absences/AbsenceReasons`
 - **[BREAKING]** Renamed method and class `GraphExecution` to `GraphExecutions`
 - **[BREAKING]** Renamed method and class `Job` to `Jobs`
 - **[BREAKING]** Renamed method and class `Repository` to `Repositories`

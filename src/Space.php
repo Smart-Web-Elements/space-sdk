@@ -13,19 +13,19 @@ class Space extends AbstractApi
 {
 
     /**
-     * @return Project
+     * @return Absences
      */
-    public function project(): Project
+    public function absences(): Absences
     {
-        return new Project($this->client);
+        return new Absences($this->client);
     }
 
     /**
-     * @return Chats
+     * @return Blog
      */
-    public function chats(): Chats
+    public function blog(): Blog
     {
-        return new Chats($this->client);
+        return new Blog($this->client);
     }
 
     /**
@@ -37,11 +37,27 @@ class Space extends AbstractApi
     }
 
     /**
+     * @return Chats
+     */
+    public function chats(): Chats
+    {
+        return new Chats($this->client);
+    }
+
+    /**
      * @return Checklists
      */
     public function checklists(): Checklists
     {
         return new Checklists($this->client);
+    }
+
+    /**
+     * @return Emojis
+     */
+    public function emojis(): Emojis
+    {
+        return new Emojis($this->client);
     }
 
     /**
@@ -61,22 +77,6 @@ class Space extends AbstractApi
     }
 
     /**
-     * @return ToDoItems
-     */
-    public function toDoItems(): ToDoItems
-    {
-        return new ToDoItems($this->client);
-    }
-
-    /**
-     * @return Blog
-     */
-    public function blog(): Blog
-    {
-        return new Blog($this->client);
-    }
-
-    /**
      * @return Permissions
      */
     public function permissions(): Permissions
@@ -85,11 +85,11 @@ class Space extends AbstractApi
     }
 
     /**
-     * @return RichText
+     * @return Project
      */
-    public function richText(): RichText
+    public function project(): Project
     {
-        return new RichText($this->client);
+        return new Project($this->client);
     }
 
     /**
@@ -101,11 +101,19 @@ class Space extends AbstractApi
     }
 
     /**
-     * @return Emojis
+     * @return RichText
      */
-    public function emojis(): Emojis
+    public function richText(): RichText
     {
-        return new Emojis($this->client);
+        return new RichText($this->client);
+    }
+
+    /**
+     * @return ToDoItems
+     */
+    public function toDoItems(): ToDoItems
+    {
+        return new ToDoItems($this->client);
     }
 
     /**

@@ -17,6 +17,9 @@ abstract class AbstractApi
     public const TYPE_STRING = 'string';
     public const TYPE_ARRAY = 'array';
     public const TYPE_BOOLEAN = 'boolean';
+    public const TYPE_DATE = 'date';
+
+    public const REGEX_DATE = '/\d{4}-\d{2}-\d{2}/';
 
     /**
      * @var self|null
@@ -79,6 +82,16 @@ abstract class AbstractApi
                     break;
                 case self::TYPE_BOOLEAN:
                     if (!is_bool($value)) {
+                        return false;
+                    }
+
+                    break;
+                case self::TYPE_DATE:
+                    if (!is_string($value)) {
+                        return false;
+                    }
+
+                    if (preg_match(self::REGEX_DATE, $value) !== 1) {
                         return false;
                     }
 

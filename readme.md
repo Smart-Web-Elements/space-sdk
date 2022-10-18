@@ -45,9 +45,9 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
 
 (Bold is finished)
 
-- [ ] Absences
-  - [ ] Absences
-  - [ ] Absence Reasons
+- [x] **Absences**
+  - [x] **Absences**
+  - [x] **Absence Reasons**
 - [ ] Administration
   - [ ] Support
   - [ ] User Agreement
