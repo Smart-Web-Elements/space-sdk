@@ -19,7 +19,7 @@ $client = new HttpClient($url, $clientId, $clientSecret);
 $space = new Space($client);
 
 // Create a new project.
-$projectInformation = $space->project()->createProject([
+$projectInformation = $space->projects()->createProject([
     'key' => [
         'key' => 'MY_PROJECT',
     ],
@@ -247,22 +247,22 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
     - [x] **Revisions**
       - [x] **External Checks**
   - [ ] Responsibilities
-    - [ ] Responsibilities
-    - [ ] Assignees
-    - [ ] Scheme
-    - [ ] Subjects
+      - [ ] Responsibilities
+      - [ ] Assignees
+      - [ ] Scheme
+      - [ ] Subjects
   - [x] **Secrets**
-    - [x] **Secrets**
-    - [x] **Default Bundle**
+      - [x] **Secrets**
+      - [x] **Default Bundle**
   - [x] **Tags**
   - [x] **Topics**
   - [x] **Vault**
-- [ ] Public Holidays
-  - [ ] Calendars
-  - [ ] Holidays
-    - [ ] Holidays
-    - [ ] Profile Holidays
-    - [ ] Related Holidays
+- [x] **Public Holidays**
+    - [x] **Calendars**
+    - [x] **Holidays**
+        - [x] **Holidays**
+        - [x] **Profile Holidays**
+        - [x] **Related Holidays**
 - [x] **Reactions**
 - [x] **Rich Text**
 - [ ] Team Directory

@@ -141,11 +141,19 @@ class Space extends AbstractApi
     }
 
     /**
-     * @return Project
+     * @return Projects
      */
-    public function project(): Project
+    public function projects(): Projects
     {
-        return new Project($this->client);
+        return new Projects($this->client);
+    }
+
+    /**
+     * @return PublicHolidays
+     */
+    public function publicHolidays(): PublicHolidays
+    {
+        return new PublicHolidays($this->client);
     }
 
     /**

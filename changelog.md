@@ -106,9 +106,15 @@
 - Added class `Organization`
 - Added class `Organization/Domains`
 - Added class `Organization/JetSales`
+- Added class `PublicHolidays`
+- Added class `PublicHolidays/Calendars`
+- Added class `PublicHolidays/Holidays`
+- Added class `PublicHolidays/Holidays/ProfileHolidays`
+- Added class `PublicHolidays/Holidays/RelatedHolidays`
 - **[BREAKING]** Renamed method and class `GraphExecution` to `GraphExecutions`
 - **[BREAKING]** Renamed method and class `Job` to `Jobs`
 - **[BREAKING]** Renamed method and class `Repository` to `Repositories`
+- **[BREAKING]** Renamed method and class `Project` to `Projects`
 - **[BREAKING]** Changed parameters in a lot of methods for easier handling
 
 ## Space SDK v0.0.8

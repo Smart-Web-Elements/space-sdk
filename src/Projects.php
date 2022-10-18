@@ -19,7 +19,7 @@ use Swe\SpaceSDK\Project\Vault;
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Project extends AbstractApi
+class Projects extends AbstractApi
 {
     /**
      * Create a new project.
