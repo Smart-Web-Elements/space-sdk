@@ -95,19 +95,19 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
     - [x] **Reports**
     - [x] **Today**
 - [x] **Blog**
-- [ ] Calendars
-  - [ ] Absence Events
-  - [ ] Birthday Events
-    - [ ] Birthday Events
-    - [ ] Starred
-  - [ ] Event Participations
-  - [ ] Events
-  - [ ] Holidays
-  - [ ] Meetings
-    - [ ] Meetings
-    - [ ] Participation Status
-  - [ ] Membership Events
-  - [ ] Non Working Day Events
+- [x] **Calendars**
+  - [x] **Absence Events**
+  - [x] **Birthday Events**
+    - [x] **Birthday Events**
+    - [x] **Starred**
+  - [x] **Event Participations**
+  - [x] **Events**
+  - [x] **Holidays**
+  - [x] **Meetings**
+    - [x] **Meetings**
+    - [x] **Participation Status**
+  - [x] **Membership Events**
+  - [x] **Non Working Day Events**
 - [x] **Calls**
 - [x] **Chats**
   - [x] **Channels**

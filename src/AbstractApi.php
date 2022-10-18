@@ -18,8 +18,10 @@ abstract class AbstractApi
     public const TYPE_ARRAY = 'array';
     public const TYPE_BOOLEAN = 'boolean';
     public const TYPE_DATE = 'date';
+    public const TYPE_DATETIME = 'datetime';
 
     public const REGEX_DATE = '/\d{4}-\d{2}-\d{2}/';
+    public const REGEX_DATETIME = '/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z/';
 
     /**
      * @var self|null
@@ -92,6 +94,16 @@ abstract class AbstractApi
                     }
 
                     if (preg_match(self::REGEX_DATE, $value) !== 1) {
+                        return false;
+                    }
+
+                    break;
+                case self::TYPE_DATETIME:
+                    if (!is_string($value)) {
+                        return false;
+                    }
+
+                    if (preg_match(self::REGEX_DATETIME, $value) !== 1) {
                         return false;
                     }
 

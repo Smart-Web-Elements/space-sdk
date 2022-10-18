@@ -61,6 +61,14 @@ class Space extends AbstractApi
     }
 
     /**
+     * @return Calendars
+     */
+    public function calendars(): Calendars
+    {
+        return new Calendars($this->client);
+    }
+
+    /**
      * @return Calls
      */
     public function calls(): Calls

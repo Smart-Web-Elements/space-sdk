@@ -88,6 +88,17 @@
 - Added class `Applications/Webhooks/CustomHeaders`
 - Added class `Applications/Webhooks/SigningKey`
 - Added class `Applications/Webhooks/Subscriptions`
+- Added class `Calendars`
+- Added class `Calendars/AbsenceEvents`
+- Added class `Calendars/BirthdayEvents`
+- Added class `Calendars/BirthdayEvents/Starred`
+- Added class `Calendars/EventParticipations`
+- Added class `Calendars/Events`
+- Added class `Calendars/Holidays`
+- Added class `Calendars/Meetings`
+- Added class `Calendars/Meetings/Participation Status`
+- Added class `Calendars/MembershipEvents`
+- Added class `Calendars/NonWorkingDayEvents`
 - **[BREAKING]** Renamed method and class `GraphExecution` to `GraphExecutions`
 - **[BREAKING]** Renamed method and class `Job` to `Jobs`
 - **[BREAKING]** Renamed method and class `Repository` to `Repositories`
