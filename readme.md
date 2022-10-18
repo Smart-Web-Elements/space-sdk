@@ -48,12 +48,12 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
 - [x] **Absences**
   - [x] **Absences**
   - [x] **Absence Reasons**
-- [ ] Administration
-  - [ ] Support
-  - [ ] User Agreement
-    - [ ] User Agreement
-    - [ ] Enabled
-    - [ ] Status
+- [x] **Administration**
+  - [x] **Support**
+  - [x] **User Agreement**
+    - [x] **User Agreement**
+    - [x] **Enabled**
+    - [x] **Status**
 - [ ] Applications
   - [ ] Applications
   - [ ] Authorizations

@@ -21,6 +21,14 @@ class Space extends AbstractApi
     }
 
     /**
+     * @return Administration
+     */
+    public function administration(): Administration
+    {
+        return new Administration($this->client);
+    }
+
+    /**
      * @return Blog
      */
     public function blog(): Blog

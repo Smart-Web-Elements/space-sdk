@@ -46,6 +46,11 @@
 - Added class `Projects/Topics`
 - Added class `Absences`
 - Added class `Absences/AbsenceReasons`
+- Added class `Administration`
+- Added class `Administration/Support`
+- Added class `Administration/UserAgreement`
+- Added class `Administration/UserAgreement/Enabled`
+- Added class `Administration/UserAgreement/Status`
 - **[BREAKING]** Renamed method and class `GraphExecution` to `GraphExecutions`
 - **[BREAKING]** Renamed method and class `Job` to `Jobs`
 - **[BREAKING]** Renamed method and class `Repository` to `Repositories`
