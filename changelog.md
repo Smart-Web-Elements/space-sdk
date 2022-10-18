@@ -99,6 +99,10 @@
 - Added class `Calendars/Meetings/Participation Status`
 - Added class `Calendars/MembershipEvents`
 - Added class `Calendars/NonWorkingDayEvents`
+- Added class `CustomFields`
+- Added class `CustomFields/Fields`
+- Added class `CustomFields/Fields/EnumValues`
+- Added class `CustomFields/Values`
 - **[BREAKING]** Renamed method and class `GraphExecution` to `GraphExecutions`
 - **[BREAKING]** Renamed method and class `Job` to `Jobs`
 - **[BREAKING]** Renamed method and class `Repository` to `Repositories`

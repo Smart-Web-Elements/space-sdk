@@ -93,6 +93,14 @@ class Space extends AbstractApi
     }
 
     /**
+     * @return CustomFields
+     */
+    public function customFields(): CustomFields
+    {
+        return new CustomFields($this->client);
+    }
+
+    /**
      * @return Emojis
      */
     public function emojis(): Emojis

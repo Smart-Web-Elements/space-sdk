@@ -133,11 +133,11 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
     - [x] **Pinned Messages**
 - [x] **Checklists**
   - [x] **Items**
-- [ ] Custom Fields
-  - [ ] Fields
-    - [ ] Fields
-    - [ ] Enum Values
-  - [ ] Values
+- [x] **Custom Fields**
+  - [x] **Fields**
+    - [x] **Fields**
+    - [x] **Enum Values**
+  - [x] **Values**
 - [x] **Emojis**
 - [x] **External Link Patterns**
 - [x] **HTTP API Model**
