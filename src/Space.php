@@ -141,6 +141,14 @@ class Space extends AbstractApi
     }
 
     /**
+     * @return PermissionRoles
+     */
+    public function permissionRoles(): PermissionRoles
+    {
+        return new PermissionRoles($this->client);
+    }
+
+    /**
      * @return Permissions
      */
     public function permissions(): Permissions

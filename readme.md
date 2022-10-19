@@ -151,12 +151,12 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
     - [x] **Organization**
     - [x] **Domains**
     - [x] **Jet Sales**
-- [ ] Permission Roles
-    - [ ] Permission Roles
-    - [ ] 2 Fa Requirement
-    - [ ] Permissions
-    - [ ] Profiles
-    - [ ] Teams
+- [x] **Permission Roles**
+    - [x] **Permission Roles**
+    - [x] **2 Fa Requirement**
+    - [x] **Permissions**
+    - [x] **Profiles**
+    - [x] **Teams**
 - [x] **Permissions**
 - [ ] Projects *(WIP)*
   - [x] **Projects**

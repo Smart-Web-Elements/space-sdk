@@ -116,6 +116,11 @@
 - Added class `Notifications/PersonalCustomSubscriptions`
 - Added class `Notifications/PersonalSubscriptions`
 - Added class `Notifications/PrivateFeeds`
+- Added class `PermissionRoles`
+- Added class `PermissionRoles/TwoFaRequirement`
+- Added class `PermissionRoles/Permissions`
+- Added class `PermissionRoles/Profiles`
+- Added class `PermissionRoles/Teams`
 - **[BREAKING]** Renamed method and class `GraphExecution` to `GraphExecutions`
 - **[BREAKING]** Renamed method and class `Job` to `Jobs`
 - **[BREAKING]** Renamed method and class `Repository` to `Repositories`
