@@ -18,7 +18,7 @@ class Permissions extends AbstractApi
      * Grant permissions to the specified role. You can get the list of all permissions applicable to the role using
      * "Get all" method.
      *
-     * Permissions that may be checked: Superadmin, Project.Admin, Channel.Admin
+     * Permissions that may be checked: Superadmin, Projects.Admin, Channel.Admin
      *
      * @param string $roleId
      * @param array $data
@@ -43,7 +43,7 @@ class Permissions extends AbstractApi
     /**
      * Get role permissions.
      *
-     * Permissions that may be checked: Superadmin, Project.Admin, Channel.Admin
+     * Permissions that may be checked: Superadmin, Projects.Admin, Channel.Admin
      *
      * @param string $roleId
      * @param array $response
@@ -63,7 +63,7 @@ class Permissions extends AbstractApi
     /**
      * Revoke permissions from the specified role.
      *
-     * Permissions that may be checked: Superadmin, Project.Admin, Channel.Admin
+     * Permissions that may be checked: Superadmin, Projects.Admin, Channel.Admin
      *
      * @param string $roleId
      * @param array $request

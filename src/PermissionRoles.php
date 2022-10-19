@@ -20,7 +20,7 @@ class PermissionRoles extends AbstractApi
     /**
      * Create new custom permission role in specified permission context.
      *
-     * Permissions that may be checked: Superadmin, Project.Admin, Channel.Admin
+     * Permissions that may be checked: Superadmin, Projects.Admin, Channel.Admin
      *
      * @param array $data
      * @param array $response
@@ -43,7 +43,7 @@ class PermissionRoles extends AbstractApi
     /**
      * List all permission roles in permission context.
      *
-     * Permissions that may be checked: Superadmin, Project.View, Channel.ViewChannel
+     * Permissions that may be checked: Superadmin, Projects.View, Channel.ViewChannel
      *
      * @param array $data
      * @param array $response
@@ -66,7 +66,7 @@ class PermissionRoles extends AbstractApi
      * Reset permissions for the role to the standard ones. Only applicable to roles with
      * PermissionRoleType = PREDEFINED, not applicable to custom roles.
      *
-     * Permissions that may be checked: Superadmin, Project.Admin, Channel.Admin
+     * Permissions that may be checked: Superadmin, Projects.Admin, Channel.Admin
      *
      * @param string $roleId
      * @return void
@@ -85,7 +85,7 @@ class PermissionRoles extends AbstractApi
     /**
      * Update custom permission role name.
      *
-     * Permissions that may be checked: Superadmin, Project.Admin, Channel.Admin
+     * Permissions that may be checked: Superadmin, Projects.Admin, Channel.Admin
      *
      * @param string $roleId
      * @param array $data
@@ -110,7 +110,7 @@ class PermissionRoles extends AbstractApi
     /**
      * Delete custom permission role.
      *
-     * Permissions that may be checked: Superadmin, Project.Admin, Channel.Admin
+     * Permissions that may be checked: Superadmin, Projects.Admin, Channel.Admin
      *
      * @param string $roleId
      * @return void

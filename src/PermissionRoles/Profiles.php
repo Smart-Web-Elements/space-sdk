@@ -16,7 +16,7 @@ class Profiles extends AbstractApi
     /**
      * Assign permission role to the profile.
      *
-     * Permissions that may be checked: Superadmin, Project.Admin, Channel.Admin
+     * Permissions that may be checked: Superadmin, Projects.Admin, Channel.Admin
      *
      * @param string $roleId
      * @param string $profile
@@ -37,7 +37,7 @@ class Profiles extends AbstractApi
     /**
      * Get list of profiles with the specified role.
      *
-     * Permissions that may be checked: Superadmin, Project.View, Channel.ViewChannel
+     * Permissions that may be checked: Superadmin, Projects.View, Channel.ViewChannel
      *
      * @param string $roleId
      * @param array $response
@@ -57,7 +57,7 @@ class Profiles extends AbstractApi
     /**
      * Remove permission role from the profile.
      *
-     * Permissions that may be checked: Superadmin, Project.Admin, Channel.Admin
+     * Permissions that may be checked: Superadmin, Projects.Admin, Channel.Admin
      *
      * @param string $roleId
      * @param string $profile

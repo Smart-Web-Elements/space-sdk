@@ -46,7 +46,7 @@ class UiExtensions extends AbstractApi
      * AdminProject for project context, AdminChannel for channel context. Users will still be able to enable
      * application UI individually.
      *
-     * Permissions that may be checked: Applications.View, Superadmin, Project.Admin, Channel.Admin
+     * Permissions that may be checked: Applications.View, Superadmin, Projects.Admin, Channel.Admin
      *
      * @param string $application
      * @param array $data
@@ -98,7 +98,7 @@ class UiExtensions extends AbstractApi
      * AdminProject for project context, AdminChannel for channel context. Users will still be able to disable
      * application UI individually.
      *
-     * Permissions that may be checked: Applications.View, Superadmin, Project.Admin, Channel.Admin
+     * Permissions that may be checked: Applications.View, Superadmin, Projects.Admin, Channel.Admin
      *
      * @param string $application
      * @param array $data

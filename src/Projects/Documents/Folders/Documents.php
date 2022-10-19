@@ -1,0 +1,38 @@
+<?php
+
+namespace Swe\SpaceSDK\Projects\Documents\Folders;
+
+use GuzzleHttp\Exception\GuzzleException;
+use Swe\SpaceSDK\AbstractApi;
+
+/**
+ * Class Documents
+ *
+ * @package Swe\SpaceSDK\Projects\Documents\Folders
+ * @author Luca Braun <l.braun@s-w-e.com>
+ */
+class Documents extends AbstractApi
+{
+    /**
+     * @param string $project
+     * @param string $folder
+     * @param array $request
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     */
+    public function listDocumentsInFolder(
+        string $project,
+        string $folder,
+        array $request = [],
+        array $response = []
+    ): array {
+        $uri = 'projects/{project}/documents/folders/{folder}/documents';
+        $uriArguments = [
+            'project' => $project,
+            'folder' => $folder,
+        ];
+
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+    }
+}

@@ -119,6 +119,22 @@ class HttpClient
 
     /**
      * @param string $uri
+     * @param array $data
+     * @param array $responseFields
+     * @param array $requestFields
+     * @return array
+     * @throws GuzzleException
+     */
+    public function put(string $uri, array $data = [], array $responseFields = [], array $requestFields = []): array
+    {
+        $response = $this->getClient()->put($this->getUri($uri, $responseFields, $requestFields), ['json' => $data]);
+        $jsonResponse = json_decode($response->getBody()->getContents(), true);
+
+        return is_array($jsonResponse) ? $jsonResponse : [$jsonResponse];
+    }
+
+    /**
+     * @param string $uri
      * @param array $responseFields
      * @param array $requestFields
      * @return string

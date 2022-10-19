@@ -16,7 +16,7 @@ class Teams extends AbstractApi
     /**
      * Assign permission role to the team.
      *
-     * Permissions that may be checked: Superadmin, Project.Admin, Channel.Admin
+     * Permissions that may be checked: Superadmin, Projects.Admin, Channel.Admin
      *
      * @param string $roleId
      * @param string $team
@@ -37,7 +37,7 @@ class Teams extends AbstractApi
     /**
      * Get list of teams with the specified role.
      *
-     * Permissions that may be checked: Superadmin, Project.View, Channel.ViewChannel
+     * Permissions that may be checked: Superadmin, Projects.View, Channel.ViewChannel
      *
      * @param string $roleId
      * @param array $response
@@ -57,7 +57,7 @@ class Teams extends AbstractApi
     /**
      * Remove permission role from the team.
      *
-     * Permissions that may be checked: Superadmin, Project.Admin, Channel.Admin
+     * Permissions that may be checked: Superadmin, Projects.Admin, Channel.Admin
      *
      * @param string $roleId
      * @param string $team

@@ -5,16 +5,23 @@ namespace Swe\SpaceSDK;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
-use Swe\SpaceSDK\Project\Automation;
-use Swe\SpaceSDK\Project\PrivateProjects;
-use Swe\SpaceSDK\Project\Repositories;
-use Swe\SpaceSDK\Project\Secrets;
-use Swe\SpaceSDK\Project\Tags;
-use Swe\SpaceSDK\Project\Topics;
-use Swe\SpaceSDK\Project\Vault;
+use Swe\SpaceSDK\Projects\Access;
+use Swe\SpaceSDK\Projects\Automation;
+use Swe\SpaceSDK\Projects\CodeReviews;
+use Swe\SpaceSDK\Projects\Documents;
+use Swe\SpaceSDK\Projects\Packages;
+use Swe\SpaceSDK\Projects\Params;
+use Swe\SpaceSDK\Projects\Planning;
+use Swe\SpaceSDK\Projects\PrivateProjects;
+use Swe\SpaceSDK\Projects\Repositories;
+use Swe\SpaceSDK\Projects\Responsibilities;
+use Swe\SpaceSDK\Projects\Secrets;
+use Swe\SpaceSDK\Projects\Tags;
+use Swe\SpaceSDK\Projects\Topics;
+use Swe\SpaceSDK\Projects\Vault;
 
 /**
- * Class Project
+ * Class Projects
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -225,11 +232,11 @@ class Projects extends AbstractApi
     }
 
     /**
-     * @return Repositories
+     * @return Access
      */
-    public function repositories(): Repositories
+    public function access(): Access
     {
-        return new Repositories($this->client);
+        return new Access($this->client);
     }
 
     /**
@@ -241,11 +248,67 @@ class Projects extends AbstractApi
     }
 
     /**
+     * @return CodeReviews
+     */
+    public function codeReviews(): CodeReviews
+    {
+        return new CodeReviews($this->client);
+    }
+
+    /**
+     * @return Documents
+     */
+    public function documents(): Documents
+    {
+        return new Documents($this->client);
+    }
+
+    /**
+     * @return Packages
+     */
+    public function packages(): Packages
+    {
+        return new Packages($this->client);
+    }
+
+    /**
+     * @return Params
+     */
+    public function params(): Params
+    {
+        return new Params($this->client);
+    }
+
+    /**
+     * @return Planning
+     */
+    public function planning(): Planning
+    {
+        return new Planning($this->client);
+    }
+
+    /**
      * @return PrivateProjects
      */
     public function privateProjects(): PrivateProjects
     {
         return new PrivateProjects($this->client);
+    }
+
+    /**
+     * @return Repositories
+     */
+    public function repositories(): Repositories
+    {
+        return new Repositories($this->client);
+    }
+
+    /**
+     * @return Responsibilities
+     */
+    public function responsibilities(): Responsibilities
+    {
+        return new Responsibilities($this->client);
     }
 
     /**
@@ -265,18 +328,18 @@ class Projects extends AbstractApi
     }
 
     /**
-     * @return Vault
-     */
-    public function vault(): Vault
-    {
-        return new Vault($this->client);
-    }
-
-    /**
      * @return Topics
      */
     public function topics(): Topics
     {
         return new Topics($this->client);
+    }
+
+    /**
+     * @return Vault
+     */
+    public function vault(): Vault
+    {
+        return new Vault($this->client);
     }
 }

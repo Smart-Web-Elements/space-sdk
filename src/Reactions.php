@@ -14,7 +14,7 @@ class Reactions extends AbstractApi
 {
     /**
      * Permissions that may be checked: Channel.AddMessageReactions, Profile.DirectMessages.AddReactions,
-     * Article.Comments.AddReactions, Project.CodeReview.AddReactions
+     * Article.Comments.AddReactions, Projects.CodeReview.AddReactions
      *
      * @param string $item
      * @param string $emoji
@@ -34,7 +34,7 @@ class Reactions extends AbstractApi
 
     /**
      * Permissions that may be checked: Channel.ViewMessageReactions, Profile.DirectMessages.ViewReactions,
-     * Project.CodeReview.ViewReactions, Article.Comments.ViewReactions
+     * Projects.CodeReview.ViewReactions, Article.Comments.ViewReactions
      *
      * @param string $item
      * @param array $response
@@ -53,7 +53,7 @@ class Reactions extends AbstractApi
 
     /**
      * Permissions that may be checked: Channel.ViewMessageReactions, Profile.DirectMessages.ViewReactions,
-     * Project.CodeReview.ViewReactions, Article.Comments.ViewReactions
+     * Projects.CodeReview.ViewReactions, Article.Comments.ViewReactions
      *
      * @param string $item
      * @param string $emoji
@@ -74,7 +74,7 @@ class Reactions extends AbstractApi
 
     /**
      * Permissions that may be checked: Channel.AddMessageReactions, Profile.DirectMessages.AddReactions,
-     * Article.Comments.AddReactions, Project.CodeReview.AddReactions
+     * Article.Comments.AddReactions, Projects.CodeReview.AddReactions
      *
      * @param string $item
      * @param string $emoji

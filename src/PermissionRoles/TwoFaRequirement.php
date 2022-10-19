@@ -16,7 +16,7 @@ class TwoFaRequirement extends AbstractApi
     /**
      * Get 2FA requirement for permission role.
      *
-     * Permissions that may be checked: Superadmin, Project.Admin, Channel.Admin
+     * Permissions that may be checked: Superadmin, Projects.Admin, Channel.Admin
      *
      * @param string $roleId
      * @param array $response
@@ -36,7 +36,7 @@ class TwoFaRequirement extends AbstractApi
     /**
      * Set 2FA requirement for permission role.
      *
-     * Permissions that may be checked: Superadmin, Project.Admin, Channel.Admin
+     * Permissions that may be checked: Superadmin, Projects.Admin, Channel.Admin
      *
      * @param string $roleId
      * @param array $data

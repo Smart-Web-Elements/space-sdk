@@ -1,0 +1,66 @@
+<?php
+
+namespace Swe\SpaceSDK\Projects\CodeReviews;
+
+use GuzzleHttp\Exception\GuzzleException;
+use Swe\SpaceSDK\AbstractApi;
+use Swe\SpaceSDK\Exception\MissingArgumentException;
+
+/**
+ * Class Revisions
+ *
+ * @package Swe\SpaceSDK\Projects\CodeReviews
+ * @author Luca Braun <l.braun@s-w-e.com>
+ */
+class Revisions extends AbstractApi
+{
+    /**
+     * Permissions that may be checked: Project.CodeReview.Edit
+     *
+     * @param string $project
+     * @param string $reviewId
+     * @param array $data
+     * @return void
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    public function addRevisionsToReview(string $project, string $reviewId, array $data): void
+    {
+        $uri = 'projects/{project}/code-reviews/{reviewId}/revisions';
+        $required = [
+            'revisions' => self::TYPE_ARRAY,
+        ];
+        $this->throwIfInvalid($required, $data);
+        $uriArguments = [
+            'project' => $project,
+            'reviewId' => $reviewId,
+        ];
+
+        $this->client->post($this->buildUrl($uri, $uriArguments), $data);
+    }
+
+    /**
+     * Permissions that may be checked: Project.CodeReview.Edit
+     *
+     * @param string $project
+     * @param string $reviewId
+     * @param array $request
+     * @return void
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    public function removeRevisionsFromReview(string $project, string $reviewId, array $request): void
+    {
+        $uri = 'projects/{project}/code-reviews/{reviewId}/revisions';
+        $required = [
+            'revisions' => self::TYPE_ARRAY,
+        ];
+        $this->throwIfInvalid($required, $request);
+        $uriArguments = [
+            'project' => $project,
+            'reviewId' => $reviewId,
+        ];
+
+        $this->client->delete($this->buildUrl($uri, $uriArguments), $request);
+    }
+}
