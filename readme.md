@@ -141,12 +141,12 @@ This package uses [Semantic Versioning](https://semver.org/lang/) as soon as rea
 - [x] **Emojis**
 - [x] **External Link Patterns**
 - [x] **HTTP API Model**
-- [ ] Notifications
-    - [ ] Notifications
-    - [ ] Channel Subscriptions
-    - [ ] Personal Custom Subscriptions
-    - [ ] Personal Subscriptions
-    - [ ] Private Feeds
+- [x] **Notifications**
+    - [x] **Notifications**
+    - [x] **Channel Subscriptions**
+    - [x] **Personal Custom Subscriptions**
+    - [x] **Personal Subscriptions**
+    - [x] **Private Feeds**
 - [x] **Organization**
     - [x] **Organization**
     - [x] **Domains**

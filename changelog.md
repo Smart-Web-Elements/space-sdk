@@ -111,6 +111,11 @@
 - Added class `PublicHolidays/Holidays`
 - Added class `PublicHolidays/Holidays/ProfileHolidays`
 - Added class `PublicHolidays/Holidays/RelatedHolidays`
+- Added class `Notifications`
+- Added class `Notifications/ChannelSubscriptions`
+- Added class `Notifications/PersonalCustomSubscriptions`
+- Added class `Notifications/PersonalSubscriptions`
+- Added class `Notifications/PrivateFeeds`
 - **[BREAKING]** Renamed method and class `GraphExecution` to `GraphExecutions`
 - **[BREAKING]** Renamed method and class `Job` to `Jobs`
 - **[BREAKING]** Renamed method and class `Repository` to `Repositories`

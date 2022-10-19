@@ -125,6 +125,14 @@ class Space extends AbstractApi
     }
 
     /**
+     * @return Notifications
+     */
+    public function notifications(): Notifications
+    {
+        return new Notifications($this->client);
+    }
+
+    /**
      * @return Organization
      */
     public function organization(): Organization
