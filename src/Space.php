@@ -189,6 +189,14 @@ class Space extends AbstractApi
     }
 
     /**
+     * @return TeamDirectory
+     */
+    public function teamDirectory(): TeamDirectory
+    {
+        return new TeamDirectory($this->client);
+    }
+
+    /**
      * @return ToDoItems
      */
     public function toDoItems(): ToDoItems

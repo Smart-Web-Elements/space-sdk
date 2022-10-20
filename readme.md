@@ -1,5 +1,6 @@
 # JetBrains Space SDK
 
+[![GitHub issues](https://img.shields.io/github/issues/Smart-Web-Elements/space-sdk)](https://github.com/Smart-Web-Elements/space-sdk/issues)
 [![Packagist Downloads](https://img.shields.io/packagist/dt/swe/space-sdk)](https://packagist.org/packages/swe/space-sdk)
 [![Packagist Version](https://img.shields.io/packagist/v/swe/space-sdk)](https://packagist.org/packages/swe/space-sdk)
 [![License](https://img.shields.io/packagist/l/swe/space-sdk)](https://packagist.org/packages/swe/space-sdk)

@@ -168,6 +168,10 @@ class HttpClient
         $string = [];
 
         foreach ($fields as $field => $value) {
+            if (is_bool($value)) {
+                $value = $value ? 'true' : 'false';
+            }
+
             $string[] = $field . '=' . $value;
         }
 
@@ -186,6 +190,10 @@ class HttpClient
             if (is_array($value)) {
                 $result[] = $field . '(' . $this->parseResponseFields($value) . ')';
                 continue;
+            }
+
+            if (is_bool($value)) {
+                $value = $value ? 'true' : 'false';
             }
 
             $result[] = $value;
