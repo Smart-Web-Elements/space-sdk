@@ -54,7 +54,7 @@ abstract class AbstractApi
      * @param array $fields
      * @return bool
      */
-    public function validateRequiredPost(array $required, array $fields): bool
+    protected function validateRequiredPost(array $required, array $fields): bool
     {
         foreach ($required as $field => $type) {
             if (!isset($fields[$field])) {

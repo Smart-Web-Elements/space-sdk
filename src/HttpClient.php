@@ -182,13 +182,13 @@ class HttpClient
      * @param array $fields
      * @return string
      */
-    protected function parseResponseFields(array $fields = []): string
+    protected function parseResponseFields(array $fields = [], bool $first = true): string
     {
         $result = [];
 
         foreach ($fields as $field => $value) {
             if (is_array($value)) {
-                $result[] = $field . '(' . $this->parseResponseFields($value) . ')';
+                $result[] = $field . '(' . $this->parseResponseFields($value, false) . ')';
                 continue;
             }
 
@@ -203,7 +203,9 @@ class HttpClient
             return '';
         }
 
-        return implode(',', $result);
+        $result = implode(',', $result);
+
+        return $first ? '$fields=' . $result : $result;
     }
 
     /**

@@ -24,9 +24,18 @@
     "ext-json": "*",
     "guzzlehttp/guzzle": "^7"
   },
+  "require-dev": {
+    "phpunit/phpunit": "^9",
+    "vlucas/phpdotenv": "^5.4"
+  },
   "autoload": {
     "psr-4": {
       "Swe\\SpaceSDK\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Swe\\SpaceSDK\\Tests\\": "tests/"
     }
   },
   "support": {

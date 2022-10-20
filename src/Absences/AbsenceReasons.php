@@ -12,7 +12,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Absences
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class AbsencesReasons extends AbstractApi
+class AbsenceReasons extends AbstractApi
 {
     /**
      * Create a new absence reason.

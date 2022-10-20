@@ -3,7 +3,7 @@
 namespace Swe\SpaceSDK;
 
 use GuzzleHttp\Exception\GuzzleException;
-use Swe\SpaceSDK\Absences\AbsencesReasons;
+use Swe\SpaceSDK\Absences\AbsenceReasons;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
@@ -189,10 +189,10 @@ class Absences extends AbstractApi
     }
 
     /**
-     * @return AbsencesReasons
+     * @return AbsenceReasons
      */
-    public function absenceReasons(): AbsencesReasons
+    public function absenceReasons(): AbsenceReasons
     {
-        return new AbsencesReasons($this->client);
+        return new AbsenceReasons($this->client);
     }
 }
