@@ -67,7 +67,7 @@ class Projects extends AbstractApi
     {
         $uri = 'projects';
 
-        return $this->client->get($this->buildUrl($uri), $request, $response);
+        return $this->client->get($this->buildUrl($uri), $response, $request);
     }
 
     /**
@@ -88,7 +88,7 @@ class Projects extends AbstractApi
             'profile' => $profile,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
     }
 
     /**
@@ -109,7 +109,7 @@ class Projects extends AbstractApi
             'member' => $member,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
     }
 
     /**
@@ -128,7 +128,7 @@ class Projects extends AbstractApi
             'rightCode' => $rightCode,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
     }
 
     /**
@@ -147,7 +147,7 @@ class Projects extends AbstractApi
             'right' => $right,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
     }
 
     /**
@@ -168,7 +168,7 @@ class Projects extends AbstractApi
             'team' => $team,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
     }
 
     /**

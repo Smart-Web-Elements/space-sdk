@@ -78,7 +78,7 @@ class Repositories extends AbstractApi
             'repository' => $repository,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $request, $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $response, $request);
     }
 
     /**
@@ -140,7 +140,7 @@ class Repositories extends AbstractApi
             'repository' => $repository,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
     }
 
     /**

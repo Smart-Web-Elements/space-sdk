@@ -31,6 +31,6 @@ class PinnedMessages extends AbstractApi
         ];
         $this->throwIfInvalid($required, $request);
 
-        return $this->client->get($this->buildUrl($uri), $request, $response);
+        return $this->client->get($this->buildUrl($uri), $response, $request);
     }
 }
