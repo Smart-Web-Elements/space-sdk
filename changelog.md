@@ -1,5 +1,9 @@
 # Space SDK Changelog
 
+## Space SDK v1.0.1
+
+- Fixed some issues with switched response and request fields
+
 ## Space SDK v1.0.0 [BREAKING]
 
 - Added missing classes and methods
