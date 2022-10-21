@@ -11,6 +11,7 @@ use Swe\SpaceSDK\Projects\Automation\GraphExecutions;
 use Swe\SpaceSDK\Projects\Automation\JobExecutions;
 use Swe\SpaceSDK\Projects\Automation\Jobs;
 use Swe\SpaceSDK\Projects\Automation\StepExecutions;
+use Swe\SpaceSDK\Projects\Automation\Subscriptions;
 
 /**
  * Class Automation
@@ -74,5 +75,13 @@ class Automation extends AbstractApi
     public function stepExecutions(): StepExecutions
     {
         return new StepExecutions($this->client);
+    }
+
+    /**
+     * @return Subscriptions
+     */
+    public function subscriptions(): Subscriptions
+    {
+        return new Subscriptions($this->client);
     }
 }
