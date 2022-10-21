@@ -104,13 +104,22 @@ class SpaceTestCase extends ClientTestCase
         $deprecated = isset($endpoint['deprecation']) && !empty($endpoint['deprecation']);
         $experimental = isset($endpoint['experimental']) && !empty($endpoint['experimental']);
 
-        $spaceMethod = $endpoint['functionName'];
+        $method = $endpoint['functionName'];
 
-        $messageTemplate = 'Missing method "' . $class::class . '::%s" -> %s';
-        $spaceMethodExists = method_exists($class, $endpoint['functionName']);
+        $missingTemplate = 'Missing method "' . $class::class . '::%s" -> %s';
+        $deprecatedTemplate = 'method "' . $class::class . '::%s" is deprecated';
+        $methodExists = method_exists($class, $endpoint['functionName']);
 
-        if (!$spaceMethodExists && !$deprecated && !$experimental) {
-            $this->fail(sprintf($messageTemplate, $spaceMethod, $endpoint['displayName']));
+        if (!$methodExists) {
+            if (!$deprecated && !$experimental) {
+                $this->fail(sprintf($missingTemplate, $method, $endpoint['displayName']));
+            }
+
+            return;
+        }
+
+        if ($deprecated) {
+            $this->fail(sprintf($deprecatedTemplate, $method));
         }
     }
 
