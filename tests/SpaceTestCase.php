@@ -25,6 +25,13 @@ class SpaceTestCase extends ClientTestCase
     protected static string $prefix = '\\Swe\\SpaceSDK';
 
     /**
+     * @var string[]
+     */
+    private static array $exceptionClassNames = [
+        'Readonly' => 'ClassReadonly',
+    ];
+
+    /**
      * @return void
      */
     public static function setUpBeforeClass(): void
@@ -88,10 +95,34 @@ class SpaceTestCase extends ClientTestCase
         }
 
         if (!empty($resource['nestedResources'])) {
-            foreach ($resource['nestedResources'] as $resource) {
-                $this->validateClass($resource, $namespace);
+            foreach ($resource['nestedResources'] as $nestedResource) {
+                $this->validateNestedMethods($class, $nestedResource);
+                $this->validateClass($nestedResource, $namespace);
             }
         }
+    }
+
+    /**
+     * @param AbstractApi $parent
+     * @param array $nested
+     * @return void
+     */
+    private function validateNestedMethods(AbstractApi $parent, array $nested): void
+    {
+        if ($this->isClassDeprecated($nested) || stripos($nested['displayPlural'], '(deprecated)') !== false) {
+            return;
+        }
+
+        $className = $this->displayNameToMethod($nested['displayPlural']);
+
+        if (in_array($className, self::$exceptionClassNames)) {
+            $className = array_flip(self::$exceptionClassNames)[$className];
+        }
+
+        $method = lcfirst($className);
+        $missingTemplate = 'Missing method "' . get_class($parent) . '::%s"';
+
+        $this->assertTrue(method_exists($parent, $method), sprintf($missingTemplate, $method));
     }
 
     /**
@@ -124,21 +155,6 @@ class SpaceTestCase extends ClientTestCase
     }
 
     /**
-     * @param string $id
-     * @return string
-     */
-    private function idToNamespace(string $id): string
-    {
-        $parts = explode('_', $id);
-
-        foreach ($parts as $index => $part) {
-            $parts[$index] = $this->displayNameToMethod($part);
-        }
-
-        return static::$prefix . '\\' . implode('\\', array_filter($parts));
-    }
-
-    /**
      * @param string $displayPlural
      * @param string $parentClass
      * @return string
@@ -158,7 +174,10 @@ class SpaceTestCase extends ClientTestCase
         $method = str_replace('2', 'two', $method);
         $method = str_replace(['-', '/'], ' ', $method);
         $method = ucwords($method);
-        $method = str_replace('Readonly', 'ClassReadonly', $method);
+
+        if (isset(self::$exceptionClassNames[$method])) {
+            $method = self::$exceptionClassNames[$method];
+        }
 
         return str_replace([' ', '?'], '', $method);
     }

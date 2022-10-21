@@ -7,8 +7,10 @@ use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Chats\Channels\Administrator;
 use Swe\SpaceSDK\Chats\Channels\Attachments;
 use Swe\SpaceSDK\Chats\Channels\Conversations;
+use Swe\SpaceSDK\Chats\Channels\Description;
 use Swe\SpaceSDK\Chats\Channels\Icon;
 use Swe\SpaceSDK\Chats\Channels\Name;
+use Swe\SpaceSDK\Chats\Channels\Subscribers;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
@@ -164,19 +166,11 @@ class Channels extends AbstractApi
     }
 
     /**
-     * @return Name
+     * @return Attachments
      */
-    public function name(): Name
+    public function attachments(): Attachments
     {
-        return new Name($this->client);
-    }
-
-    /**
-     * @return Icon
-     */
-    public function icon(): Icon
-    {
-        return new Icon($this->client);
+        return new Attachments($this->client);
     }
 
     /**
@@ -188,10 +182,34 @@ class Channels extends AbstractApi
     }
 
     /**
-     * @return Attachments
+     * @return Description
      */
-    public function attachments(): Attachments
+    public function description(): Description
     {
-        return new Attachments($this->client);
+        return new Description($this->client);
+    }
+
+    /**
+     * @return Icon
+     */
+    public function icon(): Icon
+    {
+        return new Icon($this->client);
+    }
+
+    /**
+     * @return Name
+     */
+    public function name(): Name
+    {
+        return new Name($this->client);
+    }
+
+    /**
+     * @return Subscribers
+     */
+    public function subscribers(): Subscribers
+    {
+        return new Subscribers($this->client);
     }
 }

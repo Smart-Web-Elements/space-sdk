@@ -172,7 +172,7 @@ class Fields extends AbstractApi
     /**
      * @return EnumValues
      */
-    public function enumFields(): EnumValues
+    public function enumValues(): EnumValues
     {
         return new EnumValues($this->client);
     }
