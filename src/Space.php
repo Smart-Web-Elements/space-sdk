@@ -197,6 +197,14 @@ class Space extends AbstractApi
     }
 
     /**
+     * @return TimeTracking
+     */
+    public function timeTracking(): TimeTracking
+    {
+        return new TimeTracking($this->client);
+    }
+
+    /**
      * @return ToDoItems
      */
     public function toDoItems(): ToDoItems
