@@ -15,10 +15,10 @@ job("Build and run tests") {
         shellScript {
             interpreter = "/bin/bash"
             content = """
-                touch ${$}JB_SPACE_FILE_SHARE_PATH/.env
-                echo "CLIENT_ID=\"${$}SPACE_CLIENT_ID\"" >> ${$}JB_SPACE_FILE_SHARE_PATH/.env
-                echo "CLIENT_SECRET=\"${$}SPACE_CLIENT_SECRET\"" >> ${$}JB_SPACE_FILE_SHARE_PATH/.env
-                echo "URL=\"${$}SPACE_URL\"" >> ${$}JB_SPACE_FILE_SHARE_PATH/.env
+                touch ${'$'}JB_SPACE_FILE_SHARE_PATH/.env
+                echo "CLIENT_ID=\"${'$'}SPACE_CLIENT_ID\"" >> ${'$'}JB_SPACE_FILE_SHARE_PATH/.env
+                echo "CLIENT_SECRET=\"${'$'}SPACE_CLIENT_SECRET\"" >> ${'$'}JB_SPACE_FILE_SHARE_PATH/.env
+                echo "URL=\"${'$'}SPACE_URL\"" >> ${'$'}JB_SPACE_FILE_SHARE_PATH/.env
             """
         }
     }
