@@ -2,7 +2,6 @@
 
 namespace Swe\SpaceSDK\Tests;
 
-use Dotenv\Dotenv;
 use PHPUnit\Framework\TestCase;
 use Swe\SpaceSDK\HttpClient;
 
@@ -19,9 +18,6 @@ class HttpClientTest extends TestCase
      */
     public function testCanConnect(): HttpClient
     {
-        $dotEnv = Dotenv::createImmutable(dirname(__DIR__));
-        $dotEnv->load();
-
         $clientId = $_ENV['CLIENT_ID'];
         $clientSecret = $_ENV['CLIENT_SECRET'];
         $url = $_ENV['URL'];
