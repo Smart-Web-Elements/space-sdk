@@ -21,7 +21,7 @@ class Unfurls extends AbstractApi
      * @throws MissingArgumentException
      * @throws GuzzleException
      */
-    public function blockLinkUnfurling(array $data): void
+    public function blockUnfurl(array $data): void
     {
         $uri = 'unfurls/block-unfurl';
         $required = [
@@ -41,7 +41,7 @@ class Unfurls extends AbstractApi
      * @throws MissingArgumentException
      * @throws GuzzleException
      */
-    public function blockLinkUnfurlingForOrganization(array $data): void
+    public function blockUnfurlGlobal(array $data): void
     {
         $uri = 'unfurls/block-unfurl-global';
         $required = [
@@ -58,7 +58,7 @@ class Unfurls extends AbstractApi
      * @return bool
      * @throws GuzzleException
      */
-    public function checkIfUnfurlIsBlocked(string $link): bool
+    public function checkBlocked(string $link): bool
     {
         $uri = 'unfurls/check-blocked';
         $data = [
@@ -76,7 +76,7 @@ class Unfurls extends AbstractApi
      * @throws MissingArgumentException
      * @throws GuzzleException
      */
-    public function unblockLinkUnfurling(array $data): void
+    public function unblockUnfurl(array $data): void
     {
         $uri = 'unfurls/unblock-unfurl';
         $required = [
@@ -96,7 +96,7 @@ class Unfurls extends AbstractApi
      * @throws MissingArgumentException
      * @throws GuzzleException
      */
-    public function unblockLinkUnfurlingForOrganization(array $data): void
+    public function unblockUnfurlGlobal(array $data): void
     {
         $uri = 'unfurls/unblock-unfurl-global';
         $required = [
@@ -114,7 +114,7 @@ class Unfurls extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function listBlockedUnfurls(array $request = [], array $response = []): array
+    public function listBlocked(array $request = [], array $response = []): array
     {
         $uri = 'unfurls/list-blocked';
 
