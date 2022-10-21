@@ -8,7 +8,12 @@ job("Build and run tests") {
         }
     }
 
-    container(displayName = "Setup environment variables", image = "php:7.4-cli") {
+    failOn {
+        testFailed { enabled = false }
+        nonZeroExitCode { enabled = false }
+    }
+
+    container(displayName = "Setup environment variables", image = "mistermarlu/deployment:php-7.4") {
         env["SPACE_CLIENT_ID"] = Secrets("space_client_id")
         env["SPACE_CLIENT_SECRET"] = Secrets("space_client_secret")
         env["SPACE_URL"] = Params("space_url")
@@ -24,21 +29,21 @@ job("Build and run tests") {
     }
 
     parallel {
-        container(displayName = "Test PHP 7.4", image = "php:7.4-cli") {
+        container(displayName = "Test PHP 7.4", image = "mistermarlu/deployment:php-7.4") {
             shellScript {
                 interpreter = "/bin/bash"
                 location = "./start-test.sh"
             }
         }
 
-        container(displayName = "Test PHP 8.0", image = "php:8.0-cli") {
+        container(displayName = "Test PHP 8.0", image = "mistermarlu/deployment:php-8.0") {
             shellScript {
                 interpreter = "/bin/bash"
                 location = "./start-test.sh"
             }
         }
 
-        container(displayName = "Test PHP 8.1", image = "php:8.1-cli") {
+        container(displayName = "Test PHP 8.1", image = "mistermarlu/deployment:php-8.1") {
             shellScript {
                 interpreter = "/bin/bash"
                 location = "./start-test.sh"
