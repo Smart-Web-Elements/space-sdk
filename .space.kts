@@ -8,11 +8,6 @@ job("Build and run tests") {
         }
     }
 
-    failOn {
-        testFailed { enabled = false }
-        nonZeroExitCode { enabled = false }
-    }
-
     parallel {
         container(displayName = "Test PHP 7.4", image = "jitesoft/phpunit:7.4") {
         env["SPACE_CLIENT_ID"] = Secrets("space_client_id")
