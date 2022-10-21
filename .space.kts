@@ -10,9 +10,9 @@ job("Build and run tests") {
 
     parallel {
         container(displayName = "Test PHP 7.4", image = "jitesoft/phpunit:7.4") {
-        env["CLIENT_ID"] = Secrets("space_client_id")
-        env["CLIENT_SECRET"] = Secrets("space_client_secret")
-        env["URL"] = Params("space_url")
+            env["CLIENT_ID"] = Secrets("space_client_id")
+            env["CLIENT_SECRET"] = Secrets("space_client_secret")
+            env["URL"] = Params("space_url")
             shellScript {
                 interpreter = "/bin/sh"
                 location = "./start-test.sh"
@@ -20,9 +20,9 @@ job("Build and run tests") {
         }
 
         container(displayName = "Test PHP 8.0", image = "jitesoft/phpunit:8.0") {
-        env["CLIENT_ID"] = Secrets("space_client_id")
-        env["CLIENT_SECRET"] = Secrets("space_client_secret")
-        env["URL"] = Params("space_url")
+            env["CLIENT_ID"] = Secrets("space_client_id")
+            env["CLIENT_SECRET"] = Secrets("space_client_secret")
+            env["URL"] = Params("space_url")
             shellScript {
                 interpreter = "/bin/sh"
                 location = "./start-test.sh"
@@ -30,9 +30,9 @@ job("Build and run tests") {
         }
 
         container(displayName = "Test PHP 8.1", image = "jitesoft/phpunit:8.1") {
-        env["CLIENT_ID"] = Secrets("space_client_id")
-        env["CLIENT_SECRET"] = Secrets("space_client_secret")
-        env["URL"] = Params("space_url")
+            env["CLIENT_ID"] = Secrets("space_client_id")
+            env["CLIENT_SECRET"] = Secrets("space_client_secret")
+            env["URL"] = Params("space_url")
             shellScript {
                 interpreter = "/bin/sh"
                 location = "./start-test.sh"
