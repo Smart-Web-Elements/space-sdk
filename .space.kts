@@ -29,7 +29,7 @@ job("Build and run tests") {
                 interpreter = "/bin/bash"
                 content = """
                     ./install-composer.sh
-                    composer.phar update
+                    ./composer.phar update
                     php ./vendor/bin/phpunit --configuration ./phpunit.xml
                 """
             }
@@ -40,7 +40,7 @@ job("Build and run tests") {
                 interpreter = "/bin/bash"
                 content = """
                     ./install-composer.sh
-                    composer.phar update
+                    ./composer.phar update
                     php ./vendor/bin/phpunit --configuration ./phpunit.xml
                 """
             }
@@ -51,7 +51,7 @@ job("Build and run tests") {
                 interpreter = "/bin/bash"
                 content = """
                     ./install-composer.sh
-                    composer.phar update
+                    ./composer.phar update
                     php ./vendor/bin/phpunit --configuration ./phpunit.xml
                 """
             }
