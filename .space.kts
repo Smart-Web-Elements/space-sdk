@@ -29,21 +29,21 @@ job("Build and run tests") {
     }
 
     parallel {
-        container(displayName = "Test PHP 7.4", image = "mistermarlu/deployment:php-7.4") {
+        container(displayName = "Test PHP 7.4", image = "jitesoft/phpunit:7.4") {
             shellScript {
                 interpreter = "/bin/bash"
                 location = "./start-test.sh"
             }
         }
 
-        container(displayName = "Test PHP 8.0", image = "mistermarlu/deployment:php-8.0") {
+        container(displayName = "Test PHP 8.0", image = "jitesoft/phpunit:8.0") {
             shellScript {
                 interpreter = "/bin/bash"
                 location = "./start-test.sh"
             }
         }
 
-        container(displayName = "Test PHP 8.1", image = "mistermarlu/deployment:php-8.1") {
+        container(displayName = "Test PHP 8.1", image = "jitesoft/phpunit:8.1") {
             shellScript {
                 interpreter = "/bin/bash"
                 location = "./start-test.sh"
