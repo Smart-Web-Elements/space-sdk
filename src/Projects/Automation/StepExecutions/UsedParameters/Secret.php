@@ -19,7 +19,7 @@ class Secret extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getParam(string $secretId, array $response = []): array
+    public function getSecret(string $secretId, array $response = []): array
     {
         $uri = 'projects/automation/step-executions/used-parameters/secret/{secretId}';
         $uriArguments = [

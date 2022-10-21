@@ -167,7 +167,7 @@ class Blog extends AbstractApi
      * @return void
      * @throws GuzzleException
      */
-    public function unpublishBlogPost(string $id): void
+    public function unpublishArticle(string $id): void
     {
         $uri = 'blog/{id}';
         $uriArguments = [

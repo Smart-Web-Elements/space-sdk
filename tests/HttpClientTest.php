@@ -3,7 +3,6 @@
 namespace Swe\SpaceSDK\Tests;
 
 use Dotenv\Dotenv;
-use GuzzleHttp\Exception\GuzzleException;
 use PHPUnit\Framework\TestCase;
 use Swe\SpaceSDK\HttpClient;
 
@@ -17,7 +16,6 @@ class HttpClientTest extends TestCase
 {
     /**
      * @return HttpClient
-     * @throws GuzzleException
      */
     public function testCanConnect(): HttpClient
     {

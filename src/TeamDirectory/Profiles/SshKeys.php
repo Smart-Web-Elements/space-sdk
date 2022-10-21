@@ -25,7 +25,7 @@ class SshKeys extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function associateSshKeyWithProfile(string $profile, array $data): void
+    public function addSshKey(string $profile, array $data): void
     {
         $uri = 'team-directory/profiles/{profile}/ssh-keys';
         $required = [
@@ -49,7 +49,7 @@ class SshKeys extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getAllSshKeys(string $profile, array $response = []): array
+    public function sshKeys(string $profile, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/ssh-keys';
         $uriArguments = [
@@ -69,7 +69,7 @@ class SshKeys extends AbstractApi
      * @return void
      * @throws GuzzleException
      */
-    public function removeAssociationBetweenSshKeyAndProfile(string $profile, string $fingerprint): void
+    public function deleteSshKey(string $profile, string $fingerprint): void
     {
         $uri = 'team-directory/profiles/{profile}/ssh-keys/{fingerprint}';
         $uriArguments = [

@@ -51,7 +51,7 @@ class PermissionRoles extends AbstractApi
      * @throws MissingArgumentException
      * @throws GuzzleException
      */
-    public function getRole(array $data, array $response = []): array
+    public function getRoles(array $data, array $response = []): array
     {
         $uri = 'permission-roles/create';
         $required = [

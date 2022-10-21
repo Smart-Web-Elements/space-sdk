@@ -22,7 +22,7 @@ class SpaceTestCase extends ClientTestCase
     /**
      * @var string
      */
-    protected static string $prefix = '\\Swe\\SpaceSDK\\';
+    protected static string $prefix = '\\Swe\\SpaceSDK';
 
     /**
      * @return void
@@ -40,8 +40,9 @@ class SpaceTestCase extends ClientTestCase
     public function testCheckApiComplete(): void
     {
         $responseConfiguration = [
-            'allResources' => [
+            'resources' => [
                 'id',
+                'displayPlural',
                 'endpoints' => [
                     'deprecation',
                     'displayName',
@@ -53,7 +54,7 @@ class SpaceTestCase extends ClientTestCase
         ];
         $httpModel = static::$space->httpApiModel()->getHttpApiModel($responseConfiguration);
 
-        foreach ($httpModel['allResources'] as $resource) {
+        foreach ($httpModel['resources'] as $resource) {
             $this->validateClass($resource);
         }
     }
@@ -62,32 +63,34 @@ class SpaceTestCase extends ClientTestCase
      * @param array $resource
      * @return void
      */
-    private function validateClass(array $resource): void
+    private function validateClass(array $resource, string $parentClass = ''): void
     {
-        $this->assertArrayHasKey('id', $resource, 'Missing id.');
-
-        if (!isset($resource['id'])) {
-            return;
+        if (empty($parentClass)) {
+            $parentClass = static::$prefix;
         }
 
-        $namespace = $this->idToNamespace($resource['id']);
+        $this->assertArrayHasKey('id', $resource, 'Missing id.');
+        $this->assertArrayHasKey('displayPlural', $resource, 'Missing display plural.');
+        $namespace = $this->displayPluralToNamespace($resource['displayPlural'], $parentClass);
         $this->assertArrayHasKey('endpoints', $resource, 'Missing endpoints in ' . $namespace);
 
-        if (!isset($resource['endpoints'])) {
+        if ($this->isClassDeprecated($resource) || stripos($resource['displayPlural'], '(deprecated)') !== false) {
             return;
         }
 
         $this->assertTrue(class_exists($namespace), 'Missing class "' . $namespace . '"');
-
-        if (!class_exists($namespace)) {
-            return;
-        }
 
         /** @var AbstractApi $class */
         $class = new $namespace(static::$client);
 
         foreach ($resource['endpoints'] as $endpoint) {
             $this->validateEndpoint($endpoint, $class);
+        }
+
+        if (!empty($resource['nestedResources'])) {
+            foreach ($resource['nestedResources'] as $resource) {
+                $this->validateClass($resource, $namespace);
+            }
         }
     }
 
@@ -98,25 +101,17 @@ class SpaceTestCase extends ClientTestCase
      */
     private function validateEndpoint(array $endpoint, AbstractApi $class): void
     {
+        $deprecated = isset($endpoint['deprecation']) && !empty($endpoint['deprecation']);
+        $experimental = isset($endpoint['experimental']) && !empty($endpoint['experimental']);
+
         $spaceMethod = $endpoint['functionName'];
-        $genMethod = $this->displayNameToMethod($endpoint['displayName']);
 
-        $messageTemplate = 'Missing method "' . $class::class . '::%s"';
+        $messageTemplate = 'Missing method "' . $class::class . '::%s" -> %s';
         $spaceMethodExists = method_exists($class, $endpoint['functionName']);
-        $genMethodExists = method_exists($class, $genMethod);
 
-        $this->assertTrue($spaceMethodExists, sprintf($messageTemplate, $spaceMethod));
-        $this->assertTrue($genMethodExists, sprintf($messageTemplate, $genMethod));
-
-        if (!$spaceMethodExists && !$genMethodExists) {
-            return;
+        if (!$spaceMethodExists && !$deprecated && !$experimental) {
+            $this->fail(sprintf($messageTemplate, $spaceMethod, $endpoint['displayName']));
         }
-
-        $correctMethod = $spaceMethodExists ? $spaceMethod : $genMethod;
-        $messageTemplate = 'Method "' . $class::class . '::' . $correctMethod . '" is %s!';
-
-        $this->assertNull($endpoint['deprecation'], sprintf($messageTemplate, 'deprecated'));
-        $this->assertNull($endpoint['experimental'], sprintf($messageTemplate, 'experimental'));
     }
 
     /**
@@ -131,7 +126,17 @@ class SpaceTestCase extends ClientTestCase
             $parts[$index] = $this->displayNameToMethod($part);
         }
 
-        return static::$prefix . implode('\\', $parts);
+        return static::$prefix . '\\' . implode('\\', array_filter($parts));
+    }
+
+    /**
+     * @param string $displayPlural
+     * @param string $parentClass
+     * @return string
+     */
+    private function displayPluralToNamespace(string $displayPlural, string $parentClass = ''): string
+    {
+        return $parentClass . '\\' . $this->displayNameToMethod($displayPlural);
     }
 
     /**
@@ -140,10 +145,60 @@ class SpaceTestCase extends ClientTestCase
      */
     private function displayNameToMethod(string $displayName): string
     {
-        $method = str_replace('2', 'two', $displayName);
+        $method = str_replace('xxx', '', $displayName);
+        $method = str_replace('2', 'two', $method);
         $method = str_replace(['-', '/'], ' ', $method);
         $method = ucwords($method);
+        $method = str_replace('Readonly', 'ClassReadonly', $method);
 
         return str_replace([' ', '?'], '', $method);
+    }
+
+    /**
+     * @param array $resource
+     * @return bool
+     */
+    private function isClassDeprecated(array $resource): bool
+    {
+        $endpointsDeprecated = $this->areEndpointsDeprecated($resource['endpoints'] ?? []);
+        $nestedDeprecated = [];
+
+        foreach ($resource['nestedResources'] as $nestedResource) {
+            $nestedDeprecated[] = $this->isClassDeprecated($nestedResource);
+        }
+
+        $nestedDeprecated = array_unique($nestedDeprecated);
+        $nestedDeprecated = array_filter($nestedDeprecated);
+
+        if (empty($nestedDeprecated)) {
+            return $endpointsDeprecated;
+        }
+
+        return $endpointsDeprecated && !in_array(false, $nestedDeprecated);
+    }
+
+    /**
+     * @param array $endpoints
+     * @return bool
+     */
+    private function areEndpointsDeprecated(array $endpoints, bool $debug = false): bool
+    {
+        $endpointLength = count($endpoints);
+
+        if ($debug) {
+            var_dump($endpoints);
+        }
+
+        if ($endpointLength === 0) {
+            return false;
+        }
+
+        foreach ($endpoints as $endpoint) {
+            if (empty($endpoint['deprecation'])) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

@@ -7,12 +7,12 @@ use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
- * Class EnumFields
+ * Class EnumValues
  *
  * @package Swe\SpaceSDK\CustomFields\Fields
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class EnumFields extends AbstractApi
+class EnumValues extends AbstractApi
 {
     /**
      * @param string $entityType

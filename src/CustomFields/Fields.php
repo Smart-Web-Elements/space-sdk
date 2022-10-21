@@ -4,7 +4,7 @@ namespace Swe\SpaceSDK\CustomFields;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
-use Swe\SpaceSDK\CustomFields\Fields\EnumFields;
+use Swe\SpaceSDK\CustomFields\Fields\EnumValues;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
@@ -170,10 +170,10 @@ class Fields extends AbstractApi
     }
 
     /**
-     * @return EnumFields
+     * @return EnumValues
      */
-    public function enumFields(): EnumFields
+    public function enumFields(): EnumValues
     {
-        return new EnumFields($this->client);
+        return new EnumValues($this->client);
     }
 }

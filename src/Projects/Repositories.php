@@ -6,8 +6,8 @@ namespace Swe\SpaceSDK\Projects;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Projects\Repositories\ClassReadonly;
 use Swe\SpaceSDK\Projects\Repositories\Find;
-use Swe\SpaceSDK\Projects\Repositories\RepositoryReadonly;
 use Swe\SpaceSDK\Projects\Repositories\Revisions;
 
 /**
@@ -59,7 +59,7 @@ class Repositories extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function commitChangesToRepository(
+    public function commit(
         string $project,
         string $repository,
         array $request,
@@ -89,7 +89,7 @@ class Repositories extends AbstractApi
      * @return void
      * @throws GuzzleException
      */
-    public function invokeGarbageCollectionOnRepository(string $project, string $repository): void
+    public function gc(string $project, string $repository): void
     {
         $uri = 'projects/{project}/repositories/{repository}/gc';
         $uriArguments = [
@@ -109,12 +109,8 @@ class Repositories extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function listTheHeadsWhichContainsGivenCommit(
-        string $project,
-        string $repository,
-        array $request,
-        array $response = []
-    ): array {
+    public function commitBranches(string $project, string $repository, array $request, array $response = []): array
+    {
         $uri = 'projects/{project}/repositories/{repository}/commit-branches';
         $required = [
             'commit' => self::TYPE_STRING,
@@ -136,12 +132,8 @@ class Repositories extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function listCommitsMatchingQuery(
-        string $project,
-        string $repository,
-        array $request = [],
-        array $response = []
-    ): array {
+    public function commits(string $project, string $repository, array $request = [], array $response = []): array
+    {
         $uri = 'projects/{project}/repositories/{repository}/commits';
         $uriArguments = [
             'project' => $project,
@@ -160,12 +152,8 @@ class Repositories extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function listFilesInDirectory(
-        string $project,
-        string $repository,
-        array $request,
-        array $response = []
-    ): array {
+    public function files(string $project, string $repository, array $request, array $response = []): array
+    {
         $uri = 'projects/{project}/repositories/{repository}/files';
         $required = [
             'commit' => self::TYPE_STRING,
@@ -187,7 +175,7 @@ class Repositories extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getRepositoryGitRemoteUrl(string $project, string $repository, array $response = []): array
+    public function url(string $project, string $repository, array $response = []): array
     {
         $uri = 'projects/{project}/repositories/{repository}/url';
         $uriArguments = [
@@ -224,11 +212,11 @@ class Repositories extends AbstractApi
     }
 
     /**
-     * @return RepositoryReadonly
+     * @return ClassReadonly
      */
-    public function readonly(): RepositoryReadonly
+    public function readonly(): ClassReadonly
     {
-        return new RepositoryReadonly($this->client);
+        return new ClassReadonly($this->client);
     }
 
     /**

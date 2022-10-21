@@ -21,7 +21,7 @@ class BillingAdmin extends AbstractApi
      * @return void
      * @throws GuzzleException
      */
-    public function activateTrail(string $trailTier): void
+    public function activateTrial(string $trailTier): void
     {
         $uri = 'billing-admin/trail';
         $data = [

@@ -5,12 +5,13 @@
          backupGlobals="true"
          colors="true"
          verbose="true"
-         stopOnFailure="false"
-         stopOnError="false"
+         stopOnError="true"
 >
     <testsuites>
-        <testsuite name="Test Suite">
+        <testsuite name="Test Connection">
             <file>tests/HttpClientTest.php</file>
+        </testsuite>
+        <testsuite name="Test Completion">
             <file>tests/SpaceTestCase.php</file>
         </testsuite>
     </testsuites>

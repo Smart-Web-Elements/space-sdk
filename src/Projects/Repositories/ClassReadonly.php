@@ -11,7 +11,7 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\Projects\Repositories
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class RepositoryReadonly extends AbstractApi
+class ClassReadonly extends AbstractApi
 {
     /**
      * @param string $project
