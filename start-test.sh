@@ -30,5 +30,4 @@ php ./vendor/bin/phpunit --configuration ./phpunit.xml
 
 [ $? -eq 0 ] || exit 1
 
-echo "-> Commit changes!"
 php ../space-sdk-builder/commit-changes.php
