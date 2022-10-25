@@ -116,8 +116,8 @@ class SpaceTestCase extends ClientTestCase
 
         $className = $this->displayNameToMethod($nested['displayPlural']);
 
-        if (in_array($className, self::$exceptionClassNames)) {
-            $className = array_flip(self::$exceptionClassNames)[$className];
+        if (isset(self::$exceptionClassNames[$className])) {
+            $className = self::$exceptionClassNames[$className];
         }
 
         $method = lcfirst($className);
