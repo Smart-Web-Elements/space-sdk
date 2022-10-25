@@ -179,7 +179,7 @@ class SpaceTestCase extends ClientTestCase
         $method = str_replace('xxx', '', $displayName);
         $method = str_replace('2', 'two', $method);
         $method = str_replace(['-', '/'], ' ', $method);
-        $method = ucwords($method);
+        $method = ucwords(strtolower($method));
 
         if (isset(self::$exceptionClassNames[$method])) {
             $method = self::$exceptionClassNames[$method];
