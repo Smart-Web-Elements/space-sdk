@@ -40,4 +40,4 @@ if ($space->chats()->channels()->isNameFree('General')) {
 ## Information
 
 The classes and methods are named like in the Space API defined.
-This package uses [Semantic Versioning](https://semver.org/lang/) as soon as reaching v1.
+This package uses [Semantic Versioning](https://semver.org/lang/).

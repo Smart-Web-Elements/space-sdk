@@ -1,22 +1,29 @@
-echo "-> Download and install composer"
-EXPECTED_CHECKSUM="$(php -r 'copy("https://composer.github.io/installer.sig", "php://stdout");')"
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-ACTUAL_CHECKSUM="$(php -r "echo hash_file('sha384', 'composer-setup.php');")"
-
-if [ "$EXPECTED_CHECKSUM" != "$ACTUAL_CHECKSUM" ]
-then
-    >&2 echo '-> ERROR: Invalid installer checksum'
-    exit 1
-else
-    php composer-setup.php --quiet
-fi
-
-rm composer-setup.php
-
-php ./composer.phar update
+php composer update
 
 [ $? -eq 0 ] || exit 1
 
 php ./vendor/bin/phpunit --configuration ./phpunit.xml
 
-exit $?
+[ $? -ne 0 ] || exit 0
+
+cd ../space-sdk-builder
+
+php composer update
+
+[ $? -eq 0 ] || exit 1
+
+php ./build.php
+
+[ $? -eq 0 ] || exit 1
+
+mv ../space-sdk/src ../space-sdk/src-old
+cp -r ./build/src ../space-sdk/src
+
+cd ../space-sdk
+php composer dump-autoload
+php ./vendor/bin/phpunit --configuration ./phpunit.xml
+
+[ $? -eq 0 ] || exit 1
+
+echo "-> Commit changes!"
+php ../space-sdk-builder/commit-changes.php

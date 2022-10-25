@@ -68,6 +68,7 @@ class SpaceTestCase extends ClientTestCase
 
     /**
      * @param array $resource
+     * @param string $parentClass
      * @return void
      */
     private function validateClass(array $resource, string $parentClass = ''): void
@@ -209,13 +210,9 @@ class SpaceTestCase extends ClientTestCase
      * @param array $endpoints
      * @return bool
      */
-    private function areEndpointsDeprecated(array $endpoints, bool $debug = false): bool
+    private function areEndpointsDeprecated(array $endpoints): bool
     {
         $endpointLength = count($endpoints);
-
-        if ($debug) {
-            var_dump($endpoints);
-        }
 
         if ($endpointLength === 0) {
             return false;

@@ -1,5 +1,9 @@
 # Space SDK Changelog
 
+## Space SDK v2.0.0
+
+- Rebuilt package by auto generation
+
 ## Space SDK v1.0.2
 
 - Fixed some missing class relations
