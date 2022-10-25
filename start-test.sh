@@ -9,7 +9,7 @@ php ./composer.phar update
 
 php ./vendor/bin/phpunit --configuration ./phpunit.xml
 
-[ $? -ne 0 ] || exit 0
+#[ $? -ne 0 ] || exit 0
 
 cd ../space-sdk-builder
 
