@@ -30,7 +30,7 @@ final class ChannelSubscriptions extends AbstractApi
     {
         $uri = 'notifications/channel-subscriptions';
         $required = [
-            'channel' => Type::Array,
+            'channel' => Type::String,
             'name' => Type::String,
             'subscription' => [
                 'subjectCode' => Type::String,
@@ -77,7 +77,7 @@ final class ChannelSubscriptions extends AbstractApi
     {
         $uri = 'notifications/channel-subscriptions';
         $required = [
-            'channel' => Type::Array,
+            'channel' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
 

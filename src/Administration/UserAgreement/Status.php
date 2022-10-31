@@ -31,12 +31,12 @@ final class Status extends AbstractApi
     /**
      * Permissions that may be checked: Superadmin
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getUserAgreementStatusForAProfile(array $profile, array $response = []): array
+    final public function getUserAgreementStatusForAProfile(string $profile, array $response = []): array
     {
         $uri = 'administration/user-agreement/status/{profile}';
         $uriArguments = [

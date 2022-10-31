@@ -16,14 +16,17 @@ final class Files extends AbstractApi
     /**
      * Permissions that may be checked: Channel.ViewMessages
      *
-     * @param array $channel
+     * @param string $channel
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function listFileAttachmentsInChannel(array $channel, array $request = [], array $response = []): array
-    {
+    final public function listFileAttachmentsInChannel(
+        string $channel,
+        array $request = [],
+        array $response = [],
+    ): array {
         $uri = 'chats/channels/{channel}/attachments/files';
         $uriArguments = [
             'channel' => $channel,

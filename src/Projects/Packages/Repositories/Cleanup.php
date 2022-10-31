@@ -19,16 +19,16 @@ final class Cleanup extends AbstractApi
      *
      * Permissions that may be checked: PackageRepository.Admin
      *
-     * @param array $project
-     * @param array $repository
+     * @param string $project
+     * @param string $repository
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
     final public function cleanupRepository(
-        array $project,
-        array $repository,
+        string $project,
+        string $repository,
         array $data = [],
         array $response = [],
     ): array {

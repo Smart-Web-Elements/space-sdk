@@ -22,12 +22,12 @@ final class Statuses extends AbstractApi
      *
      * Permissions that may be checked: Project.Issues.View
      *
-     * @param array $project
+     * @param string $project
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllIssueStatuses(array $project, array $response = []): array
+    final public function getAllIssueStatuses(string $project, array $response = []): array
     {
         $uri = 'projects/{project}/planning/issues/statuses';
         $uriArguments = [
@@ -42,13 +42,13 @@ final class Statuses extends AbstractApi
      *
      * Permissions that may be checked: Project.Issues.Manage
      *
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function updateIssueStatusesList(array $project, array $data): void
+    final public function updateIssueStatusesList(string $project, array $data): void
     {
         $uri = 'projects/{project}/planning/issues/statuses';
         $required = [

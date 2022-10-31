@@ -16,12 +16,12 @@ final class InternalApplications extends AbstractApi
     /**
      * Remove a previously approved internal application
      *
-     * @param array $owner
+     * @param string $owner
      * @param string $clientId
      * @return void
      * @throws GuzzleException
      */
-    final public function deleteInternalApplication(array $owner, string $clientId): void
+    final public function deleteInternalApplication(string $owner, string $clientId): void
     {
         $uri = 'team-directory/profiles/oauth-consents/{owner}/internal-applications/{clientId}';
         $uriArguments = [

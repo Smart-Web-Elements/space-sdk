@@ -99,12 +99,12 @@ final class Teams extends AbstractApi
      *
      * Permissions that may be checked: Team.View
      *
-     * @param array $id
+     * @param string $id
      * @param array $response
      * @return array|null
      * @throws GuzzleException
      */
-    final public function getTeam(array $id, array $response = []): ?array
+    final public function getTeam(string $id, array $response = []): ?array
     {
         $uri = 'team-directory/teams/{id}';
         $uriArguments = [

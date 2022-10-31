@@ -27,7 +27,7 @@ final class Repositories extends AbstractApi
     }
 
     /**
-     * @param array $project
+     * @param string $project
      * @param string $repository
      * @param array $data
      * @param array $response
@@ -35,7 +35,7 @@ final class Repositories extends AbstractApi
      * @throws GuzzleException
      */
     final public function createNewRepository(
-        array $project,
+        string $project,
         string $repository,
         array $data = [],
         array $response = [],
@@ -77,12 +77,12 @@ final class Repositories extends AbstractApi
     }
 
     /**
-     * @param array $project
+     * @param string $project
      * @param string $repository
      * @return void
      * @throws GuzzleException
      */
-    final public function gc(array $project, string $repository): void
+    final public function gc(string $project, string $repository): void
     {
         $uri = 'projects/{project}/repositories/{repository}/gc';
         $uriArguments = [
@@ -94,7 +94,7 @@ final class Repositories extends AbstractApi
     }
 
     /**
-     * @param array $project
+     * @param string $project
      * @param string $repository
      * @param array $request
      * @param array $response
@@ -103,7 +103,7 @@ final class Repositories extends AbstractApi
      * @throws MissingArgumentException
      */
     final public function commitBranches(
-        array $project,
+        string $project,
         string $repository,
         array $request,
         array $response = [],
@@ -122,14 +122,14 @@ final class Repositories extends AbstractApi
     }
 
     /**
-     * @param array $project
+     * @param string $project
      * @param string $repository
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function commits(array $project, string $repository, array $request = [], array $response = []): array
+    final public function commits(string $project, string $repository, array $request = [], array $response = []): array
     {
         $uri = 'projects/{project}/repositories/{repository}/commits';
         $uriArguments = [
@@ -141,7 +141,7 @@ final class Repositories extends AbstractApi
     }
 
     /**
-     * @param array $project
+     * @param string $project
      * @param string $repository
      * @param array $request
      * @param array $response
@@ -149,7 +149,7 @@ final class Repositories extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function files(array $project, string $repository, array $request, array $response = []): array
+    final public function files(string $project, string $repository, array $request, array $response = []): array
     {
         $uri = 'projects/{project}/repositories/{repository}/files';
         $required = [
@@ -166,13 +166,13 @@ final class Repositories extends AbstractApi
     }
 
     /**
-     * @param array $project
+     * @param string $project
      * @param string $repository
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function url(array $project, string $repository, array $response = []): array
+    final public function url(string $project, string $repository, array $response = []): array
     {
         $uri = 'projects/{project}/repositories/{repository}/url';
         $uriArguments = [
@@ -184,12 +184,12 @@ final class Repositories extends AbstractApi
     }
 
     /**
-     * @param array $project
+     * @param string $project
      * @param string $repository
      * @return void
      * @throws GuzzleException
      */
-    final public function deleteRepository(array $project, string $repository): void
+    final public function deleteRepository(string $project, string $repository): void
     {
         $uri = 'projects/{project}/repositories/{repository}';
         $uriArguments = [

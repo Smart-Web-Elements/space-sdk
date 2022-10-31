@@ -14,13 +14,13 @@ use Swe\SpaceSDK\AbstractApi;
 final class Unarchive extends AbstractApi
 {
     /**
-     * @param array $profile
+     * @param string $profile
      * @param string $documentId
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function unarchiveDocument(array $profile, string $documentId, array $response = []): array
+    final public function unarchiveDocument(string $profile, string $documentId, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/documents/{documentId}/unarchive';
         $uriArguments = [

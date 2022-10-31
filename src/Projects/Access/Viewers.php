@@ -20,7 +20,7 @@ final class Viewers extends AbstractApi
      *
      * Permissions that may be checked: Project.View
      *
-     * @param array $project
+     * @param string $project
      * @param array $request
      * @param array $response
      * @return array
@@ -28,7 +28,7 @@ final class Viewers extends AbstractApi
      * @throws MissingArgumentException
      */
     final public function organizationProfilesThatCanViewTheProject(
-        array $project,
+        string $project,
         array $request,
         array $response = [],
     ): array {

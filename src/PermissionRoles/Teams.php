@@ -19,11 +19,11 @@ final class Teams extends AbstractApi
      * Permissions that may be checked: Superadmin, Project.Admin, Channel.Admin
      *
      * @param string $roleId
-     * @param array $team
+     * @param string $team
      * @return void
      * @throws GuzzleException
      */
-    final public function addRoleTeam(string $roleId, array $team): void
+    final public function addRoleTeam(string $roleId, string $team): void
     {
         $uri = 'permission-roles/{roleId}/teams/{team}';
         $uriArguments = [
@@ -60,11 +60,11 @@ final class Teams extends AbstractApi
      * Permissions that may be checked: Superadmin, Project.Admin, Channel.Admin
      *
      * @param string $roleId
-     * @param array $team
+     * @param string $team
      * @return void
      * @throws GuzzleException
      */
-    final public function removeRoleTeam(string $roleId, array $team): void
+    final public function removeRoleTeam(string $roleId, string $team): void
     {
         $uri = 'permission-roles/{roleId}/teams/{team}';
         $uriArguments = [

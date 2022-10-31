@@ -16,7 +16,7 @@ use Swe\SpaceSDK\Type;
 final class Move extends AbstractApi
 {
     /**
-     * @param array $project
+     * @param string $project
      * @param string $documentId
      * @param array $data
      * @param array $response
@@ -24,11 +24,11 @@ final class Move extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function moveDocument(array $project, string $documentId, array $data, array $response = []): array
+    final public function moveDocument(string $project, string $documentId, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/documents/{documentId}/move';
         $required = [
-            'folder' => Type::Array,
+            'folder' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

@@ -16,7 +16,7 @@ use Swe\SpaceSDK\Type;
 final class Copy extends AbstractApi
 {
     /**
-     * @param array $project
+     * @param string $project
      * @param string $documentId
      * @param array $data
      * @param array $response
@@ -24,12 +24,12 @@ final class Copy extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function copyDocument(array $project, string $documentId, array $data, array $response = []): array
+    final public function copyDocument(string $project, string $documentId, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/documents/{documentId}/copy';
         $required = [
             'name' => Type::String,
-            'folder' => Type::Array,
+            'folder' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

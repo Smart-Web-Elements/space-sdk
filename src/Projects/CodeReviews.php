@@ -20,14 +20,14 @@ final class CodeReviews extends AbstractApi
     /**
      * Permissions that may be checked: Project.SuggestedEdit.Create
      *
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function createCodeDiscussion(array $project, array $data, array $response = []): array
+    final public function createCodeDiscussion(string $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/code-reviews/code-discussions';
         $required = [
@@ -46,14 +46,14 @@ final class CodeReviews extends AbstractApi
     /**
      * Permissions that may be checked: Project.CodeReview.Create
      *
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function createReviewBasedOnCommitSet(array $project, array $data, array $response = []): array
+    final public function createReviewBasedOnCommitSet(string $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/code-reviews/commit-set-review';
         $required = [
@@ -71,14 +71,14 @@ final class CodeReviews extends AbstractApi
     /**
      * Permissions that may be checked: Project.CodeReview.Create
      *
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function createMergeRequest(array $project, array $data, array $response = []): array
+    final public function createMergeRequest(string $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/code-reviews/merge-requests';
         $required = [
@@ -98,13 +98,13 @@ final class CodeReviews extends AbstractApi
     /**
      * Permissions that may be checked: Project.CodeReview.View
      *
-     * @param array $project
+     * @param string $project
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllCodeReviews(array $project, array $request = [], array $response = []): array
+    final public function getAllCodeReviews(string $project, array $request = [], array $response = []): array
     {
         $uri = 'projects/{project}/code-reviews';
         $uriArguments = [
@@ -117,13 +117,13 @@ final class CodeReviews extends AbstractApi
     /**
      * Permissions that may be checked: Project.CodeReview.View
      *
-     * @param array $project
-     * @param array $reviewId
+     * @param string $project
+     * @param string $reviewId
      * @param array $response
      * @return array|null
      * @throws GuzzleException
      */
-    final public function getCodeReview(array $project, array $reviewId, array $response = []): ?array
+    final public function getCodeReview(string $project, string $reviewId, array $response = []): ?array
     {
         $uri = 'projects/{project}/code-reviews/{reviewId}';
         $uriArguments = [
@@ -137,13 +137,13 @@ final class CodeReviews extends AbstractApi
     /**
      * Permissions that may be checked: Project.CodeReview.View
      *
-     * @param array $project
-     * @param array $reviewId
+     * @param string $project
+     * @param string $reviewId
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getReviewDetails(array $project, array $reviewId, array $response = []): array
+    final public function getReviewDetails(string $project, string $reviewId, array $response = []): array
     {
         $uri = 'projects/{project}/code-reviews/{reviewId}/details';
         $uriArguments = [
@@ -157,16 +157,16 @@ final class CodeReviews extends AbstractApi
     /**
      * Permissions that may be checked: Project.CodeReview.View
      *
-     * @param array $project
-     * @param array $reviewId
+     * @param string $project
+     * @param string $reviewId
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
     final public function getTheModifiedFilesInCodeReview(
-        array $project,
-        array $reviewId,
+        string $project,
+        string $reviewId,
         array $request = [],
         array $response = [],
     ): array {
@@ -182,16 +182,16 @@ final class CodeReviews extends AbstractApi
     /**
      * Permissions that may be checked: Project.CodeReview.View
      *
-     * @param array $project
-     * @param array $reviewId
+     * @param string $project
+     * @param string $reviewId
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
     final public function getTheMergeRequestFiles(
-        array $project,
-        array $reviewId,
+        string $project,
+        string $reviewId,
         array $request = [],
         array $response = [],
     ): array {
@@ -207,13 +207,13 @@ final class CodeReviews extends AbstractApi
     /**
      * Permissions that may be checked: Project.CodeReview.View
      *
-     * @param array $project
-     * @param array $reviewId
+     * @param string $project
+     * @param string $reviewId
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getSuggestedReviewers(array $project, array $reviewId, array $response = []): array
+    final public function getSuggestedReviewers(string $project, string $reviewId, array $response = []): array
     {
         $uri = 'projects/{project}/code-reviews/{reviewId}/suggested-reviewers';
         $uriArguments = [
@@ -227,14 +227,14 @@ final class CodeReviews extends AbstractApi
     /**
      * Permissions that may be checked: Project.CodeReview.Edit
      *
-     * @param array $project
-     * @param array $reviewId
+     * @param string $project
+     * @param string $reviewId
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function editReviewState(array $project, array $reviewId, array $data): void
+    final public function editReviewState(string $project, string $reviewId, array $data): void
     {
         $uri = 'projects/{project}/code-reviews/{reviewId}/state';
         $required = [
@@ -252,14 +252,14 @@ final class CodeReviews extends AbstractApi
     /**
      * Permissions that may be checked: Project.CodeReview.Edit
      *
-     * @param array $project
-     * @param array $reviewId
+     * @param string $project
+     * @param string $reviewId
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function editReviewTitle(array $project, array $reviewId, array $data): void
+    final public function editReviewTitle(string $project, string $reviewId, array $data): void
     {
         $uri = 'projects/{project}/code-reviews/{reviewId}/title';
         $required = [
@@ -277,16 +277,20 @@ final class CodeReviews extends AbstractApi
     /**
      * Permissions that may be checked: Project.CodeReview.View, VcsRepository.Write
      *
-     * @param array $project
-     * @param array $reviewId
+     * @param string $project
+     * @param string $reviewId
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function mergeAMergeRequest(array $project, array $reviewId, array $data, array $response = []): array
-    {
+    final public function mergeAMergeRequest(
+        string $project,
+        string $reviewId,
+        array $data,
+        array $response = [],
+    ): array {
         $uri = 'projects/{project}/code-reviews/{reviewId}/merge';
         $required = [
             'deleteSourceBranch' => Type::Boolean,
@@ -304,16 +308,20 @@ final class CodeReviews extends AbstractApi
     /**
      * Permissions that may be checked: Project.CodeReview.View, VcsRepository.Write
      *
-     * @param array $project
-     * @param array $reviewId
+     * @param string $project
+     * @param string $reviewId
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function rebaseAMergeRequest(array $project, array $reviewId, array $data, array $response = []): array
-    {
+    final public function rebaseAMergeRequest(
+        string $project,
+        string $reviewId,
+        array $data,
+        array $response = [],
+    ): array {
         $uri = 'projects/{project}/code-reviews/{reviewId}/rebase';
         $required = [
             'deleteSourceBranch' => Type::Boolean,

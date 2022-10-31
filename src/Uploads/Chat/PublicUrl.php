@@ -16,14 +16,14 @@ final class PublicUrl extends AbstractApi
     /**
      * Returns a URL that can be used to access attachment file without authentication
      *
-     * @param array $channel
-     * @param array $message
+     * @param string $channel
+     * @param string $message
      * @param string $attachmentId
      * @param array $response
      * @return string
      * @throws GuzzleException
      */
-    final public function getPublicUrl(array $channel, array $message, string $attachmentId): string
+    final public function getPublicUrl(string $channel, string $message, string $attachmentId): string
     {
         $uri = 'uploads/chat/public-url/{channel}/{message}/{attachmentId}';
         $uriArguments = [

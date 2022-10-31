@@ -18,11 +18,11 @@ final class PrivateProjects extends AbstractApi
      *
      * Permissions that may be checked: Project.ViewPrivate
      *
-     * @param array $project
+     * @param string $project
      * @return void
      * @throws GuzzleException
      */
-    final public function requestAccessToProject(array $project): void
+    final public function requestAccessToProject(string $project): void
     {
         $uri = 'projects/private-projects/{project}/request-access';
         $uriArguments = [

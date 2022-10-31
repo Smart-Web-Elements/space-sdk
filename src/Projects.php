@@ -74,14 +74,17 @@ final class Projects extends AbstractApi
      *
      * Permissions that may be checked: Project.View
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllProjectsByCollaborator(array $profile, array $request = [], array $response = []): array
-    {
+    final public function getAllProjectsByCollaborator(
+        string $profile,
+        array $request = [],
+        array $response = [],
+    ): array {
         $uri = 'projects/collaborator:{profile}';
         $uriArguments = [
             'profile' => $profile,
@@ -95,13 +98,13 @@ final class Projects extends AbstractApi
      *
      * Permissions that may be checked: Project.View
      *
-     * @param array $member
+     * @param string $member
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllProjectsByMember(array $member, array $request = [], array $response = []): array
+    final public function getAllProjectsByMember(string $member, array $request = [], array $response = []): array
     {
         $uri = 'projects/member:{member}';
         $uriArguments = [
@@ -154,13 +157,13 @@ final class Projects extends AbstractApi
      *
      * Permissions that may be checked: Project.View
      *
-     * @param array $team
+     * @param string $team
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllProjectsByTeam(array $team, array $request = [], array $response = []): array
+    final public function getAllProjectsByTeam(string $team, array $request = [], array $response = []): array
     {
         $uri = 'projects/team:{team}';
         $uriArguments = [
@@ -175,12 +178,12 @@ final class Projects extends AbstractApi
      *
      * Permissions that may be checked: Project.View
      *
-     * @param array $project
+     * @param string $project
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getProject(array $project, array $response = []): array
+    final public function getProject(string $project, array $response = []): array
     {
         $uri = 'projects/{project}';
         $uriArguments = [
@@ -195,13 +198,13 @@ final class Projects extends AbstractApi
      *
      * Permissions that may be checked: Project.Admin
      *
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function updateProject(array $project, array $data = [], array $response = []): array
+    final public function updateProject(string $project, array $data = [], array $response = []): array
     {
         $uri = 'projects/{project}';
         $uriArguments = [
@@ -216,11 +219,11 @@ final class Projects extends AbstractApi
      *
      * Permissions that may be checked: Project.Admin
      *
-     * @param array $project
+     * @param string $project
      * @return void
      * @throws GuzzleException
      */
-    final public function deleteProject(array $project): void
+    final public function deleteProject(string $project): void
     {
         $uri = 'projects/{project}';
         $uriArguments = [

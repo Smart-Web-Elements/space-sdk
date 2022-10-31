@@ -34,13 +34,13 @@ final class Subjects extends AbstractApi
     /**
      * Add a responsibility subject for a given project ID
      *
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @param array $response
      * @return string
      * @throws GuzzleException
      */
-    final public function addResponsibilitySubject(array $project, array $data = []): string
+    final public function addResponsibilitySubject(string $project, array $data = []): string
     {
         $uri = 'projects/{project}/responsibilities/subjects';
         $uriArguments = [
@@ -53,13 +53,13 @@ final class Subjects extends AbstractApi
     /**
      * Update an existing responsibility subject for a given project ID
      *
-     * @param array $project
+     * @param string $project
      * @param string $subjectId
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    final public function editResponsibilitySubject(array $project, string $subjectId, array $data = []): void
+    final public function editResponsibilitySubject(string $project, string $subjectId, array $data = []): void
     {
         $uri = 'projects/{project}/responsibilities/subjects/{subjectId}';
         $uriArguments = [

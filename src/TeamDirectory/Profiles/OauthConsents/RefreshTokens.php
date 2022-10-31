@@ -16,12 +16,12 @@ final class RefreshTokens extends AbstractApi
     /**
      * Remove a refresh token. This will require the client to re-authenticate.
      *
-     * @param array $owner
+     * @param string $owner
      * @param string $id
      * @return void
      * @throws GuzzleException
      */
-    final public function deleteRefreshToken(array $owner, string $id): void
+    final public function deleteRefreshToken(string $owner, string $id): void
     {
         $uri = 'team-directory/profiles/oauth-consents/{owner}/refresh-tokens/{id}';
         $uriArguments = [

@@ -19,8 +19,8 @@ final class Publish extends AbstractApi
      *
      * Permissions that may be checked: PackageRepository.Write
      *
-     * @param array $project
-     * @param array $repository
+     * @param string $project
+     * @param string $repository
      * @param string $connectionId
      * @param array $data
      * @param array $response
@@ -29,8 +29,8 @@ final class Publish extends AbstractApi
      * @throws MissingArgumentException
      */
     final public function publishPackagesToRemoteRepository(
-        array $project,
-        array $repository,
+        string $project,
+        string $repository,
         string $connectionId,
         array $data,
     ): string {
@@ -54,8 +54,8 @@ final class Publish extends AbstractApi
      *
      * Permissions that may be checked: PackageRepository.Read
      *
-     * @param array $project
-     * @param array $repository
+     * @param string $project
+     * @param string $repository
      * @param string $connectionId
      * @param array $request
      * @param array $response
@@ -63,8 +63,8 @@ final class Publish extends AbstractApi
      * @throws GuzzleException
      */
     final public function getListOfPublishingToRemoteRepository(
-        array $project,
-        array $repository,
+        string $project,
+        string $repository,
         string $connectionId,
         array $request = [],
         array $response = [],

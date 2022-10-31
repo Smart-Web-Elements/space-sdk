@@ -18,14 +18,14 @@ final class CustomHeaders extends AbstractApi
     /**
      * Permissions that may be checked: Applications.Edit
      *
-     * @param array $application
+     * @param string $application
      * @param string $webhookId
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function postCustomHeader(array $application, string $webhookId, array $data): void
+    final public function postCustomHeader(string $application, string $webhookId, array $data): void
     {
         $uri = 'applications/{application}/webhooks/{webhookId}/custom-headers';
         $required = [
@@ -43,13 +43,13 @@ final class CustomHeaders extends AbstractApi
     /**
      * Permissions that may be checked: Applications.ViewSecrets
      *
-     * @param array $application
+     * @param string $application
      * @param string $webhookId
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getCustomHeader(array $application, string $webhookId, array $response = []): array
+    final public function getCustomHeader(string $application, string $webhookId, array $response = []): array
     {
         $uri = 'applications/{application}/webhooks/{webhookId}/custom-headers';
         $uriArguments = [

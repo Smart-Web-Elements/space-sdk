@@ -20,17 +20,17 @@ final class Profiles extends AbstractApi
      *
      * Permissions that may be checked: Project.Admin
      *
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function addAdministrator(array $project, array $data): void
+    final public function addAdministrator(string $project, array $data): void
     {
         $uri = 'projects/{project}/access/admins/profiles';
         $required = [
-            'profile' => Type::Array,
+            'profile' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -45,12 +45,12 @@ final class Profiles extends AbstractApi
      *
      * Permissions that may be checked: Project.Admin
      *
-     * @param array $project
-     * @param array $profile
+     * @param string $project
+     * @param string $profile
      * @return void
      * @throws GuzzleException
      */
-    final public function removeAdministrator(array $project, array $profile): void
+    final public function removeAdministrator(string $project, string $profile): void
     {
         $uri = 'projects/{project}/access/admins/profiles/{profile}';
         $uriArguments = [

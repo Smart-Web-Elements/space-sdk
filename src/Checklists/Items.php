@@ -18,14 +18,14 @@ final class Items extends AbstractApi
     /**
      * Create plan item as the last element of the top level in a checklist if parent plan item is null, or as the last child if parent plan item is provided.
      *
-     * @param array $checklist
+     * @param string $checklist
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function createPlanItem(array $checklist, array $data, array $response = []): array
+    final public function createPlanItem(string $checklist, array $data, array $response = []): array
     {
         $uri = 'checklists/{checklist}/items';
         $required = [
@@ -42,19 +42,19 @@ final class Items extends AbstractApi
     /**
      * Move plan item in a checklist
      *
-     * @param array $checklist
-     * @param array $planItem
+     * @param string $checklist
+     * @param string $planItem
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function movePlanItem(array $checklist, array $planItem, array $data, array $response = []): array
+    final public function movePlanItem(string $checklist, string $planItem, array $data, array $response = []): array
     {
         $uri = 'checklists/{checklist}/items/{planItem}/move';
         $required = [
-            'targetParent' => Type::Array,
+            'targetParent' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -68,13 +68,13 @@ final class Items extends AbstractApi
     /**
      * Get plan item by its identifier in a checklist
      *
-     * @param array $checklist
-     * @param array $planItem
+     * @param string $checklist
+     * @param string $planItem
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getPlanItem(array $checklist, array $planItem, array $response = []): array
+    final public function getPlanItem(string $checklist, string $planItem, array $response = []): array
     {
         $uri = 'checklists/{checklist}/items/{planItem}';
         $uriArguments = [
@@ -88,16 +88,16 @@ final class Items extends AbstractApi
     /**
      * Update plan item in a checklist
      *
-     * @param array $checklist
-     * @param array $planItem
+     * @param string $checklist
+     * @param string $planItem
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
     final public function updatePlanItem(
-        array $checklist,
-        array $planItem,
+        string $checklist,
+        string $planItem,
         array $data = [],
         array $response = [],
     ): array {
@@ -113,12 +113,12 @@ final class Items extends AbstractApi
     /**
      * Delete plan item and its children from a checklist
      *
-     * @param array $checklist
-     * @param array $planItem
+     * @param string $checklist
+     * @param string $planItem
      * @return void
      * @throws GuzzleException
      */
-    final public function deletePlanItem(array $checklist, array $planItem): void
+    final public function deletePlanItem(string $checklist, string $planItem): void
     {
         $uri = 'checklists/{checklist}/items/{planItem}';
         $uriArguments = [

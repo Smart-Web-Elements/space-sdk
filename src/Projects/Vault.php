@@ -30,7 +30,7 @@ final class Vault extends AbstractApi
     {
         $uri = 'projects/vault';
         $required = [
-            'project' => Type::Array,
+            'project' => Type::String,
             'url' => Type::String,
             'name' => Type::String,
             'appRoleEndpointPath' => Type::String,
@@ -57,7 +57,7 @@ final class Vault extends AbstractApi
     {
         $uri = 'projects/vault';
         $required = [
-            'project' => Type::Array,
+            'project' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
 

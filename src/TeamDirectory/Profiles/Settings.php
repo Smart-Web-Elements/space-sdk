@@ -16,12 +16,12 @@ final class Settings extends AbstractApi
     /**
      * This endpoint will return profile information and Space personalisation data such as projects in the navigation bar, etc.
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getSpacePersonalizationDataForAProfile(array $profile, array $response = []): array
+    final public function getSpacePersonalizationDataForAProfile(string $profile, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/settings';
         $uriArguments = [
@@ -32,12 +32,12 @@ final class Settings extends AbstractApi
     }
 
     /**
-     * @param array $profile
+     * @param string $profile
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    final public function setSpacePersonalizationDataForAProfile(array $profile, array $data = []): void
+    final public function setSpacePersonalizationDataForAProfile(string $profile, array $data = []): void
     {
         $uri = 'team-directory/profiles/{profile}/settings';
         $uriArguments = [

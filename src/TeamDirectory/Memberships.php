@@ -33,7 +33,7 @@ final class Memberships extends AbstractApi
     {
         $uri = 'team-directory/memberships';
         $required = [
-            'member' => Type::Array,
+            'member' => Type::String,
             'teamId' => Type::String,
             'roleId' => Type::String,
         ];
@@ -64,12 +64,12 @@ final class Memberships extends AbstractApi
      *
      * Permissions that may be checked: Profile.Memberships.View
      *
-     * @param array $membershipId
+     * @param string $membershipId
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getMembership(array $membershipId, array $response = []): array
+    final public function getMembership(string $membershipId, array $response = []): array
     {
         $uri = 'team-directory/memberships/{membershipId}';
         $uriArguments = [

@@ -18,12 +18,12 @@ final class Issues extends AbstractApi
      *
      * Permissions that may be checked: Project.Planning.Boards.EditContent
      *
-     * @param array $issue
-     * @param array $sprint
+     * @param string $issue
+     * @param string $sprint
      * @return void
      * @throws GuzzleException
      */
-    final public function addIssueToSprint(array $issue, array $sprint): void
+    final public function addIssueToSprint(string $issue, string $sprint): void
     {
         $uri = 'projects/planning/boards/sprints/{sprint}/issues/{issue}';
         $uriArguments = [
@@ -39,13 +39,13 @@ final class Issues extends AbstractApi
      *
      * Permissions that may be checked: Project.Planning.Boards.View
      *
-     * @param array $sprint
+     * @param string $sprint
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllIssuesInSprint(array $sprint, array $request = [], array $response = []): array
+    final public function getAllIssuesInSprint(string $sprint, array $request = [], array $response = []): array
     {
         $uri = 'projects/planning/boards/sprints/{sprint}/issues';
         $uriArguments = [
@@ -60,12 +60,12 @@ final class Issues extends AbstractApi
      *
      * Permissions that may be checked: Project.Planning.Boards.EditContent
      *
-     * @param array $issue
-     * @param array $sprint
+     * @param string $issue
+     * @param string $sprint
      * @return void
      * @throws GuzzleException
      */
-    final public function removeIssueFromSprint(array $issue, array $sprint): void
+    final public function removeIssueFromSprint(string $issue, string $sprint): void
     {
         $uri = 'projects/planning/boards/sprints/{sprint}/issues/{issue}';
         $uriArguments = [

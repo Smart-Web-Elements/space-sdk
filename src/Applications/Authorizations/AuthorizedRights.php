@@ -20,18 +20,18 @@ final class AuthorizedRights extends AbstractApi
      *
      * Permissions that may be checked: Applications.View
      *
-     * @param array $application
+     * @param string $application
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function getAllAuthorizedRights(array $application, array $request, array $response = []): array
+    final public function getAllAuthorizedRights(string $application, array $request, array $response = []): array
     {
         $uri = 'applications/{application}/authorizations/authorized-rights';
         $required = [
-            'contextIdentifier' => Type::Array,
+            'contextIdentifier' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
         $uriArguments = [
@@ -44,17 +44,17 @@ final class AuthorizedRights extends AbstractApi
     /**
      * Generic method for editing authorized right status in given context.
      *
-     * @param array $application
+     * @param string $application
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function updateAuthorizedRight(array $application, array $data): void
+    final public function updateAuthorizedRight(string $application, array $data): void
     {
         $uri = 'applications/{application}/authorizations/authorized-rights';
         $required = [
-            'contextIdentifier' => Type::Array,
+            'contextIdentifier' => Type::String,
             'updates' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
@@ -70,17 +70,17 @@ final class AuthorizedRights extends AbstractApi
      *
      * Permissions that may be checked: Applications.Edit
      *
-     * @param array $application
+     * @param string $application
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function requestRights(array $application, array $data): void
+    final public function requestRights(string $application, array $data): void
     {
         $uri = 'applications/{application}/authorizations/authorized-rights/request-rights';
         $required = [
-            'contextIdentifier' => Type::Array,
+            'contextIdentifier' => Type::String,
             'rightCodes' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
@@ -94,17 +94,17 @@ final class AuthorizedRights extends AbstractApi
     /**
      * Remove application authorization in specified context
      *
-     * @param array $application
+     * @param string $application
      * @param array $request
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function deleteAuthorizedRight(array $application, array $request): void
+    final public function deleteAuthorizedRight(string $application, array $request): void
     {
         $uri = 'applications/{application}/authorizations/authorized-rights';
         $required = [
-            'contextIdentifier' => Type::Array,
+            'contextIdentifier' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
         $uriArguments = [

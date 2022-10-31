@@ -16,12 +16,12 @@ final class Types extends AbstractApi
     /**
      * Returns a list of available repository types.
      *
-     * @param array $project
+     * @param string $project
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllTypes(array $project, array $response = []): array
+    final public function getAllTypes(string $project, array $response = []): array
     {
         $uri = 'projects/{project}/packages/types';
         $uriArguments = [

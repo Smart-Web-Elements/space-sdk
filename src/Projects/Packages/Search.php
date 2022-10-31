@@ -20,14 +20,14 @@ final class Search extends AbstractApi
      *
      * Permissions that may be checked: PackageRepository.Read
      *
-     * @param array $project
+     * @param string $project
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function findPackagesInRepository(array $project, array $request, array $response = []): array
+    final public function findPackagesInRepository(string $project, array $request, array $response = []): array
     {
         $uri = 'projects/{project}/packages/search';
         $required = [

@@ -27,14 +27,14 @@ final class Issues extends AbstractApi
      *
      * Permissions that may be checked: Project.Issues.Create
      *
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function createIssue(array $project, array $data, array $response = []): array
+    final public function createIssue(string $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/planning/issues';
         $required = [
@@ -54,14 +54,14 @@ final class Issues extends AbstractApi
      *
      * Permissions that may be checked: Project.Issues.Import
      *
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function importIssues(array $project, array $data, array $response = []): array
+    final public function importIssues(string $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/planning/issues/import';
         $required = [
@@ -84,12 +84,12 @@ final class Issues extends AbstractApi
      *
      * Permissions that may be checked: Project.Issues.Restore
      *
-     * @param array $project
-     * @param array $issueId
+     * @param string $project
+     * @param string $issueId
      * @return void
      * @throws GuzzleException
      */
-    final public function restoreIssue(array $project, array $issueId): void
+    final public function restoreIssue(string $project, string $issueId): void
     {
         $uri = 'projects/{project}/planning/issues/{issueId}/restore';
         $uriArguments = [
@@ -105,14 +105,14 @@ final class Issues extends AbstractApi
      *
      * Permissions that may be checked: Project.Issues.Edit
      *
-     * @param array $project
-     * @param array $issueId
+     * @param string $project
+     * @param string $issueId
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function toggleIssueResolvedStatus(array $project, array $issueId, array $data): void
+    final public function toggleIssueResolvedStatus(string $project, string $issueId, array $data): void
     {
         $uri = 'projects/{project}/planning/issues/{issueId}/toggle-resolved';
         $required = [
@@ -132,14 +132,14 @@ final class Issues extends AbstractApi
      *
      * Permissions that may be checked: Project.Issues.View
      *
-     * @param array $project
+     * @param string $project
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function getAllIssues(array $project, array $request, array $response = []): array
+    final public function getAllIssues(string $project, array $request, array $response = []): array
     {
         $uri = 'projects/{project}/planning/issues';
         $required = [
@@ -159,7 +159,7 @@ final class Issues extends AbstractApi
      *
      * Permissions that may be checked: Project.Issues.View
      *
-     * @param array $project
+     * @param string $project
      * @param int $number
      * @param array $request
      * @param array $response
@@ -167,7 +167,7 @@ final class Issues extends AbstractApi
      * @throws GuzzleException
      */
     final public function getIssueByNumber(
-        array $project,
+        string $project,
         int $number,
         array $request = [],
         array $response = [],
@@ -184,14 +184,14 @@ final class Issues extends AbstractApi
     /**
      * Permissions that may be checked: Project.Issues.View
      *
-     * @param array $project
-     * @param array $issueId
+     * @param string $project
+     * @param string $issueId
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getIssue(array $project, array $issueId, array $request = [], array $response = []): array
+    final public function getIssue(string $project, string $issueId, array $request = [], array $response = []): array
     {
         $uri = 'projects/{project}/planning/issues/{issueId}';
         $uriArguments = [
@@ -207,13 +207,13 @@ final class Issues extends AbstractApi
      *
      * Permissions that may be checked: Project.Issues.Edit
      *
-     * @param array $project
-     * @param array $issueId
+     * @param string $project
+     * @param string $issueId
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    final public function updateIssue(array $project, array $issueId, array $data = []): void
+    final public function updateIssue(string $project, string $issueId, array $data = []): void
     {
         $uri = 'projects/{project}/planning/issues/{issueId}';
         $uriArguments = [
@@ -229,12 +229,12 @@ final class Issues extends AbstractApi
      *
      * Permissions that may be checked: Project.Issues.Edit
      *
-     * @param array $project
-     * @param array $issueId
+     * @param string $project
+     * @param string $issueId
      * @return void
      * @throws GuzzleException
      */
-    final public function deleteIssue(array $project, array $issueId): void
+    final public function deleteIssue(string $project, string $issueId): void
     {
         $uri = 'projects/{project}/planning/issues/{issueId}';
         $uriArguments = [

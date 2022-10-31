@@ -18,17 +18,17 @@ final class NavBarProjects extends AbstractApi
     /**
      * Add a project to the navigation bar
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function createNavBarProject(array $profile, array $data): void
+    final public function createNavBarProject(string $profile, array $data): void
     {
         $uri = 'team-directory/profiles/{profile}/nav-bar-projects';
         $required = [
-            'project' => Type::Array,
+            'project' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -41,12 +41,12 @@ final class NavBarProjects extends AbstractApi
     /**
      * Add a project to the navigation bar
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllNavBarProjects(array $profile, array $response = []): array
+    final public function getAllNavBarProjects(string $profile, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/nav-bar-projects';
         $uriArguments = [
@@ -59,12 +59,12 @@ final class NavBarProjects extends AbstractApi
     /**
      * Remove a project from the navigation bar
      *
-     * @param array $profile
-     * @param array $project
+     * @param string $profile
+     * @param string $project
      * @return void
      * @throws GuzzleException
      */
-    final public function deleteNavBarProject(array $profile, array $project): void
+    final public function deleteNavBarProject(string $profile, string $project): void
     {
         $uri = 'team-directory/profiles/{profile}/nav-bar-projects/{project}';
         $uriArguments = [

@@ -16,7 +16,7 @@ final class Assignees extends AbstractApi
     /**
      * Assign a responsible person for a given project ID and responsibility ID
      *
-     * @param array $project
+     * @param string $project
      * @param string $responsibilityId
      * @param string $profileId
      * @param array $data
@@ -24,7 +24,7 @@ final class Assignees extends AbstractApi
      * @throws GuzzleException
      */
     final public function assignResponsible(
-        array $project,
+        string $project,
         string $responsibilityId,
         string $profileId,
         array $data = [],
@@ -42,7 +42,7 @@ final class Assignees extends AbstractApi
     /**
      * Remove a responsible person for a given project ID and responsibility ID
      *
-     * @param array $project
+     * @param string $project
      * @param string $responsibilityId
      * @param string $profileId
      * @param array $request
@@ -50,7 +50,7 @@ final class Assignees extends AbstractApi
      * @throws GuzzleException
      */
     final public function removeResponsible(
-        array $project,
+        string $project,
         string $responsibilityId,
         string $profileId,
         array $request = [],

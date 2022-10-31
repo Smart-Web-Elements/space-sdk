@@ -18,12 +18,12 @@ final class Requirements extends AbstractApi
      *
      * Permissions that may be checked: Profile.View
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function twoFactorAuthenticationRequirements(array $profile, array $response = []): array
+    final public function twoFactorAuthenticationRequirements(string $profile, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/2-fa/requirements';
         $uriArguments = [

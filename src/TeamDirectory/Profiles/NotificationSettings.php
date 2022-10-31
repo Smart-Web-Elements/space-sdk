@@ -14,12 +14,12 @@ use Swe\SpaceSDK\AbstractApi;
 final class NotificationSettings extends AbstractApi
 {
     /**
-     * @param array $profile
+     * @param string $profile
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getSpaceGlobalNotificationSettingsForAProfile(array $profile, array $response = []): array
+    final public function getSpaceGlobalNotificationSettingsForAProfile(string $profile, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/notification-settings';
         $uriArguments = [
@@ -30,12 +30,12 @@ final class NotificationSettings extends AbstractApi
     }
 
     /**
-     * @param array $profile
+     * @param string $profile
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    final public function setSpaceGlobalNotificationSettingsForAProfile(array $profile, array $data = []): void
+    final public function setSpaceGlobalNotificationSettingsForAProfile(string $profile, array $data = []): void
     {
         $uri = 'team-directory/profiles/{profile}/notification-settings';
         $uriArguments = [

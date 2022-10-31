@@ -14,16 +14,16 @@ use Swe\SpaceSDK\AbstractApi;
 final class Subfolders extends AbstractApi
 {
     /**
-     * @param array $profile
-     * @param array $folder
+     * @param string $profile
+     * @param string $folder
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
     final public function listSubfolders(
-        array $profile,
-        array $folder,
+        string $profile,
+        string $folder,
         array $request = [],
         array $response = [],
     ): array {

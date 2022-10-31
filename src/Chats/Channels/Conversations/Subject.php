@@ -18,13 +18,13 @@ final class Subject extends AbstractApi
     /**
      * Permissions that may be checked: Channel.UpdateChannelInfo
      *
-     * @param array $channel
+     * @param string $channel
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function changeConversationSubject(array $channel, array $data): void
+    final public function changeConversationSubject(string $channel, array $data): void
     {
         $uri = 'chats/channels/conversations/{channel}/subject';
         $required = [

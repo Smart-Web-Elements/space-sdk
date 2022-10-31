@@ -21,14 +21,14 @@ final class PermanentTokens extends AbstractApi
      *
      * Permissions that may be checked: Profile.PermanentTokens.Create
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function createPermanentToken(array $profile, array $data, array $response = []): array
+    final public function createPermanentToken(string $profile, array $data, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/permanent-tokens';
         $required = [
@@ -48,13 +48,13 @@ final class PermanentTokens extends AbstractApi
      *
      * Permissions that may be checked: Profile.PermanentTokens.Edit
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllPermanentTokens(array $profile, array $request = [], array $response = []): array
+    final public function getAllPermanentTokens(string $profile, array $request = [], array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/permanent-tokens';
         $uriArguments = [
@@ -69,13 +69,13 @@ final class PermanentTokens extends AbstractApi
      *
      * Permissions that may be checked: Profile.PermanentTokens.Edit
      *
-     * @param array $profile
+     * @param string $profile
      * @param string $tokenId
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    final public function updatePermanentToken(array $profile, string $tokenId, array $data = []): void
+    final public function updatePermanentToken(string $profile, string $tokenId, array $data = []): void
     {
         $uri = 'team-directory/profiles/{profile}/permanent-tokens/{tokenId}';
         $uriArguments = [
@@ -91,12 +91,12 @@ final class PermanentTokens extends AbstractApi
      *
      * Permissions that may be checked: Profile.PermanentTokens.Edit
      *
-     * @param array $profile
+     * @param string $profile
      * @param string $tokenId
      * @return void
      * @throws GuzzleException
      */
-    final public function deletePermanentToken(array $profile, string $tokenId): void
+    final public function deletePermanentToken(string $profile, string $tokenId): void
     {
         $uri = 'team-directory/profiles/{profile}/permanent-tokens/{tokenId}';
         $uriArguments = [

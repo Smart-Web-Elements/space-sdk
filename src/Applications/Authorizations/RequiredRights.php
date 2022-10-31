@@ -20,12 +20,12 @@ final class RequiredRights extends AbstractApi
      *
      * Permissions that may be checked: Applications.View
      *
-     * @param array $application
+     * @param string $application
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllRequiredRights(array $application, array $response = []): array
+    final public function getAllRequiredRights(string $application, array $response = []): array
     {
         $uri = 'applications/{application}/authorizations/required-rights';
         $uriArguments = [
@@ -40,13 +40,13 @@ final class RequiredRights extends AbstractApi
      *
      * Permissions that may be checked: Applications.Edit
      *
-     * @param array $application
+     * @param string $application
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function updateRequiredRight(array $application, array $data): void
+    final public function updateRequiredRight(string $application, array $data): void
     {
         $uri = 'applications/{application}/authorizations/required-rights';
         $required = [

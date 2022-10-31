@@ -32,7 +32,7 @@ final class Authorizations extends AbstractApi
     {
         $uri = 'applications/authorizations/authorized-applications';
         $required = [
-            'contextIdentifier' => Type::Array,
+            'contextIdentifier' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
 
@@ -44,12 +44,12 @@ final class Authorizations extends AbstractApi
      *
      * Permissions that may be checked: Applications.View
      *
-     * @param array $application
+     * @param string $application
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllAuthorizedContexts(array $application, array $response = []): array
+    final public function getAllAuthorizedContexts(string $application, array $response = []): array
     {
         $uri = 'applications/{application}/authorizations/authorized-contexts';
         $uriArguments = [

@@ -20,12 +20,12 @@ final class Totp extends AbstractApi
      *
      * Permissions that may be checked: Profile.TwoFactorAuthentication.Create
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function setUpTotpTwoFactorAuthentication(array $profile, array $response = []): array
+    final public function setUpTotpTwoFactorAuthentication(string $profile, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/2-fa/totp';
         $uriArguments = [
@@ -40,13 +40,13 @@ final class Totp extends AbstractApi
      *
      * Permissions that may be checked: Profile.TwoFactorAuthentication.Create
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function confirmTotpTwoFactorAuthenticationSettings(array $profile, array $data): void
+    final public function confirmTotpTwoFactorAuthenticationSettings(string $profile, array $data): void
     {
         $uri = 'team-directory/profiles/{profile}/2-fa/totp/confirm';
         $required = [
@@ -65,13 +65,13 @@ final class Totp extends AbstractApi
      *
      * Permissions that may be checked: Profile.TwoFactorAuthentication.Edit
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function updateTotpTwoFactorAuthenticationSettings(array $profile, array $data): void
+    final public function updateTotpTwoFactorAuthenticationSettings(string $profile, array $data): void
     {
         $uri = 'team-directory/profiles/{profile}/2-fa/totp';
         $required = [
@@ -90,11 +90,11 @@ final class Totp extends AbstractApi
      *
      * Permissions that may be checked: Profile.TwoFactorAuthentication.Edit
      *
-     * @param array $profile
+     * @param string $profile
      * @return void
      * @throws GuzzleException
      */
-    final public function deleteCurrentTotpTwoFactorAuthenticationSettings(array $profile): void
+    final public function deleteCurrentTotpTwoFactorAuthenticationSettings(string $profile): void
     {
         $uri = 'team-directory/profiles/{profile}/2-fa/totp';
         $uriArguments = [

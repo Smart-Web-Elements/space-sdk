@@ -18,12 +18,12 @@ final class Administrator extends AbstractApi
     /**
      * Permissions that may be checked: Channel.ViewChannelParticipants
      *
-     * @param array $channel
+     * @param string $channel
      * @param array $response
      * @return array|null
      * @throws GuzzleException
      */
-    final public function getChannelAdministrator(array $channel, array $response = []): ?array
+    final public function getChannelAdministrator(string $channel, array $response = []): ?array
     {
         $uri = 'chats/channels/{channel}/administrator';
         $uriArguments = [
@@ -36,17 +36,17 @@ final class Administrator extends AbstractApi
     /**
      * Permissions that may be checked: Channel.Admin
      *
-     * @param array $channel
+     * @param string $channel
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function assignChannelAdministrator(array $channel, array $data): void
+    final public function assignChannelAdministrator(string $channel, array $data): void
     {
         $uri = 'chats/channels/{channel}/administrator';
         $required = [
-            'profile' => Type::Array,
+            'profile' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

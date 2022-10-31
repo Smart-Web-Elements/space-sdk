@@ -23,14 +23,14 @@ final class Webhooks extends AbstractApi
      *
      * Permissions that may be checked: Applications.Edit
      *
-     * @param array $application
+     * @param string $application
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function createWebhook(array $application, array $data, array $response = []): array
+    final public function createWebhook(string $application, array $data, array $response = []): array
     {
         $uri = 'applications/{application}/webhooks';
         $required = [
@@ -50,12 +50,12 @@ final class Webhooks extends AbstractApi
      *
      * Permissions that may be checked: Applications.Edit
      *
-     * @param array $application
+     * @param string $application
      * @param string $webhookId
      * @return void
      * @throws GuzzleException
      */
-    final public function postWebhook(array $application, string $webhookId): void
+    final public function postWebhook(string $application, string $webhookId): void
     {
         $uri = 'applications/{application}/webhooks/{webhookId}';
         $uriArguments = [
@@ -71,13 +71,13 @@ final class Webhooks extends AbstractApi
      *
      * Permissions that may be checked: Applications.View
      *
-     * @param array $application
+     * @param string $application
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllWebhooks(array $application, array $request = [], array $response = []): array
+    final public function getAllWebhooks(string $application, array $request = [], array $response = []): array
     {
         $uri = 'applications/{application}/webhooks';
         $uriArguments = [
@@ -90,13 +90,13 @@ final class Webhooks extends AbstractApi
     /**
      * Permissions that may be checked: Applications.ViewSecrets
      *
-     * @param array $application
+     * @param string $application
      * @param string $webhookId
      * @param array $response
      * @return string|null
      * @throws GuzzleException
      */
-    final public function bearerToken(array $application, string $webhookId): ?string
+    final public function bearerToken(string $application, string $webhookId): ?string
     {
         $uri = 'applications/{application}/webhooks/{webhookId}/bearer-token';
         $uriArguments = [
@@ -112,13 +112,13 @@ final class Webhooks extends AbstractApi
      *
      * Permissions that may be checked: Applications.Edit
      *
-     * @param array $application
+     * @param string $application
      * @param string $webhookId
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    final public function updateWebhook(array $application, string $webhookId, array $data = []): void
+    final public function updateWebhook(string $application, string $webhookId, array $data = []): void
     {
         $uri = 'applications/{application}/webhooks/{webhookId}';
         $uriArguments = [
@@ -134,12 +134,12 @@ final class Webhooks extends AbstractApi
      *
      * Permissions that may be checked: Applications.Edit
      *
-     * @param array $application
+     * @param string $application
      * @param string $webhookId
      * @return void
      * @throws GuzzleException
      */
-    final public function deleteWebhook(array $application, string $webhookId): void
+    final public function deleteWebhook(string $application, string $webhookId): void
     {
         $uri = 'applications/{application}/webhooks/{webhookId}';
         $uriArguments = [

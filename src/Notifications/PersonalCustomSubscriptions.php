@@ -30,7 +30,7 @@ final class PersonalCustomSubscriptions extends AbstractApi
     {
         $uri = 'notifications/personal-custom-subscriptions';
         $required = [
-            'profile' => Type::Array,
+            'profile' => Type::String,
             'name' => Type::String,
             'feed' => Type::String,
             'subscription' => [
@@ -59,7 +59,7 @@ final class PersonalCustomSubscriptions extends AbstractApi
     {
         $uri = 'notifications/personal-custom-subscriptions';
         $required = [
-            'profile' => Type::Array,
+            'profile' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
 

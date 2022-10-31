@@ -19,11 +19,11 @@ final class Profiles extends AbstractApi
      * Permissions that may be checked: Superadmin, Project.Admin, Channel.Admin
      *
      * @param string $roleId
-     * @param array $profile
+     * @param string $profile
      * @return void
      * @throws GuzzleException
      */
-    final public function addRoleMember(string $roleId, array $profile): void
+    final public function addRoleMember(string $roleId, string $profile): void
     {
         $uri = 'permission-roles/{roleId}/profiles/{profile}';
         $uriArguments = [
@@ -60,11 +60,11 @@ final class Profiles extends AbstractApi
      * Permissions that may be checked: Superadmin, Project.Admin, Channel.Admin
      *
      * @param string $roleId
-     * @param array $profile
+     * @param string $profile
      * @return void
      * @throws GuzzleException
      */
-    final public function removeRoleMember(string $roleId, array $profile): void
+    final public function removeRoleMember(string $roleId, string $profile): void
     {
         $uri = 'permission-roles/{roleId}/profiles/{profile}';
         $uriArguments = [

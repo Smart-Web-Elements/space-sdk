@@ -30,7 +30,7 @@ final class PrivateFeeds extends AbstractApi
     {
         $uri = 'notifications/private-feeds';
         $required = [
-            'profile' => Type::Array,
+            'profile' => Type::String,
             'name' => Type::String,
             'icon' => Type::String,
             'color' => Type::String,
@@ -55,7 +55,7 @@ final class PrivateFeeds extends AbstractApi
     {
         $uri = 'notifications/private-feeds';
         $required = [
-            'profile' => Type::Array,
+            'profile' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
 

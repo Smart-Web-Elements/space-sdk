@@ -16,8 +16,8 @@ use Swe\SpaceSDK\Type;
 final class EnumValues extends AbstractApi
 {
     /**
-     * @param array $entityType
-     * @param array $customField
+     * @param string $entityType
+     * @param string $customField
      * @param array $data
      * @param array $response
      * @return array
@@ -25,8 +25,8 @@ final class EnumValues extends AbstractApi
      * @throws MissingArgumentException
      */
     final public function createEnumValue(
-        array $entityType,
-        array $customField,
+        string $entityType,
+        string $customField,
         array $data,
         array $response = [],
     ): array {
@@ -44,14 +44,14 @@ final class EnumValues extends AbstractApi
     }
 
     /**
-     * @param array $entityType
-     * @param array $customField
+     * @param string $entityType
+     * @param string $customField
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function bulkUpdateEnumValues(array $entityType, array $customField, array $data): void
+    final public function bulkUpdateEnumValues(string $entityType, string $customField, array $data): void
     {
         $uri = 'custom-fields-v2/{entityType}/fields/{customField}/enum-values/bulk-update';
         $required = [
@@ -67,16 +67,16 @@ final class EnumValues extends AbstractApi
     }
 
     /**
-     * @param array $entityType
-     * @param array $customField
+     * @param string $entityType
+     * @param string $customField
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
     final public function getEnumValues(
-        array $entityType,
-        array $customField,
+        string $entityType,
+        string $customField,
         array $request = [],
         array $response = [],
     ): array {
@@ -90,18 +90,18 @@ final class EnumValues extends AbstractApi
     }
 
     /**
-     * @param array $entityType
-     * @param array $customField
+     * @param string $entityType
+     * @param string $customField
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function updateEnumValue(array $entityType, array $customField, array $data): void
+    final public function updateEnumValue(string $entityType, string $customField, array $data): void
     {
         $uri = 'custom-fields-v2/{entityType}/fields/{customField}/enum-values';
         $required = [
-            'enumValueToUpdate' => Type::Array,
+            'enumValueToUpdate' => Type::String,
             'newName' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
@@ -114,13 +114,13 @@ final class EnumValues extends AbstractApi
     }
 
     /**
-     * @param array $entityType
-     * @param array $customField
-     * @param array $enumValueToRemove
+     * @param string $entityType
+     * @param string $customField
+     * @param string $enumValueToRemove
      * @return void
      * @throws GuzzleException
      */
-    final public function deleteEnumValue(array $entityType, array $customField, array $enumValueToRemove): void
+    final public function deleteEnumValue(string $entityType, string $customField, string $enumValueToRemove): void
     {
         $uri = 'custom-fields-v2/{entityType}/fields/{customField}/enum-values/{enumValueToRemove}';
         $uriArguments = [

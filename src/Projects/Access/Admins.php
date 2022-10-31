@@ -20,12 +20,12 @@ final class Admins extends AbstractApi
      *
      * Permissions that may be checked: Project.View
      *
-     * @param array $project
+     * @param string $project
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllAdmins(array $project, array $response = []): array
+    final public function getAllAdmins(string $project, array $response = []): array
     {
         $uri = 'projects/{project}/access/admins';
         $uriArguments = [

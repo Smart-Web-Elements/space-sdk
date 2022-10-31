@@ -20,19 +20,19 @@ use Swe\SpaceSDK\Type;
 final class Folders extends AbstractApi
 {
     /**
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function createFolder(array $project, array $data, array $response = []): array
+    final public function createFolder(string $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/documents/folders';
         $required = [
             'name' => Type::String,
-            'parentFolder' => Type::Array,
+            'parentFolder' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -43,13 +43,13 @@ final class Folders extends AbstractApi
     }
 
     /**
-     * @param array $project
-     * @param array $folder
+     * @param string $project
+     * @param string $folder
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getFolder(array $project, array $folder, array $response = []): array
+    final public function getFolder(string $project, string $folder, array $response = []): array
     {
         $uri = 'projects/{project}/documents/folders/{folder}';
         $uriArguments = [
@@ -61,14 +61,14 @@ final class Folders extends AbstractApi
     }
 
     /**
-     * @param array $project
-     * @param array $folder
+     * @param string $project
+     * @param string $folder
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function renameFolder(array $project, array $folder, array $data): void
+    final public function renameFolder(string $project, string $folder, array $data): void
     {
         $uri = 'projects/{project}/documents/folders/{folder}';
         $required = [
@@ -84,12 +84,12 @@ final class Folders extends AbstractApi
     }
 
     /**
-     * @param array $project
-     * @param array $folder
+     * @param string $project
+     * @param string $folder
      * @return void
      * @throws GuzzleException
      */
-    final public function archiveFolder(array $project, array $folder): void
+    final public function archiveFolder(string $project, string $folder): void
     {
         $uri = 'projects/{project}/documents/folders/{folder}';
         $uriArguments = [

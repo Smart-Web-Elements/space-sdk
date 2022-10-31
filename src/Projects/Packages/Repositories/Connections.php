@@ -19,13 +19,13 @@ final class Connections extends AbstractApi
      *
      * Permissions that may be checked: PackageRepository.Read
      *
-     * @param array $project
-     * @param array $repository
+     * @param string $project
+     * @param string $repository
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllRemoteRepositories(array $project, array $repository, array $response = []): array
+    final public function getAllRemoteRepositories(string $project, string $repository, array $response = []): array
     {
         $uri = 'projects/{project}/packages/repositories/{repository}/connections';
         $uriArguments = [

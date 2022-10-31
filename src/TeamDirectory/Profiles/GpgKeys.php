@@ -18,14 +18,14 @@ final class GpgKeys extends AbstractApi
     /**
      * Permissions that may be checked: Profile.Edit.2
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function addPublicGpgKey(array $profile, array $data, array $response = []): array
+    final public function addPublicGpgKey(string $profile, array $data, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/gpg-keys';
         $required = [
@@ -42,12 +42,12 @@ final class GpgKeys extends AbstractApi
     /**
      * List GPG public keys associated with a profile
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function listPublicGpgKeys(array $profile, array $response = []): array
+    final public function listPublicGpgKeys(string $profile, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/gpg-keys';
         $uriArguments = [
@@ -60,13 +60,13 @@ final class GpgKeys extends AbstractApi
     /**
      * Permissions that may be checked: Profile.Edit.2
      *
-     * @param array $profile
+     * @param string $profile
      * @param string $fingerprint
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    final public function revokePublicGpgKey(array $profile, string $fingerprint, array $data = []): void
+    final public function revokePublicGpgKey(string $profile, string $fingerprint, array $data = []): void
     {
         $uri = 'team-directory/profiles/{profile}/gpg-keys/{fingerprint}';
         $uriArguments = [
@@ -80,12 +80,12 @@ final class GpgKeys extends AbstractApi
     /**
      * Permissions that may be checked: Profile.Edit.2
      *
-     * @param array $profile
+     * @param string $profile
      * @param string $fingerprint
      * @return void
      * @throws GuzzleException
      */
-    final public function deletePublicGpgKey(array $profile, string $fingerprint): void
+    final public function deletePublicGpgKey(string $profile, string $fingerprint): void
     {
         $uri = 'team-directory/profiles/{profile}/gpg-keys/{fingerprint}';
         $uriArguments = [

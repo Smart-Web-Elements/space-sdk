@@ -16,12 +16,12 @@ final class Applications extends AbstractApi
     /**
      * Remove a previously approved application
      *
-     * @param array $owner
-     * @param array $application
+     * @param string $owner
+     * @param string $application
      * @return void
      * @throws GuzzleException
      */
-    final public function deleteApplication(array $owner, array $application): void
+    final public function deleteApplication(string $owner, string $application): void
     {
         $uri = 'team-directory/profiles/oauth-consents/{owner}/applications/{application}';
         $uriArguments = [

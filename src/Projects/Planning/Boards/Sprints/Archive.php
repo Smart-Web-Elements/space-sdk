@@ -18,11 +18,11 @@ final class Archive extends AbstractApi
      *
      * Permissions that may be checked: Project.Planning.Boards.Manage
      *
-     * @param array $sprint
+     * @param string $sprint
      * @return void
      * @throws GuzzleException
      */
-    final public function archiveSprint(array $sprint): void
+    final public function archiveSprint(string $sprint): void
     {
         $uri = 'projects/planning/boards/sprints/{sprint}/archive';
         $uriArguments = [

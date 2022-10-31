@@ -16,14 +16,14 @@ use Swe\SpaceSDK\Type;
 final class Topics extends AbstractApi
 {
     /**
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function createTopic(array $project, array $data, array $response = []): array
+    final public function createTopic(string $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/topics';
         $required = [
@@ -38,13 +38,13 @@ final class Topics extends AbstractApi
     }
 
     /**
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function removeTopics(array $project, array $data): void
+    final public function removeTopics(string $project, array $data): void
     {
         $uri = 'projects/{project}/topics/remove-topics';
         $required = [
@@ -59,13 +59,13 @@ final class Topics extends AbstractApi
     }
 
     /**
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function setResponsible(array $project, array $data): void
+    final public function setResponsible(string $project, array $data): void
     {
         $uri = 'projects/{project}/topics/set-responsible';
         $required = [
@@ -81,12 +81,12 @@ final class Topics extends AbstractApi
     }
 
     /**
-     * @param array $project
+     * @param string $project
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getTopic(array $project, array $response = []): array
+    final public function getTopic(string $project, array $response = []): array
     {
         $uri = 'projects/{project}/topics';
         $uriArguments = [
@@ -97,14 +97,14 @@ final class Topics extends AbstractApi
     }
 
     /**
-     * @param array $project
+     * @param string $project
      * @param string $id
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function updateTopic(array $project, string $id, array $data = [], array $response = []): array
+    final public function updateTopic(string $project, string $id, array $data = [], array $response = []): array
     {
         $uri = 'projects/{project}/topics/{id}';
         $uriArguments = [

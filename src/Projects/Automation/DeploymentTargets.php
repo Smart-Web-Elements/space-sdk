@@ -18,14 +18,14 @@ final class DeploymentTargets extends AbstractApi
     /**
      * Permissions that may be checked: Project.Deployments.Targets.Modify
      *
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function create(array $project, array $data, array $response = []): array
+    final public function create(string $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/automation/deployment-targets';
         $required = [
@@ -44,13 +44,13 @@ final class DeploymentTargets extends AbstractApi
     /**
      * Permissions that may be checked: Project.Deployments.View
      *
-     * @param array $project
+     * @param string $project
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function list(array $project, array $request = [], array $response = []): array
+    final public function list(string $project, array $request = [], array $response = []): array
     {
         $uri = 'projects/{project}/automation/deployment-targets';
         $uriArguments = [
@@ -63,13 +63,13 @@ final class DeploymentTargets extends AbstractApi
     /**
      * Permissions that may be checked: Project.Deployments.View
      *
-     * @param array $project
+     * @param string $project
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function listFavorites(array $project, array $request = [], array $response = []): array
+    final public function listFavorites(string $project, array $request = [], array $response = []): array
     {
         $uri = 'projects/{project}/automation/deployment-targets/favorites';
         $uriArguments = [
@@ -82,13 +82,13 @@ final class DeploymentTargets extends AbstractApi
     /**
      * Permissions that may be checked: Project.Deployments.View
      *
-     * @param array $project
-     * @param array $target
+     * @param string $project
+     * @param string $target
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function get(array $project, array $target, array $response = []): array
+    final public function get(string $project, string $target, array $response = []): array
     {
         $uri = 'projects/{project}/automation/deployment-targets/{target}';
         $uriArguments = [
@@ -100,13 +100,13 @@ final class DeploymentTargets extends AbstractApi
     }
 
     /**
-     * @param array $project
-     * @param array $target
+     * @param string $project
+     * @param string $target
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    final public function update(array $project, array $target, array $data = []): void
+    final public function update(string $project, string $target, array $data = []): void
     {
         $uri = 'projects/{project}/automation/deployment-targets/{target}';
         $uriArguments = [
@@ -120,12 +120,12 @@ final class DeploymentTargets extends AbstractApi
     /**
      * Permissions that may be checked: Project.Deployments.Targets.Modify
      *
-     * @param array $project
-     * @param array $target
+     * @param string $project
+     * @param string $target
      * @return void
      * @throws GuzzleException
      */
-    final public function delete(array $project, array $target): void
+    final public function delete(string $project, string $target): void
     {
         $uri = 'projects/{project}/automation/deployment-targets/{target}';
         $uriArguments = [

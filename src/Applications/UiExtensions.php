@@ -20,18 +20,18 @@ final class UiExtensions extends AbstractApi
      *
      * Permissions that may be checked: Applications.View
      *
-     * @param array $application
+     * @param string $application
      * @param array $request
      * @param array $response
      * @return array|null
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function getUiExtensions(array $application, array $request, array $response = []): ?array
+    final public function getUiExtensions(string $application, array $request, array $response = []): ?array
     {
         $uri = 'applications/{application}/ui-extensions';
         $required = [
-            'contextIdentifier' => Type::Array,
+            'contextIdentifier' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
         $uriArguments = [
@@ -46,17 +46,17 @@ final class UiExtensions extends AbstractApi
      *
      * Permissions that may be checked: Applications.View, Superadmin, Project.Admin, Channel.Admin
      *
-     * @param array $application
+     * @param string $application
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function disableApplicationUi(array $application, array $data): void
+    final public function disableApplicationUi(string $application, array $data): void
     {
         $uri = 'applications/{application}/ui-extensions/disable-for-everybody';
         $required = [
-            'contextIdentifier' => Type::Array,
+            'contextIdentifier' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -71,17 +71,17 @@ final class UiExtensions extends AbstractApi
      *
      * Permissions that may be checked: Applications.View
      *
-     * @param array $application
+     * @param string $application
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function disableApplicationUiForMe(array $application, array $data): void
+    final public function disableApplicationUiForMe(string $application, array $data): void
     {
         $uri = 'applications/{application}/ui-extensions/disable-for-me';
         $required = [
-            'contextIdentifier' => Type::Array,
+            'contextIdentifier' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -96,17 +96,17 @@ final class UiExtensions extends AbstractApi
      *
      * Permissions that may be checked: Applications.View, Superadmin, Project.Admin, Channel.Admin
      *
-     * @param array $application
+     * @param string $application
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function enableApplicationUi(array $application, array $data): void
+    final public function enableApplicationUi(string $application, array $data): void
     {
         $uri = 'applications/{application}/ui-extensions/enable-for-everybody';
         $required = [
-            'contextIdentifier' => Type::Array,
+            'contextIdentifier' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -121,17 +121,17 @@ final class UiExtensions extends AbstractApi
      *
      * Permissions that may be checked: Applications.View
      *
-     * @param array $application
+     * @param string $application
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function enableApplicationUiForMe(array $application, array $data): void
+    final public function enableApplicationUiForMe(string $application, array $data): void
     {
         $uri = 'applications/{application}/ui-extensions/enable-for-me';
         $required = [
-            'contextIdentifier' => Type::Array,
+            'contextIdentifier' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

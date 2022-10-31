@@ -16,14 +16,14 @@ use Swe\SpaceSDK\Type;
 final class ApplicationPasswords extends AbstractApi
 {
     /**
-     * @param array $profile
+     * @param string $profile
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function createApplicationPassword(array $profile, array $data, array $response = []): array
+    final public function createApplicationPassword(string $profile, array $data, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/application-passwords';
         $required = [
@@ -39,13 +39,13 @@ final class ApplicationPasswords extends AbstractApi
     }
 
     /**
-     * @param array $profile
+     * @param string $profile
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllApplicationPasswords(array $profile, array $request = [], array $response = []): array
+    final public function getAllApplicationPasswords(string $profile, array $request = [], array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/application-passwords';
         $uriArguments = [
@@ -56,13 +56,13 @@ final class ApplicationPasswords extends AbstractApi
     }
 
     /**
-     * @param array $profile
+     * @param string $profile
      * @param string $passwordId
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    final public function updateApplicationPassword(array $profile, string $passwordId, array $data = []): void
+    final public function updateApplicationPassword(string $profile, string $passwordId, array $data = []): void
     {
         $uri = 'team-directory/profiles/{profile}/application-passwords/{passwordId}';
         $uriArguments = [
@@ -74,12 +74,12 @@ final class ApplicationPasswords extends AbstractApi
     }
 
     /**
-     * @param array $profile
+     * @param string $profile
      * @param string $passwordId
      * @return void
      * @throws GuzzleException
      */
-    final public function deleteApplicationPassword(array $profile, string $passwordId): void
+    final public function deleteApplicationPassword(string $profile, string $passwordId): void
     {
         $uri = 'team-directory/profiles/{profile}/application-passwords/{passwordId}';
         $uriArguments = [

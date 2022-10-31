@@ -20,12 +20,12 @@ final class OauthConsents extends AbstractApi
     /**
      * Get all OAuth consents for a given profile ID
      *
-     * @param array $owner
+     * @param string $owner
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getOauthConsents(array $owner, array $response = []): array
+    final public function getOauthConsents(string $owner, array $response = []): array
     {
         $uri = 'team-directory/profiles/oauth-consents/{owner}';
         $uriArguments = [

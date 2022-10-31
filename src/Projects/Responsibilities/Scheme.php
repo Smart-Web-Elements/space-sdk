@@ -16,12 +16,12 @@ final class Scheme extends AbstractApi
     /**
      * Get the responsibilities schema for a given project ID
      *
-     * @param array $project
+     * @param string $project
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getProjectResponsibilityScheme(array $project, array $response = []): array
+    final public function getProjectResponsibilityScheme(string $project, array $response = []): array
     {
         $uri = 'projects/{project}/responsibilities/scheme';
         $uriArguments = [

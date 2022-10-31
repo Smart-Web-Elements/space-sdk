@@ -100,12 +100,12 @@ final class Profiles extends AbstractApi
      *
      * Permissions that may be checked: Profile.View
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getProfile(array $profile, array $response = []): array
+    final public function getProfile(string $profile, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}';
         $uriArguments = [
@@ -118,14 +118,14 @@ final class Profiles extends AbstractApi
     /**
      * Check if a user profile is a member of one or more teams
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $request
      * @param array $response
      * @return bool
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function checkIfProfileIsTeamMember(array $profile, array $request): bool
+    final public function checkIfProfileIsTeamMember(string $profile, array $request): bool
     {
         $uri = 'team-directory/profiles/{profile}/is-team-member';
         $required = [
@@ -144,13 +144,13 @@ final class Profiles extends AbstractApi
      *
      * Permissions that may be checked: Profile.Edit.2
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function updateProfile(array $profile, array $data = [], array $response = []): array
+    final public function updateProfile(string $profile, array $data = [], array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}';
         $uriArguments = [
@@ -165,13 +165,13 @@ final class Profiles extends AbstractApi
      *
      * Permissions that may be checked: Profile.Edit.2
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function reactivateUserProfile(array $profile, array $data = [], array $response = []): array
+    final public function reactivateUserProfile(string $profile, array $data = [], array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/reactivate';
         $uriArguments = [
@@ -186,12 +186,12 @@ final class Profiles extends AbstractApi
      *
      * Permissions that may be checked: Profile.Delete
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function deleteProfile(array $profile, array $response = []): array
+    final public function deleteProfile(string $profile, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}';
         $uriArguments = [
@@ -206,14 +206,14 @@ final class Profiles extends AbstractApi
      *
      * Permissions that may be checked: Profile.Edit.2
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function deactivateUserProfile(array $profile, array $request, array $response = []): array
+    final public function deactivateUserProfile(string $profile, array $request, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/deactivate';
         $required = [

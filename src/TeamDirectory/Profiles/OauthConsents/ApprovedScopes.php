@@ -16,12 +16,12 @@ final class ApprovedScopes extends AbstractApi
     /**
      * Remove a previously approved scope
      *
-     * @param array $owner
+     * @param string $owner
      * @param string $id
      * @return void
      * @throws GuzzleException
      */
-    final public function deleteApprovedScope(array $owner, string $id): void
+    final public function deleteApprovedScope(string $owner, string $id): void
     {
         $uri = 'team-directory/profiles/oauth-consents/{owner}/approved-scopes/{id}';
         $uriArguments = [

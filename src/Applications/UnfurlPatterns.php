@@ -20,13 +20,13 @@ final class UnfurlPatterns extends AbstractApi
      *
      * Permissions that may be checked: Unfurl.App.Authorize
      *
-     * @param array $application
+     * @param string $application
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function authorizeUnfurledPatterns(array $application, array $data): void
+    final public function authorizeUnfurledPatterns(string $application, array $data): void
     {
         $uri = 'applications/{application}/unfurl-patterns/authorize';
         $required = [
@@ -46,12 +46,12 @@ final class UnfurlPatterns extends AbstractApi
      *
      * Permissions that may be checked: Applications.View
      *
-     * @param array $application
+     * @param string $application
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllUnfurlPatterns(array $application, array $response = []): array
+    final public function getAllUnfurlPatterns(string $application, array $response = []): array
     {
         $uri = 'applications/{application}/unfurl-patterns';
         $uriArguments = [

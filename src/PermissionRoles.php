@@ -32,7 +32,7 @@ final class PermissionRoles extends AbstractApi
     {
         $uri = 'permission-roles/create';
         $required = [
-            'contextIdentifier' => Type::Array,
+            'contextIdentifier' => Type::String,
             'name' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
@@ -55,7 +55,7 @@ final class PermissionRoles extends AbstractApi
     {
         $uri = 'permission-roles/get';
         $required = [
-            'contextIdentifier' => Type::Array,
+            'contextIdentifier' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
 

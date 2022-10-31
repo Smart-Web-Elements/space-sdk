@@ -20,13 +20,13 @@ final class UnfurlDomains extends AbstractApi
      *
      * Permissions that may be checked: Unfurl.App.Authorize
      *
-     * @param array $application
+     * @param string $application
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function authorizeUnfurledDomains(array $application, array $data): void
+    final public function authorizeUnfurledDomains(string $application, array $data): void
     {
         $uri = 'applications/{application}/unfurl-domains/authorize';
         $required = [
@@ -46,12 +46,12 @@ final class UnfurlDomains extends AbstractApi
      *
      * Permissions that may be checked: Applications.View
      *
-     * @param array $application
+     * @param string $application
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllUnfurlDomains(array $application, array $response = []): array
+    final public function getAllUnfurlDomains(string $application, array $response = []): array
     {
         $uri = 'applications/{application}/unfurl-domains';
         $uriArguments = [

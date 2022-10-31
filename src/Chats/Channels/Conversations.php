@@ -39,14 +39,14 @@ final class Conversations extends AbstractApi
     /**
      * Permissions that may be checked: Channel.Admin
      *
-     * @param array $channel
+     * @param string $channel
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function convertConversationToPrivateChannel(array $channel, array $data, array $response = []): array
+    final public function convertConversationToPrivateChannel(string $channel, array $data, array $response = []): array
     {
         $uri = 'chats/channels/conversations/{channel}/convert';
         $required = [

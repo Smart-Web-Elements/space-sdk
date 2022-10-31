@@ -16,14 +16,14 @@ use Swe\SpaceSDK\Type;
 final class ClassReadonly extends AbstractApi
 {
     /**
-     * @param array $project
+     * @param string $project
      * @param string $repository
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function setRepositoryFrozenState(array $project, string $repository, array $data): void
+    final public function setRepositoryFrozenState(string $project, string $repository, array $data): void
     {
         $uri = 'projects/{project}/repositories/{repository}/readonly';
         $required = [
@@ -39,13 +39,13 @@ final class ClassReadonly extends AbstractApi
     }
 
     /**
-     * @param array $project
+     * @param string $project
      * @param string $repository
      * @param array $response
      * @return bool
      * @throws GuzzleException
      */
-    final public function getRepositoryFrozenState(array $project, string $repository): bool
+    final public function getRepositoryFrozenState(string $project, string $repository): bool
     {
         $uri = 'projects/{project}/repositories/{repository}/readonly';
         $uriArguments = [

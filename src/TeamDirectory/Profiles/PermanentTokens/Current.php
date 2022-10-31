@@ -16,11 +16,11 @@ final class Current extends AbstractApi
     /**
      * Delete personal token of the given profile
      *
-     * @param array $profile
+     * @param string $profile
      * @return void
      * @throws GuzzleException
      */
-    final public function deleteCurrentPermanentToken(array $profile): void
+    final public function deleteCurrentPermanentToken(string $profile): void
     {
         $uri = 'team-directory/profiles/{profile}/permanent-tokens/current';
         $uriArguments = [

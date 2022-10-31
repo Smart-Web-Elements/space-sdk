@@ -18,13 +18,13 @@ final class Description extends AbstractApi
     /**
      * Permissions that may be checked: Channel.UpdateChannelInfo
      *
-     * @param array $channel
+     * @param string $channel
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function changeChannelDescription(array $channel, array $data): void
+    final public function changeChannelDescription(string $channel, array $data): void
     {
         $uri = 'chats/channels/{channel}/description';
         $required = [

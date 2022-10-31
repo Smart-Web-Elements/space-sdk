@@ -24,12 +24,12 @@ final class Boards extends AbstractApi
      *
      * Permissions that may be checked: Project.Planning.Boards.View
      *
-     * @param array $board
+     * @param string $board
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getBoard(array $board, array $response = []): array
+    final public function getBoard(string $board, array $response = []): array
     {
         $uri = 'projects/planning/boards/{board}';
         $uriArguments = [
@@ -44,12 +44,12 @@ final class Boards extends AbstractApi
      *
      * Permissions that may be checked: Project.Planning.Boards.Manage
      *
-     * @param array $board
+     * @param string $board
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    final public function updateBoard(array $board, array $data = []): void
+    final public function updateBoard(string $board, array $data = []): void
     {
         $uri = 'projects/planning/boards/{board}';
         $uriArguments = [
@@ -64,11 +64,11 @@ final class Boards extends AbstractApi
      *
      * Permissions that may be checked: Project.Planning.Boards.Manage
      *
-     * @param array $board
+     * @param string $board
      * @return void
      * @throws GuzzleException
      */
-    final public function deleteBoard(array $board): void
+    final public function deleteBoard(string $board): void
     {
         $uri = 'projects/planning/boards/{board}';
         $uriArguments = [
@@ -99,14 +99,14 @@ final class Boards extends AbstractApi
      *
      * Permissions that may be checked: Project.Planning.Boards.Create
      *
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function createBoard(array $project, array $data, array $response = []): array
+    final public function createBoard(string $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/planning/boards';
         $required = [
@@ -125,13 +125,13 @@ final class Boards extends AbstractApi
      *
      * Permissions that may be checked: Project.Planning.Boards.View
      *
-     * @param array $project
+     * @param string $project
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllBoards(array $project, array $request = [], array $response = []): array
+    final public function getAllBoards(string $project, array $request = [], array $response = []): array
     {
         $uri = 'projects/{project}/planning/boards';
         $uriArguments = [

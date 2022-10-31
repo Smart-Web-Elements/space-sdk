@@ -16,7 +16,7 @@ use Swe\SpaceSDK\Type;
 final class ExternalChecks extends AbstractApi
 {
     /**
-     * @param array $project
+     * @param string $project
      * @param string $repository
      * @param string $revision
      * @param array $data
@@ -25,7 +25,7 @@ final class ExternalChecks extends AbstractApi
      * @throws MissingArgumentException
      */
     final public function reportExternalCheckStatus(
-        array $project,
+        string $project,
         string $repository,
         string $revision,
         array $data,
@@ -49,7 +49,7 @@ final class ExternalChecks extends AbstractApi
     }
 
     /**
-     * @param array $project
+     * @param string $project
      * @param string $repository
      * @param string $revision
      * @param array $response
@@ -57,7 +57,7 @@ final class ExternalChecks extends AbstractApi
      * @throws GuzzleException
      */
     final public function getExternalChecksForACommit(
-        array $project,
+        string $project,
         string $repository,
         string $revision,
         array $response = [],

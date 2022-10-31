@@ -29,7 +29,7 @@ final class Jobs extends AbstractApi
     {
         $uri = 'projects/automation/jobs/{jobId}';
         $required = [
-            'project' => Type::Array,
+            'project' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
         $uriArguments = [
@@ -44,7 +44,7 @@ final class Jobs extends AbstractApi
      *
      * Permissions that may be checked: Automation.Execution.Start
      *
-     * @param array $project
+     * @param string $project
      * @param string $jobId
      * @param array $data
      * @param array $response
@@ -52,7 +52,7 @@ final class Jobs extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function startJob(array $project, string $jobId, array $data, array $response = []): array
+    final public function startJob(string $project, string $jobId, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/automation/jobs/{jobId}/start';
         $required = [
@@ -74,14 +74,14 @@ final class Jobs extends AbstractApi
      *
      * Permissions that may be checked: Automation.Execution.View
      *
-     * @param array $project
+     * @param string $project
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function getAllJobs(array $project, array $request, array $response = []): array
+    final public function getAllJobs(string $project, array $request, array $response = []): array
     {
         $uri = 'projects/{project}/automation/jobs';
         $required = [

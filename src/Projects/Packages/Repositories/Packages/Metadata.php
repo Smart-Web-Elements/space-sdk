@@ -18,16 +18,16 @@ final class Metadata extends AbstractApi
     /**
      * Get package metadata in repository for a given project ID
      *
-     * @param array $project
-     * @param array $repository
+     * @param string $project
+     * @param string $repository
      * @param string $packageName
      * @param array $response
      * @return array|null
      * @throws GuzzleException
      */
     final public function getPackageMetadata(
-        array $project,
-        array $repository,
+        string $project,
+        string $repository,
         string $packageName,
         array $response = [],
     ): ?array {
@@ -44,16 +44,16 @@ final class Metadata extends AbstractApi
     /**
      * Update a package metadata in repository for a given project ID
      *
-     * @param array $project
-     * @param array $repository
+     * @param string $project
+     * @param string $repository
      * @param string $packageName
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
     final public function reportPackageMetadata(
-        array $project,
-        array $repository,
+        string $project,
+        string $repository,
         string $packageName,
         array $data = [],
     ): void {
@@ -70,8 +70,8 @@ final class Metadata extends AbstractApi
     /**
      * Report a package version metadata in repository for a given project ID
      *
-     * @param array $project
-     * @param array $repository
+     * @param string $project
+     * @param string $repository
      * @param string $packageName
      * @param string $packageVersion
      * @param array $data
@@ -80,8 +80,8 @@ final class Metadata extends AbstractApi
      * @throws MissingArgumentException
      */
     final public function reportPackageVersionMetadata(
-        array $project,
-        array $repository,
+        string $project,
+        string $repository,
         string $packageName,
         string $packageVersion,
         array $data,

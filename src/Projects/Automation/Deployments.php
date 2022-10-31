@@ -18,18 +18,18 @@ final class Deployments extends AbstractApi
     /**
      * Permissions that may be checked: Project.Deployments.Modify
      *
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function fail(array $project, array $data, array $response = []): array
+    final public function fail(string $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/automation/deployments/fail';
         $required = [
-            'targetIdentifier' => Type::Array,
+            'targetIdentifier' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -42,18 +42,18 @@ final class Deployments extends AbstractApi
     /**
      * Permissions that may be checked: Project.Deployments.Modify
      *
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function finish(array $project, array $data, array $response = []): array
+    final public function finish(string $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/automation/deployments/finish';
         $required = [
-            'targetIdentifier' => Type::Array,
+            'targetIdentifier' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -66,18 +66,18 @@ final class Deployments extends AbstractApi
     /**
      * Permissions that may be checked: Project.Deployments.Modify
      *
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function schedule(array $project, array $data, array $response = []): array
+    final public function schedule(string $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/automation/deployments/schedule';
         $required = [
-            'targetIdentifier' => Type::Array,
+            'targetIdentifier' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -90,18 +90,18 @@ final class Deployments extends AbstractApi
     /**
      * Permissions that may be checked: Project.Deployments.Modify
      *
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function start(array $project, array $data, array $response = []): array
+    final public function start(string $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/automation/deployments/start';
         $required = [
-            'targetIdentifier' => Type::Array,
+            'targetIdentifier' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -114,13 +114,13 @@ final class Deployments extends AbstractApi
     /**
      * Permissions that may be checked: Project.Deployments.View
      *
-     * @param array $project
+     * @param string $project
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function list(array $project, array $request = [], array $response = []): array
+    final public function list(string $project, array $request = [], array $response = []): array
     {
         $uri = 'projects/{project}/automation/deployments';
         $uriArguments = [
@@ -133,17 +133,17 @@ final class Deployments extends AbstractApi
     /**
      * Permissions that may be checked: Project.Deployments.View
      *
-     * @param array $project
-     * @param array $targetIdentifier
-     * @param array $deploymentIdentifier
+     * @param string $project
+     * @param string $targetIdentifier
+     * @param string $deploymentIdentifier
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
     final public function get(
-        array $project,
-        array $targetIdentifier,
-        array $deploymentIdentifier,
+        string $project,
+        string $targetIdentifier,
+        string $deploymentIdentifier,
         array $response = [],
     ): array {
         $uri = 'projects/{project}/automation/deployments/{targetIdentifier}/{deploymentIdentifier}';
@@ -159,19 +159,19 @@ final class Deployments extends AbstractApi
     /**
      * Permissions that may be checked: Project.Deployments.Modify
      *
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function update(array $project, array $data, array $response = []): array
+    final public function update(string $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/automation/deployments';
         $required = [
-            'targetIdentifier' => Type::Array,
-            'deploymentIdentifier' => Type::Array,
+            'targetIdentifier' => Type::String,
+            'deploymentIdentifier' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -184,13 +184,13 @@ final class Deployments extends AbstractApi
     /**
      * Permissions that may be checked: Project.Deployments.Modify
      *
-     * @param array $project
-     * @param array $targetIdentifier
-     * @param array $deploymentIdentifier
+     * @param string $project
+     * @param string $targetIdentifier
+     * @param string $deploymentIdentifier
      * @return void
      * @throws GuzzleException
      */
-    final public function delete(array $project, array $targetIdentifier, array $deploymentIdentifier): void
+    final public function delete(string $project, string $targetIdentifier, string $deploymentIdentifier): void
     {
         $uri = 'projects/{project}/automation/deployments/{targetIdentifier}/{deploymentIdentifier}';
         $uriArguments = [

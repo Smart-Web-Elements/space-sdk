@@ -76,7 +76,7 @@ final class Queue extends AbstractApi
     {
         $uri = 'applications/unfurls/queue/reset-external-auth-requests';
         $required = [
-            'userId' => Type::Array,
+            'userId' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
 

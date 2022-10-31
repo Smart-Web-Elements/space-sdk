@@ -16,13 +16,13 @@ final class Starred extends AbstractApi
     /**
      * Get all starred checklists in a project
      *
-     * @param array $project
+     * @param string $project
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @deprecated This method is deprecated since 2022-04-08. [SPACE-13768]: Not implemented yet
      */
-    final public function getAllStarredChecklists(array $project, array $response = []): array
+    final public function getAllStarredChecklists(string $project, array $response = []): array
     {
         $uri = 'projects/{project}/planning/checklists/starred';
         $uriArguments = [

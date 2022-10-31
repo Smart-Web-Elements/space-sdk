@@ -18,13 +18,13 @@ final class Tags extends AbstractApi
      *
      * Permissions that may be checked: Project.Issues.Edit
      *
-     * @param array $project
-     * @param array $issueId
+     * @param string $project
+     * @param string $issueId
      * @param string $tagId
      * @return void
      * @throws GuzzleException
      */
-    final public function addIssueTag(array $project, array $issueId, string $tagId): void
+    final public function addIssueTag(string $project, string $issueId, string $tagId): void
     {
         $uri = 'projects/{project}/planning/issues/{issueId}/tags/{tagId}';
         $uriArguments = [
@@ -41,13 +41,13 @@ final class Tags extends AbstractApi
      *
      * Permissions that may be checked: Project.Issues.Edit
      *
-     * @param array $project
-     * @param array $issueId
+     * @param string $project
+     * @param string $issueId
      * @param string $tagId
      * @return void
      * @throws GuzzleException
      */
-    final public function removeIssueTag(array $project, array $issueId, string $tagId): void
+    final public function removeIssueTag(string $project, string $issueId, string $tagId): void
     {
         $uri = 'projects/{project}/planning/issues/{issueId}/tags/{tagId}';
         $uriArguments = [

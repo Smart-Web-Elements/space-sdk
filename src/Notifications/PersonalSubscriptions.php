@@ -29,7 +29,7 @@ final class PersonalSubscriptions extends AbstractApi
     {
         $uri = 'notifications/personal-subscriptions/update-personal-subscription-subject';
         $required = [
-            'profile' => Type::Array,
+            'profile' => Type::String,
             'subjectCode' => Type::String,
             'feed' => Type::String,
             'enabled' => Type::Boolean,
@@ -53,7 +53,7 @@ final class PersonalSubscriptions extends AbstractApi
     {
         $uri = 'notifications/personal-subscriptions/update-personal-subscription-target';
         $required = [
-            'profile' => Type::Array,
+            'profile' => Type::String,
             'targetCode' => Type::String,
             'feed' => Type::String,
             'eventCodes' => Type::Array,
@@ -92,7 +92,7 @@ final class PersonalSubscriptions extends AbstractApi
     {
         $uri = 'notifications/personal-subscriptions/personal-subscription-settings';
         $required = [
-            'profile' => Type::Array,
+            'profile' => Type::String,
             'feed' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);

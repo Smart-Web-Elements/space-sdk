@@ -16,12 +16,12 @@ final class SigningKey extends AbstractApi
     /**
      * Permissions that may be checked: Applications.Edit
      *
-     * @param array $application
+     * @param string $application
      * @param string $webhookId
      * @return void
      * @throws GuzzleException
      */
-    final public function regenerate(array $application, string $webhookId): void
+    final public function regenerate(string $application, string $webhookId): void
     {
         $uri = 'applications/{application}/webhooks/{webhookId}/signing-key/regenerate';
         $uriArguments = [
@@ -35,13 +35,13 @@ final class SigningKey extends AbstractApi
     /**
      * Permissions that may be checked: Applications.ViewSecrets
      *
-     * @param array $application
+     * @param string $application
      * @param string $webhookId
      * @param array $response
      * @return string|null
      * @throws GuzzleException
      */
-    final public function getSigningKey(array $application, string $webhookId): ?string
+    final public function getSigningKey(string $application, string $webhookId): ?string
     {
         $uri = 'applications/{application}/webhooks/{webhookId}/signing-key';
         $uriArguments = [

@@ -16,11 +16,11 @@ final class VerificationToken extends AbstractApi
     /**
      * Permissions that may be checked: Applications.Edit
      *
-     * @param array $application
+     * @param string $application
      * @return void
      * @throws GuzzleException
      */
-    final public function regenerateVerificationToken(array $application): void
+    final public function regenerateVerificationToken(string $application): void
     {
         $uri = 'applications/{application}/verification-token/regenerate';
         $uriArguments = [
@@ -33,12 +33,12 @@ final class VerificationToken extends AbstractApi
     /**
      * Permissions that may be checked: Applications.ViewSecrets
      *
-     * @param array $application
+     * @param string $application
      * @param array $response
      * @return string|null
      * @throws GuzzleException
      */
-    final public function getVerificationToken(array $application): ?string
+    final public function getVerificationToken(string $application): ?string
     {
         $uri = 'applications/{application}/verification-token';
         $uriArguments = [

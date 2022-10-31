@@ -18,8 +18,8 @@ final class Comments extends AbstractApi
     /**
      * Permissions that may be checked: Project.Issues.Import
      *
-     * @param array $project
-     * @param array $issueId
+     * @param string $project
+     * @param string $issueId
      * @param array $data
      * @param array $response
      * @return array
@@ -28,8 +28,8 @@ final class Comments extends AbstractApi
      * @deprecated This method is deprecated since 2022-10-12. Use Chats / Messages / Import messages
      */
     final public function importIssueCommentHistory(
-        array $project,
-        array $issueId,
+        string $project,
+        string $issueId,
         array $data,
         array $response = [],
     ): array {

@@ -20,7 +20,7 @@ final class Subscriptions extends AbstractApi
      *
      * Permissions that may be checked: Applications.Edit
      *
-     * @param array $application
+     * @param string $application
      * @param string $webhookId
      * @param array $data
      * @param array $response
@@ -29,7 +29,7 @@ final class Subscriptions extends AbstractApi
      * @throws MissingArgumentException
      */
     final public function createSubscription(
-        array $application,
+        string $application,
         string $webhookId,
         array $data,
         array $response = [],
@@ -55,13 +55,13 @@ final class Subscriptions extends AbstractApi
     /**
      * Ensures that all permissions required for this subscription are requested in the corresponding permission role
      *
-     * @param array $application
+     * @param string $application
      * @param string $webhookId
      * @param string $subscriptionId
      * @return void
      * @throws GuzzleException
      */
-    final public function requestMissingRights(array $application, string $webhookId, string $subscriptionId): void
+    final public function requestMissingRights(string $application, string $webhookId, string $subscriptionId): void
     {
         $uri = 'applications/{application}/webhooks/{webhookId}/subscriptions/{subscriptionId}/request-missing-rights';
         $uriArguments = [
@@ -78,13 +78,13 @@ final class Subscriptions extends AbstractApi
      *
      * Permissions that may be checked: Applications.View
      *
-     * @param array $application
+     * @param string $application
      * @param string $webhookId
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllSubscriptions(array $application, string $webhookId, array $response = []): array
+    final public function getAllSubscriptions(string $application, string $webhookId, array $response = []): array
     {
         $uri = 'applications/{application}/webhooks/{webhookId}/subscriptions';
         $uriArguments = [
@@ -100,7 +100,7 @@ final class Subscriptions extends AbstractApi
      *
      * Permissions that may be checked: Applications.Edit
      *
-     * @param array $application
+     * @param string $application
      * @param string $webhookId
      * @param string $subscriptionId
      * @param array $data
@@ -109,7 +109,7 @@ final class Subscriptions extends AbstractApi
      * @throws GuzzleException
      */
     final public function updateSubscription(
-        array $application,
+        string $application,
         string $webhookId,
         string $subscriptionId,
         array $data = [],
@@ -130,13 +130,13 @@ final class Subscriptions extends AbstractApi
      *
      * Permissions that may be checked: Applications.Edit
      *
-     * @param array $application
+     * @param string $application
      * @param string $webhookId
      * @param string $subscriptionId
      * @return void
      * @throws GuzzleException
      */
-    final public function deleteSubscription(array $application, string $webhookId, string $subscriptionId): void
+    final public function deleteSubscription(string $application, string $webhookId, string $subscriptionId): void
     {
         $uri = 'applications/{application}/webhooks/{webhookId}/subscriptions/{subscriptionId}';
         $uriArguments = [

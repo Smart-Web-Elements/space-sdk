@@ -20,14 +20,14 @@ final class CodeReviews extends AbstractApi
      *
      * Permissions that may be checked: Project.Issues.Edit
      *
-     * @param array $project
-     * @param array $issueId
+     * @param string $project
+     * @param string $issueId
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function addCodeReviewLinks(array $project, array $issueId, array $data): void
+    final public function addCodeReviewLinks(string $project, string $issueId, array $data): void
     {
         $uri = 'projects/{project}/planning/issues/{issueId}/code-reviews';
         $required = [
@@ -47,14 +47,14 @@ final class CodeReviews extends AbstractApi
      *
      * Permissions that may be checked: Project.Issues.Edit
      *
-     * @param array $project
-     * @param array $issueId
+     * @param string $project
+     * @param string $issueId
      * @param array $request
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function removeCodeReviewLinks(array $project, array $issueId, array $request): void
+    final public function removeCodeReviewLinks(string $project, string $issueId, array $request): void
     {
         $uri = 'projects/{project}/planning/issues/{issueId}/code-reviews';
         $required = [

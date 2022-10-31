@@ -18,13 +18,13 @@ final class Checklists extends AbstractApi
      *
      * Permissions that may be checked: Project.Issues.Edit, Documents.Edit
      *
-     * @param array $project
+     * @param string $project
      * @param string $issueId
      * @param string $checklistId
      * @return void
      * @throws GuzzleException
      */
-    final public function addIssueChecklist(array $project, string $issueId, string $checklistId): void
+    final public function addIssueChecklist(string $project, string $issueId, string $checklistId): void
     {
         $uri = 'projects/{project}/planning/issues/{issueId}/checklists/{checklistId}';
         $uriArguments = [
@@ -41,13 +41,13 @@ final class Checklists extends AbstractApi
      *
      * Permissions that may be checked: Project.Issues.Edit, Documents.Edit
      *
-     * @param array $project
+     * @param string $project
      * @param string $issueId
      * @param string $checklistId
      * @return void
      * @throws GuzzleException
      */
-    final public function removeIssueChecklist(array $project, string $issueId, string $checklistId): void
+    final public function removeIssueChecklist(string $project, string $issueId, string $checklistId): void
     {
         $uri = 'projects/{project}/planning/issues/{issueId}/checklists/{checklistId}';
         $uriArguments = [

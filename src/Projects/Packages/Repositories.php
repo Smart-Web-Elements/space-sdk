@@ -25,14 +25,14 @@ final class Repositories extends AbstractApi
      *
      * Permissions that may be checked: PackageRepository.Create
      *
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function createNewRepository(array $project, array $data, array $response = []): array
+    final public function createNewRepository(string $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/packages/repositories';
         $required = [
@@ -52,13 +52,13 @@ final class Repositories extends AbstractApi
      *
      * Permissions that may be checked: PackageRepository.Read
      *
-     * @param array $project
+     * @param string $project
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getRepositories(array $project, array $request = [], array $response = []): array
+    final public function getRepositories(string $project, array $request = [], array $response = []): array
     {
         $uri = 'projects/{project}/packages/repositories';
         $uriArguments = [
@@ -73,13 +73,13 @@ final class Repositories extends AbstractApi
      *
      * Permissions that may be checked: PackageRepository.Read
      *
-     * @param array $project
-     * @param array $repository
+     * @param string $project
+     * @param string $repository
      * @param array $response
      * @return array|null
      * @throws GuzzleException
      */
-    final public function getRepository(array $project, array $repository, array $response = []): ?array
+    final public function getRepository(string $project, string $repository, array $response = []): ?array
     {
         $uri = 'projects/{project}/packages/repositories/{repository}';
         $uriArguments = [
@@ -95,13 +95,13 @@ final class Repositories extends AbstractApi
      *
      * Permissions that may be checked: PackageRepository.Admin
      *
-     * @param array $project
-     * @param array $repository
+     * @param string $project
+     * @param string $repository
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    final public function updateRepository(array $project, array $repository, array $data = []): void
+    final public function updateRepository(string $project, string $repository, array $data = []): void
     {
         $uri = 'projects/{project}/packages/repositories/{repository}';
         $uriArguments = [
@@ -117,12 +117,12 @@ final class Repositories extends AbstractApi
      *
      * Permissions that may be checked: PackageRepository.Admin
      *
-     * @param array $project
-     * @param array $repository
+     * @param string $project
+     * @param string $repository
      * @return void
      * @throws GuzzleException
      */
-    final public function deleteRepository(array $project, array $repository): void
+    final public function deleteRepository(string $project, string $repository): void
     {
         $uri = 'projects/{project}/packages/repositories/{repository}';
         $uriArguments = [

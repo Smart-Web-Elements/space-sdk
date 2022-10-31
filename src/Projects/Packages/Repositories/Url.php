@@ -18,13 +18,13 @@ final class Url extends AbstractApi
      *
      * Permissions that may be checked: PackageRepository.Read
      *
-     * @param array $project
-     * @param array $repository
+     * @param string $project
+     * @param string $repository
      * @param array $response
      * @return string
      * @throws GuzzleException
      */
-    final public function getRepositoryUrl(array $project, array $repository): string
+    final public function getRepositoryUrl(string $project, string $repository): string
     {
         $uri = 'projects/{project}/packages/repositories/{repository}/url';
         $uriArguments = [

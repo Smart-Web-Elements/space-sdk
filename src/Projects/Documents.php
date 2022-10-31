@@ -21,19 +21,19 @@ use Swe\SpaceSDK\Type;
 final class Documents extends AbstractApi
 {
     /**
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function createDocument(array $project, array $data, array $response = []): array
+    final public function createDocument(string $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/documents';
         $required = [
             'name' => Type::String,
-            'folder' => Type::Array,
+            'folder' => Type::String,
             'bodyIn' => [
             ],
         ];
@@ -46,13 +46,13 @@ final class Documents extends AbstractApi
     }
 
     /**
-     * @param array $project
+     * @param string $project
      * @param string $documentId
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getDocument(array $project, string $documentId, array $response = []): array
+    final public function getDocument(string $project, string $documentId, array $response = []): array
     {
         $uri = 'projects/{project}/documents/{documentId}';
         $uriArguments = [
@@ -64,7 +64,7 @@ final class Documents extends AbstractApi
     }
 
     /**
-     * @param array $project
+     * @param string $project
      * @param string $documentId
      * @param array $data
      * @param array $response
@@ -72,7 +72,7 @@ final class Documents extends AbstractApi
      * @throws GuzzleException
      */
     final public function updateDocument(
-        array $project,
+        string $project,
         string $documentId,
         array $data = [],
         array $response = [],
@@ -87,12 +87,12 @@ final class Documents extends AbstractApi
     }
 
     /**
-     * @param array $project
+     * @param string $project
      * @param string $documentId
      * @return void
      * @throws GuzzleException
      */
-    final public function archiveDocument(array $project, string $documentId): void
+    final public function archiveDocument(string $project, string $documentId): void
     {
         $uri = 'projects/{project}/documents/{documentId}';
         $uriArguments = [

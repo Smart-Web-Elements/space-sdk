@@ -16,13 +16,13 @@ final class Starred extends AbstractApi
     /**
      * Get all starred checklists associated with the profile
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @deprecated This method is deprecated since 2022-04-08. [SPACE-13768]: Not implemented yet
      */
-    final public function getAllStarredChecklists(array $profile, array $response = []): array
+    final public function getAllStarredChecklists(string $profile, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/checklists/starred';
         $uriArguments = [

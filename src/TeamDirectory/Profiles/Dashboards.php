@@ -16,12 +16,12 @@ use Swe\SpaceSDK\Type;
 final class Dashboards extends AbstractApi
 {
     /**
-     * @param array $dashboard
+     * @param string $dashboard
      * @param array $response
      * @return array|null
      * @throws GuzzleException
      */
-    final public function getDashboard(array $dashboard, array $response = []): ?array
+    final public function getDashboard(string $dashboard, array $response = []): ?array
     {
         $uri = 'team-directory/profiles/dashboards/{dashboard}';
         $uriArguments = [
@@ -32,13 +32,13 @@ final class Dashboards extends AbstractApi
     }
 
     /**
-     * @param array $dashboard
+     * @param string $dashboard
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function updateDashboard(array $dashboard, array $data): void
+    final public function updateDashboard(string $dashboard, array $data): void
     {
         $uri = 'team-directory/profiles/dashboards/{dashboard}';
         $required = [

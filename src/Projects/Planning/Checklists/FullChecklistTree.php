@@ -16,13 +16,13 @@ final class FullChecklistTree extends AbstractApi
     /**
      * Get the content of a checklist in a project
      *
-     * @param array $project
+     * @param string $project
      * @param string $checklistId
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getFullChecklistTree(array $project, string $checklistId, array $response = []): array
+    final public function getFullChecklistTree(string $project, string $checklistId, array $response = []): array
     {
         $uri = 'projects/{project}/planning/checklists/{checklistId}/full-checklist-tree';
         $uriArguments = [

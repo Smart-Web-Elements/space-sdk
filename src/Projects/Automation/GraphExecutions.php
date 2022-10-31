@@ -57,14 +57,14 @@ final class GraphExecutions extends AbstractApi
      *
      * Permissions that may be checked: Automation.Execution.View
      *
-     * @param array $project
+     * @param string $project
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function getAllGraphExecutions(array $project, array $request, array $response = []): array
+    final public function getAllGraphExecutions(string $project, array $request, array $response = []): array
     {
         $uri = 'projects/{project}/automation/graph-executions';
         $required = [

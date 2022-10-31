@@ -30,8 +30,8 @@ final class Messages extends AbstractApi
     {
         $uri = 'chats/messages/delete-message';
         $required = [
-            'channel' => Type::Array,
-            'id' => Type::Array,
+            'channel' => Type::String,
+            'id' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -52,8 +52,8 @@ final class Messages extends AbstractApi
     {
         $uri = 'chats/messages/edit-message';
         $required = [
-            'channel' => Type::Array,
-            'message' => Type::Array,
+            'channel' => Type::String,
+            'message' => Type::String,
             'content' => [
             ],
         ];
@@ -76,7 +76,7 @@ final class Messages extends AbstractApi
     {
         $uri = 'chats/messages/import';
         $required = [
-            'channel' => Type::Array,
+            'channel' => Type::String,
             'messages' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
@@ -144,7 +144,7 @@ final class Messages extends AbstractApi
     {
         $uri = 'chats/messages';
         $required = [
-            'channel' => Type::Array,
+            'channel' => Type::String,
             'sorting' => Type::String,
             'batchSize' => Type::Integer,
         ];
@@ -156,18 +156,18 @@ final class Messages extends AbstractApi
     /**
      * Permissions that may be checked: Channel.ViewMessages
      *
-     * @param array $message
+     * @param string $message
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function getMessage(array $message, array $request, array $response = []): array
+    final public function getMessage(string $message, array $request, array $response = []): array
     {
         $uri = 'chats/messages/{message}';
         $required = [
-            'channel' => Type::Array,
+            'channel' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
         $uriArguments = [
@@ -189,8 +189,8 @@ final class Messages extends AbstractApi
     {
         $uri = 'chats/messages/pin';
         $required = [
-            'channel' => Type::Array,
-            'message' => Type::Array,
+            'channel' => Type::String,
+            'message' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -209,8 +209,8 @@ final class Messages extends AbstractApi
     {
         $uri = 'chats/messages/unpin';
         $required = [
-            'channel' => Type::Array,
-            'message' => Type::Array,
+            'channel' => Type::String,
+            'message' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
 

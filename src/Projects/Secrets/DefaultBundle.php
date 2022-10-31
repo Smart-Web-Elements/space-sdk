@@ -30,7 +30,7 @@ final class DefaultBundle extends AbstractApi
     {
         $uri = 'projects/secrets/default-bundle';
         $required = [
-            'project' => Type::Array,
+            'project' => Type::String,
             'key' => Type::String,
             'valueBase64' => Type::String,
         ];
@@ -54,7 +54,7 @@ final class DefaultBundle extends AbstractApi
     {
         $uri = 'projects/secrets/default-bundle';
         $required = [
-            'project' => Type::Array,
+            'project' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
 

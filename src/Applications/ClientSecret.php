@@ -16,11 +16,11 @@ final class ClientSecret extends AbstractApi
     /**
      * Permissions that may be checked: Applications.Edit
      *
-     * @param array $application
+     * @param string $application
      * @return void
      * @throws GuzzleException
      */
-    final public function regenerateAppSecret(array $application): void
+    final public function regenerateAppSecret(string $application): void
     {
         $uri = 'applications/{application}/client-secret/regenerate';
         $uriArguments = [
@@ -33,12 +33,12 @@ final class ClientSecret extends AbstractApi
     /**
      * Permissions that may be checked: Applications.ViewSecrets
      *
-     * @param array $application
+     * @param string $application
      * @param array $response
      * @return string
      * @throws GuzzleException
      */
-    final public function getClientSecret(array $application): string
+    final public function getClientSecret(string $application): string
     {
         $uri = 'applications/{application}/client-secret';
         $uriArguments = [

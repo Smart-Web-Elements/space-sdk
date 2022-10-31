@@ -18,12 +18,12 @@ final class Timezone extends AbstractApi
      *
      * Permissions that may be checked: Profile.View
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getTimezone(array $profile, array $response = []): array
+    final public function getTimezone(string $profile, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/timezone';
         $uriArguments = [

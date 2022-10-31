@@ -20,14 +20,14 @@ final class SpokenLanguages extends AbstractApi
      *
      * Permissions that may be checked: Profile.Languages.Edit
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function createSpokenLanguage(array $profile, array $data, array $response = []): array
+    final public function createSpokenLanguage(string $profile, array $data, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/spoken-languages';
         $required = [
@@ -46,12 +46,12 @@ final class SpokenLanguages extends AbstractApi
      *
      * Permissions that may be checked: Profile.Locations.View
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllSpokenLanguages(array $profile, array $response = []): array
+    final public function getAllSpokenLanguages(string $profile, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/spoken-languages';
         $uriArguments = [
@@ -66,12 +66,12 @@ final class SpokenLanguages extends AbstractApi
      *
      * Permissions that may be checked: Profile.Languages.Edit
      *
-     * @param array $profile
+     * @param string $profile
      * @param string $language
      * @return void
      * @throws GuzzleException
      */
-    final public function deleteSpokenLanguage(array $profile, string $language): void
+    final public function deleteSpokenLanguage(string $profile, string $language): void
     {
         $uri = 'team-directory/profiles/{profile}/spoken-languages/{language}';
         $uriArguments = [

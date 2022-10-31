@@ -18,13 +18,13 @@ final class Name extends AbstractApi
     /**
      * Permissions that may be checked: Channel.Admin
      *
-     * @param array $channel
+     * @param string $channel
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function renameChannel(array $channel, array $data): void
+    final public function renameChannel(string $channel, array $data): void
     {
         $uri = 'chats/channels/{channel}/name';
         $required = [

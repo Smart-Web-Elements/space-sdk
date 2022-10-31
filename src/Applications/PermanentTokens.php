@@ -21,14 +21,14 @@ final class PermanentTokens extends AbstractApi
      *
      * Permissions that may be checked: Applications.Edit
      *
-     * @param array $application
+     * @param string $application
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function createPermanentToken(array $application, array $data, array $response = []): array
+    final public function createPermanentToken(string $application, array $data, array $response = []): array
     {
         $uri = 'applications/{application}/permanent-tokens';
         $required = [
@@ -48,13 +48,13 @@ final class PermanentTokens extends AbstractApi
      *
      * Permissions that may be checked: Applications.ViewSecrets
      *
-     * @param array $application
+     * @param string $application
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllPermanentTokens(array $application, array $request = [], array $response = []): array
+    final public function getAllPermanentTokens(string $application, array $request = [], array $response = []): array
     {
         $uri = 'applications/{application}/permanent-tokens';
         $uriArguments = [
@@ -69,13 +69,13 @@ final class PermanentTokens extends AbstractApi
      *
      * Permissions that may be checked: Applications.Edit
      *
-     * @param array $application
+     * @param string $application
      * @param string $tokenId
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    final public function updatePermanentToken(array $application, string $tokenId, array $data = []): void
+    final public function updatePermanentToken(string $application, string $tokenId, array $data = []): void
     {
         $uri = 'applications/{application}/permanent-tokens/{tokenId}';
         $uriArguments = [
@@ -91,12 +91,12 @@ final class PermanentTokens extends AbstractApi
      *
      * Permissions that may be checked: Applications.Edit
      *
-     * @param array $application
+     * @param string $application
      * @param string $tokenId
      * @return void
      * @throws GuzzleException
      */
-    final public function deletePermanentToken(array $application, string $tokenId): void
+    final public function deletePermanentToken(string $application, string $tokenId): void
     {
         $uri = 'applications/{application}/permanent-tokens/{tokenId}';
         $uriArguments = [

@@ -18,13 +18,13 @@ final class SshKeys extends AbstractApi
     /**
      * Permissions that may be checked: Applications.Edit
      *
-     * @param array $application
+     * @param string $application
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function addSshKey(array $application, array $data): void
+    final public function addSshKey(string $application, array $data): void
     {
         $uri = 'applications/{application}/ssh-keys';
         $required = [
@@ -42,12 +42,12 @@ final class SshKeys extends AbstractApi
     /**
      * Permissions that may be checked: Applications.View
      *
-     * @param array $application
+     * @param string $application
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getSshKeys(array $application, array $response = []): array
+    final public function getSshKeys(string $application, array $response = []): array
     {
         $uri = 'applications/{application}/ssh-keys';
         $uriArguments = [
@@ -60,12 +60,12 @@ final class SshKeys extends AbstractApi
     /**
      * Permissions that may be checked: Applications.Edit
      *
-     * @param array $application
+     * @param string $application
      * @param string $fingerprint
      * @return void
      * @throws GuzzleException
      */
-    final public function deleteSshKey(array $application, string $fingerprint): void
+    final public function deleteSshKey(string $application, string $fingerprint): void
     {
         $uri = 'applications/{application}/ssh-keys/{fingerprint}';
         $uriArguments = [

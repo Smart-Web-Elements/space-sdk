@@ -18,13 +18,13 @@ final class AutoUpdateOnMergeRequestMerge extends AbstractApi
      *
      * Permissions that may be checked: Project.Issues.View
      *
-     * @param array $project
+     * @param string $project
      * @param array $response
      * @return array|null
      * @throws GuzzleException
      */
     final public function getAutoUpdateTargetIssueStatusForMergeRequestMerge(
-        array $project,
+        string $project,
         array $response = [],
     ): ?array {
         $uri = 'projects/{project}/planning/issues/statuses/auto-update-on-merge-request-merge';
@@ -40,12 +40,12 @@ final class AutoUpdateOnMergeRequestMerge extends AbstractApi
      *
      * Permissions that may be checked: Project.Issues.Manage
      *
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    final public function setAutoUpdateTargetIssueStatusForMergeRequestMerge(array $project, array $data = []): void
+    final public function setAutoUpdateTargetIssueStatusForMergeRequestMerge(string $project, array $data = []): void
     {
         $uri = 'projects/{project}/planning/issues/statuses/auto-update-on-merge-request-merge';
         $uriArguments = [

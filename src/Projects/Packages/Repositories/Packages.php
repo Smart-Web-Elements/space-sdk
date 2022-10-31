@@ -22,16 +22,20 @@ final class Packages extends AbstractApi
      *
      * Permissions that may be checked: PackageRepository.Read
      *
-     * @param array $project
-     * @param array $repository
+     * @param string $project
+     * @param string $repository
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function getAllPackages(array $project, array $repository, array $request, array $response = []): array
-    {
+    final public function getAllPackages(
+        string $project,
+        string $repository,
+        array $request,
+        array $response = [],
+    ): array {
         $uri = 'projects/{project}/packages/repositories/{repository}/packages';
         $required = [
             'query' => Type::String,
@@ -50,13 +54,13 @@ final class Packages extends AbstractApi
      *
      * Permissions that may be checked: PackageRepository.Write
      *
-     * @param array $project
-     * @param array $repository
+     * @param string $project
+     * @param string $repository
      * @param string $packageName
      * @return void
      * @throws GuzzleException
      */
-    final public function deletePackage(array $project, array $repository, string $packageName): void
+    final public function deletePackage(string $project, string $repository, string $packageName): void
     {
         $uri = 'projects/{project}/packages/repositories/{repository}/packages/name:{packageName}';
         $uriArguments = [

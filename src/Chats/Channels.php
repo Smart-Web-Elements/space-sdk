@@ -90,11 +90,11 @@ final class Channels extends AbstractApi
      *
      * Permissions that may be checked: Channel.Admin
      *
-     * @param array $channel
+     * @param string $channel
      * @return void
      * @throws GuzzleException
      */
-    final public function restoreArchivedChannel(array $channel): void
+    final public function restoreArchivedChannel(string $channel): void
     {
         $uri = 'chats/channels/{channel}/restore-archived';
         $uriArguments = [
@@ -127,12 +127,12 @@ final class Channels extends AbstractApi
     /**
      * Permissions that may be checked: Channel.ViewChannel
      *
-     * @param array $channel
+     * @param string $channel
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getChannel(array $channel, array $response = []): array
+    final public function getChannel(string $channel, array $response = []): array
     {
         $uri = 'chats/channels/{channel}';
         $uriArguments = [
@@ -147,11 +147,11 @@ final class Channels extends AbstractApi
      *
      * Permissions that may be checked: Channel.Admin
      *
-     * @param array $channel
+     * @param string $channel
      * @return void
      * @throws GuzzleException
      */
-    final public function deleteChannel(array $channel): void
+    final public function deleteChannel(string $channel): void
     {
         $uri = 'chats/channels/{channel}';
         $uriArguments = [
@@ -166,11 +166,11 @@ final class Channels extends AbstractApi
      *
      * Permissions that may be checked: Channel.Admin
      *
-     * @param array $channel
+     * @param string $channel
      * @return void
      * @throws GuzzleException
      */
-    final public function archiveChannel(array $channel): void
+    final public function archiveChannel(string $channel): void
     {
         $uri = 'chats/channels/{channel}/archive';
         $uriArguments = [

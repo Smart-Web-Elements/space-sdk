@@ -21,19 +21,19 @@ use Swe\SpaceSDK\Type;
 final class Documents extends AbstractApi
 {
     /**
-     * @param array $profile
+     * @param string $profile
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function createDocument(array $profile, array $data, array $response = []): array
+    final public function createDocument(string $profile, array $data, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/documents';
         $required = [
             'name' => Type::String,
-            'folder' => Type::Array,
+            'folder' => Type::String,
             'bodyIn' => [
             ],
         ];
@@ -46,13 +46,13 @@ final class Documents extends AbstractApi
     }
 
     /**
-     * @param array $profile
+     * @param string $profile
      * @param string $documentId
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getDocument(array $profile, string $documentId, array $response = []): array
+    final public function getDocument(string $profile, string $documentId, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/documents/{documentId}';
         $uriArguments = [
@@ -64,7 +64,7 @@ final class Documents extends AbstractApi
     }
 
     /**
-     * @param array $profile
+     * @param string $profile
      * @param string $documentId
      * @param array $data
      * @param array $response
@@ -72,7 +72,7 @@ final class Documents extends AbstractApi
      * @throws GuzzleException
      */
     final public function updateDocument(
-        array $profile,
+        string $profile,
         string $documentId,
         array $data = [],
         array $response = [],
@@ -87,12 +87,12 @@ final class Documents extends AbstractApi
     }
 
     /**
-     * @param array $profile
+     * @param string $profile
      * @param string $documentId
      * @return void
      * @throws GuzzleException
      */
-    final public function archiveDocument(array $profile, string $documentId): void
+    final public function archiveDocument(string $profile, string $documentId): void
     {
         $uri = 'team-directory/profiles/{profile}/documents/{documentId}';
         $uriArguments = [

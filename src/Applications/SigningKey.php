@@ -16,11 +16,11 @@ final class SigningKey extends AbstractApi
     /**
      * Permissions that may be checked: Applications.Edit
      *
-     * @param array $application
+     * @param string $application
      * @return void
      * @throws GuzzleException
      */
-    final public function regenerateSigningKey(array $application): void
+    final public function regenerateSigningKey(string $application): void
     {
         $uri = 'applications/{application}/signing-key/regenerate';
         $uriArguments = [
@@ -33,12 +33,12 @@ final class SigningKey extends AbstractApi
     /**
      * Permissions that may be checked: Applications.ViewSecrets
      *
-     * @param array $application
+     * @param string $application
      * @param array $response
      * @return string|null
      * @throws GuzzleException
      */
-    final public function getSigningKey(array $application): ?string
+    final public function getSigningKey(string $application): ?string
     {
         $uri = 'applications/{application}/signing-key';
         $uriArguments = [

@@ -16,13 +16,13 @@ final class FullChecklistTree extends AbstractApi
     /**
      * Get the content of a checklist associated with the profile
      *
-     * @param array $profile
+     * @param string $profile
      * @param string $checklistId
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getFullChecklistTree(array $profile, string $checklistId, array $response = []): array
+    final public function getFullChecklistTree(string $profile, string $checklistId, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/checklists/{checklistId}/full-checklist-tree';
         $uriArguments = [

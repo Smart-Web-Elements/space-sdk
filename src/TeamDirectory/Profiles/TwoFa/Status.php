@@ -18,12 +18,12 @@ final class Status extends AbstractApi
      *
      * Permissions that may be checked: Profile.View
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $response
      * @return string
      * @throws GuzzleException
      */
-    final public function twoFactorAuthenticationStatus(array $profile): string
+    final public function twoFactorAuthenticationStatus(string $profile): string
     {
         $uri = 'team-directory/profiles/{profile}/2-fa/status';
         $uriArguments = [

@@ -20,13 +20,13 @@ final class Teams extends AbstractApi
      *
      * Permissions that may be checked: Project.Admin
      *
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function addTeam(array $project, array $data): void
+    final public function addTeam(string $project, array $data): void
     {
         $uri = 'projects/{project}/access/members/teams';
         $required = [
@@ -45,12 +45,12 @@ final class Teams extends AbstractApi
      *
      * Permissions that may be checked: Project.Admin
      *
-     * @param array $project
+     * @param string $project
      * @param string $teamId
      * @return void
      * @throws GuzzleException
      */
-    final public function removeTeam(array $project, string $teamId): void
+    final public function removeTeam(string $project, string $teamId): void
     {
         $uri = 'projects/{project}/access/members/teams/{teamId}';
         $uriArguments = [

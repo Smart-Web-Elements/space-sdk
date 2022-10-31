@@ -18,13 +18,13 @@ final class Teams extends AbstractApi
     /**
      * Permissions that may be checked: Channel.AddMembersOrTeams
      *
-     * @param array $channel
+     * @param string $channel
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function addTeamsToChannel(array $channel, array $data): void
+    final public function addTeamsToChannel(string $channel, array $data): void
     {
         $uri = 'chats/channels/{channel}/subscribers/teams';
         $required = [
@@ -41,14 +41,14 @@ final class Teams extends AbstractApi
     /**
      * Permissions that may be checked: Channel.ViewChannelParticipants
      *
-     * @param array $channel
+     * @param string $channel
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function listTeamsSubscribedToChannel(array $channel, array $request, array $response = []): array
+    final public function listTeamsSubscribedToChannel(string $channel, array $request, array $response = []): array
     {
         $uri = 'chats/channels/{channel}/subscribers/teams';
         $required = [
@@ -65,13 +65,13 @@ final class Teams extends AbstractApi
     /**
      * Permissions that may be checked: Channel.RemoveMembersOrTeams
      *
-     * @param array $channel
+     * @param string $channel
      * @param array $request
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function removeTeamsFromChannel(array $channel, array $request): void
+    final public function removeTeamsFromChannel(string $channel, array $request): void
     {
         $uri = 'chats/channels/{channel}/subscribers/teams';
         $required = [

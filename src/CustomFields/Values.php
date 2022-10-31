@@ -16,13 +16,13 @@ use Swe\SpaceSDK\Type;
 final class Values extends AbstractApi
 {
     /**
-     * @param array $entity
+     * @param string $entity
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function setValuesForEntity(array $entity, array $data): void
+    final public function setValuesForEntity(string $entity, array $data): void
     {
         $uri = 'custom-fields-v2/values/{entity}';
         $required = [
@@ -37,14 +37,14 @@ final class Values extends AbstractApi
     }
 
     /**
-     * @param array $entity
-     * @param array $customField
+     * @param string $entity
+     * @param string $customField
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function setSingleValue(array $entity, array $customField, array $data): void
+    final public function setSingleValue(string $entity, string $customField, array $data): void
     {
         $uri = 'custom-fields-v2/values/{entity}/{customField}';
         $required = [
@@ -61,12 +61,12 @@ final class Values extends AbstractApi
     }
 
     /**
-     * @param array $entity
+     * @param string $entity
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllValuesForEntity(array $entity, array $response = []): array
+    final public function getAllValuesForEntity(string $entity, array $response = []): array
     {
         $uri = 'custom-fields-v2/values/{entity}';
         $uriArguments = [
@@ -77,13 +77,13 @@ final class Values extends AbstractApi
     }
 
     /**
-     * @param array $entity
-     * @param array $customField
+     * @param string $entity
+     * @param string $customField
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getSingleValue(array $entity, array $customField, array $response = []): array
+    final public function getSingleValue(string $entity, string $customField, array $response = []): array
     {
         $uri = 'custom-fields-v2/values/{entity}/{customField}';
         $uriArguments = [

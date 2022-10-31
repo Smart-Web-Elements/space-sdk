@@ -18,15 +18,15 @@ final class Participants extends AbstractApi
     /**
      * Permissions that may be checked: Project.CodeReview.Edit
      *
-     * @param array $project
-     * @param array $reviewId
-     * @param array $user
+     * @param string $project
+     * @param string $reviewId
+     * @param string $user
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function addReviewParticipant(array $project, array $reviewId, array $user, array $data): void
+    final public function addReviewParticipant(string $project, string $reviewId, string $user, array $data): void
     {
         $uri = 'projects/{project}/code-reviews/{reviewId}/participants/{user}';
         $required = [
@@ -45,15 +45,15 @@ final class Participants extends AbstractApi
     /**
      * Permissions that may be checked: Project.CodeReview.Edit
      *
-     * @param array $project
-     * @param array $reviewId
-     * @param array $user
+     * @param string $project
+     * @param string $reviewId
+     * @param string $user
      * @param array $request
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function removeReviewParticipant(array $project, array $reviewId, array $user, array $request): void
+    final public function removeReviewParticipant(string $project, string $reviewId, string $user, array $request): void
     {
         $uri = 'projects/{project}/code-reviews/{reviewId}/participants/{user}';
         $required = [

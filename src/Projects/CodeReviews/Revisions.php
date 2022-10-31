@@ -18,14 +18,14 @@ final class Revisions extends AbstractApi
     /**
      * Permissions that may be checked: Project.CodeReview.Edit
      *
-     * @param array $project
-     * @param array $reviewId
+     * @param string $project
+     * @param string $reviewId
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function addRevisionsToReview(array $project, array $reviewId, array $data): void
+    final public function addRevisionsToReview(string $project, string $reviewId, array $data): void
     {
         $uri = 'projects/{project}/code-reviews/{reviewId}/revisions';
         $required = [
@@ -43,14 +43,14 @@ final class Revisions extends AbstractApi
     /**
      * Permissions that may be checked: Project.CodeReview.Edit
      *
-     * @param array $project
-     * @param array $reviewId
+     * @param string $project
+     * @param string $reviewId
      * @param array $request
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function removeRevisionsFromReview(array $project, array $reviewId, array $request): void
+    final public function removeRevisionsFromReview(string $project, string $reviewId, array $request): void
     {
         $uri = 'projects/{project}/code-reviews/{reviewId}/revisions';
         $required = [

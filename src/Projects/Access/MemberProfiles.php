@@ -18,13 +18,13 @@ final class MemberProfiles extends AbstractApi
      *
      * Permissions that may be checked: Project.View
      *
-     * @param array $project
+     * @param string $project
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllMemberProfiles(array $project, array $request = [], array $response = []): array
+    final public function getAllMemberProfiles(string $project, array $request = [], array $response = []): array
     {
         $uri = 'projects/{project}/access/member-profiles';
         $uriArguments = [

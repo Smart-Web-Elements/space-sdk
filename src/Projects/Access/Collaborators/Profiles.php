@@ -18,17 +18,17 @@ final class Profiles extends AbstractApi
     /**
      * Permissions that may be checked: Project.Admin
      *
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function addACollaborator(array $project, array $data): void
+    final public function addACollaborator(string $project, array $data): void
     {
         $uri = 'projects/{project}/access/collaborators/profiles';
         $required = [
-            'profile' => Type::Array,
+            'profile' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -41,12 +41,12 @@ final class Profiles extends AbstractApi
     /**
      * Permissions that may be checked: Project.View
      *
-     * @param array $project
+     * @param string $project
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllIndividualCollaborators(array $project, array $response = []): array
+    final public function getAllIndividualCollaborators(string $project, array $response = []): array
     {
         $uri = 'projects/{project}/access/collaborators/profiles';
         $uriArguments = [
@@ -59,17 +59,17 @@ final class Profiles extends AbstractApi
     /**
      * Permissions that may be checked: Project.Admin
      *
-     * @param array $project
+     * @param string $project
      * @param array $request
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function removeACollaborator(array $project, array $request): void
+    final public function removeACollaborator(string $project, array $request): void
     {
         $uri = 'projects/{project}/access/collaborators/profiles';
         $required = [
-            'profile' => Type::Array,
+            'profile' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
         $uriArguments = [

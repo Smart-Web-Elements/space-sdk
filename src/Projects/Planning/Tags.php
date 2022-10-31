@@ -20,14 +20,14 @@ final class Tags extends AbstractApi
      *
      * Permissions that may be checked: Project.Issues.ManageTags
      *
-     * @param array $project
+     * @param string $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function createHierarchicalTag(array $project, array $data, array $response = []): array
+    final public function createHierarchicalTag(string $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/planning/tags';
         $required = [
@@ -46,13 +46,13 @@ final class Tags extends AbstractApi
      *
      * Permissions that may be checked: Project.View
      *
-     * @param array $project
+     * @param string $project
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllHierarchicalTags(array $project, array $request = [], array $response = []): array
+    final public function getAllHierarchicalTags(string $project, array $request = [], array $response = []): array
     {
         $uri = 'projects/{project}/planning/tags';
         $uriArguments = [

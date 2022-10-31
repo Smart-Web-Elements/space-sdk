@@ -18,12 +18,12 @@ final class Issues extends AbstractApi
      *
      * Permissions that may be checked: Project.Planning.Boards.EditContent
      *
-     * @param array $issue
-     * @param array $board
+     * @param string $issue
+     * @param string $board
      * @return void
      * @throws GuzzleException
      */
-    final public function addIssueToBoard(array $issue, array $board): void
+    final public function addIssueToBoard(string $issue, string $board): void
     {
         $uri = 'projects/planning/boards/{board}/issues/{issue}';
         $uriArguments = [
@@ -39,13 +39,13 @@ final class Issues extends AbstractApi
      *
      * Permissions that may be checked: Project.Planning.Boards.View
      *
-     * @param array $board
+     * @param string $board
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllIssuesOnBoard(array $board, array $request = [], array $response = []): array
+    final public function getAllIssuesOnBoard(string $board, array $request = [], array $response = []): array
     {
         $uri = 'projects/planning/boards/{board}/issues';
         $uriArguments = [
@@ -60,12 +60,12 @@ final class Issues extends AbstractApi
      *
      * Permissions that may be checked: Project.Planning.Boards.EditContent
      *
-     * @param array $issue
-     * @param array $board
+     * @param string $issue
+     * @param string $board
      * @return void
      * @throws GuzzleException
      */
-    final public function removeIssueFromBoard(array $issue, array $board): void
+    final public function removeIssueFromBoard(string $issue, string $board): void
     {
         $uri = 'projects/planning/boards/{board}/issues/{issue}';
         $uriArguments = [

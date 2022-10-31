@@ -18,12 +18,12 @@ final class Distribution extends AbstractApi
      *
      * Permissions that may be checked: Project.Issues.View
      *
-     * @param array $project
+     * @param string $project
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getIssueStatusDistribution(array $project, array $response = []): array
+    final public function getIssueStatusDistribution(string $project, array $response = []): array
     {
         $uri = 'projects/{project}/planning/issues/statuses/distribution';
         $uriArguments = [

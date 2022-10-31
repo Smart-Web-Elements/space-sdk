@@ -18,12 +18,12 @@ final class AuthenticationSessions extends AbstractApi
      *
      * Permissions that may be checked: Profile.AuthenticationSessions.Edit
      *
-     * @param array $owner
+     * @param string $owner
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllAuthenticationSessions(array $owner, array $response = []): array
+    final public function getAllAuthenticationSessions(string $owner, array $response = []): array
     {
         $uri = 'team-directory/profiles/authentication-sessions/{owner}';
         $uriArguments = [
@@ -38,12 +38,12 @@ final class AuthenticationSessions extends AbstractApi
      *
      * Permissions that may be checked: Profile.AuthenticationSessions.Edit
      *
-     * @param array $owner
+     * @param string $owner
      * @param string $sessionId
      * @return void
      * @throws GuzzleException
      */
-    final public function terminateOwnAuthenticationSession(array $owner, string $sessionId): void
+    final public function terminateOwnAuthenticationSession(string $owner, string $sessionId): void
     {
         $uri = 'team-directory/profiles/authentication-sessions/{owner}/{sessionId}';
         $uriArguments = [

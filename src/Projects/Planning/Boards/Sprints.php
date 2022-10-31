@@ -32,7 +32,7 @@ final class Sprints extends AbstractApi
     {
         $uri = 'projects/planning/boards/sprints';
         $required = [
-            'board' => Type::Array,
+            'board' => Type::String,
             'name' => Type::String,
             'from' => Type::Date,
             'to' => Type::Date,
@@ -47,13 +47,13 @@ final class Sprints extends AbstractApi
      *
      * Permissions that may be checked: Project.Planning.Boards.Manage
      *
-     * @param array $sprint
+     * @param string $sprint
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function launchPlannedSprint(array $sprint, array $data): void
+    final public function launchPlannedSprint(string $sprint, array $data): void
     {
         $uri = 'projects/planning/boards/sprints/{sprint}/launch';
         $required = [
@@ -72,12 +72,12 @@ final class Sprints extends AbstractApi
      *
      * Permissions that may be checked: Project.Planning.Boards.Manage
      *
-     * @param array $sprint
+     * @param string $sprint
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    final public function updateSprint(array $sprint, array $data = []): void
+    final public function updateSprint(string $sprint, array $data = []): void
     {
         $uri = 'projects/planning/boards/sprints/{sprint}';
         $uriArguments = [
@@ -108,13 +108,13 @@ final class Sprints extends AbstractApi
      *
      * Permissions that may be checked: Project.Planning.Boards.View
      *
-     * @param array $project
+     * @param string $project
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllSprints(array $project, array $request = [], array $response = []): array
+    final public function getAllSprints(string $project, array $request = [], array $response = []): array
     {
         $uri = 'projects/{project}/planning/boards/sprints';
         $uriArguments = [

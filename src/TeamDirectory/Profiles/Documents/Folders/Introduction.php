@@ -14,13 +14,13 @@ use Swe\SpaceSDK\AbstractApi;
 final class Introduction extends AbstractApi
 {
     /**
-     * @param array $profile
-     * @param array $folder
+     * @param string $profile
+     * @param string $folder
      * @param string $documentId
      * @return void
      * @throws GuzzleException
      */
-    final public function addFolderIntroduction(array $profile, array $folder, string $documentId): void
+    final public function addFolderIntroduction(string $profile, string $folder, string $documentId): void
     {
         $uri = 'team-directory/profiles/{profile}/documents/folders/{folder}/introduction/{documentId}';
         $uriArguments = [
@@ -33,12 +33,12 @@ final class Introduction extends AbstractApi
     }
 
     /**
-     * @param array $profile
-     * @param array $folder
+     * @param string $profile
+     * @param string $folder
      * @return void
      * @throws GuzzleException
      */
-    final public function removeFolderIntroduction(array $profile, array $folder): void
+    final public function removeFolderIntroduction(string $profile, string $folder): void
     {
         $uri = 'team-directory/profiles/{profile}/documents/folders/{folder}/introduction';
         $uriArguments = [

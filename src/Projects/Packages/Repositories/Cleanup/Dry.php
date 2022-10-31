@@ -20,8 +20,8 @@ final class Dry extends AbstractApi
      *
      * Permissions that may be checked: PackageRepository.Admin
      *
-     * @param array $project
-     * @param array $repository
+     * @param string $project
+     * @param string $repository
      * @param array $data
      * @param array $response
      * @return array
@@ -29,8 +29,8 @@ final class Dry extends AbstractApi
      * @throws MissingArgumentException
      */
     final public function dryRunRepositoryCleanup(
-        array $project,
-        array $repository,
+        string $project,
+        string $repository,
         array $data,
         array $response = [],
     ): array {

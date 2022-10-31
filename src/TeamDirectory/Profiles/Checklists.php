@@ -20,7 +20,7 @@ final class Checklists extends AbstractApi
     /**
      * Create a new checklist associated with the profile
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $data
      * @param array $response
      * @return array
@@ -28,7 +28,7 @@ final class Checklists extends AbstractApi
      * @throws MissingArgumentException
      * @deprecated This method is deprecated since 2022-04-08. Use POST on team-directory/profiles/{profile}/documents
      */
-    final public function createChecklist(array $profile, array $data, array $response = []): array
+    final public function createChecklist(string $profile, array $data, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/checklists';
         $required = [
@@ -47,7 +47,7 @@ final class Checklists extends AbstractApi
      * The items with the same indent level will be placed one under the other.
      * An issue URL will be converted into the corresponding issue.
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $data
      * @param array $response
      * @return array
@@ -55,7 +55,7 @@ final class Checklists extends AbstractApi
      * @throws MissingArgumentException
      * @deprecated This method is deprecated since 2022-04-08. Use POST on team-directory/profiles/{profile}/documents
      */
-    final public function importChecklist(array $profile, array $data, array $response = []): array
+    final public function importChecklist(string $profile, array $data, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/checklists/import';
         $required = [
@@ -74,14 +74,14 @@ final class Checklists extends AbstractApi
      * Tab indented lines are converted into checkable items following the same rules as in Import Checklist.
      * The result is placed inside of the specified personal checklist.
      *
-     * @param array $profile
+     * @param string $profile
      * @param string $checklistId
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function importChecklistLines(array $profile, string $checklistId, array $data): void
+    final public function importChecklistLines(string $profile, string $checklistId, array $data): void
     {
         $uri = 'team-directory/profiles/{profile}/checklists/{checklistId}/import';
         $required = [
@@ -100,13 +100,13 @@ final class Checklists extends AbstractApi
     /**
      * Get all existing checklists associated with the profile
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @deprecated This method is deprecated since 2022-04-08. Use GET team-directory/profiles/{profile}/documents/folders/{folder}/documents
      */
-    final public function getAllChecklists(array $profile, array $response = []): array
+    final public function getAllChecklists(string $profile, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/checklists';
         $uriArguments = [
@@ -119,14 +119,14 @@ final class Checklists extends AbstractApi
     /**
      * Update an existing checklist associated with the profile
      *
-     * @param array $profile
+     * @param string $profile
      * @param string $checklistId
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @deprecated This method is deprecated since 2022-04-08. Use PATCH on team-directory/profiles/{profile}/documents/{documentId}
      */
-    final public function updateChecklist(array $profile, string $checklistId, array $data = []): void
+    final public function updateChecklist(string $profile, string $checklistId, array $data = []): void
     {
         $uri = 'team-directory/profiles/{profile}/checklists/{checklistId}';
         $uriArguments = [
@@ -140,13 +140,13 @@ final class Checklists extends AbstractApi
     /**
      * Delete an existing checklist associated with the profile
      *
-     * @param array $profile
+     * @param string $profile
      * @param string $checklistId
      * @return void
      * @throws GuzzleException
      * @deprecated This method is deprecated since 2022-04-08. Use DELETE on profiles/{profile}/documents/{documentId}
      */
-    final public function deleteChecklist(array $profile, string $checklistId): void
+    final public function deleteChecklist(string $profile, string $checklistId): void
     {
         $uri = 'team-directory/profiles/{profile}/checklists/{checklistId}';
         $uriArguments = [

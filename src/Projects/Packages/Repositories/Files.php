@@ -18,16 +18,16 @@ final class Files extends AbstractApi
      *
      * Permissions that may be checked: PackageRepository.Read
      *
-     * @param array $project
-     * @param array $repository
+     * @param string $project
+     * @param string $repository
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
     final public function getListOfFiles(
-        array $project,
-        array $repository,
+        string $project,
+        string $repository,
         array $request = [],
         array $response = [],
     ): array {
@@ -45,16 +45,16 @@ final class Files extends AbstractApi
      *
      * Permissions that may be checked: PackageRepository.Read
      *
-     * @param array $project
-     * @param array $repository
+     * @param string $project
+     * @param string $repository
      * @param string $filePath
      * @param array $response
      * @return array|null
      * @throws GuzzleException
      */
     final public function getFileDetails(
-        array $project,
-        array $repository,
+        string $project,
+        string $repository,
         string $filePath,
         array $response = [],
     ): ?array {
@@ -73,13 +73,13 @@ final class Files extends AbstractApi
      *
      * Permissions that may be checked: PackageRepository.Write
      *
-     * @param array $project
-     * @param array $repository
+     * @param string $project
+     * @param string $repository
      * @param string $filePath
      * @return void
      * @throws GuzzleException
      */
-    final public function deleteFile(array $project, array $repository, string $filePath): void
+    final public function deleteFile(string $project, string $repository, string $filePath): void
     {
         $uri = 'projects/{project}/packages/repositories/{repository}/files/name:{filePath}';
         $uriArguments = [

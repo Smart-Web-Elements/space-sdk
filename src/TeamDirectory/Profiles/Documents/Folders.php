@@ -20,19 +20,19 @@ use Swe\SpaceSDK\Type;
 final class Folders extends AbstractApi
 {
     /**
-     * @param array $profile
+     * @param string $profile
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function createFolder(array $profile, array $data, array $response = []): array
+    final public function createFolder(string $profile, array $data, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/documents/folders';
         $required = [
             'name' => Type::String,
-            'parentFolder' => Type::Array,
+            'parentFolder' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -43,13 +43,13 @@ final class Folders extends AbstractApi
     }
 
     /**
-     * @param array $profile
-     * @param array $folder
+     * @param string $profile
+     * @param string $folder
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getFolder(array $profile, array $folder, array $response = []): array
+    final public function getFolder(string $profile, string $folder, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/documents/folders/{folder}';
         $uriArguments = [
@@ -61,14 +61,14 @@ final class Folders extends AbstractApi
     }
 
     /**
-     * @param array $profile
-     * @param array $folder
+     * @param string $profile
+     * @param string $folder
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function renameFolder(array $profile, array $folder, array $data): void
+    final public function renameFolder(string $profile, string $folder, array $data): void
     {
         $uri = 'team-directory/profiles/{profile}/documents/folders/{folder}';
         $required = [
@@ -84,12 +84,12 @@ final class Folders extends AbstractApi
     }
 
     /**
-     * @param array $profile
-     * @param array $folder
+     * @param string $profile
+     * @param string $folder
      * @return void
      * @throws GuzzleException
      */
-    final public function archiveFolder(array $profile, array $folder): void
+    final public function archiveFolder(string $profile, string $folder): void
     {
         $uri = 'team-directory/profiles/{profile}/documents/folders/{folder}';
         $uriArguments = [

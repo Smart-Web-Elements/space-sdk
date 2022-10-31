@@ -30,7 +30,7 @@ final class MemberLocations extends AbstractApi
     {
         $uri = 'team-directory/member-locations';
         $required = [
-            'member' => Type::Array,
+            'member' => Type::String,
             'location' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);

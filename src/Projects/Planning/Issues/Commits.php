@@ -20,14 +20,14 @@ final class Commits extends AbstractApi
      *
      * Permissions that may be checked: Project.Issues.Edit
      *
-     * @param array $project
-     * @param array $issueId
+     * @param string $project
+     * @param string $issueId
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function addCommitLinks(array $project, array $issueId, array $data): void
+    final public function addCommitLinks(string $project, string $issueId, array $data): void
     {
         $uri = 'projects/{project}/planning/issues/{issueId}/commits';
         $required = [
@@ -48,14 +48,14 @@ final class Commits extends AbstractApi
      *
      * Permissions that may be checked: Project.Issues.Edit
      *
-     * @param array $project
-     * @param array $issueId
+     * @param string $project
+     * @param string $issueId
      * @param array $request
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function removeCommitLinks(array $project, array $issueId, array $request): void
+    final public function removeCommitLinks(string $project, string $issueId, array $request): void
     {
         $uri = 'projects/{project}/planning/issues/{issueId}/commits';
         $required = [

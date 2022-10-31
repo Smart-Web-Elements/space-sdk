@@ -20,13 +20,13 @@ final class SshKeys extends AbstractApi
      *
      * Permissions that may be checked: Profile.Edit.2
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function addSshKey(array $profile, array $data): void
+    final public function addSshKey(string $profile, array $data): void
     {
         $uri = 'team-directory/profiles/{profile}/ssh-keys';
         $required = [
@@ -43,12 +43,12 @@ final class SshKeys extends AbstractApi
     /**
      * List SSH public keys associated with the profile
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function sshKeys(array $profile, array $response = []): array
+    final public function sshKeys(string $profile, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/ssh-keys';
         $uriArguments = [
@@ -63,12 +63,12 @@ final class SshKeys extends AbstractApi
      *
      * Permissions that may be checked: Profile.Edit.2
      *
-     * @param array $profile
+     * @param string $profile
      * @param string $fingerprint
      * @return void
      * @throws GuzzleException
      */
-    final public function deleteSshKey(array $profile, string $fingerprint): void
+    final public function deleteSshKey(string $profile, string $fingerprint): void
     {
         $uri = 'team-directory/profiles/{profile}/ssh-keys/{fingerprint}';
         $uriArguments = [

@@ -20,8 +20,8 @@ final class Versions extends AbstractApi
      *
      * Permissions that may be checked: PackageRepository.Read
      *
-     * @param array $project
-     * @param array $repository
+     * @param string $project
+     * @param string $repository
      * @param string $packageName
      * @param array $request
      * @param array $response
@@ -30,8 +30,8 @@ final class Versions extends AbstractApi
      * @throws MissingArgumentException
      */
     final public function getAllPackageVersions(
-        array $project,
-        array $repository,
+        string $project,
+        string $repository,
         string $packageName,
         array $request,
         array $response = [],
@@ -57,8 +57,8 @@ final class Versions extends AbstractApi
      *
      * Permissions that may be checked: PackageRepository.Read
      *
-     * @param array $project
-     * @param array $repository
+     * @param string $project
+     * @param string $repository
      * @param string $packageName
      * @param string $packageVersion
      * @param array $response
@@ -66,8 +66,8 @@ final class Versions extends AbstractApi
      * @throws GuzzleException
      */
     final public function getPackageVersionDetails(
-        array $project,
-        array $repository,
+        string $project,
+        string $repository,
         string $packageName,
         string $packageVersion,
         array $response = [],
@@ -88,16 +88,16 @@ final class Versions extends AbstractApi
      *
      * Permissions that may be checked: PackageRepository.Write
      *
-     * @param array $project
-     * @param array $repository
+     * @param string $project
+     * @param string $repository
      * @param string $packageName
      * @param string $packageVersion
      * @return void
      * @throws GuzzleException
      */
     final public function deletePackageVersion(
-        array $project,
-        array $repository,
+        string $project,
+        string $repository,
         string $packageName,
         string $packageVersion,
     ): void {

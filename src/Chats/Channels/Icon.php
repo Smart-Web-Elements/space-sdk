@@ -16,12 +16,12 @@ final class Icon extends AbstractApi
     /**
      * Permissions that may be checked: Channel.UpdateChannelInfo
      *
-     * @param array $channel
+     * @param string $channel
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    final public function changeChannelIcon(array $channel, array $data = []): void
+    final public function changeChannelIcon(string $channel, array $data = []): void
     {
         $uri = 'chats/channels/{channel}/icon';
         $uriArguments = [

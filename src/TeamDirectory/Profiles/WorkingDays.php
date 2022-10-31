@@ -35,14 +35,14 @@ final class WorkingDays extends AbstractApi
     /**
      * Permissions that may be checked: Profile.WorkingDays.Edit
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function addWorkingDays(array $profile, array $data, array $response = []): array
+    final public function addWorkingDays(string $profile, array $data, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/working-days';
         $required = [
@@ -61,13 +61,13 @@ final class WorkingDays extends AbstractApi
     /**
      * Permissions that may be checked: Profile.WorkingDays.View
      *
-     * @param array $profile
+     * @param string $profile
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function queryWorkingDaysForAProfile(array $profile, array $request = [], array $response = []): array
+    final public function queryWorkingDaysForAProfile(string $profile, array $request = [], array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/working-days';
         $uriArguments = [
@@ -80,7 +80,7 @@ final class WorkingDays extends AbstractApi
     /**
      * Permissions that may be checked: Profile.WorkingDays.Edit
      *
-     * @param array $profile
+     * @param string $profile
      * @param string $workingDaysId
      * @param array $data
      * @param array $response
@@ -89,7 +89,7 @@ final class WorkingDays extends AbstractApi
      * @throws MissingArgumentException
      */
     final public function updateWorkingDays(
-        array $profile,
+        string $profile,
         string $workingDaysId,
         array $data,
         array $response = [],
@@ -112,12 +112,12 @@ final class WorkingDays extends AbstractApi
     /**
      * Permissions that may be checked: Profile.WorkingDays.Edit
      *
-     * @param array $profile
+     * @param string $profile
      * @param string $workingDaysId
      * @return void
      * @throws GuzzleException
      */
-    final public function deleteWorkingDays(array $profile, string $workingDaysId): void
+    final public function deleteWorkingDays(string $profile, string $workingDaysId): void
     {
         $uri = 'team-directory/profiles/{profile}/working-days/{workingDaysId}';
         $uriArguments = [

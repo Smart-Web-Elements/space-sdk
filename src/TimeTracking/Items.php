@@ -30,8 +30,8 @@ final class Items extends AbstractApi
     {
         $uri = 'time-tracking/items';
         $required = [
-            'subject' => Type::Array,
-            'userId' => Type::Array,
+            'subject' => Type::String,
+            'userId' => Type::String,
             'date' => Type::Date,
             'duration' => Type::Integer,
         ];
@@ -55,7 +55,7 @@ final class Items extends AbstractApi
     {
         $uri = 'time-tracking/items';
         $required = [
-            'subject' => Type::Array,
+            'subject' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
 

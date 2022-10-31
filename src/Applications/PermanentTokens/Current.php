@@ -16,11 +16,11 @@ final class Current extends AbstractApi
     /**
      * Delete personal token of the given application
      *
-     * @param array $application
+     * @param string $application
      * @return void
      * @throws GuzzleException
      */
-    final public function deleteCurrentPermanentToken(array $application): void
+    final public function deleteCurrentPermanentToken(string $application): void
     {
         $uri = 'applications/{application}/permanent-tokens/current';
         $uriArguments = [

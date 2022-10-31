@@ -47,11 +47,11 @@ final class Applications extends AbstractApi
     /**
      * Permissions that may be checked: Applications.Edit
      *
-     * @param array $application
+     * @param string $application
      * @return void
      * @throws GuzzleException
      */
-    final public function restoreApplication(array $application): void
+    final public function restoreApplication(string $application): void
     {
         $uri = 'applications/{application}/restore';
         $uriArguments = [
@@ -79,12 +79,12 @@ final class Applications extends AbstractApi
     /**
      * Permissions that may be checked: Applications.View
      *
-     * @param array $application
+     * @param string $application
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function getApplication(array $application, array $response = []): array
+    final public function getApplication(string $application, array $response = []): array
     {
         $uri = 'applications/{application}';
         $uriArguments = [
@@ -97,12 +97,12 @@ final class Applications extends AbstractApi
     /**
      * Permissions that may be checked: Applications.ViewSecrets
      *
-     * @param array $application
+     * @param string $application
      * @param array $response
      * @return string|null
      * @throws GuzzleException
      */
-    final public function bearerToken(array $application): ?string
+    final public function bearerToken(string $application): ?string
     {
         $uri = 'applications/{application}/bearer-token';
         $uriArguments = [
@@ -115,12 +115,12 @@ final class Applications extends AbstractApi
     /**
      * Permissions that may be checked: Applications.View
      *
-     * @param array $application
+     * @param string $application
      * @param array $response
      * @return array|null
      * @throws GuzzleException
      */
-    final public function getLastClientCredentialsAccessInfo(array $application, array $response = []): ?array
+    final public function getLastClientCredentialsAccessInfo(string $application, array $response = []): ?array
     {
         $uri = 'applications/{application}/last-client-credentials-access';
         $uriArguments = [
@@ -135,12 +135,12 @@ final class Applications extends AbstractApi
      *
      * Permissions that may be checked: Applications.View
      *
-     * @param array $application
+     * @param string $application
      * @param array $response
      * @return string
      * @throws GuzzleException
      */
-    final public function publicKeys(array $application): string
+    final public function publicKeys(string $application): string
     {
         $uri = 'applications/{application}/public-keys';
         $uriArguments = [
@@ -162,7 +162,7 @@ final class Applications extends AbstractApi
     {
         $uri = 'applications/ui-extensions';
         $required = [
-            'contextIdentifier' => Type::Array,
+            'contextIdentifier' => Type::String,
             'extensions' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
@@ -173,13 +173,13 @@ final class Applications extends AbstractApi
     /**
      * Permissions that may be checked: Applications.Edit
      *
-     * @param array $application
+     * @param string $application
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function updateApplication(array $application, array $data = [], array $response = []): array
+    final public function updateApplication(string $application, array $data = [], array $response = []): array
     {
         $uri = 'applications/{application}';
         $uriArguments = [
@@ -192,11 +192,11 @@ final class Applications extends AbstractApi
     /**
      * Permissions that may be checked: Applications.Delete
      *
-     * @param array $application
+     * @param string $application
      * @return void
      * @throws GuzzleException
      */
-    final public function deleteApplication(array $application): void
+    final public function deleteApplication(string $application): void
     {
         $uri = 'applications/{application}';
         $uriArguments = [

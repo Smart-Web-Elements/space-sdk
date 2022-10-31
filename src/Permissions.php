@@ -24,7 +24,7 @@ final class Permissions extends AbstractApi
     {
         $uri = 'permissions/check-permission';
         $required = [
-            'principal' => Type::Array,
+            'principal' => Type::String,
             'uniqueRightCode' => Type::String,
             'target' => [
             ],
