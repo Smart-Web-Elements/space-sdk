@@ -3,7 +3,7 @@
 namespace Swe\SpaceSDK;
 
 /**
- * Generated 2022-10-31 12:44
+ * Generated 2022-10-31 12:46
  *
  * Class Space
  *
