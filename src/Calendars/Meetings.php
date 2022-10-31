@@ -4,6 +4,7 @@ namespace Swe\SpaceSDK\Calendars;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
+use Swe\SpaceSDK\Calendars\Meetings\ConferenceRooms;
 use Swe\SpaceSDK\Calendars\Meetings\ParticipationStatus;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 
@@ -261,5 +262,13 @@ class Meetings extends AbstractApi
     public function participationStatus(): ParticipationStatus
     {
         return new ParticipationStatus($this->client);
+    }
+
+    /**
+     * @return ConferenceRooms
+     */
+    public function conferenceRooms(): ConferenceRooms
+    {
+        return new ConferenceRooms($this->client);
     }
 }

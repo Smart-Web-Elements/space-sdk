@@ -1,5 +1,9 @@
 # Space SDK Changelog
 
+## Space SDK v1.1.0
+
+- Added class `Calendars/Meetings/ConferenceRooms`
+
 ## Space SDK v1.0.2
 
 - Fixed some missing class relations
