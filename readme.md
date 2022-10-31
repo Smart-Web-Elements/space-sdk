@@ -28,7 +28,7 @@ $projectInformation = $space->projects()->createProject([
 ]);
 
 // Create a new channel if not exist.
-if ($space->chats()->channels()->isNameFree('General')) {
+if ($space->chats()->channels()->isNameFree(['name' => 'General'])) {
     $channel = $space->chats()->channels()->addNewChannel([
         'name' => 'General',
         'description' => 'No specific topic..',
@@ -39,5 +39,5 @@ if ($space->chats()->channels()->isNameFree('General')) {
 
 ## Information
 
-The classes and methods are named like in the Space API defined.
-This package uses [Semantic Versioning](https://semver.org/lang/).
+All package classes are generated automatically.
+Please submit your issues on [GitHub](https://github.com/Smart-Web-Elements/space-sdk/issues).
