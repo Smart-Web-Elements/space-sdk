@@ -11,6 +11,6 @@ php ./vendor/bin/phpunit --configuration ./phpunit.xml
 
 [ $? -ne 0 ] || exit 0
 
-./space-sdk-builder/upgrade.sh
+../space-sdk-builder/upgrade.sh
 
 exit $?
