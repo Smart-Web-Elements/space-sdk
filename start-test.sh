@@ -9,7 +9,7 @@ php ./composer.phar update
 
 php ./vendor/bin/phpunit --configuration ./phpunit.xml
 
-#[ $? -ne 0 ] || exit 0
+[ $? -ne 0 ] || exit 0
 
 cd ../space-sdk-builder
 
@@ -21,12 +21,10 @@ php ./build.php
 
 [ $? -eq 0 ] || exit 1
 
-rm -rf ./build/space-sdk/src
-cp -r ./build/src ./space-sdk/src
+rm -rf ./space-sdk/src
+mv ./build/src ./space-sdk/src
 
 cd ./space-sdk
-
-ls -lah
 
 php ../../space-sdk/composer.phar update
 php ./vendor/bin/phpunit --configuration ./phpunit.xml
