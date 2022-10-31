@@ -1,9 +1,5 @@
 job("Build and run generated tests") {
     startOn {
-        gitPush {
-            branchFilter = "refs/heads/v2"
-        }
-
         schedule {
             cron("0 2 * * *")
         }
