@@ -21,13 +21,15 @@ php ./build.php
 
 [ $? -eq 0 ] || exit 1
 
-mv ../space-sdk/src ../space-sdk/src-old
-cp -r ./build/src ../space-sdk/src
+rm -rf ./build/space-sdk/src
+cp -r ./build/src ./space-sdk/src
 
-cd ../space-sdk
-php ./composer.phar dump-autoload
+cd ./build/space-sdk
+
+php ../../space-sdk/composer.phar update
 php ./vendor/bin/phpunit --configuration ./phpunit.xml
 
 [ $? -eq 0 ] || exit 1
 
-php ../space-sdk-builder/commit-changes.php
+git add --all
+git status
