@@ -9,11 +9,11 @@ job("Build and run generated tests") {
         }
     }
 
-    /*git {
+    git {
         refSpec {
             +"refs/heads/v2"
         }
-    }*/
+    }
 
     git("space-sdk-builder")
 
