@@ -26,6 +26,8 @@ cp -r ./build/src ./space-sdk/src
 
 cd ./space-sdk
 
+ls -lah
+
 php ../../space-sdk/composer.phar update
 php ./vendor/bin/phpunit --configuration ./phpunit.xml
 
