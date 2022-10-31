@@ -16,7 +16,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class AuthModules extends AbstractApi
+final class AuthModules extends AbstractApi
 {
     /**
      * Create a new authentication module. Settings are specific to the type of authentication module being created.
@@ -26,26 +26,26 @@ class AuthModules extends AbstractApi
      * @param array $data
      * @param array $response
      * @return array
-     * @throws MissingArgumentException
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function createAuthModule(array $data, array $response = []): array
+    final public function createAuthModule(array $data, array $response = []): array
     {
         $uri = 'auth-modules';
         $required = [
-            'key' => self::TYPE_STRING,
-            'name' => self::TYPE_STRING,
-            'enabled' => self::TYPE_BOOLEAN,
-            'settings' => self::TYPE_ARRAY,
+            'key' => Type::String,
+            'name' => Type::String,
+            'enabled' => Type::Boolean,
+            'settings' => [
+            ],
         ];
         $this->throwIfInvalid($required, $data);
 
-        return $this->client->post($this->buildUrl($uri), $data, $response);
+        return $this->client->post($this->buildUrl($uri), $data, [], $response);
     }
 
     /**
-     * Define the order of authentication modules. This affects the order of the federated authentication module buttons
-     * on the sign-in page.
+     * Define the order of authentication modules. This affects the order of the federated authentication module buttons on the sign-in page.
      *
      * Permissions that may be checked: AuthModule.Manage
      *
@@ -54,11 +54,11 @@ class AuthModules extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function reorderAuthenticationModules(array $data): void
+    final public function reorderAuthenticationModules(array $data): void
     {
         $uri = 'auth-modules/reorder';
         $required = [
-            'order' => self::TYPE_ARRAY,
+            'order' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -73,82 +73,80 @@ class AuthModules extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function samlMetadata(string $id, array $data, array $response = []): array
+    final public function samlMetadata(string $id, array $data, array $response = []): array
     {
         $uri = 'auth-modules/{id}/saml-metadata';
         $required = [
-            'idpUrl' => self::TYPE_STRING,
-            'idpEntityId' => self::TYPE_STRING,
-            'idpCertificateSHA256' => self::TYPE_STRING,
-            'spEntityId' => self::TYPE_STRING,
+            'idpUrl' => Type::String,
+            'idpEntityId' => Type::String,
+            'idpCertificateSHA256' => Type::String,
+            'spEntityId' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'id' => $id,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
-     * Get all authentication modules.
+     * Get all authentication modules
      *
-     * @param bool $withDisabled
+     * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getAllAuthModules(bool $withDisabled = false, array $response = []): array
+    final public function getAllAuthModules(array $request = [], array $response = []): array
     {
         $uri = 'auth-modules';
-        $request = [
-            'withDisabled' => $withDisabled,
-        ];
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 
     /**
-     * Automatically discovers the endpoints for the OpenID Connect provider via discovery document.
+     * Automatically discovers the endpoints for the OpenID Connect provider via discovery document
      *
      * Permissions that may be checked: AuthModule.Manage
      *
-     * @param string $discoveryEndpoint
+     * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function discoverOIDC(string $discoveryEndpoint, array $response = []): array
+    final public function discoverOidc(array $request, array $response = []): array
     {
         $uri = 'auth-modules/discover-oidc';
-        $request = [
-            'discoveryEndpoint' => $discoveryEndpoint,
+        $required = [
+            'discoveryEndpoint' => Type::String,
         ];
+        $this->throwIfInvalid($required, $request);
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 
     /**
-     * Get an existing authentication module.
+     * Get an existing authentication module
      *
      * @param string $key
      * @param array $response
-     * @return array
+     * @return array|null
      * @throws GuzzleException
      */
-    public function getAuthModuleByKey(string $key, array $response = []): array
+    final public function getAuthModuleByKey(string $key, array $response = []): ?array
     {
         $uri = 'auth-modules/key:{key}';
         $uriArguments = [
             'key' => $key,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
-     * Update an existing authentication module. Optional parameters will be ignored when not specified and updated
-     * otherwise.
+     * Update an existing authentication module. Optional parameters will be ignored when not specified and updated otherwise.
      *
      * Permissions that may be checked: AuthModule.Manage
      *
@@ -157,7 +155,7 @@ class AuthModules extends AbstractApi
      * @return void
      * @throws GuzzleException
      */
-    public function updateAuthModule(string $id, array $data = []): void
+    final public function updateAuthModule(string $id, array $data = []): void
     {
         $uri = 'auth-modules/{id}';
         $uriArguments = [
@@ -168,7 +166,7 @@ class AuthModules extends AbstractApi
     }
 
     /**
-     * Delete an existing authentication module.
+     * Delete an existing authentication module
      *
      * Permissions that may be checked: AuthModule.Manage
      *
@@ -176,7 +174,7 @@ class AuthModules extends AbstractApi
      * @return void
      * @throws GuzzleException
      */
-    public function deleteAuthModule(string $id): void
+    final public function deleteAuthModule(string $id): void
     {
         $uri = 'auth-modules/{id}';
         $uriArguments = [
@@ -189,23 +187,15 @@ class AuthModules extends AbstractApi
     /**
      * @return Config
      */
-    public function config(): Config
+    final public function config(): Config
     {
         return new Config($this->client);
     }
 
     /**
-     * @return Logins
-     */
-    public function logins(): Logins
-    {
-        return new Logins($this->client);
-    }
-
-    /**
      * @return Test
      */
-    public function test(): Test
+    final public function test(): Test
     {
         return new Test($this->client);
     }
@@ -213,7 +203,7 @@ class AuthModules extends AbstractApi
     /**
      * @return ThrottledLogins
      */
-    public function throttledLogins(): ThrottledLogins
+    final public function throttledLogins(): ThrottledLogins
     {
         return new ThrottledLogins($this->client);
     }
@@ -221,8 +211,16 @@ class AuthModules extends AbstractApi
     /**
      * @return Usages
      */
-    public function usages(): Usages
+    final public function usages(): Usages
     {
         return new Usages($this->client);
+    }
+
+    /**
+     * @return Logins
+     */
+    final public function logins(): Logins
+    {
+        return new Logins($this->client);
     }
 }

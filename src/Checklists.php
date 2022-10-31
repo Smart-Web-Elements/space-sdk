@@ -10,12 +10,12 @@ use Swe\SpaceSDK\Checklists\Items;
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Checklists extends AbstractApi
+final class Checklists extends AbstractApi
 {
     /**
      * @return Items
      */
-    public function items(): Items
+    final public function items(): Items
     {
         return new Items($this->client);
     }

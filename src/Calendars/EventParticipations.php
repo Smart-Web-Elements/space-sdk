@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Calendars;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class EventParticipations
@@ -12,10 +13,10 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Calendars
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class EventParticipations extends AbstractApi
+final class EventParticipations extends AbstractApi
 {
     /**
-     * Update RSVP / calendar event participation status for a calendar event attached to an article.
+     * Update RSVP / calendar event participation status for a calendar event attached to an article
      *
      * @param string $id
      * @param array $data
@@ -24,17 +25,17 @@ class EventParticipations extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function updateEventParticipation(string $id, array $data, array $response = []): array
+    final public function updateEventParticipation(string $id, array $data, array $response = []): array
     {
         $uri = 'calendars/event-participations/{id}';
         $required = [
-            'newStatus' => self::TYPE_STRING,
+            'newStatus' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'id' => $id,
         ];
 
-        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 }

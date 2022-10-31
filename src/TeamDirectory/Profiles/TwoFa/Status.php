@@ -11,19 +11,19 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\TeamDirectory\Profiles\TwoFa
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Status extends AbstractApi
+final class Status extends AbstractApi
 {
     /**
-     * Get two-factor authentication status for a given profile ID. The response indicates whether two-factor
-     * authentication is active, not active, or not set up yet.
+     * Get two-factor authentication status for a given profile ID. The response indicates whether two-factor authentication is active, not active, or not set up yet.
      *
      * Permissions that may be checked: Profile.View
      *
-     * @param string $profile
+     * @param array $profile
+     * @param array $response
      * @return string
      * @throws GuzzleException
      */
-    public function twoFactorAuthenticationStatus(string $profile): string
+    final public function twoFactorAuthenticationStatus(array $profile): string
     {
         $uri = 'team-directory/profiles/{profile}/2-fa/status';
         $uriArguments = [

@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Projects\Packages\Repositories\Packages;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Metadata
@@ -12,24 +13,24 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Projects\Packages\Repositories\Packages
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Metadata extends AbstractApi
+final class Metadata extends AbstractApi
 {
     /**
-     * Get package metadata in repository for a given project ID.
+     * Get package metadata in repository for a given project ID
      *
-     * @param string $project
-     * @param string $repository
+     * @param array $project
+     * @param array $repository
      * @param string $packageName
      * @param array $response
-     * @return array
+     * @return array|null
      * @throws GuzzleException
      */
-    public function getPackageMetadata(
-        string $project,
-        string $repository,
+    final public function getPackageMetadata(
+        array $project,
+        array $repository,
         string $packageName,
-        array $response = []
-    ): array {
+        array $response = [],
+    ): ?array {
         $uri = 'projects/{project}/packages/repositories/{repository}/packages/name:{packageName}/metadata';
         $uriArguments = [
             'project' => $project,
@@ -37,24 +38,24 @@ class Metadata extends AbstractApi
             'packageName' => $packageName,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
-     * Update a package metadata in repository for a given project ID.
+     * Update a package metadata in repository for a given project ID
      *
-     * @param string $project
-     * @param string $repository
+     * @param array $project
+     * @param array $repository
      * @param string $packageName
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    public function reportPackageMetadata(
-        string $project,
-        string $repository,
+    final public function reportPackageMetadata(
+        array $project,
+        array $repository,
         string $packageName,
-        array $data = []
+        array $data = [],
     ): void {
         $uri = 'projects/{project}/packages/repositories/{repository}/packages/name:{packageName}/metadata';
         $uriArguments = [
@@ -68,10 +69,9 @@ class Metadata extends AbstractApi
 
     /**
      * Report a package version metadata in repository for a given project ID
-     * .
      *
-     * @param string $project
-     * @param string $repository
+     * @param array $project
+     * @param array $repository
      * @param string $packageName
      * @param string $packageVersion
      * @param array $data
@@ -79,16 +79,16 @@ class Metadata extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function reportPackageVersionMetadata(
-        string $project,
-        string $repository,
+    final public function reportPackageVersionMetadata(
+        array $project,
+        array $repository,
         string $packageName,
         string $packageVersion,
-        array $data = []
+        array $data,
     ): void {
         $uri = 'projects/{project}/packages/repositories/{repository}/packages/name:{packageName}/metadata/version:{packageVersion}';
         $required = [
-            'pin' => self::TYPE_BOOLEAN,
+            'pin' => Type::Boolean,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

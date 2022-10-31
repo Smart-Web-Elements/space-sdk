@@ -11,7 +11,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Blog extends AbstractApi
+final class Blog extends AbstractApi
 {
     /**
      * Permissions that may be checked: Article.Publish
@@ -19,19 +19,19 @@ class Blog extends AbstractApi
      * @param array $data
      * @param array $response
      * @return array
-     * @throws MissingArgumentException
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function publishBlogPost(array $data, array $response = []): array
+    final public function publishBlogPost(array $data, array $response = []): array
     {
         $uri = 'blog';
         $required = [
-            'title' => self::TYPE_STRING,
-            'content' => self::TYPE_STRING,
+            'title' => Type::String,
+            'content' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
 
-        return $this->client->post($this->buildUrl($uri), $data, $response);
+        return $this->client->post($this->buildUrl($uri), $data, [], $response);
     }
 
     /**
@@ -43,18 +43,18 @@ class Blog extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function importBlogPosts(array $data, array $response = []): array
+    final public function importBlogPosts(array $data, array $response = []): array
     {
         $uri = 'blog/import';
         $required = [
             'metadata' => [
-                'importSource' => self::TYPE_STRING,
+                'importSource' => Type::String,
             ],
-            'articles' => self::TYPE_ARRAY,
+            'articles' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
 
-        return $this->client->post($this->buildUrl($uri), $data, $response);
+        return $this->client->post($this->buildUrl($uri), $data, [], $response);
     }
 
     /**
@@ -65,11 +65,11 @@ class Blog extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getAllBlogPosts(array $request = [], array $response = []): array
+    final public function getAllBlogPosts(array $request = [], array $response = []): array
     {
         $uri = 'blog';
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 
     /**
@@ -80,11 +80,11 @@ class Blog extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getStats(array $request = [], array $response = []): array
+    final public function getStats(array $request = [], array $response = []): array
     {
         $uri = 'blog/stats';
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 
     /**
@@ -92,17 +92,17 @@ class Blog extends AbstractApi
      *
      * @param string $alias
      * @param array $response
-     * @return array
+     * @return array|null
      * @throws GuzzleException
      */
-    public function getBlogPostByAlias(string $alias, array $response = []): array
+    final public function getBlogPostByAlias(string $alias, array $response = []): ?array
     {
         $uri = 'blog/alias:{alias}';
         $uriArguments = [
             'alias' => $alias,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
@@ -110,17 +110,17 @@ class Blog extends AbstractApi
      *
      * @param string $id
      * @param array $response
-     * @return array
+     * @return array|null
      * @throws GuzzleException
      */
-    public function getBlogPostByExternalId(string $id, array $response = []): array
+    final public function getBlogPostByExternalId(string $id, array $response = []): ?array
     {
         $uri = 'blog/external-id:{id}';
         $uriArguments = [
             'id' => $id,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
@@ -131,14 +131,14 @@ class Blog extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getBlogPost(string $id, array $response = []): array
+    final public function getBlogPost(string $id, array $response = []): array
     {
         $uri = 'blog/{id}';
         $uriArguments = [
             'id' => $id,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
@@ -150,14 +150,14 @@ class Blog extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function updateBlogPost(string $id, array $data = [], array $response = []): array
+    final public function updateBlogPost(string $id, array $data = [], array $response = []): array
     {
         $uri = 'blog/{id}';
         $uriArguments = [
             'id' => $id,
         ];
 
-        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
@@ -167,7 +167,7 @@ class Blog extends AbstractApi
      * @return void
      * @throws GuzzleException
      */
-    public function unpublishArticle(string $id): void
+    final public function unpublishArticle(string $id): void
     {
         $uri = 'blog/{id}';
         $uriArguments = [

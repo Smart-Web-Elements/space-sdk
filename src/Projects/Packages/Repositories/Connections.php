@@ -12,20 +12,20 @@ use Swe\SpaceSDK\Projects\Packages\Repositories\Connections\Publish;
  * @package Swe\SpaceSDK\Projects\Packages\Repositories
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Connections extends AbstractApi
+final class Connections extends AbstractApi
 {
     /**
-     * Gets a list of remote package repositories for given project.
+     * Gets a list of remote package repositories for given project
      *
      * Permissions that may be checked: PackageRepository.Read
      *
-     * @param string $project
-     * @param string $repository
+     * @param array $project
+     * @param array $repository
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getAllRemoteRepositories(string $project, string $repository, array $response = []): array
+    final public function getAllRemoteRepositories(array $project, array $repository, array $response = []): array
     {
         $uri = 'projects/{project}/packages/repositories/{repository}/connections';
         $uriArguments = [
@@ -33,13 +33,13 @@ class Connections extends AbstractApi
             'repository' => $repository,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
      * @return Publish
      */
-    public function publish(): Publish
+    final public function publish(): Publish
     {
         return new Publish($this->client);
     }

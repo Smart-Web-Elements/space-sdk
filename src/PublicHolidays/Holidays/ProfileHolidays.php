@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\PublicHolidays\Holidays;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class ProfileHolidays
@@ -12,10 +13,10 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\PublicHolidays\Holidays
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class ProfileHolidays extends AbstractApi
+final class ProfileHolidays extends AbstractApi
 {
     /**
-     * Get holidays observed in the location(s) of the current profile during the selected period.
+     * Get holidays observed in the location(s) of the current profile during the selected period
      *
      * @param array $request
      * @param array $response
@@ -23,17 +24,16 @@ class ProfileHolidays extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function getAllProfileHolidays(array $request, array $response = []): array
+    final public function getAllProfileHolidays(array $request, array $response = []): array
     {
         $uri = 'public-holidays/holidays/profile-holidays';
         $required = [
-            'startDate' => self::TYPE_DATE,
-            'endDate' => self::TYPE_DATE,
-            'profile' => self::TYPE_STRING,
+            'startDate' => Type::Date,
+            'endDate' => Type::Date,
+            'profile' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
-        $uriArguments = [];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 }

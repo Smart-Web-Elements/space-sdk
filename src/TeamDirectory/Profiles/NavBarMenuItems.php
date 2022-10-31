@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\TeamDirectory\Profiles;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class NavBarMenuItems
@@ -12,39 +13,39 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\TeamDirectory\Profiles
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class NavBarMenuItems extends AbstractApi
+final class NavBarMenuItems extends AbstractApi
 {
     /**
-     * @param string $profile
+     * @param array $profile
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getAllNavBarMenuItems(string $profile, array $response = []): array
+    final public function getAllNavBarMenuItems(array $profile, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/nav-bar-menu-items';
         $uriArguments = [
             'profile' => $profile,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
-     * Toggle visibility for a given navigation bar item.
+     * Toggle visibility for a given navigation bar item
      *
-     * @param string $profile
+     * @param array $profile
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function updateNavBarMenuItem(string $profile, array $data): void
+    final public function updateNavBarMenuItem(array $profile, array $data): void
     {
         $uri = 'team-directory/profiles/{profile}/nav-bar-menu-items';
         $required = [
-            'item' => self::TYPE_STRING,
-            'enabled' => self::TYPE_BOOLEAN,
+            'item' => Type::String,
+            'enabled' => Type::Boolean,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

@@ -11,19 +11,19 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\PermissionRoles
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Profiles extends AbstractApi
+final class Profiles extends AbstractApi
 {
     /**
-     * Assign permission role to the profile.
+     * Assign permission role to the profile
      *
-     * Permissions that may be checked: Superadmin, Projects.Admin, Channel.Admin
+     * Permissions that may be checked: Superadmin, Project.Admin, Channel.Admin
      *
      * @param string $roleId
-     * @param string $profile
+     * @param array $profile
      * @return void
      * @throws GuzzleException
      */
-    public function addRoleMember(string $roleId, string $profile): void
+    final public function addRoleMember(string $roleId, array $profile): void
     {
         $uri = 'permission-roles/{roleId}/profiles/{profile}';
         $uriArguments = [
@@ -31,40 +31,40 @@ class Profiles extends AbstractApi
             'profile' => $profile,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments));
+        $this->client->post($this->buildUrl($uri, $uriArguments), []);
     }
 
     /**
-     * Get list of profiles with the specified role.
+     * Get list of profiles with the specified role
      *
-     * Permissions that may be checked: Superadmin, Projects.View, Channel.ViewChannel
+     * Permissions that may be checked: Superadmin, Project.View, Channel.ViewChannel
      *
      * @param string $roleId
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getRoleMembers(string $roleId, array $response = []): array
+    final public function getRoleMembers(string $roleId, array $response = []): array
     {
         $uri = 'permission-roles/{roleId}/profiles';
         $uriArguments = [
             'roleId' => $roleId,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
-     * Remove permission role from the profile.
+     * Remove permission role from the profile
      *
-     * Permissions that may be checked: Superadmin, Projects.Admin, Channel.Admin
+     * Permissions that may be checked: Superadmin, Project.Admin, Channel.Admin
      *
      * @param string $roleId
-     * @param string $profile
+     * @param array $profile
      * @return void
      * @throws GuzzleException
      */
-    public function removeRoleMember(string $roleId, string $profile): void
+    final public function removeRoleMember(string $roleId, array $profile): void
     {
         $uri = 'permission-roles/{roleId}/profiles/{profile}';
         $uriArguments = [

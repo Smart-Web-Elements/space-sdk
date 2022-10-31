@@ -13,12 +13,12 @@ use Swe\SpaceSDK\Applications\Unfurls\Queue;
  * @package Swe\SpaceSDK\Applications
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Unfurls extends AbstractApi
+final class Unfurls extends AbstractApi
 {
     /**
      * @return Domains
      */
-    public function domains(): Domains
+    final public function domains(): Domains
     {
         return new Domains($this->client);
     }
@@ -26,7 +26,7 @@ class Unfurls extends AbstractApi
     /**
      * @return Patterns
      */
-    public function patterns(): Patterns
+    final public function patterns(): Patterns
     {
         return new Patterns($this->client);
     }
@@ -34,7 +34,7 @@ class Unfurls extends AbstractApi
     /**
      * @return Queue
      */
-    public function queue(): Queue
+    final public function queue(): Queue
     {
         return new Queue($this->client);
     }

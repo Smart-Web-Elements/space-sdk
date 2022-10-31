@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Applications\Unfurls;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Patterns
@@ -12,11 +13,10 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Applications\Unfurls
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Patterns extends AbstractApi
+final class Patterns extends AbstractApi
 {
     /**
-     * Update list of external ID prefixes for unfurling by the application. Method is to be called by the application
-     * providing unfurls.
+     * Update list of external ID prefixes for unfurling by the application. Method is to be called by the application providing unfurls.
      *
      * Permissions that may be checked: Applications.Edit
      *
@@ -25,11 +25,11 @@ class Patterns extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function updateUnfurledPatterns(array $data): void
+    final public function updateUnfurledPatterns(array $data): void
     {
         $uri = 'applications/unfurls/patterns';
         $required = [
-            'patterns' => self::TYPE_ARRAY,
+            'patterns' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
 

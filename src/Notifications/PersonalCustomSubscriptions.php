@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Notifications;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class PersonalCustomSubscriptions
@@ -12,10 +13,10 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Notifications
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class PersonalCustomSubscriptions extends AbstractApi
+final class PersonalCustomSubscriptions extends AbstractApi
 {
     /**
-     * Create personal custom subscription.
+     * Create personal custom subscription
      *
      * Permissions that may be checked: Profile.NotificationSettings.Edit
      *
@@ -25,26 +26,26 @@ class PersonalCustomSubscriptions extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createPersonalCustomSubscription(array $data, array $response = []): array
+    final public function createPersonalCustomSubscription(array $data, array $response = []): array
     {
         $uri = 'notifications/personal-custom-subscriptions';
         $required = [
-            'profile' => self::TYPE_STRING,
-            'name' => self::TYPE_STRING,
-            'feed' => self::TYPE_STRING,
+            'profile' => Type::Array,
+            'name' => Type::String,
+            'feed' => Type::String,
             'subscription' => [
-                'subjectCode' => self::TYPE_STRING,
-                'filters' => self::TYPE_ARRAY,
-                'eventTypeCodes' => self::TYPE_ARRAY,
+                'subjectCode' => Type::String,
+                'filters' => Type::Array,
+                'eventTypeCodes' => Type::Array,
             ],
         ];
         $this->throwIfInvalid($required, $data);
 
-        return $this->client->post($this->buildUrl($uri), $data, $response);
+        return $this->client->post($this->buildUrl($uri), $data, [], $response);
     }
 
     /**
-     * List personal custom subscriptions.
+     * List personal custom subscriptions
      *
      * Permissions that may be checked: Profile.NotificationSettings.View
      *
@@ -54,19 +55,19 @@ class PersonalCustomSubscriptions extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function getAllPersonalCustomSubscriptions(array $request, array $response = []): array
+    final public function getAllPersonalCustomSubscriptions(array $request, array $response = []): array
     {
         $uri = 'notifications/personal-custom-subscriptions';
         $required = [
-            'profile' => self::TYPE_STRING,
+            'profile' => Type::Array,
         ];
         $this->throwIfInvalid($required, $request);
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 
     /**
-     * Create personal custom subscription.
+     * Create personal custom subscription
      *
      * Permissions that may be checked: Profile.NotificationSettings.Edit
      *
@@ -76,18 +77,18 @@ class PersonalCustomSubscriptions extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function updatePersonalCustomSubscription(string $id, array $data = [], array $response = []): array
+    final public function updatePersonalCustomSubscription(string $id, array $data = [], array $response = []): array
     {
         $uri = 'notifications/personal-custom-subscriptions/{id}';
         $uriArguments = [
             'id' => $id,
         ];
 
-        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
-     * Delete personal custom subscription.
+     * Delete personal custom subscription
      *
      * Permissions that may be checked: Profile.NotificationSettings.Edit
      *
@@ -95,7 +96,7 @@ class PersonalCustomSubscriptions extends AbstractApi
      * @return void
      * @throws GuzzleException
      */
-    public function deletePersonalCustomSubscription(string $id): void
+    final public function deletePersonalCustomSubscription(string $id): void
     {
         $uri = 'notifications/personal-custom-subscriptions/{id}';
         $uriArguments = [

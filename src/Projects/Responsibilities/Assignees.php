@@ -11,23 +11,23 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\Projects\Responsibilities
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Assignees extends AbstractApi
+final class Assignees extends AbstractApi
 {
     /**
-     * Assign a responsible person for a given project ID and responsibility ID.
+     * Assign a responsible person for a given project ID and responsibility ID
      *
-     * @param string $project
+     * @param array $project
      * @param string $responsibilityId
      * @param string $profileId
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    public function assignResponsible(
-        string $project,
+    final public function assignResponsible(
+        array $project,
         string $responsibilityId,
         string $profileId,
-        array $data = []
+        array $data = [],
     ): void {
         $uri = 'projects/{project}/responsibilities/{responsibilityId}/assignees/{profileId}';
         $uriArguments = [
@@ -40,20 +40,20 @@ class Assignees extends AbstractApi
     }
 
     /**
-     * Remove a responsible person for a given project ID and responsibility ID.
+     * Remove a responsible person for a given project ID and responsibility ID
      *
-     * @param string $project
+     * @param array $project
      * @param string $responsibilityId
      * @param string $profileId
      * @param array $request
      * @return void
      * @throws GuzzleException
      */
-    public function removeResponsible(
-        string $project,
+    final public function removeResponsible(
+        array $project,
         string $responsibilityId,
         string $profileId,
-        array $request = []
+        array $request = [],
     ): void {
         $uri = 'projects/{project}/responsibilities/{responsibilityId}/assignees/{profileId}';
         $uriArguments = [

@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Projects\Access\Collaborators;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Profiles
@@ -12,22 +13,22 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Projects\Access\Collaborators
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Profiles extends AbstractApi
+final class Profiles extends AbstractApi
 {
     /**
      * Permissions that may be checked: Project.Admin
      *
-     * @param string $project
+     * @param array $project
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function addACollaborator(string $project, array $data): void
+    final public function addACollaborator(array $project, array $data): void
     {
         $uri = 'projects/{project}/access/collaborators/profiles';
         $required = [
-            'profile' => self::TYPE_STRING,
+            'profile' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -40,37 +41,39 @@ class Profiles extends AbstractApi
     /**
      * Permissions that may be checked: Project.View
      *
-     * @param string $project
+     * @param array $project
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getAllIndividualCollaborators(string $project, array $response = []): array
+    final public function getAllIndividualCollaborators(array $project, array $response = []): array
     {
         $uri = 'projects/{project}/access/collaborators/profiles';
         $uriArguments = [
             'project' => $project,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
      * Permissions that may be checked: Project.Admin
      *
-     * @param string $project
-     * @param string $profile
+     * @param array $project
+     * @param array $request
      * @return void
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function removeACollaborator(string $project, string $profile): void
+    final public function removeACollaborator(array $project, array $request): void
     {
         $uri = 'projects/{project}/access/collaborators/profiles';
+        $required = [
+            'profile' => Type::Array,
+        ];
+        $this->throwIfInvalid($required, $request);
         $uriArguments = [
             'project' => $project,
-        ];
-        $request = [
-            'profile' => $profile,
         ];
 
         $this->client->delete($this->buildUrl($uri, $uriArguments), $request);

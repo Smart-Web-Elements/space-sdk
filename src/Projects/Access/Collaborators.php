@@ -13,30 +13,30 @@ use Swe\SpaceSDK\Projects\Access\Collaborators\Teams;
  * @package Swe\SpaceSDK\Projects\Access
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Collaborators extends AbstractApi
+final class Collaborators extends AbstractApi
 {
     /**
      * Permissions that may be checked: Project.View
      *
-     * @param string $project
+     * @param array $project
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getAllCollaboratorsProfiles(string $project, array $response = []): array
+    final public function getAllCollaboratorsProfiles(array $project, array $response = []): array
     {
         $uri = 'projects/{project}/access/collaborators';
         $uriArguments = [
             'project' => $project,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
      * @return Profiles
      */
-    public function profiles(): Profiles
+    final public function profiles(): Profiles
     {
         return new Profiles($this->client);
     }
@@ -44,7 +44,7 @@ class Collaborators extends AbstractApi
     /**
      * @return Teams
      */
-    public function teams(): Teams
+    final public function teams(): Teams
     {
         return new Teams($this->client);
     }

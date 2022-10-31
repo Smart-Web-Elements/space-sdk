@@ -11,16 +11,16 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\Projects\Documents\Folders
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Introduction extends AbstractApi
+final class Introduction extends AbstractApi
 {
     /**
-     * @param string $project
-     * @param string $folder
+     * @param array $project
+     * @param array $folder
      * @param string $documentId
      * @return void
      * @throws GuzzleException
      */
-    public function addFolderIntroduction(string $project, string $folder, string $documentId): void
+    final public function addFolderIntroduction(array $project, array $folder, string $documentId): void
     {
         $uri = 'projects/{project}/documents/folders/{folder}/introduction/{documentId}';
         $uriArguments = [
@@ -29,16 +29,16 @@ class Introduction extends AbstractApi
             'documentId' => $documentId,
         ];
 
-        $this->client->patch($this->buildUrl($uri, $uriArguments));
+        $this->client->patch($this->buildUrl($uri, $uriArguments), []);
     }
 
     /**
-     * @param string $project
-     * @param string $folder
+     * @param array $project
+     * @param array $folder
      * @return void
      * @throws GuzzleException
      */
-    public function removeFolderIntroduction(string $project, string $folder): void
+    final public function removeFolderIntroduction(array $project, array $folder): void
     {
         $uri = 'projects/{project}/documents/folders/{folder}/introduction';
         $uriArguments = [

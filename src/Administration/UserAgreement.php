@@ -7,6 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Administration\UserAgreement\Enabled;
 use Swe\SpaceSDK\Administration\UserAgreement\Status;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class UserAgreement
@@ -14,20 +15,18 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Administration
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class UserAgreement extends AbstractApi
+final class UserAgreement extends AbstractApi
 {
     /**
-     * This endpoint doesn't require any permissions.
-     *
      * @param array $response
-     * @return array
+     * @return array|null
      * @throws GuzzleException
      */
-    public function getUserAgreement(array $response = []): array
+    final public function getUserAgreement(array $response = []): ?array
     {
         $uri = 'administration/user-agreement';
 
-        return $this->client->get($this->buildUrl($uri), $response);
+        return $this->client->get($this->buildUrl($uri), [], $response);
     }
 
     /**
@@ -39,22 +38,22 @@ class UserAgreement extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function uploadNewUserAgreement(array $data, array $response = []): array
+    final public function uploadNewUserAgreement(array $data, array $response = []): array
     {
         $uri = 'administration/user-agreement';
         $required = [
-            'newContent' => self::TYPE_STRING,
-            'invalidate' => self::TYPE_BOOLEAN,
+            'newContent' => Type::String,
+            'invalidate' => Type::Boolean,
         ];
         $this->throwIfInvalid($required, $data);
 
-        return $this->client->patch($this->buildUrl($uri), $data, $response);
+        return $this->client->patch($this->buildUrl($uri), $data, [], $response);
     }
 
     /**
      * @return Enabled
      */
-    public function enabled(): Enabled
+    final public function enabled(): Enabled
     {
         return new Enabled($this->client);
     }
@@ -62,7 +61,7 @@ class UserAgreement extends AbstractApi
     /**
      * @return Status
      */
-    public function status(): Status
+    final public function status(): Status
     {
         return new Status($this->client);
     }

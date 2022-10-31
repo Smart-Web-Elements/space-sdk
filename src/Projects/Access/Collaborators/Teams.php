@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Projects\Access\Collaborators;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Teams
@@ -12,22 +13,22 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Projects\Access\Collaborators
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Teams extends AbstractApi
+final class Teams extends AbstractApi
 {
     /**
      * Permissions that may be checked: Project.Admin
      *
-     * @param string $project
+     * @param array $project
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function addACollaboratorsTeam(string $project, array $data): void
+    final public function addACollaboratorsTeam(array $project, array $data): void
     {
         $uri = 'projects/{project}/access/collaborators/teams';
         $required = [
-            'teamId' => self::TYPE_STRING,
+            'teamId' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -40,37 +41,39 @@ class Teams extends AbstractApi
     /**
      * Permissions that may be checked: Project.View
      *
-     * @param string $project
+     * @param array $project
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getAllCollaboratorsTeams(string $project, array $response = []): array
+    final public function getAllCollaboratorsTeams(array $project, array $response = []): array
     {
         $uri = 'projects/{project}/access/collaborators/teams';
         $uriArguments = [
             'project' => $project,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
      * Permissions that may be checked: Project.Admin
      *
-     * @param string $project
-     * @param string $teamId
+     * @param array $project
+     * @param array $request
      * @return void
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function removeACollaboratorsTeam(string $project, string $teamId): void
+    final public function removeACollaboratorsTeam(array $project, array $request): void
     {
         $uri = 'projects/{project}/access/collaborators/teams';
+        $required = [
+            'teamId' => Type::String,
+        ];
+        $this->throwIfInvalid($required, $request);
         $uriArguments = [
             'project' => $project,
-        ];
-        $request = [
-            'teamId' => $teamId,
         ];
 
         $this->client->delete($this->buildUrl($uri, $uriArguments), $request);

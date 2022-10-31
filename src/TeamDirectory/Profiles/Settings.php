@@ -11,34 +11,33 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\TeamDirectory\Profiles
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Settings extends AbstractApi
+final class Settings extends AbstractApi
 {
     /**
-     * This endpoint will return profile information and Space personalisation data such as projects in the navigation
-     * bar, etc.
+     * This endpoint will return profile information and Space personalisation data such as projects in the navigation bar, etc.
      *
-     * @param string $profile
+     * @param array $profile
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getSpacePersonalizationDataForAProfile(string $profile, array $response = []): array
+    final public function getSpacePersonalizationDataForAProfile(array $profile, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/settings';
         $uriArguments = [
             'profile' => $profile,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
-     * @param string $profile
+     * @param array $profile
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    public function setSpacePersonalizationDataForAProfile(string $profile, array $data = []): void
+    final public function setSpacePersonalizationDataForAProfile(array $profile, array $data = []): void
     {
         $uri = 'team-directory/profiles/{profile}/settings';
         $uriArguments = [

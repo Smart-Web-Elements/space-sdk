@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\BillingAdmin;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Overdrafts
@@ -12,7 +13,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\BillingAdmin
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Overdrafts extends AbstractApi
+final class Overdrafts extends AbstractApi
 {
     /**
      * Permissions that may be checked: Organization.ViewUsageData
@@ -21,11 +22,11 @@ class Overdrafts extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getOverdrafts(array $response = []): array
+    final public function getOverdrafts(array $response = []): array
     {
         $uri = 'billing-admin/overdrafts';
 
-        return $this->client->get($this->buildUrl($uri), $response);
+        return $this->client->get($this->buildUrl($uri), [], $response);
     }
 
     /**
@@ -36,16 +37,16 @@ class Overdrafts extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function setOverdrafts(array $data): void
+    final public function setOverdrafts(array $data): void
     {
         $uri = 'billing-admin/overdrafts';
         $required = [
-            'storage' => self::TYPE_INTEGER,
-            'bandwidth' => self::TYPE_INTEGER,
-            'ciCredits' => self::TYPE_INTEGER,
+            'storage' => Type::Integer,
+            'bandwidth' => Type::Integer,
+            'ciCredits' => Type::Integer,
         ];
         $this->throwIfInvalid($required, $data);
 
-        $this->client->post($this->buildUrl($uri), $data);
+        $this->client->put($this->buildUrl($uri), $data);
     }
 }

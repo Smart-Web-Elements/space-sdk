@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\TeamDirectory\Memberships;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class RequestRevoke
@@ -12,7 +13,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\TeamDirectory\Memberships
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class RequestRevoke extends AbstractApi
+final class RequestRevoke extends AbstractApi
 {
     /**
      * Request a team membership to end at a given date/time. Will need approval.
@@ -25,11 +26,11 @@ class RequestRevoke extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function requestMembershipRevocation(string $membershipId, array $data): void
+    final public function requestMembershipRevocation(string $membershipId, array $data): void
     {
         $uri = 'team-directory/memberships/{membershipId}/request-revoke';
         $required = [
-            'till' => self::TYPE_DATETIME,
+            'till' => Type::DateTime,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

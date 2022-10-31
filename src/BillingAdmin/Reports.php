@@ -12,10 +12,10 @@ use Swe\SpaceSDK\BillingAdmin\Reports\Today;
  * @package Swe\SpaceSDK\BillingAdmin
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Reports extends AbstractApi
+final class Reports extends AbstractApi
 {
     /**
-     * Returns a billing report for the given billing period.
+     * Returns a billing report for the given billing period
      *
      * Permissions that may be checked: Organization.ViewUsageData
      *
@@ -24,20 +24,20 @@ class Reports extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getBillingReport(string $billingPeriod, array $response = []): array
+    final public function getBillingReport(string $billingPeriod, array $response = []): array
     {
         $uri = 'billing-admin/reports/{billingPeriod}';
         $uriArguments = [
             'billingPeriod' => $billingPeriod,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
      * @return Today
      */
-    public function today(): Today
+    final public function today(): Today
     {
         return new Today($this->client);
     }

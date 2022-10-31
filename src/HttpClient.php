@@ -2,7 +2,6 @@
 
 namespace Swe\SpaceSDK;
 
-
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 
@@ -12,31 +11,21 @@ use GuzzleHttp\Exception\GuzzleException;
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class HttpClient
+final class HttpClient
 {
-    /**
-     * @var string
-     */
-    private string $url;
+    /** @var string */
+    private readonly string $url;
 
-    /**
-     * @var string
-     */
-    private string $clientId;
+    /** @var string */
+    private readonly string $clientId;
 
-    /**
-     * @var string
-     */
-    private string $clientSecret;
+    /** @var string */
+    private readonly string $clientSecret;
 
-    /**
-     * @var string
-     */
-    private string $tokenType;
+    /** @var string */
+    private readonly string $tokenType;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private string $token = '';
 
     /**
@@ -62,9 +51,9 @@ class HttpClient
      * @return array
      * @throws GuzzleException
      */
-    public function get(string $uri, array $responseFields = [], array $requestFields = []): array
+    public function get(string $uri, array $requestFields = [], array $responseFields = []): array
     {
-        $response = $this->getClient()->get($this->getUri($uri, $responseFields, $requestFields));
+        $response = $this->getClient()->get($this->getUri($uri, $requestFields, $responseFields));
         $jsonResponse = json_decode($response->getBody()->getContents(), true);
 
         return is_array($jsonResponse) ? $jsonResponse : [$jsonResponse];
@@ -72,62 +61,62 @@ class HttpClient
 
     /**
      * @param string $uri
-     * @param array $requestFields
+     * @param array $data
      * @param array $responseFields
+     * @param array $requestFields
+     * @return array
+     * @throws GuzzleException
+     */
+    public function post(string $uri, array $data = [], array $requestFields = [], array $responseFields = []): array
+    {
+        $response = $this->getClient()->post($this->getUri($uri, $requestFields, $responseFields), ['json' => $data]);
+        $jsonResponse = json_decode($response->getBody()->getContents(), true);
+
+        return is_array($jsonResponse) ? $jsonResponse : [$jsonResponse];
+    }
+
+    /**
+     * @param string $uri
+     * @param array $data
+     * @param array $responseFields
+     * @param array $requestFields
+     * @return array
+     * @throws GuzzleException
+     */
+    public function put(string $uri, array $data = [], array $requestFields = [], array $responseFields = []): array
+    {
+        $response = $this->getClient()->put($this->getUri($uri, $requestFields, $responseFields), ['json' => $data]);
+        $jsonResponse = json_decode($response->getBody()->getContents(), true);
+
+        return is_array($jsonResponse) ? $jsonResponse : [$jsonResponse];
+    }
+
+    /**
+     * @param string $uri
+     * @param array $data
+     * @param array $responseFields
+     * @param array $requestFields
+     * @return array
+     * @throws GuzzleException
+     */
+    public function patch(string $uri, array $data = [], array $requestFields = [], array $responseFields = []): array
+    {
+        $response = $this->getClient()->patch($this->getUri($uri, $requestFields, $responseFields), ['json' => $data]);
+        $jsonResponse = json_decode($response->getBody()->getContents(), true);
+
+        return is_array($jsonResponse) ? $jsonResponse : [$jsonResponse];
+    }
+
+    /**
+     * @param string $uri
+     * @param array $responseFields
+     * @param array $requestFields
      * @return array
      * @throws GuzzleException
      */
     public function delete(string $uri, array $requestFields = [], array $responseFields = []): array
     {
-        $response = $this->getClient()->delete($this->getUri($uri, $responseFields, $requestFields));
-        $jsonResponse = json_decode($response->getBody()->getContents(), true);
-
-        return is_array($jsonResponse) ? $jsonResponse : [$jsonResponse];
-    }
-
-    /**
-     * @param string $uri
-     * @param array $data
-     * @param array $responseFields
-     * @param array $requestFields
-     * @return array
-     * @throws GuzzleException
-     */
-    public function post(string $uri, array $data = [], array $responseFields = [], array $requestFields = []): array
-    {
-        $response = $this->getClient()->post($this->getUri($uri, $responseFields, $requestFields), ['json' => $data]);
-        $jsonResponse = json_decode($response->getBody()->getContents(), true);
-
-        return is_array($jsonResponse) ? $jsonResponse : [$jsonResponse];
-    }
-
-    /**
-     * @param string $uri
-     * @param array $data
-     * @param array $responseFields
-     * @param array $requestFields
-     * @return array
-     * @throws GuzzleException
-     */
-    public function patch(string $uri, array $data = [], array $responseFields = [], array $requestFields = []): array
-    {
-        $response = $this->getClient()->patch($this->getUri($uri, $responseFields, $requestFields), ['json' => $data]);
-        $jsonResponse = json_decode($response->getBody()->getContents(), true);
-
-        return is_array($jsonResponse) ? $jsonResponse : [$jsonResponse];
-    }
-
-    /**
-     * @param string $uri
-     * @param array $data
-     * @param array $responseFields
-     * @param array $requestFields
-     * @return array
-     * @throws GuzzleException
-     */
-    public function put(string $uri, array $data = [], array $responseFields = [], array $requestFields = []): array
-    {
-        $response = $this->getClient()->put($this->getUri($uri, $responseFields, $requestFields), ['json' => $data]);
+        $response = $this->getClient()->delete($this->getUri($uri, $requestFields, $responseFields));
         $jsonResponse = json_decode($response->getBody()->getContents(), true);
 
         return is_array($jsonResponse) ? $jsonResponse : [$jsonResponse];
@@ -139,9 +128,9 @@ class HttpClient
      * @param array $requestFields
      * @return string
      */
-    protected function getUri(string $uri, array $responseFields = [], array $requestFields = []): string
+    private function getUri(string $uri, array $requestFields = [], array $responseFields = []): string
     {
-        if (substr($uri, 0, 1) !== '/') {
+        if (!str_starts_with($uri, '/')) {
             $uri = '/api/http/' . $uri;
         }
 
@@ -163,7 +152,7 @@ class HttpClient
      * @param array $fields
      * @return string
      */
-    protected function parseRequestFields(array $fields = []): string
+    private function parseRequestFields(array $fields = []): string
     {
         $string = [];
 
@@ -180,9 +169,10 @@ class HttpClient
 
     /**
      * @param array $fields
+     * @param bool $first
      * @return string
      */
-    protected function parseResponseFields(array $fields = [], bool $first = true): string
+    private function parseResponseFields(array $fields = [], bool $first = true): string
     {
         $result = [];
 
@@ -213,7 +203,7 @@ class HttpClient
      * @param array $options
      * @return Client
      */
-    protected function getClient(bool $withAuth = true, array $options = []): Client
+    private function getClient(bool $withAuth = true, array $options = []): Client
     {
         if (!isset($options['base_uri'])) {
             $options['base_uri'] = $this->url;

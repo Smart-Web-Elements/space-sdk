@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Projects\Access\Admins;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Teams
@@ -12,24 +13,24 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Projects\Access\Admins
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Teams extends AbstractApi
+final class Teams extends AbstractApi
 {
     /**
-     * Add a team as administrators to a project.
+     * Add a team as administrators to a project
      *
      * Permissions that may be checked: Project.Admin
      *
-     * @param string $project
+     * @param array $project
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function addAdministratorsTeam(string $project, array $data): void
+    final public function addAdministratorsTeam(array $project, array $data): void
     {
         $uri = 'projects/{project}/access/admins/teams';
         $required = [
-            'teamId' => self::TYPE_STRING,
+            'teamId' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -40,16 +41,16 @@ class Teams extends AbstractApi
     }
 
     /**
-     * Remove a team as administrators from a project.
+     * Remove a team as administrators from a project
      *
      * Permissions that may be checked: Project.Admin
      *
-     * @param string $project
+     * @param array $project
      * @param string $teamId
      * @return void
      * @throws GuzzleException
      */
-    public function removeAdministratorsTeam(string $project, string $teamId): void
+    final public function removeAdministratorsTeam(array $project, string $teamId): void
     {
         $uri = 'projects/{project}/access/admins/teams/{teamId}';
         $uriArguments = [

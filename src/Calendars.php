@@ -17,12 +17,12 @@ use Swe\SpaceSDK\Calendars\NonWorkingDaysEvents;
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Calendars extends AbstractApi
+final class Calendars extends AbstractApi
 {
     /**
      * @return AbsenceEvents
      */
-    public function absenceEvents(): AbsenceEvents
+    final public function absenceEvents(): AbsenceEvents
     {
         return new AbsenceEvents($this->client);
     }
@@ -30,7 +30,7 @@ class Calendars extends AbstractApi
     /**
      * @return BirthdayEvents
      */
-    public function birthdayEvents(): BirthdayEvents
+    final public function birthdayEvents(): BirthdayEvents
     {
         return new BirthdayEvents($this->client);
     }
@@ -38,7 +38,7 @@ class Calendars extends AbstractApi
     /**
      * @return EventParticipations
      */
-    public function eventParticipations(): EventParticipations
+    final public function eventParticipations(): EventParticipations
     {
         return new EventParticipations($this->client);
     }
@@ -46,7 +46,7 @@ class Calendars extends AbstractApi
     /**
      * @return Events
      */
-    public function events(): Events
+    final public function events(): Events
     {
         return new Events($this->client);
     }
@@ -54,7 +54,7 @@ class Calendars extends AbstractApi
     /**
      * @return Holidays
      */
-    public function holidays(): Holidays
+    final public function holidays(): Holidays
     {
         return new Holidays($this->client);
     }
@@ -62,7 +62,7 @@ class Calendars extends AbstractApi
     /**
      * @return Meetings
      */
-    public function meetings(): Meetings
+    final public function meetings(): Meetings
     {
         return new Meetings($this->client);
     }
@@ -70,7 +70,7 @@ class Calendars extends AbstractApi
     /**
      * @return MembershipEvents
      */
-    public function membershipEvents(): MembershipEvents
+    final public function membershipEvents(): MembershipEvents
     {
         return new MembershipEvents($this->client);
     }
@@ -78,7 +78,7 @@ class Calendars extends AbstractApi
     /**
      * @return NonWorkingDaysEvents
      */
-    public function nonWorkingDaysEvents(): NonWorkingDaysEvents
+    final public function nonWorkingDaysEvents(): NonWorkingDaysEvents
     {
         return new NonWorkingDaysEvents($this->client);
     }

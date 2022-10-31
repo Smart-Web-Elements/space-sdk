@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Projects\Automation\StepExecutions;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Parameters
@@ -12,15 +13,16 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Projects\Automation\StepExecutions
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Parameters extends AbstractApi
+final class Parameters extends AbstractApi
 {
     /**
      * @param string $stepExecId
      * @param string $key
+     * @param array $response
      * @return string|null
      * @throws GuzzleException
      */
-    public function getParameter(string $stepExecId, string $key): ?string
+    final public function getParameter(string $stepExecId, string $key): ?string
     {
         $uri = 'projects/automation/step-executions/{stepExecId}/parameters/{key}';
         $uriArguments = [
@@ -28,7 +30,7 @@ class Parameters extends AbstractApi
             'key' => $key,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments))[0];
+        return (string)$this->client->get($this->buildUrl($uri, $uriArguments))[0];
     }
 
     /**
@@ -39,11 +41,11 @@ class Parameters extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function updateParameter(string $stepExecId, string $key, array $data): void
+    final public function updateParameter(string $stepExecId, string $key, array $data): void
     {
         $uri = 'projects/automation/step-executions/{stepExecId}/parameters/{key}';
         $required = [
-            'value' => self::TYPE_STRING,
+            'value' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -60,7 +62,7 @@ class Parameters extends AbstractApi
      * @return void
      * @throws GuzzleException
      */
-    public function deleteParameter(string $stepExecId, string $key): void
+    final public function deleteParameter(string $stepExecId, string $key): void
     {
         $uri = 'projects/automation/step-executions/{stepExecId}/parameters/{key}';
         $uriArguments = [

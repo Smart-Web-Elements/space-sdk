@@ -11,7 +11,7 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\Administration\UserAgreement
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Status extends AbstractApi
+final class Status extends AbstractApi
 {
     /**
      * Permissions that may be checked: Superadmin
@@ -21,28 +21,28 @@ class Status extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getAllUserAgreementStatuses(array $request = [], array $response = []): array
+    final public function getAllUserAgreementStatuses(array $request = [], array $response = []): array
     {
         $uri = 'administration/user-agreement/status';
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 
     /**
      * Permissions that may be checked: Superadmin
      *
-     * @param string $profile
+     * @param array $profile
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getUserAgreementStatusForAProfile(string $profile, array $response = []): array
+    final public function getUserAgreementStatusForAProfile(array $profile, array $response = []): array
     {
         $uri = 'administration/user-agreement/status/{profile}';
         $uriArguments = [
             'profile' => $profile,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 }

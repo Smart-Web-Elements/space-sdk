@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Projects\Secrets;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class DefaultBundle
@@ -12,27 +13,26 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Projects\Secrets
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class DefaultBundle extends AbstractApi
+final class DefaultBundle extends AbstractApi
 {
     /**
-     * Create a new secret in the default parameter bundle. Value is base64 encoded bytes of the secret value, possibly
-     * after client side encryption. If the secret value bytes are encrypted then the id of the Space public key must be
-     * provided.
+     * Create a new secret in the default parameter bundle. Value is base64 encoded bytes of the secret value, possibly after client side encryption. If the secret value bytes are encrypted then the id of the Space public key must be provided
      *
      * Permissions that may be checked: Project.Secrets.Create
      *
      * @param array $data
+     * @param array $response
      * @return string
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createDefaultBundle(array $data): string
+    final public function createDefaultBundle(array $data): string
     {
         $uri = 'projects/secrets/default-bundle';
         $required = [
-            'project' => self::TYPE_STRING,
-            'key' => self::TYPE_STRING,
-            'valueBase64' => self::TYPE_STRING,
+            'project' => Type::Array,
+            'key' => Type::String,
+            'valueBase64' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -40,7 +40,7 @@ class DefaultBundle extends AbstractApi
     }
 
     /**
-     * List project secrets in a parameter bundle.
+     * List project secrets in a parameter bundle
      *
      * Permissions that may be checked: Project.Secrets.ViewKeys
      *
@@ -50,14 +50,14 @@ class DefaultBundle extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function getAllDefaultBundle(array $request, array $response = []): array
+    final public function getAllDefaultBundle(array $request, array $response = []): array
     {
         $uri = 'projects/secrets/default-bundle';
         $required = [
-            'projects' => self::TYPE_STRING,
+            'project' => Type::Array,
         ];
         $this->throwIfInvalid($required, $request);
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 }

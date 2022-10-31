@@ -11,12 +11,12 @@ use Swe\SpaceSDK\Projects\Automation\Subscriptions\LegacyChannels;
  * @package Swe\SpaceSDK\Projects\Automation
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Subscriptions extends AbstractApi
+final class Subscriptions extends AbstractApi
 {
     /**
      * @return LegacyChannels
      */
-    public function legacyChannels(): LegacyChannels
+    final public function legacyChannels(): LegacyChannels
     {
         return new LegacyChannels($this->client);
     }

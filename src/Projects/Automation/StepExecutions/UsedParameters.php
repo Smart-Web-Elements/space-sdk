@@ -12,12 +12,12 @@ use Swe\SpaceSDK\Projects\Automation\StepExecutions\UsedParameters\Secret;
  * @package Swe\SpaceSDK\Projects\Automation\StepExecutions
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class UsedParameters extends AbstractApi
+final class UsedParameters extends AbstractApi
 {
     /**
      * @return Param
      */
-    public function param(): Param
+    final public function param(): Param
     {
         return new Param($this->client);
     }
@@ -25,7 +25,7 @@ class UsedParameters extends AbstractApi
     /**
      * @return Secret
      */
-    public function secret(): Secret
+    final public function secret(): Secret
     {
         return new Secret($this->client);
     }

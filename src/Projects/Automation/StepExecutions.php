@@ -12,21 +12,21 @@ use Swe\SpaceSDK\Projects\Automation\StepExecutions\UsedParameters;
  * @package Swe\SpaceSDK\Projects\Automation
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class StepExecutions extends AbstractApi
+final class StepExecutions extends AbstractApi
 {
-    /**
-     * @return Parameters
-     */
-    public function parameters(): Parameters
-    {
-        return new Parameters($this->client);
-    }
-
     /**
      * @return UsedParameters
      */
-    public function usedParameters(): UsedParameters
+    final public function usedParameters(): UsedParameters
     {
         return new UsedParameters($this->client);
+    }
+
+    /**
+     * @return Parameters
+     */
+    final public function parameters(): Parameters
+    {
+        return new Parameters($this->client);
     }
 }

@@ -6,14 +6,17 @@ use Swe\SpaceSDK\Chats\Channels;
 use Swe\SpaceSDK\Chats\Messages;
 
 /**
+ * Class Chats
  *
+ * @package Swe\SpaceSDK
+ * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Chats extends AbstractApi
+final class Chats extends AbstractApi
 {
     /**
      * @return Channels
      */
-    public function channels(): Channels
+    final public function channels(): Channels
     {
         return new Channels($this->client);
     }
@@ -21,7 +24,7 @@ class Chats extends AbstractApi
     /**
      * @return Messages
      */
-    public function messages(): Messages
+    final public function messages(): Messages
     {
         return new Messages($this->client);
     }

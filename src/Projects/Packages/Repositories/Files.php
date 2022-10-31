@@ -11,25 +11,25 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\Projects\Packages\Repositories
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Files extends AbstractApi
+final class Files extends AbstractApi
 {
     /**
-     * Gets a list of repository files for a given project ID in parent folder.
+     * Gets a list of repository files for a given project ID in parent folder
      *
      * Permissions that may be checked: PackageRepository.Read
      *
-     * @param string $project
-     * @param string $repository
+     * @param array $project
+     * @param array $repository
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getListOfFiles(
-        string $project,
-        string $repository,
+    final public function getListOfFiles(
+        array $project,
+        array $repository,
         array $request = [],
-        array $response = []
+        array $response = [],
     ): array {
         $uri = 'projects/{project}/packages/repositories/{repository}/files';
         $uriArguments = [
@@ -37,27 +37,27 @@ class Files extends AbstractApi
             'repository' => $repository,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
-     * Gets a details for repository file for a given project ID.
+     * Gets a details for repository file for a given project ID
      *
      * Permissions that may be checked: PackageRepository.Read
      *
-     * @param string $project
-     * @param string $repository
+     * @param array $project
+     * @param array $repository
      * @param string $filePath
      * @param array $response
-     * @return array
+     * @return array|null
      * @throws GuzzleException
      */
-    public function getFileDetails(
-        string $project,
-        string $repository,
+    final public function getFileDetails(
+        array $project,
+        array $repository,
         string $filePath,
-        array $response = []
-    ): array {
+        array $response = [],
+    ): ?array {
         $uri = 'projects/{project}/packages/repositories/{repository}/files/name:{filePath}';
         $uriArguments = [
             'project' => $project,
@@ -65,27 +65,22 @@ class Files extends AbstractApi
             'filePath' => $filePath,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
-     * Removes a file in repository for a given project ID.
+     * Removes a file in repository for a given project ID
      *
      * Permissions that may be checked: PackageRepository.Write
      *
-     * @param string $project
-     * @param string $repository
+     * @param array $project
+     * @param array $repository
      * @param string $filePath
-     * @param array $response
      * @return void
      * @throws GuzzleException
      */
-    public function deleteFile(
-        string $project,
-        string $repository,
-        string $filePath,
-        array $response = []
-    ): void {
+    final public function deleteFile(array $project, array $repository, string $filePath): void
+    {
         $uri = 'projects/{project}/packages/repositories/{repository}/files/name:{filePath}';
         $uriArguments = [
             'project' => $project,

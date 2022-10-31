@@ -12,12 +12,12 @@ use Swe\SpaceSDK\Projects\Access\Members\Teams;
  * @package Swe\SpaceSDK\Projects\Access
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Members extends AbstractApi
+final class Members extends AbstractApi
 {
     /**
      * @return Profiles
      */
-    public function profiles(): Profiles
+    final public function profiles(): Profiles
     {
         return new Profiles($this->client);
     }
@@ -25,7 +25,7 @@ class Members extends AbstractApi
     /**
      * @return Teams
      */
-    public function teams(): Teams
+    final public function teams(): Teams
     {
         return new Teams($this->client);
     }

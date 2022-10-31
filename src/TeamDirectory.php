@@ -2,6 +2,7 @@
 
 namespace Swe\SpaceSDK;
 
+use Swe\SpaceSDK\TeamDirectory\CalendarEvents;
 use Swe\SpaceSDK\TeamDirectory\InvitationLinks;
 use Swe\SpaceSDK\TeamDirectory\Invitations;
 use Swe\SpaceSDK\TeamDirectory\Languages;
@@ -23,12 +24,20 @@ use Swe\SpaceSDK\TeamDirectory\Teams;
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class TeamDirectory extends AbstractApi
+final class TeamDirectory extends AbstractApi
 {
+    /**
+     * @return CalendarEvents
+     */
+    final public function calendarEvents(): CalendarEvents
+    {
+        return new CalendarEvents($this->client);
+    }
+
     /**
      * @return InvitationLinks
      */
-    public function invitationLinks(): InvitationLinks
+    final public function invitationLinks(): InvitationLinks
     {
         return new InvitationLinks($this->client);
     }
@@ -36,7 +45,7 @@ class TeamDirectory extends AbstractApi
     /**
      * @return Invitations
      */
-    public function invitations(): Invitations
+    final public function invitations(): Invitations
     {
         return new Invitations($this->client);
     }
@@ -44,7 +53,7 @@ class TeamDirectory extends AbstractApi
     /**
      * @return Languages
      */
-    public function languages(): Languages
+    final public function languages(): Languages
     {
         return new Languages($this->client);
     }
@@ -52,7 +61,7 @@ class TeamDirectory extends AbstractApi
     /**
      * @return LocationEquipmentTypes
      */
-    public function locationEquipmentTypes(): LocationEquipmentTypes
+    final public function locationEquipmentTypes(): LocationEquipmentTypes
     {
         return new LocationEquipmentTypes($this->client);
     }
@@ -60,7 +69,7 @@ class TeamDirectory extends AbstractApi
     /**
      * @return LocationMapMemberPoints
      */
-    public function locationMapMemberPoints(): LocationMapMemberPoints
+    final public function locationMapMemberPoints(): LocationMapMemberPoints
     {
         return new LocationMapMemberPoints($this->client);
     }
@@ -68,7 +77,7 @@ class TeamDirectory extends AbstractApi
     /**
      * @return Locations
      */
-    public function locations(): Locations
+    final public function locations(): Locations
     {
         return new Locations($this->client);
     }
@@ -76,7 +85,7 @@ class TeamDirectory extends AbstractApi
     /**
      * @return LocationsWithTimezone
      */
-    public function locationsWithTimezone(): LocationsWithTimezone
+    final public function locationsWithTimezone(): LocationsWithTimezone
     {
         return new LocationsWithTimezone($this->client);
     }
@@ -84,7 +93,7 @@ class TeamDirectory extends AbstractApi
     /**
      * @return MemberLocations
      */
-    public function memberLocations(): MemberLocations
+    final public function memberLocations(): MemberLocations
     {
         return new MemberLocations($this->client);
     }
@@ -92,7 +101,7 @@ class TeamDirectory extends AbstractApi
     /**
      * @return MembershipEvents
      */
-    public function membershipEvents(): MembershipEvents
+    final public function membershipEvents(): MembershipEvents
     {
         return new MembershipEvents($this->client);
     }
@@ -100,7 +109,7 @@ class TeamDirectory extends AbstractApi
     /**
      * @return Memberships
      */
-    public function memberships(): Memberships
+    final public function memberships(): Memberships
     {
         return new Memberships($this->client);
     }
@@ -108,7 +117,7 @@ class TeamDirectory extends AbstractApi
     /**
      * @return Profiles
      */
-    public function profiles(): Profiles
+    final public function profiles(): Profiles
     {
         return new Profiles($this->client);
     }
@@ -116,7 +125,7 @@ class TeamDirectory extends AbstractApi
     /**
      * @return Roles
      */
-    public function roles(): Roles
+    final public function roles(): Roles
     {
         return new Roles($this->client);
     }
@@ -124,7 +133,7 @@ class TeamDirectory extends AbstractApi
     /**
      * @return Stats
      */
-    public function stats(): Stats
+    final public function stats(): Stats
     {
         return new Stats($this->client);
     }
@@ -132,7 +141,7 @@ class TeamDirectory extends AbstractApi
     /**
      * @return Teams
      */
-    public function teams(): Teams
+    final public function teams(): Teams
     {
         return new Teams($this->client);
     }

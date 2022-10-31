@@ -11,21 +11,21 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Folders
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Documents extends AbstractApi
+final class Documents extends AbstractApi
 {
     /**
-     * @param string $profile
-     * @param string $folder
+     * @param array $profile
+     * @param array $folder
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function listDocumentsInFolder(
-        string $profile,
-        string $folder,
+    final public function listDocumentsInFolder(
+        array $profile,
+        array $folder,
         array $request = [],
-        array $response = []
+        array $response = [],
     ): array {
         $uri = 'team-directory/profiles/{profile}/documents/folders/{folder}/documents';
         $uriArguments = [
@@ -33,6 +33,6 @@ class Documents extends AbstractApi
             'folder' => $folder,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 }

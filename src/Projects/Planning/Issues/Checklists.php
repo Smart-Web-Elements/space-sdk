@@ -11,20 +11,20 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\Projects\Planning\Issues
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Checklists extends AbstractApi
+final class Checklists extends AbstractApi
 {
     /**
-     * Add the checklist to an existing issue in a project.
+     * Add the checklist to an existing issue in a project
      *
      * Permissions that may be checked: Project.Issues.Edit, Documents.Edit
      *
-     * @param string $project
+     * @param array $project
      * @param string $issueId
      * @param string $checklistId
      * @return void
      * @throws GuzzleException
      */
-    public function addIssueChecklist(string $project, string $issueId, string $checklistId): void
+    final public function addIssueChecklist(array $project, string $issueId, string $checklistId): void
     {
         $uri = 'projects/{project}/planning/issues/{issueId}/checklists/{checklistId}';
         $uriArguments = [
@@ -33,21 +33,21 @@ class Checklists extends AbstractApi
             'checklistId' => $checklistId,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments));
+        $this->client->post($this->buildUrl($uri, $uriArguments), []);
     }
 
     /**
-     * Remove the checklist from an existing issue in a project.
+     * Remove the checklist from an existing issue in a project
      *
      * Permissions that may be checked: Project.Issues.Edit, Documents.Edit
      *
-     * @param string $project
+     * @param array $project
      * @param string $issueId
      * @param string $checklistId
      * @return void
      * @throws GuzzleException
      */
-    public function removeIssueChecklist(string $project, string $issueId, string $checklistId): void
+    final public function removeIssueChecklist(array $project, string $issueId, string $checklistId): void
     {
         $uri = 'projects/{project}/planning/issues/{issueId}/checklists/{checklistId}';
         $uriArguments = [

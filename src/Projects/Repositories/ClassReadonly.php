@@ -4,43 +4,48 @@ namespace Swe\SpaceSDK\Projects\Repositories;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
+use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
- * Class Readonly
+ * Class ClassReadonly
  *
  * @package Swe\SpaceSDK\Projects\Repositories
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class ClassReadonly extends AbstractApi
+final class ClassReadonly extends AbstractApi
 {
     /**
-     * @param string $project
+     * @param array $project
      * @param string $repository
-     * @param bool $freeze
+     * @param array $data
      * @return void
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function setRepositoryFrozenState(string $project, string $repository, bool $freeze): void
+    final public function setRepositoryFrozenState(array $project, string $repository, array $data): void
     {
         $uri = 'projects/{project}/repositories/{repository}/readonly';
+        $required = [
+            'freeze' => Type::Boolean,
+        ];
+        $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'project' => $project,
             'repository' => $repository,
-        ];
-        $data = [
-            'freeze' => $freeze,
         ];
 
         $this->client->post($this->buildUrl($uri, $uriArguments), $data);
     }
 
     /**
-     * @param string $project
+     * @param array $project
      * @param string $repository
+     * @param array $response
      * @return bool
      * @throws GuzzleException
      */
-    public function getRepositoryFrozenState(string $project, string $repository): bool
+    final public function getRepositoryFrozenState(array $project, string $repository): bool
     {
         $uri = 'projects/{project}/repositories/{repository}/readonly';
         $uriArguments = [

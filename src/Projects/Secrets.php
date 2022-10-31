@@ -6,6 +6,8 @@ use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Projects\Secrets\DefaultBundle;
+use Swe\SpaceSDK\Projects\Secrets\InDefaultBundle;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Secrets
@@ -13,10 +15,10 @@ use Swe\SpaceSDK\Projects\Secrets\DefaultBundle;
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Secrets extends AbstractApi
+final class Secrets extends AbstractApi
 {
     /**
-     * Update an existing project secret.
+     * Update an existing project secret
      *
      * Permissions that may be checked: Project.Secrets.Edit
      *
@@ -26,11 +28,11 @@ class Secrets extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function updateSecret(string $id, array $data): void
+    final public function updateSecret(string $id, array $data): void
     {
         $uri = 'projects/secrets/{id}';
         $required = [
-            'valueBase64' => self::TYPE_STRING,
+            'valueBase64' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -41,7 +43,7 @@ class Secrets extends AbstractApi
     }
 
     /**
-     * Delete an existing project secret.
+     * Delete an existing project secret
      *
      * Permissions that may be checked: Project.Secrets.Delete
      *
@@ -49,7 +51,7 @@ class Secrets extends AbstractApi
      * @return void
      * @throws GuzzleException
      */
-    public function deleteSecret(string $id): void
+    final public function deleteSecret(string $id): void
     {
         $uri = 'projects/secrets/{id}';
         $uriArguments = [
@@ -62,8 +64,16 @@ class Secrets extends AbstractApi
     /**
      * @return DefaultBundle
      */
-    public function defaultBundle(): DefaultBundle
+    final public function defaultBundle(): DefaultBundle
     {
         return new DefaultBundle($this->client);
+    }
+
+    /**
+     * @return InDefaultBundle
+     */
+    final public function inDefaultBundle(): InDefaultBundle
+    {
+        return new InDefaultBundle($this->client);
     }
 }

@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Folders;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Move
@@ -12,22 +13,22 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Folders
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Move extends AbstractApi
+final class Move extends AbstractApi
 {
     /**
-     * @param string $profile
-     * @param string $folder
+     * @param array $profile
+     * @param array $folder
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function moveFolder(string $profile, string $folder, array $data, array $response = []): array
+    final public function moveFolder(array $profile, array $folder, array $data, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/documents/folders/{folder}/move';
         $required = [
-            'parentFolder' => self::TYPE_STRING,
+            'parentFolder' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -35,6 +36,6 @@ class Move extends AbstractApi
             'folder' => $folder,
         ];
 
-        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 }

@@ -2,13 +2,13 @@
 
 namespace Swe\SpaceSDK\Projects;
 
-
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Projects\Repositories\ClassReadonly;
 use Swe\SpaceSDK\Projects\Repositories\Find;
 use Swe\SpaceSDK\Projects\Repositories\Revisions;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Repositories
@@ -16,16 +16,38 @@ use Swe\SpaceSDK\Projects\Repositories\Revisions;
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Repositories extends AbstractApi
+final class Repositories extends AbstractApi
 {
-    const GIT_FILE_CONTENT_TEXT = 'GitFileContent.Text';
-    const GIT_FILE_CONTENT_BASE64 = 'GitFileContent.Base64';
-    const GIT_FILE_CONTENT_DELETED = 'GitFileContent.Deleted';
-    const GIT_FILE_CONTENT = [
-        'Text' => self::GIT_FILE_CONTENT_TEXT,
-        'Base64' => self::GIT_FILE_CONTENT_BASE64,
-        'Deleted' => self::GIT_FILE_CONTENT_DELETED,
-    ];
+    /**
+     * @return Find
+     */
+    final public function find(): Find
+    {
+        return new Find($this->client);
+    }
+
+    /**
+     * @param array $project
+     * @param string $repository
+     * @param array $data
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     */
+    final public function createNewRepository(
+        array $project,
+        string $repository,
+        array $data = [],
+        array $response = [],
+    ): array {
+        $uri = 'projects/{project}/repositories/{repository}';
+        $uriArguments = [
+            'project' => $project,
+            'repository' => $repository,
+        ];
+
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
+    }
 
     /**
      * @param string $project
@@ -34,62 +56,33 @@ class Repositories extends AbstractApi
      * @param array $response
      * @return array
      * @throws GuzzleException
-     */
-    public function createNewRepository(
-        string $project,
-        string $repository,
-        array $data = [],
-        array $response = []
-    ): array {
-        $uri = 'projects/{project}/repositories/{repository}';
-        $uriArguments = [
-            'project' => $project,
-            'repository' => $repository,
-        ];
-
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
-    }
-
-    /**
-     * @param string $project
-     * @param string $repository
-     * @param array $request
-     * @param array $response
-     * @return array
-     * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function commit(
-        string $project,
-        string $repository,
-        array $request,
-        array $response = []
-    ): array {
+    final public function commit(string $project, string $repository, array $data, array $response = []): array
+    {
         $uri = 'projects/{project}/repositories/{repository}/commit';
         $required = [
-            'baseCommit' => self::TYPE_STRING,
-            'targetBranch' => self::TYPE_STRING,
-            'commitMessage' => self::TYPE_STRING,
-            'files' => self::TYPE_ARRAY,
+            'baseCommit' => Type::String,
+            'targetBranch' => Type::String,
+            'commitMessage' => Type::String,
+            'files' => Type::Array,
         ];
-        $this->throwIfInvalid($required, $request);
+        $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'project' => $project,
             'repository' => $repository,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
-     * Not available in multi-org mode.
-     *
-     * @param string $project
+     * @param array $project
      * @param string $repository
      * @return void
      * @throws GuzzleException
      */
-    public function gc(string $project, string $repository): void
+    final public function gc(array $project, string $repository): void
     {
         $uri = 'projects/{project}/repositories/{repository}/gc';
         $uriArguments = [
@@ -97,11 +90,11 @@ class Repositories extends AbstractApi
             'repository' => $repository,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments));
+        $this->client->post($this->buildUrl($uri, $uriArguments), []);
     }
 
     /**
-     * @param string $project
+     * @param array $project
      * @param string $repository
      * @param array $request
      * @param array $response
@@ -109,11 +102,15 @@ class Repositories extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function commitBranches(string $project, string $repository, array $request, array $response = []): array
-    {
+    final public function commitBranches(
+        array $project,
+        string $repository,
+        array $request,
+        array $response = [],
+    ): array {
         $uri = 'projects/{project}/repositories/{repository}/commit-branches';
         $required = [
-            'commit' => self::TYPE_STRING,
+            'commit' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
         $uriArguments = [
@@ -121,18 +118,18 @@ class Repositories extends AbstractApi
             'repository' => $repository,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
-     * @param string $project
+     * @param array $project
      * @param string $repository
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function commits(string $project, string $repository, array $request = [], array $response = []): array
+    final public function commits(array $project, string $repository, array $request = [], array $response = []): array
     {
         $uri = 'projects/{project}/repositories/{repository}/commits';
         $uriArguments = [
@@ -140,11 +137,11 @@ class Repositories extends AbstractApi
             'repository' => $repository,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
-     * @param string $project
+     * @param array $project
      * @param string $repository
      * @param array $request
      * @param array $response
@@ -152,12 +149,12 @@ class Repositories extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function files(string $project, string $repository, array $request, array $response = []): array
+    final public function files(array $project, string $repository, array $request, array $response = []): array
     {
         $uri = 'projects/{project}/repositories/{repository}/files';
         $required = [
-            'commit' => self::TYPE_STRING,
-            'path' => self::TYPE_STRING,
+            'commit' => Type::String,
+            'path' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
         $uriArguments = [
@@ -165,17 +162,17 @@ class Repositories extends AbstractApi
             'repository' => $repository,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
-     * @param string $project
+     * @param array $project
      * @param string $repository
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function url(string $project, string $repository, array $response = []): array
+    final public function url(array $project, string $repository, array $response = []): array
     {
         $uri = 'projects/{project}/repositories/{repository}/url';
         $uriArguments = [
@@ -183,16 +180,16 @@ class Repositories extends AbstractApi
             'repository' => $repository,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
-     * @param string $project
+     * @param array $project
      * @param string $repository
      * @return void
      * @throws GuzzleException
      */
-    public function deleteRepository(string $project, string $repository): void
+    final public function deleteRepository(array $project, string $repository): void
     {
         $uri = 'projects/{project}/repositories/{repository}';
         $uriArguments = [
@@ -204,17 +201,9 @@ class Repositories extends AbstractApi
     }
 
     /**
-     * @return Find
-     */
-    public function find(): Find
-    {
-        return new Find($this->client);
-    }
-
-    /**
      * @return ClassReadonly
      */
-    public function readonly(): ClassReadonly
+    final public function classReadonly(): ClassReadonly
     {
         return new ClassReadonly($this->client);
     }
@@ -222,7 +211,7 @@ class Repositories extends AbstractApi
     /**
      * @return Revisions
      */
-    public function revisions(): Revisions
+    final public function revisions(): Revisions
     {
         return new Revisions($this->client);
     }

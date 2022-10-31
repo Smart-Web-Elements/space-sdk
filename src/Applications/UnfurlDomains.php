@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Applications;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class UnfurlDomains
@@ -12,25 +13,25 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Applications
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class UnfurlDomains extends AbstractApi
+final class UnfurlDomains extends AbstractApi
 {
     /**
-     * Authorize domains for unfurling by the application.
+     * Authorize domains for unfurling by the application
      *
      * Permissions that may be checked: Unfurl.App.Authorize
      *
-     * @param string $application
+     * @param array $application
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function authorizeUnfurledDomains(string $application, array $data): void
+    final public function authorizeUnfurledDomains(array $application, array $data): void
     {
         $uri = 'applications/{application}/unfurl-domains/authorize';
         $required = [
-            'domains' => self::TYPE_ARRAY,
-            'approve' => self::TYPE_BOOLEAN,
+            'domains' => Type::Array,
+            'approve' => Type::Boolean,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -41,22 +42,22 @@ class UnfurlDomains extends AbstractApi
     }
 
     /**
-     * List domains for unfurling by the application.
+     * List domains for unfurling by the application
      *
      * Permissions that may be checked: Applications.View
      *
-     * @param string $application
+     * @param array $application
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getAllUnfurlDomains(string $application, array $response = []): array
+    final public function getAllUnfurlDomains(array $application, array $response = []): array
     {
         $uri = 'applications/{application}/unfurl-domains';
         $uriArguments = [
             'application' => $application,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 }

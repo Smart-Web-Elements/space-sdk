@@ -2,7 +2,6 @@
 
 namespace Swe\SpaceSDK;
 
-
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Projects\Access;
@@ -26,10 +25,10 @@ use Swe\SpaceSDK\Projects\Vault;
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Projects extends AbstractApi
+final class Projects extends AbstractApi
 {
     /**
-     * Create a new project.
+     * Create a new project
      *
      * Permissions that may be checked: Project.Create
      *
@@ -39,18 +38,18 @@ class Projects extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createProject(array $data, array $response = []): array
+    final public function createProject(array $data, array $response = []): array
     {
         $uri = 'projects';
         $required = [
             'key' => [
-                'key' => self::TYPE_STRING,
+                'key' => Type::String,
             ],
-            'name' => self::TYPE_STRING,
+            'name' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
 
-        return $this->client->post($this->buildUrl($uri), $data, $response);
+        return $this->client->post($this->buildUrl($uri), $data, [], $response);
     }
 
     /**
@@ -63,53 +62,53 @@ class Projects extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getAllProjects(array $request = [], array $response = []): array
+    final public function getAllProjects(array $request = [], array $response = []): array
     {
         $uri = 'projects';
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 
     /**
-     * Get all projects in which given user is collaborator.
+     * Get all projects in which given user is a collaborator
      *
      * Permissions that may be checked: Project.View
      *
-     * @param string $profile
+     * @param array $profile
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getAllProjectsByCollaborator(string $profile, array $request = [], array $response = []): array
+    final public function getAllProjectsByCollaborator(array $profile, array $request = [], array $response = []): array
     {
         $uri = 'projects/collaborator:{profile}';
         $uriArguments = [
             'profile' => $profile,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
-     * Get all projects for a member.
+     * Get all projects for a member
      *
      * Permissions that may be checked: Project.View
      *
-     * @param string $member
+     * @param array $member
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getAllProjectsByMember(string $member, array $request = [], array $response = []): array
+    final public function getAllProjectsByMember(array $member, array $request = [], array $response = []): array
     {
         $uri = 'projects/member:{member}';
         $uriArguments = [
             'member' => $member,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
@@ -121,14 +120,14 @@ class Projects extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getAllProjectsWithRight(string $rightCode, array $request = [], array $response = []): array
+    final public function getAllProjectsWithRight(string $rightCode, array $request = [], array $response = []): array
     {
         $uri = 'projects/right-code:{rightCode}';
         $uriArguments = [
             'rightCode' => $rightCode,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
@@ -140,55 +139,55 @@ class Projects extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getAllProjectsWithRightCode(string $right, array $request = [], array $response = []): array
+    final public function getAllProjectsWithRightCode(string $right, array $request = [], array $response = []): array
     {
         $uri = 'projects/right-unique-code:{right}';
         $uriArguments = [
             'right' => $right,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
-     * Get all projects for a team.
+     * Get all projects for a team
      *
      * Permissions that may be checked: Project.View
      *
-     * @param string $team
+     * @param array $team
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getAllProjectsByTeam(string $team, array $request = [], array $response = []): array
+    final public function getAllProjectsByTeam(array $team, array $request = [], array $response = []): array
     {
         $uri = 'projects/team:{team}';
         $uriArguments = [
             'team' => $team,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
-     * Get project by ID or project key.
+     * Get project by ID or project key
      *
      * Permissions that may be checked: Project.View
      *
-     * @param string $project
+     * @param array $project
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getProject(string $project, array $response = []): array
+    final public function getProject(array $project, array $response = []): array
     {
         $uri = 'projects/{project}';
         $uriArguments = [
             'project' => $project,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
@@ -196,32 +195,32 @@ class Projects extends AbstractApi
      *
      * Permissions that may be checked: Project.Admin
      *
-     * @param string $project
+     * @param array $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function updateProject(string $project, array $data, array $response = []): array
+    final public function updateProject(array $project, array $data = [], array $response = []): array
     {
         $uri = 'projects/{project}';
         $uriArguments = [
             'project' => $project,
         ];
 
-        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
-     * Delete a project.
+     * Delete a project
      *
      * Permissions that may be checked: Project.Admin
      *
-     * @param string $project
+     * @param array $project
      * @return void
      * @throws GuzzleException
      */
-    public function deleteProject(string $project): void
+    final public function deleteProject(array $project): void
     {
         $uri = 'projects/{project}';
         $uriArguments = [
@@ -232,49 +231,17 @@ class Projects extends AbstractApi
     }
 
     /**
-     * @return Access
-     */
-    public function access(): Access
-    {
-        return new Access($this->client);
-    }
-
-    /**
      * @return Automation
      */
-    public function automation(): Automation
+    final public function automation(): Automation
     {
         return new Automation($this->client);
     }
 
     /**
-     * @return CodeReviews
-     */
-    public function codeReviews(): CodeReviews
-    {
-        return new CodeReviews($this->client);
-    }
-
-    /**
-     * @return Documents
-     */
-    public function documents(): Documents
-    {
-        return new Documents($this->client);
-    }
-
-    /**
-     * @return Packages
-     */
-    public function packages(): Packages
-    {
-        return new Packages($this->client);
-    }
-
-    /**
      * @return Params
      */
-    public function params(): Params
+    final public function params(): Params
     {
         return new Params($this->client);
     }
@@ -282,7 +249,7 @@ class Projects extends AbstractApi
     /**
      * @return Planning
      */
-    public function planning(): Planning
+    final public function planning(): Planning
     {
         return new Planning($this->client);
     }
@@ -290,7 +257,7 @@ class Projects extends AbstractApi
     /**
      * @return PrivateProjects
      */
-    public function privateProjects(): PrivateProjects
+    final public function privateProjects(): PrivateProjects
     {
         return new PrivateProjects($this->client);
     }
@@ -298,7 +265,7 @@ class Projects extends AbstractApi
     /**
      * @return Repositories
      */
-    public function repositories(): Repositories
+    final public function repositories(): Repositories
     {
         return new Repositories($this->client);
     }
@@ -306,7 +273,7 @@ class Projects extends AbstractApi
     /**
      * @return Responsibilities
      */
-    public function responsibilities(): Responsibilities
+    final public function responsibilities(): Responsibilities
     {
         return new Responsibilities($this->client);
     }
@@ -314,7 +281,7 @@ class Projects extends AbstractApi
     /**
      * @return Secrets
      */
-    public function secrets(): Secrets
+    final public function secrets(): Secrets
     {
         return new Secrets($this->client);
     }
@@ -322,24 +289,56 @@ class Projects extends AbstractApi
     /**
      * @return Tags
      */
-    public function tags(): Tags
+    final public function tags(): Tags
     {
         return new Tags($this->client);
     }
 
     /**
-     * @return Topics
+     * @return Vault
      */
-    public function topics(): Topics
+    final public function vault(): Vault
     {
-        return new Topics($this->client);
+        return new Vault($this->client);
     }
 
     /**
-     * @return Vault
+     * @return Access
      */
-    public function vault(): Vault
+    final public function access(): Access
     {
-        return new Vault($this->client);
+        return new Access($this->client);
+    }
+
+    /**
+     * @return CodeReviews
+     */
+    final public function codeReviews(): CodeReviews
+    {
+        return new CodeReviews($this->client);
+    }
+
+    /**
+     * @return Documents
+     */
+    final public function documents(): Documents
+    {
+        return new Documents($this->client);
+    }
+
+    /**
+     * @return Packages
+     */
+    final public function packages(): Packages
+    {
+        return new Packages($this->client);
+    }
+
+    /**
+     * @return Topics
+     */
+    final public function topics(): Topics
+    {
+        return new Topics($this->client);
     }
 }

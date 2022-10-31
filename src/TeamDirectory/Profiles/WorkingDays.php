@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\TeamDirectory\Profiles;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class WorkingDays
@@ -12,11 +13,10 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\TeamDirectory\Profiles
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class WorkingDays extends AbstractApi
+final class WorkingDays extends AbstractApi
 {
     /**
-     * Returns pairs of profiles and their working days. If several working days settings are defined for the same
-     * profile then several pairs are returned.
+     * Returns pairs of profiles and their working days. If several working days settings are defined for the same profile then several pairs are returned.
      *
      * Permissions that may be checked: Profile.WorkingDays.View
      *
@@ -25,60 +25,62 @@ class WorkingDays extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function queryAllWorkingDays(array $request = [], array $response = []): array
+    final public function queryAllWorkingDays(array $request = [], array $response = []): array
     {
         $uri = 'team-directory/profiles/working-days';
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 
     /**
      * Permissions that may be checked: Profile.WorkingDays.Edit
      *
-     * @param string $profile
+     * @param array $profile
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function addWorkingDays(string $profile, array $data, array $response = []): array
+    final public function addWorkingDays(array $profile, array $data, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/working-days';
         $required = [
-            'workingDaysSpec' => self::TYPE_ARRAY,
+            'workingDaysSpec' => [
+                'days' => Type::Array,
+            ],
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'profile' => $profile,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
      * Permissions that may be checked: Profile.WorkingDays.View
      *
-     * @param string $profile
+     * @param array $profile
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function queryWorkingDaysForAProfile(string $profile, array $request = [], array $response = []): array
+    final public function queryWorkingDaysForAProfile(array $profile, array $request = [], array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/working-days';
         $uriArguments = [
             'profile' => $profile,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
      * Permissions that may be checked: Profile.WorkingDays.Edit
      *
-     * @param string $profile
+     * @param array $profile
      * @param string $workingDaysId
      * @param array $data
      * @param array $response
@@ -86,11 +88,17 @@ class WorkingDays extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function updateWorkingDays(string $profile, string $workingDaysId, array $data, array $response = []): array
-    {
+    final public function updateWorkingDays(
+        array $profile,
+        string $workingDaysId,
+        array $data,
+        array $response = [],
+    ): array {
         $uri = 'team-directory/profiles/{profile}/working-days/{workingDaysId}';
         $required = [
-            'workingDaysSpec' => self::TYPE_ARRAY,
+            'workingDaysSpec' => [
+                'days' => Type::Array,
+            ],
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -98,18 +106,18 @@ class WorkingDays extends AbstractApi
             'workingDaysId' => $workingDaysId,
         ];
 
-        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
      * Permissions that may be checked: Profile.WorkingDays.Edit
      *
-     * @param string $profile
+     * @param array $profile
      * @param string $workingDaysId
      * @return void
      * @throws GuzzleException
      */
-    public function deleteWorkingDays(string $profile, string $workingDaysId): void
+    final public function deleteWorkingDays(array $profile, string $workingDaysId): void
     {
         $uri = 'team-directory/profiles/{profile}/working-days/{workingDaysId}';
         $uriArguments = [

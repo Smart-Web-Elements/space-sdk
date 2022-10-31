@@ -10,6 +10,7 @@ use Swe\SpaceSDK\Projects\Packages\Repositories\Connections;
 use Swe\SpaceSDK\Projects\Packages\Repositories\Files;
 use Swe\SpaceSDK\Projects\Packages\Repositories\Packages;
 use Swe\SpaceSDK\Projects\Packages\Repositories\Url;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Repositories
@@ -17,68 +18,68 @@ use Swe\SpaceSDK\Projects\Packages\Repositories\Url;
  * @package Swe\SpaceSDK\Projects\Packages
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Repositories extends AbstractApi
+final class Repositories extends AbstractApi
 {
     /**
-     * Creates a new package repository for a given project ID.
+     * Creates a new package repository for a given project ID
      *
      * Permissions that may be checked: PackageRepository.Create
      *
-     * @param string $project
+     * @param array $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createNewRepository(string $project, array $data, array $response = []): array
+    final public function createNewRepository(array $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/packages/repositories';
         $required = [
-            'type' => self::TYPE_STRING,
-            'name' => self::TYPE_STRING,
+            'type' => Type::String,
+            'name' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'project' => $project,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
-     * Gets a list of package repositories for a given project ID.
+     * Gets a list of package repositories for a given project ID
      *
      * Permissions that may be checked: PackageRepository.Read
      *
-     * @param string $project
+     * @param array $project
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getRepositories(string $project, array $request = [], array $response = []): array
+    final public function getRepositories(array $project, array $request = [], array $response = []): array
     {
         $uri = 'projects/{project}/packages/repositories';
         $uriArguments = [
             'project' => $project,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
-     * Gets a package repository for a given project ID by type and name.
+     * Gets a package repository for a given project ID by type and name
      *
      * Permissions that may be checked: PackageRepository.Read
      *
-     * @param string $project
-     * @param string $repository
+     * @param array $project
+     * @param array $repository
      * @param array $response
-     * @return array
+     * @return array|null
      * @throws GuzzleException
      */
-    public function getRepository(string $project, string $repository, array $response = []): array
+    final public function getRepository(array $project, array $repository, array $response = []): ?array
     {
         $uri = 'projects/{project}/packages/repositories/{repository}';
         $uriArguments = [
@@ -86,22 +87,21 @@ class Repositories extends AbstractApi
             'repository' => $repository,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
-     * Updates package repository settings for a given project ID.
+     * Updates package repository settings for a given project ID
      *
      * Permissions that may be checked: PackageRepository.Admin
      *
-     * @param string $project
-     * @param string $repository
+     * @param array $project
+     * @param array $repository
      * @param array $data
-     * @param array $response
      * @return void
      * @throws GuzzleException
      */
-    public function updateRepository(string $project, string $repository, array $data = [], array $response = []): void
+    final public function updateRepository(array $project, array $repository, array $data = []): void
     {
         $uri = 'projects/{project}/packages/repositories/{repository}';
         $uriArguments = [
@@ -109,20 +109,20 @@ class Repositories extends AbstractApi
             'repository' => $repository,
         ];
 
-        $this->client->patch($this->buildUrl($uri, $uriArguments), $data, $response);
+        $this->client->patch($this->buildUrl($uri, $uriArguments), $data);
     }
 
     /**
-     * Removes package repository for a given project ID.
+     * Removes package repository for a given project ID
      *
      * Permissions that may be checked: PackageRepository.Admin
      *
-     * @param string $project
-     * @param string $repository
+     * @param array $project
+     * @param array $repository
      * @return void
      * @throws GuzzleException
      */
-    public function deleteRepository(string $project, string $repository): void
+    final public function deleteRepository(array $project, array $repository): void
     {
         $uri = 'projects/{project}/packages/repositories/{repository}';
         $uriArguments = [
@@ -136,7 +136,7 @@ class Repositories extends AbstractApi
     /**
      * @return Cleanup
      */
-    public function cleanup(): Cleanup
+    final public function cleanup(): Cleanup
     {
         return new Cleanup($this->client);
     }
@@ -144,7 +144,7 @@ class Repositories extends AbstractApi
     /**
      * @return Connections
      */
-    public function connections(): Connections
+    final public function connections(): Connections
     {
         return new Connections($this->client);
     }
@@ -152,7 +152,7 @@ class Repositories extends AbstractApi
     /**
      * @return Files
      */
-    public function files(): Files
+    final public function files(): Files
     {
         return new Files($this->client);
     }
@@ -160,7 +160,7 @@ class Repositories extends AbstractApi
     /**
      * @return Packages
      */
-    public function packages(): Packages
+    final public function packages(): Packages
     {
         return new Packages($this->client);
     }
@@ -168,7 +168,7 @@ class Repositories extends AbstractApi
     /**
      * @return Url
      */
-    public function url(): Url
+    final public function url(): Url
     {
         return new Url($this->client);
     }

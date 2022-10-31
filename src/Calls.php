@@ -3,6 +3,7 @@
 namespace Swe\SpaceSDK;
 
 use GuzzleHttp\Exception\GuzzleException;
+use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class Calls
@@ -10,24 +11,24 @@ use GuzzleHttp\Exception\GuzzleException;
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Calls extends AbstractApi
+final class Calls extends AbstractApi
 {
     /**
      * @param array $data
      * @param array $response
      * @return array
-     * @throws Exception\MissingArgumentException
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function createCall(array $data, array $response = []): array
+    final public function createCall(array $data, array $response = []): array
     {
         $uri = 'calls';
         $required = [
-            'participants' => self::TYPE_ARRAY,
-            'private' => self::TYPE_BOOLEAN,
+            'participants' => Type::Array,
+            'private' => Type::Boolean,
         ];
         $this->throwIfInvalid($required, $data);
 
-        return $this->client->post($this->buildUrl($uri), $data, $response);
+        return $this->client->post($this->buildUrl($uri), $data, [], $response);
     }
 }

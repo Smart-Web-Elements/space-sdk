@@ -12,6 +12,7 @@ use Swe\SpaceSDK\Projects\Planning\Issues\Comments;
 use Swe\SpaceSDK\Projects\Planning\Issues\Commits;
 use Swe\SpaceSDK\Projects\Planning\Issues\Statuses;
 use Swe\SpaceSDK\Projects\Planning\Issues\Tags;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Issues
@@ -19,76 +20,76 @@ use Swe\SpaceSDK\Projects\Planning\Issues\Tags;
  * @package Swe\SpaceSDK\Projects\Planning
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Issues extends AbstractApi
+final class Issues extends AbstractApi
 {
     /**
-     * Create a new issue in a project.
+     * Create a new issue in a project
      *
      * Permissions that may be checked: Project.Issues.Create
      *
-     * @param string $project
+     * @param array $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createIssue(string $project, array $data, array $response = []): array
+    final public function createIssue(array $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/planning/issues';
         $required = [
-            'title' => self::TYPE_STRING,
-            'status' => self::TYPE_STRING,
+            'title' => Type::String,
+            'status' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'project' => $project,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
-     * Import issues in a project.
+     * Import issues in a project
      *
      * Permissions that may be checked: Project.Issues.Import
      *
-     * @param string $project
+     * @param array $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function importIssues(string $project, array $data, array $response = []): array
+    final public function importIssues(array $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/planning/issues/import';
         $required = [
             'metadata' => [
-                'importSource' => self::TYPE_STRING,
+                'importSource' => Type::String,
             ],
-            'issues' => self::TYPE_ARRAY,
-            'dryRun' => self::TYPE_BOOLEAN,
+            'issues' => Type::Array,
+            'dryRun' => Type::Boolean,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'project' => $project,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
-     * Restore an issue in a project.
+     * Restore an issue in a project
      *
      * Permissions that may be checked: Project.Issues.Restore
      *
-     * @param string $project
-     * @param string $issueId
+     * @param array $project
+     * @param array $issueId
      * @return void
      * @throws GuzzleException
      */
-    public function restoreIssue(string $project, string $issueId): void
+    final public function restoreIssue(array $project, array $issueId): void
     {
         $uri = 'projects/{project}/planning/issues/{issueId}/restore';
         $uriArguments = [
@@ -96,29 +97,31 @@ class Issues extends AbstractApi
             'issueId' => $issueId,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments));
+        $this->client->post($this->buildUrl($uri, $uriArguments), []);
     }
 
     /**
-     * Toggle status of an existing issue between resolved and unresolved.
+     * Toggle status of an existing issue between resolved and unresolved
      *
      * Permissions that may be checked: Project.Issues.Edit
      *
-     * @param string $project
-     * @param string $issueId
-     * @param bool $resolved
+     * @param array $project
+     * @param array $issueId
+     * @param array $data
      * @return void
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function toggleIssueResolvedStatus(string $project, string $issueId, bool $resolved): void
+    final public function toggleIssueResolvedStatus(array $project, array $issueId, array $data): void
     {
         $uri = 'projects/{project}/planning/issues/{issueId}/toggle-resolved';
+        $required = [
+            'resolved' => Type::Boolean,
+        ];
+        $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'project' => $project,
             'issueId' => $issueId,
-        ];
-        $data = [
-            'resolved' => $resolved,
         ];
 
         $this->client->post($this->buildUrl($uri, $uriArguments), $data);
@@ -129,62 +132,66 @@ class Issues extends AbstractApi
      *
      * Permissions that may be checked: Project.Issues.View
      *
-     * @param string $project
+     * @param array $project
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function getAllIssues(string $project, array $request, array $response = []): array
+    final public function getAllIssues(array $project, array $request, array $response = []): array
     {
         $uri = 'projects/{project}/planning/issues';
         $required = [
-            'sorting' => self::TYPE_STRING,
-            'descending' => self::TYPE_BOOLEAN,
+            'sorting' => Type::String,
+            'descending' => Type::Boolean,
         ];
         $this->throwIfInvalid($required, $request);
         $uriArguments = [
             'project' => $project,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
-     * Find an existing issue by a given number in a project.
+     * Find an existing issue by a given number in a project
      *
      * Permissions that may be checked: Project.Issues.View
      *
-     * @param string $project
+     * @param array $project
      * @param int $number
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getIssueByNumber(string $project, int $number, array $request = [], array $response = []): array
-    {
+    final public function getIssueByNumber(
+        array $project,
+        int $number,
+        array $request = [],
+        array $response = [],
+    ): array {
         $uri = 'projects/{project}/planning/issues/number:{number}';
         $uriArguments = [
             'project' => $project,
             'number' => $number,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
      * Permissions that may be checked: Project.Issues.View
      *
-     * @param string $project
-     * @param string $issueId
+     * @param array $project
+     * @param array $issueId
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getIssue(string $project, string $issueId, array $request = [], array $response = []): array
+    final public function getIssue(array $project, array $issueId, array $request = [], array $response = []): array
     {
         $uri = 'projects/{project}/planning/issues/{issueId}';
         $uriArguments = [
@@ -192,21 +199,21 @@ class Issues extends AbstractApi
             'issueId' => $issueId,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
-     * Update an existing issue in a project.
+     * Update an existing issue in a project
      *
      * Permissions that may be checked: Project.Issues.Edit
      *
-     * @param string $project
-     * @param string $issueId
+     * @param array $project
+     * @param array $issueId
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    public function updateIssue(string $project, string $issueId, array $data = []): void
+    final public function updateIssue(array $project, array $issueId, array $data = []): void
     {
         $uri = 'projects/{project}/planning/issues/{issueId}';
         $uriArguments = [
@@ -218,16 +225,16 @@ class Issues extends AbstractApi
     }
 
     /**
-     * Delete an issue from a project.
+     * Delete an issue from a project
      *
      * Permissions that may be checked: Project.Issues.Edit
      *
-     * @param string $project
-     * @param string $issueId
+     * @param array $project
+     * @param array $issueId
      * @return void
      * @throws GuzzleException
      */
-    public function deleteIssue(string $project, string $issueId): void
+    final public function deleteIssue(array $project, array $issueId): void
     {
         $uri = 'projects/{project}/planning/issues/{issueId}';
         $uriArguments = [
@@ -239,9 +246,17 @@ class Issues extends AbstractApi
     }
 
     /**
+     * @return Statuses
+     */
+    final public function statuses(): Statuses
+    {
+        return new Statuses($this->client);
+    }
+
+    /**
      * @return Attachments
      */
-    public function attachments(): Attachments
+    final public function attachments(): Attachments
     {
         return new Attachments($this->client);
     }
@@ -249,7 +264,7 @@ class Issues extends AbstractApi
     /**
      * @return Checklists
      */
-    public function checklists(): Checklists
+    final public function checklists(): Checklists
     {
         return new Checklists($this->client);
     }
@@ -257,7 +272,7 @@ class Issues extends AbstractApi
     /**
      * @return CodeReviews
      */
-    public function codeReviews(): CodeReviews
+    final public function codeReviews(): CodeReviews
     {
         return new CodeReviews($this->client);
     }
@@ -265,7 +280,7 @@ class Issues extends AbstractApi
     /**
      * @return Comments
      */
-    public function comments(): Comments
+    final public function comments(): Comments
     {
         return new Comments($this->client);
     }
@@ -273,23 +288,15 @@ class Issues extends AbstractApi
     /**
      * @return Commits
      */
-    public function commits(): Commits
+    final public function commits(): Commits
     {
         return new Commits($this->client);
     }
 
     /**
-     * @return Statuses
-     */
-    public function statuses(): Statuses
-    {
-        return new Statuses($this->client);
-    }
-
-    /**
      * @return Tags
      */
-    public function tags(): Tags
+    final public function tags(): Tags
     {
         return new Tags($this->client);
     }

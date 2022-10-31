@@ -2,7 +2,6 @@
 
 namespace Swe\SpaceSDK\Exception;
 
-
 use Exception;
 
 /**
@@ -13,7 +12,7 @@ use Exception;
  */
 class MissingArgumentException extends Exception
 {
-    const MESSAGE = 'You have to fill all required fields: %s';
+    private const MESSAGE = 'You have to fill all required fields: %s';
 
     /**
      * @param array $fields

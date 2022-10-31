@@ -11,10 +11,10 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\Administration
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Support extends AbstractApi
+final class Support extends AbstractApi
 {
     /**
-     * Create a profile for support.
+     * Create a profile for support
      *
      * Permissions that may be checked: Superadmin
      *
@@ -22,10 +22,10 @@ class Support extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function createSupport(array $response = []): array
+    final public function createSupport(array $response = []): array
     {
         $uri = 'administration/support';
 
-        return $this->client->post($this->buildUrl($uri), [], $response);
+        return $this->client->post($this->buildUrl($uri), [], [], $response);
     }
 }

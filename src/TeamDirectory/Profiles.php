@@ -11,10 +11,11 @@ use Swe\SpaceSDK\TeamDirectory\Profiles\Checklists;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Dashboards;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Documents;
 use Swe\SpaceSDK\TeamDirectory\Profiles\GpgKeys;
+use Swe\SpaceSDK\TeamDirectory\Profiles\Leads;
 use Swe\SpaceSDK\TeamDirectory\Profiles\NavBarMenuItems;
 use Swe\SpaceSDK\TeamDirectory\Profiles\NavBarProjects;
 use Swe\SpaceSDK\TeamDirectory\Profiles\NotificationSettings;
-use Swe\SpaceSDK\TeamDirectory\Profiles\OAuthConsents;
+use Swe\SpaceSDK\TeamDirectory\Profiles\OauthConsents;
 use Swe\SpaceSDK\TeamDirectory\Profiles\PermanentTokens;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Settings;
 use Swe\SpaceSDK\TeamDirectory\Profiles\SpokenLanguages;
@@ -22,6 +23,7 @@ use Swe\SpaceSDK\TeamDirectory\Profiles\SshKeys;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Timezone;
 use Swe\SpaceSDK\TeamDirectory\Profiles\TwoFa;
 use Swe\SpaceSDK\TeamDirectory\Profiles\WorkingDays;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Profiles
@@ -29,10 +31,10 @@ use Swe\SpaceSDK\TeamDirectory\Profiles\WorkingDays;
  * @package Swe\SpaceSDK\TeamDirectory
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Profiles extends AbstractApi
+final class Profiles extends AbstractApi
 {
     /**
-     * Create a profile.
+     * Create a profile
      *
      * Permissions that may be checked: Profile.Create, Profile.CreateGuest
      *
@@ -42,17 +44,17 @@ class Profiles extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createProfile(array $data, array $response = []): array
+    final public function createProfile(array $data, array $response = []): array
     {
         $uri = 'team-directory/profiles';
         $required = [
-            'username' => self::TYPE_STRING,
-            'firstName' => self::TYPE_STRING,
-            'lastName' => self::TYPE_STRING,
+            'username' => Type::String,
+            'firstName' => Type::String,
+            'lastName' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
 
-        return $this->client->post($this->buildUrl($uri), $data, $response);
+        return $this->client->post($this->buildUrl($uri), $data, [], $response);
     }
 
     /**
@@ -65,15 +67,15 @@ class Profiles extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getAllProfiles(array $request = [], array $response = []): array
+    final public function getAllProfiles(array $request = [], array $response = []): array
     {
         $uri = 'team-directory/profiles';
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 
     /**
-     * Get profile information by email address.
+     * Get profile information by email address
      *
      * Permissions that may be checked: Profile.View
      *
@@ -83,57 +85,58 @@ class Profiles extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getProfileByEmail(string $email, array $request = [], array $response = []): array
+    final public function getProfileByEmail(string $email, array $request = [], array $response = []): array
     {
         $uri = 'team-directory/profiles/email:{email}';
         $uriArguments = [
             'email' => $email,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
-     * Get profile information.
+     * Get profile information
      *
      * Permissions that may be checked: Profile.View
      *
-     * @param string $profile
+     * @param array $profile
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getProfile(string $profile, array $response = []): array
+    final public function getProfile(array $profile, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}';
         $uriArguments = [
             'profile' => $profile,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
-     * Check if a user profile is a member of one or more teams.
+     * Check if a user profile is a member of one or more teams
      *
-     * @param string $profile
+     * @param array $profile
      * @param array $request
+     * @param array $response
      * @return bool
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function checkIfProfileIsTeamMember(string $profile, array $request): bool
+    final public function checkIfProfileIsTeamMember(array $profile, array $request): bool
     {
         $uri = 'team-directory/profiles/{profile}/is-team-member';
         $required = [
-            'teamIds' => self::TYPE_ARRAY,
+            'teamIds' => Type::Array,
         ];
         $this->throwIfInvalid($required, $request);
         $uriArguments = [
             'profile' => $profile,
         ];
 
-        return (bool)$this->client->get($this->buildUrl($uri, $uriArguments), [], $request)[0];
+        return (bool)$this->client->get($this->buildUrl($uri, $uriArguments), $request)[0];
     }
 
     /**
@@ -141,54 +144,54 @@ class Profiles extends AbstractApi
      *
      * Permissions that may be checked: Profile.Edit.2
      *
-     * @param string $profile
+     * @param array $profile
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function updateProfile(string $profile, array $data = [], array $response = []): array
+    final public function updateProfile(array $profile, array $data = [], array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}';
         $uriArguments = [
             'profile' => $profile,
         ];
 
-        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
-     * Reactivate a user profile.
+     * Reactivate a user profile
      *
      * Permissions that may be checked: Profile.Edit.2
      *
-     * @param string $profile
+     * @param array $profile
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function reactivateUserProfile(string $profile, array $data = [], array $response = []): array
+    final public function reactivateUserProfile(array $profile, array $data = [], array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/reactivate';
         $uriArguments = [
             'profile' => $profile,
         ];
 
-        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
-     * Delete a profile.
+     * Delete a profile
      *
      * Permissions that may be checked: Profile.Delete
      *
-     * @param string $profile
+     * @param array $profile
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function deleteProfile(string $profile, array $response = []): array
+    final public function deleteProfile(array $profile, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}';
         $uriArguments = [
@@ -199,24 +202,24 @@ class Profiles extends AbstractApi
     }
 
     /**
-     * Deactivate a user profile.
+     * Deactivate a user profile
      *
      * Permissions that may be checked: Profile.Edit.2
      *
-     * @param string $profile
+     * @param array $profile
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function deactivateUserProfile(string $profile, array $request, array $response = []): array
+    final public function deactivateUserProfile(array $profile, array $request, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/deactivate';
         $required = [
-            'at' => self::TYPE_DATETIME,
+            'at' => Type::DateTime,
         ];
-        $this->throwIfInvalid($required, $response);
+        $this->throwIfInvalid($required, $request);
         $uriArguments = [
             'profile' => $profile,
         ];
@@ -225,9 +228,41 @@ class Profiles extends AbstractApi
     }
 
     /**
+     * @return AuthenticationSessions
+     */
+    final public function authenticationSessions(): AuthenticationSessions
+    {
+        return new AuthenticationSessions($this->client);
+    }
+
+    /**
+     * @return Dashboards
+     */
+    final public function dashboards(): Dashboards
+    {
+        return new Dashboards($this->client);
+    }
+
+    /**
+     * @return OauthConsents
+     */
+    final public function oauthConsents(): OauthConsents
+    {
+        return new OauthConsents($this->client);
+    }
+
+    /**
+     * @return WorkingDays
+     */
+    final public function workingDays(): WorkingDays
+    {
+        return new WorkingDays($this->client);
+    }
+
+    /**
      * @return TwoFa
      */
-    public function twoFa(): TwoFa
+    final public function twoFa(): TwoFa
     {
         return new TwoFa($this->client);
     }
@@ -235,39 +270,23 @@ class Profiles extends AbstractApi
     /**
      * @return ApplicationPasswords
      */
-    public function applicationPasswords(): ApplicationPasswords
+    final public function applicationPasswords(): ApplicationPasswords
     {
         return new ApplicationPasswords($this->client);
     }
 
     /**
-     * @return AuthenticationSessions
-     */
-    public function authenticationSessions(): AuthenticationSessions
-    {
-        return new AuthenticationSessions($this->client);
-    }
-
-    /**
      * @return Checklists
      */
-    public function checklists(): Checklists
+    final public function checklists(): Checklists
     {
         return new Checklists($this->client);
     }
 
     /**
-     * @return Dashboards
-     */
-    public function dashboards(): Dashboards
-    {
-        return new Dashboards($this->client);
-    }
-
-    /**
      * @return Documents
      */
-    public function documents(): Documents
+    final public function documents(): Documents
     {
         return new Documents($this->client);
     }
@@ -275,15 +294,23 @@ class Profiles extends AbstractApi
     /**
      * @return GpgKeys
      */
-    public function gpgKeys(): GpgKeys
+    final public function gpgKeys(): GpgKeys
     {
         return new GpgKeys($this->client);
     }
 
     /**
+     * @return Leads
+     */
+    final public function leads(): Leads
+    {
+        return new Leads($this->client);
+    }
+
+    /**
      * @return NavBarMenuItems
      */
-    public function navBarMenuItems(): NavBarMenuItems
+    final public function navBarMenuItems(): NavBarMenuItems
     {
         return new NavBarMenuItems($this->client);
     }
@@ -291,7 +318,7 @@ class Profiles extends AbstractApi
     /**
      * @return NavBarProjects
      */
-    public function navBarProjects(): NavBarProjects
+    final public function navBarProjects(): NavBarProjects
     {
         return new NavBarProjects($this->client);
     }
@@ -299,23 +326,15 @@ class Profiles extends AbstractApi
     /**
      * @return NotificationSettings
      */
-    public function notificationSettings(): NotificationSettings
+    final public function notificationSettings(): NotificationSettings
     {
         return new NotificationSettings($this->client);
     }
 
     /**
-     * @return OAuthConsents
-     */
-    public function oAuthConsents(): OAuthConsents
-    {
-        return new OAuthConsents($this->client);
-    }
-
-    /**
      * @return PermanentTokens
      */
-    public function permanentTokens(): PermanentTokens
+    final public function permanentTokens(): PermanentTokens
     {
         return new PermanentTokens($this->client);
     }
@@ -323,7 +342,7 @@ class Profiles extends AbstractApi
     /**
      * @return Settings
      */
-    public function settings(): Settings
+    final public function settings(): Settings
     {
         return new Settings($this->client);
     }
@@ -331,7 +350,7 @@ class Profiles extends AbstractApi
     /**
      * @return SpokenLanguages
      */
-    public function spokenLanguages(): SpokenLanguages
+    final public function spokenLanguages(): SpokenLanguages
     {
         return new SpokenLanguages($this->client);
     }
@@ -339,7 +358,7 @@ class Profiles extends AbstractApi
     /**
      * @return SshKeys
      */
-    public function sshKeys(): SshKeys
+    final public function sshKeys(): SshKeys
     {
         return new SshKeys($this->client);
     }
@@ -347,16 +366,8 @@ class Profiles extends AbstractApi
     /**
      * @return Timezone
      */
-    public function timezone(): Timezone
+    final public function timezone(): Timezone
     {
         return new Timezone($this->client);
-    }
-
-    /**
-     * @return WorkingDays
-     */
-    public function workingDays(): WorkingDays
-    {
-        return new WorkingDays($this->client);
     }
 }

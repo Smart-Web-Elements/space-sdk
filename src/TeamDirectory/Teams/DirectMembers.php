@@ -11,10 +11,10 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\TeamDirectory\Teams
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class DirectMembers extends AbstractApi
+final class DirectMembers extends AbstractApi
 {
     /**
-     * Get or search direct members of a given team.
+     * Get or search direct members of a given team
      *
      * @param string $id
      * @param array $request
@@ -22,13 +22,13 @@ class DirectMembers extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getAllDirectMembers(string $id, array $request = [], array $response = []): array
+    final public function getAllDirectMembers(string $id, array $request = [], array $response = []): array
     {
         $uri = 'team-directory/teams/{id}/direct-members';
         $uriArguments = [
             'id' => $id,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 }

@@ -11,17 +11,17 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\Projects\Responsibilities
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Subjects extends AbstractApi
+final class Subjects extends AbstractApi
 {
     /**
-     * Delete an existing responsibility subject for a given project ID.
+     * Delete an existing responsibility subject for a given project ID
      *
      * @param string $subjectId
      * @param array $request
      * @return void
      * @throws GuzzleException
      */
-    public function deleteResponsibilitySubject(string $subjectId, array $request = []): void
+    final public function deleteResponsibilitySubject(string $subjectId, array $request = []): void
     {
         $uri = 'projects/responsibilities/subjects/{subjectId}';
         $uriArguments = [
@@ -32,14 +32,15 @@ class Subjects extends AbstractApi
     }
 
     /**
-     * Add a responsibility subject for a given project ID.
+     * Add a responsibility subject for a given project ID
      *
-     * @param string $project
+     * @param array $project
      * @param array $data
+     * @param array $response
      * @return string
      * @throws GuzzleException
      */
-    public function addResponsibilitySubject(string $project, array $data = []): string
+    final public function addResponsibilitySubject(array $project, array $data = []): string
     {
         $uri = 'projects/{project}/responsibilities/subjects';
         $uriArguments = [
@@ -50,15 +51,15 @@ class Subjects extends AbstractApi
     }
 
     /**
-     * Update an existing responsibility subject for a given project ID.
+     * Update an existing responsibility subject for a given project ID
      *
-     * @param string $project
+     * @param array $project
      * @param string $subjectId
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    public function editResponsibilitySubject(string $project, string $subjectId, array $data = []): void
+    final public function editResponsibilitySubject(array $project, string $subjectId, array $data = []): void
     {
         $uri = 'projects/{project}/responsibilities/subjects/{subjectId}';
         $uriArguments = [

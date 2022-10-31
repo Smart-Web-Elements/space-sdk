@@ -11,12 +11,12 @@ use Swe\SpaceSDK\PublicHolidays\Holidays;
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class PublicHolidays extends AbstractApi
+final class PublicHolidays extends AbstractApi
 {
     /**
      * @return Calendars
      */
-    public function calendars(): Calendars
+    final public function calendars(): Calendars
     {
         return new Calendars($this->client);
     }
@@ -24,7 +24,7 @@ class PublicHolidays extends AbstractApi
     /**
      * @return Holidays
      */
-    public function holidays(): Holidays
+    final public function holidays(): Holidays
     {
         return new Holidays($this->client);
     }

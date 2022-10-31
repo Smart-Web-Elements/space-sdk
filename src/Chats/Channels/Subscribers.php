@@ -12,21 +12,21 @@ use Swe\SpaceSDK\Chats\Channels\Subscribers\Users;
  * @package Swe\SpaceSDK\Chats\Channels
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Subscribers extends AbstractApi
+final class Subscribers extends AbstractApi
 {
-    /**
-     * @return Users
-     */
-    public function users(): Users
-    {
-        return new Users($this->client);
-    }
-
     /**
      * @return Teams
      */
-    public function teams(): Teams
+    final public function teams(): Teams
     {
         return new Teams($this->client);
+    }
+
+    /**
+     * @return Users
+     */
+    final public function users(): Users
+    {
+        return new Users($this->client);
     }
 }

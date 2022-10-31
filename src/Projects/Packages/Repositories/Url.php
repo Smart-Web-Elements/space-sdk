@@ -11,19 +11,20 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\Projects\Packages\Repositories
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Url extends AbstractApi
+final class Url extends AbstractApi
 {
     /**
-     * Gets a package repository URL for a given project ID.
+     * Gets a package repository URL for a given project ID
      *
      * Permissions that may be checked: PackageRepository.Read
      *
-     * @param string $project
-     * @param string $repository
+     * @param array $project
+     * @param array $repository
+     * @param array $response
      * @return string
      * @throws GuzzleException
      */
-    public function getRepositoryUrl(string $project, string $repository): string
+    final public function getRepositoryUrl(array $project, array $repository): string
     {
         $uri = 'projects/{project}/packages/repositories/{repository}/url';
         $uriArguments = [

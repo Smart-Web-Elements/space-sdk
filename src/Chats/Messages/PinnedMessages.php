@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Chats\Messages;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class PinnedMessages
@@ -12,7 +13,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Chats\Messages
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class PinnedMessages extends AbstractApi
+final class PinnedMessages extends AbstractApi
 {
     /**
      * Permissions that may be checked: Channel.ViewMessages
@@ -23,14 +24,14 @@ class PinnedMessages extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function listPinnedMessagesInChannel(array $request, array $response = []): array
+    final public function listPinnedMessagesInChannel(array $request, array $response = []): array
     {
         $uri = 'chats/messages/pinned-messages';
         $required = [
-            'channel' => self::TYPE_STRING,
+            'channel' => Type::Array,
         ];
         $this->throwIfInvalid($required, $request);
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 }

@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Notifications;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class PrivateFeeds
@@ -12,10 +13,10 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Notifications
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class PrivateFeeds extends AbstractApi
+final class PrivateFeeds extends AbstractApi
 {
     /**
-     * Create personal feed for member.
+     * Create personal feed for member
      *
      * Permissions that may be checked: Profile.NotificationSettings.Edit
      *
@@ -25,22 +26,22 @@ class PrivateFeeds extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createPrivateFeed(array $data, array $response = []): array
+    final public function createPrivateFeed(array $data, array $response = []): array
     {
         $uri = 'notifications/private-feeds';
         $required = [
-            'profile' => self::TYPE_STRING,
-            'name' => self::TYPE_STRING,
-            'icon' => self::TYPE_STRING,
-            'color' => self::TYPE_STRING,
+            'profile' => Type::Array,
+            'name' => Type::String,
+            'icon' => Type::String,
+            'color' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
 
-        return $this->client->post($this->buildUrl($uri), $data, $response);
+        return $this->client->post($this->buildUrl($uri), $data, [], $response);
     }
 
     /**
-     * List personal feeds for a member.
+     * List personal feeds for a member
      *
      * Permissions that may be checked: Profile.NotificationSettings.View
      *
@@ -50,19 +51,19 @@ class PrivateFeeds extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function getAllPrivateFeeds(array $request, array $response = []): array
+    final public function getAllPrivateFeeds(array $request, array $response = []): array
     {
         $uri = 'notifications/private-feeds';
         $required = [
-            'profile' => self::TYPE_STRING,
+            'profile' => Type::Array,
         ];
         $this->throwIfInvalid($required, $request);
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 
     /**
-     * Update personal feed for a member.
+     * Update personal feed for a member
      *
      * Permissions that may be checked: Profile.NotificationSettings.Edit
      *
@@ -72,18 +73,18 @@ class PrivateFeeds extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function updatePrivateFeed(string $id, array $data = [], array $response = []): array
+    final public function updatePrivateFeed(string $id, array $data = [], array $response = []): array
     {
         $uri = 'notifications/private-feeds/{id}';
         $uriArguments = [
             'id' => $id,
         ];
 
-        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
-     * Delete personal feed for member.
+     * Delete personal feed for member
      *
      * Permissions that may be checked: Profile.NotificationSettings.Edit
      *
@@ -91,7 +92,7 @@ class PrivateFeeds extends AbstractApi
      * @return void
      * @throws GuzzleException
      */
-    public function deletePrivateFeed(string $id): void
+    final public function deletePrivateFeed(string $id): void
     {
         $uri = 'notifications/private-feeds/{id}';
         $uriArguments = [

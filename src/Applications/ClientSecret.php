@@ -11,33 +11,34 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\Applications
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class ClientSecret extends AbstractApi
+final class ClientSecret extends AbstractApi
 {
     /**
      * Permissions that may be checked: Applications.Edit
      *
-     * @param string $application
+     * @param array $application
      * @return void
      * @throws GuzzleException
      */
-    public function regenerateAppSecret(string $application): void
+    final public function regenerateAppSecret(array $application): void
     {
         $uri = 'applications/{application}/client-secret/regenerate';
         $uriArguments = [
             'application' => $application,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments));
+        $this->client->post($this->buildUrl($uri, $uriArguments), []);
     }
 
     /**
      * Permissions that may be checked: Applications.ViewSecrets
      *
-     * @param string $application
+     * @param array $application
+     * @param array $response
      * @return string
      * @throws GuzzleException
      */
-    public function getClientSecret(string $application): string
+    final public function getClientSecret(array $application): string
     {
         $uri = 'applications/{application}/client-secret';
         $uriArguments = [

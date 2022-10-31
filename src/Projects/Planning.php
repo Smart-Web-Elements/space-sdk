@@ -14,12 +14,12 @@ use Swe\SpaceSDK\Projects\Planning\Tags;
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Planning extends AbstractApi
+final class Planning extends AbstractApi
 {
     /**
      * @return Boards
      */
-    public function boards(): Boards
+    final public function boards(): Boards
     {
         return new Boards($this->client);
     }
@@ -27,7 +27,7 @@ class Planning extends AbstractApi
     /**
      * @return Checklists
      */
-    public function checklists(): Checklists
+    final public function checklists(): Checklists
     {
         return new Checklists($this->client);
     }
@@ -35,7 +35,7 @@ class Planning extends AbstractApi
     /**
      * @return Issues
      */
-    public function issues(): Issues
+    final public function issues(): Issues
     {
         return new Issues($this->client);
     }
@@ -43,7 +43,7 @@ class Planning extends AbstractApi
     /**
      * @return Tags
      */
-    public function tags(): Tags
+    final public function tags(): Tags
     {
         return new Tags($this->client);
     }

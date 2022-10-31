@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Projects\Access;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Viewers
@@ -12,34 +13,34 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Projects\Access
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Viewers extends AbstractApi
+final class Viewers extends AbstractApi
 {
     /**
-     * Get organization members who can view a project.
+     * Get organization members who can view a project
      *
      * Permissions that may be checked: Project.View
      *
-     * @param string $project
+     * @param array $project
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function organizationProfilesThatCanViewTheProject(
-        string $project,
+    final public function organizationProfilesThatCanViewTheProject(
+        array $project,
         array $request,
-        array $response = []
+        array $response = [],
     ): array {
         $uri = 'projects/{project}/access/viewers';
         $required = [
-            'term' => self::TYPE_STRING,
+            'term' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
         $uriArguments = [
             'project' => $project,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 }

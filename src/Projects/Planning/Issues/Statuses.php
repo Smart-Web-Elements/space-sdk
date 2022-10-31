@@ -7,6 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Projects\Planning\Issues\Statuses\AutoUpdateOnMergeRequestMerge;
 use Swe\SpaceSDK\Projects\Planning\Issues\Statuses\Distribution;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Statuses
@@ -14,26 +15,26 @@ use Swe\SpaceSDK\Projects\Planning\Issues\Statuses\Distribution;
  * @package Swe\SpaceSDK\Projects\Planning\Issues
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Statuses extends AbstractApi
+final class Statuses extends AbstractApi
 {
     /**
-     * Get all existing issue statuses in a project.
+     * Get all existing issue statuses in a project
      *
      * Permissions that may be checked: Project.Issues.View
      *
-     * @param string $project
+     * @param array $project
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getAllIssueStatuses(string $project, array $response = []): array
+    final public function getAllIssueStatuses(array $project, array $response = []): array
     {
         $uri = 'projects/{project}/planning/issues/statuses';
         $uriArguments = [
             'project' => $project,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
@@ -41,17 +42,17 @@ class Statuses extends AbstractApi
      *
      * Permissions that may be checked: Project.Issues.Manage
      *
-     * @param string $project
+     * @param array $project
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function updateIssueStatusesList(string $project, array $data): void
+    final public function updateIssueStatusesList(array $project, array $data): void
     {
         $uri = 'projects/{project}/planning/issues/statuses';
         $required = [
-            'statuses' => self::TYPE_ARRAY,
+            'statuses' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -64,7 +65,7 @@ class Statuses extends AbstractApi
     /**
      * @return AutoUpdateOnMergeRequestMerge
      */
-    public function autoUpdateOnMergeRequestMerge(): AutoUpdateOnMergeRequestMerge
+    final public function autoUpdateOnMergeRequestMerge(): AutoUpdateOnMergeRequestMerge
     {
         return new AutoUpdateOnMergeRequestMerge($this->client);
     }
@@ -72,7 +73,7 @@ class Statuses extends AbstractApi
     /**
      * @return Distribution
      */
-    public function distribution(): Distribution
+    final public function distribution(): Distribution
     {
         return new Distribution($this->client);
     }

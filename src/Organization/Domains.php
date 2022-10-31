@@ -4,6 +4,8 @@ namespace Swe\SpaceSDK\Organization;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
+use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Domains
@@ -11,46 +13,51 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\Organization
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Domains extends AbstractApi
+final class Domains extends AbstractApi
 {
     /**
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getAllDomains(array $response = []): array
+    final public function getAllDomains(array $response = []): array
     {
         $uri = 'organization/domains';
 
-        return $this->client->get($this->buildUrl($uri), $response);
+        return $this->client->get($this->buildUrl($uri), [], $response);
     }
 
     /**
-     * @param string $domain
+     * @param array $request
+     * @param array $response
      * @return string
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function checkDomainAvailability(string $domain): string
+    final public function checkDomainAvailability(array $request): string
     {
         $uri = 'organization/domains/check';
-        $request = [
-            'domain' => $domain,
+        $required = [
+            'domain' => Type::String,
         ];
+        $this->throwIfInvalid($required, $request);
 
-        return (string)$this->client->get($this->buildUrl($uri), [], $request)[0];
+        return (string)$this->client->get($this->buildUrl($uri), $request)[0];
     }
 
     /**
-     * @param string $domain
+     * @param array $data
      * @return void
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function updateOrganizationDomain(string $domain): void
+    final public function updateOrganizationDomain(array $data): void
     {
         $uri = 'organization/domains';
-        $data = [
-            'domain' => $domain,
+        $required = [
+            'domain' => Type::String,
         ];
+        $this->throwIfInvalid($required, $data);
 
         $this->client->patch($this->buildUrl($uri), $data);
     }

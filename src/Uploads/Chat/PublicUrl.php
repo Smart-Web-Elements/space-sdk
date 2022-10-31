@@ -11,18 +11,19 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\Uploads\Chat
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class PublicUrl extends AbstractApi
+final class PublicUrl extends AbstractApi
 {
     /**
-     * Returns a URL that can be used to access attachment file without authentication.
+     * Returns a URL that can be used to access attachment file without authentication
      *
-     * @param string $channel
-     * @param string $message
+     * @param array $channel
+     * @param array $message
      * @param string $attachmentId
+     * @param array $response
      * @return string
      * @throws GuzzleException
      */
-    public function getPublicUrl(string $channel, string $message, string $attachmentId): string
+    final public function getPublicUrl(array $channel, array $message, string $attachmentId): string
     {
         $uri = 'uploads/chat/public-url/{channel}/{message}/{attachmentId}';
         $uriArguments = [

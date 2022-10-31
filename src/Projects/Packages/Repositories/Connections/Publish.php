@@ -12,30 +12,32 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Projects\Packages\Repositories\Connections
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Publish extends AbstractApi
+final class Publish extends AbstractApi
 {
     /**
-     * Publishes packages to remote repository.
+     * Publishes packages to remote repository
      *
      * Permissions that may be checked: PackageRepository.Write
      *
-     * @param string $project
-     * @param string $repository
+     * @param array $project
+     * @param array $repository
      * @param string $connectionId
      * @param array $data
+     * @param array $response
      * @return string
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function publishPackagesToRemoteRepository(
-        string $project,
-        string $repository,
+    final public function publishPackagesToRemoteRepository(
+        array $project,
+        array $repository,
         string $connectionId,
-        array $data
+        array $data,
     ): string {
         $uri = 'projects/{project}/packages/repositories/{repository}/connections/{connectionId}/publish';
         $required = [
-            'source' => self::TYPE_ARRAY,
+            'source' => [
+            ],
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -48,24 +50,24 @@ class Publish extends AbstractApi
     }
 
     /**
-     * Get list of publishing to remote repository.
+     * Get list of publishing to remote repository
      *
      * Permissions that may be checked: PackageRepository.Read
      *
-     * @param string $project
-     * @param string $repository
+     * @param array $project
+     * @param array $repository
      * @param string $connectionId
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getListOfPublishingToRemoteRepository(
-        string $project,
-        string $repository,
+    final public function getListOfPublishingToRemoteRepository(
+        array $project,
+        array $repository,
         string $connectionId,
         array $request = [],
-        array $response = []
+        array $response = [],
     ): array {
         $uri = 'projects/{project}/packages/repositories/{repository}/connections/{connectionId}/publish';
         $uriArguments = [
@@ -74,6 +76,6 @@ class Publish extends AbstractApi
             'connectionId' => $connectionId,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 }

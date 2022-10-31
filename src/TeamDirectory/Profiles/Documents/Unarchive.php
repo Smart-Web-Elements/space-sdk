@@ -11,16 +11,16 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\TeamDirectory\Profiles\Documents
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Unarchive extends AbstractApi
+final class Unarchive extends AbstractApi
 {
     /**
-     * @param string $profile
+     * @param array $profile
      * @param string $documentId
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function unarchiveDocument(string $profile, string $documentId, array $response = []): array
+    final public function unarchiveDocument(array $profile, string $documentId, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/documents/{documentId}/unarchive';
         $uriArguments = [
@@ -28,6 +28,6 @@ class Unarchive extends AbstractApi
             'documentId' => $documentId,
         ];
 
-        return $this->client->patch($this->buildUrl($uri, $uriArguments), [], $response);
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), [], [], $response);
     }
 }

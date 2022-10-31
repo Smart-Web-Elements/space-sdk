@@ -11,19 +11,19 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\Projects\Planning\Boards\Sprints
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Issues extends AbstractApi
+final class Issues extends AbstractApi
 {
     /**
-     * Add an existing issue in a project to a sprint.
+     * Add an existing issue in a project to a sprint
      *
      * Permissions that may be checked: Project.Planning.Boards.EditContent
      *
-     * @param string $issue
-     * @param string $sprint
+     * @param array $issue
+     * @param array $sprint
      * @return void
      * @throws GuzzleException
      */
-    public function addIssueToSprint(string $issue, string $sprint): void
+    final public function addIssueToSprint(array $issue, array $sprint): void
     {
         $uri = 'projects/planning/boards/sprints/{sprint}/issues/{issue}';
         $uriArguments = [
@@ -31,28 +31,28 @@ class Issues extends AbstractApi
             'issue' => $issue,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments));
+        $this->client->post($this->buildUrl($uri, $uriArguments), []);
     }
 
     /**
-     * Fetch issues from an existing non-archived sprint.
+     * Fetch issues from an existing non-archived sprint
      *
      * Permissions that may be checked: Project.Planning.Boards.View
      *
-     * @param string $sprint
+     * @param array $sprint
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getAllIssuesInSprint(string $sprint, array $request = [], array $response = []): array
+    final public function getAllIssuesInSprint(array $sprint, array $request = [], array $response = []): array
     {
         $uri = 'projects/planning/boards/sprints/{sprint}/issues';
         $uriArguments = [
             'sprint' => $sprint,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
@@ -60,12 +60,12 @@ class Issues extends AbstractApi
      *
      * Permissions that may be checked: Project.Planning.Boards.EditContent
      *
-     * @param string $issue
-     * @param string $sprint
+     * @param array $issue
+     * @param array $sprint
      * @return void
      * @throws GuzzleException
      */
-    public function removeIssueFromSprint(string $issue, string $sprint): void
+    final public function removeIssueFromSprint(array $issue, array $sprint): void
     {
         $uri = 'projects/planning/boards/sprints/{sprint}/issues/{issue}';
         $uriArguments = [

@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\CustomFields;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Values
@@ -12,20 +13,20 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\CustomFields
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Values extends AbstractApi
+final class Values extends AbstractApi
 {
     /**
-     * @param string $entity
+     * @param array $entity
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function setValuesForEntity(string $entity, array $data): void
+    final public function setValuesForEntity(array $entity, array $data): void
     {
         $uri = 'custom-fields-v2/values/{entity}';
         $required = [
-            'customFieldValues' => self::TYPE_ARRAY,
+            'customFieldValues' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -36,18 +37,19 @@ class Values extends AbstractApi
     }
 
     /**
-     * @param string $entity
-     * @param string $customField
+     * @param array $entity
+     * @param array $customField
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function setSingleValue(string $entity, string $customField, array $data): void
+    final public function setSingleValue(array $entity, array $customField, array $data): void
     {
         $uri = 'custom-fields-v2/values/{entity}/{customField}';
         $required = [
-            'newValue' => self::TYPE_ARRAY,
+            'newValue' => [
+            ],
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -59,29 +61,29 @@ class Values extends AbstractApi
     }
 
     /**
-     * @param string $entity
+     * @param array $entity
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getAllValuesForEntity(string $entity, array $response = []): array
+    final public function getAllValuesForEntity(array $entity, array $response = []): array
     {
         $uri = 'custom-fields-v2/values/{entity}';
         $uriArguments = [
             'entity' => $entity,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
-     * @param string $entity
-     * @param string $customField
+     * @param array $entity
+     * @param array $customField
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getSingleValue(string $entity, string $customField, array $response = []): array
+    final public function getSingleValue(array $entity, array $customField, array $response = []): array
     {
         $uri = 'custom-fields-v2/values/{entity}/{customField}';
         $uriArguments = [
@@ -89,6 +91,6 @@ class Values extends AbstractApi
             'customField' => $customField,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 }

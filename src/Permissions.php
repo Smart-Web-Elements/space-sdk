@@ -11,22 +11,22 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Permissions extends AbstractApi
+final class Permissions extends AbstractApi
 {
     /**
      * @param array $data
+     * @param array $response
      * @return bool
-     * @throws MissingArgumentException
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function checkPermission(array $data): bool
+    final public function checkPermission(array $data): bool
     {
         $uri = 'permissions/check-permission';
         $required = [
-            'principal' => self::TYPE_STRING,
-            'uniqueRightCode' => self::TYPE_STRING,
+            'principal' => Type::Array,
+            'uniqueRightCode' => Type::String,
             'target' => [
-                'className' => self::TYPE_STRING,
             ],
         ];
         $this->throwIfInvalid($required, $data);
@@ -39,10 +39,10 @@ class Permissions extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getAllPermissions(array $response = []): array
+    final public function getAllPermissions(array $response = []): array
     {
         $uri = 'permissions';
 
-        return $this->client->get($this->buildUrl($uri), $response);
+        return $this->client->get($this->buildUrl($uri), [], $response);
     }
 }

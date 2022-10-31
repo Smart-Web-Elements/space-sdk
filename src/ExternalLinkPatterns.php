@@ -3,6 +3,7 @@
 namespace Swe\SpaceSDK;
 
 use GuzzleHttp\Exception\GuzzleException;
+use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class ExternalLinkPatterns
@@ -10,25 +11,24 @@ use GuzzleHttp\Exception\GuzzleException;
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class ExternalLinkPatterns extends AbstractApi
+final class ExternalLinkPatterns extends AbstractApi
 {
     /**
-     * Add a prefix to be expanded to external links.
-     * Read more: https://www.jetbrains.com/help/space/external-links.html
+     * Add a prefix to be expanded to external links
      *
      * Permissions that may be checked: Unfurl.ExternalLinkPatterns.Manage
      *
      * @param array $data
      * @return void
-     * @throws Exception\MissingArgumentException
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function createExternalLinkPattern(array $data): void
+    final public function createExternalLinkPattern(array $data): void
     {
         $uri = 'external-link-patterns';
         $required = [
-            'pattern' => self::TYPE_STRING,
-            'linkReplacement' => self::TYPE_STRING,
+            'pattern' => Type::String,
+            'linkReplacement' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -36,8 +36,7 @@ class ExternalLinkPatterns extends AbstractApi
     }
 
     /**
-     * List all prefixes to be automatically expanded to external links.
-     * Read more: https://www.jetbrains.com/help/space/external-links.html
+     * List all prefixes to be automatically expanded to external links
      *
      * Permissions that may be checked: Unfurl.ExternalLinkPatterns.View
      *
@@ -45,29 +44,30 @@ class ExternalLinkPatterns extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getAllExternalLinkPatterns(array $response = []): array
+    final public function getAllExternalLinkPatterns(array $response = []): array
     {
         $uri = 'external-link-patterns';
 
-        return $this->client->get($this->buildUrl($uri), $response);
+        return $this->client->get($this->buildUrl($uri), [], $response);
     }
 
     /**
-     * Delete prefix for expanding to external links.
-     * Read more: https://www.jetbrains.com/help/space/external-links.html
+     * Delete prefix for expanding to external links
      *
      * Permissions that may be checked: Unfurl.ExternalLinkPatterns.Manage
      *
-     * @param string $pattern
+     * @param array $request
      * @return void
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function deleteExternalLinkPattern(string $pattern): void
+    final public function deleteExternalLinkPattern(array $request): void
     {
         $uri = 'external-link-patterns';
-        $request = [
-            'pattern' => $pattern,
+        $required = [
+            'pattern' => Type::String,
         ];
+        $this->throwIfInvalid($required, $request);
 
         $this->client->delete($this->buildUrl($uri), $request);
     }

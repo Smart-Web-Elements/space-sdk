@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\TeamDirectory\Profiles;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class SpokenLanguages
@@ -12,66 +13,65 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\TeamDirectory\Profiles
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class SpokenLanguages extends AbstractApi
+final class SpokenLanguages extends AbstractApi
 {
     /**
-     * Update spoken language for a profile. Optionally, firstName and lastName can be specified to add a localized name
-     * to the profile.
+     * Update spoken language for a profile. Optionally, firstName and lastName can be specified to add a localized name to the profile.
      *
      * Permissions that may be checked: Profile.Languages.Edit
      *
-     * @param string $profile
+     * @param array $profile
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createSpokenLanguage(string $profile, array $data, array $response = []): array
+    final public function createSpokenLanguage(array $profile, array $data, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/spoken-languages';
         $required = [
-            'language' => self::TYPE_STRING,
+            'language' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'profile' => $profile,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
-     * Get spoken language of a profile.
+     * Get spoken language of a profile
      *
      * Permissions that may be checked: Profile.Locations.View
      *
-     * @param string $profile
+     * @param array $profile
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getAllSpokenLanguages(string $profile, array $response = []): array
+    final public function getAllSpokenLanguages(array $profile, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/spoken-languages';
         $uriArguments = [
             'profile' => $profile,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
-     * Delete spoken language for a profile.
+     * Delete spoken language for a profile
      *
      * Permissions that may be checked: Profile.Languages.Edit
      *
-     * @param string $profile
+     * @param array $profile
      * @param string $language
      * @return void
      * @throws GuzzleException
      */
-    public function deleteSpokenLanguage(string $profile, string $language): void
+    final public function deleteSpokenLanguage(array $profile, string $language): void
     {
         $uri = 'team-directory/profiles/{profile}/spoken-languages/{language}';
         $uriArguments = [

@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Projects\Packages\Repositories\Cleanup;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Dry
@@ -12,31 +13,31 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Projects\Packages\Repositories\Cleanup
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Dry extends AbstractApi
+final class Dry extends AbstractApi
 {
     /**
-     * Dry run of cleanup for specified package repository.
+     * Dry run of cleanup for specified package repository
      *
      * Permissions that may be checked: PackageRepository.Admin
      *
-     * @param string $project
-     * @param string $repository
+     * @param array $project
+     * @param array $repository
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function dryRunRepositoryCleanup(
-        string $project,
-        string $repository,
+    final public function dryRunRepositoryCleanup(
+        array $project,
+        array $repository,
         array $data,
-        array $response = []
+        array $response = [],
     ): array {
         $uri = 'projects/{project}/packages/repositories/{repository}/cleanup/dry';
         $required = [
             'retentionParams' => [
-                'retainDownloadedOnce' => self::TYPE_BOOLEAN,
+                'retainDownloadedOnce' => Type::Boolean,
             ],
         ];
         $this->throwIfInvalid($required, $data);
@@ -45,6 +46,6 @@ class Dry extends AbstractApi
             'repository' => $repository,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 }

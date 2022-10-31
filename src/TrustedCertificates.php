@@ -11,26 +11,26 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class TrustedCertificates extends AbstractApi
+final class TrustedCertificates extends AbstractApi
 {
     /**
      * @param array $data
      * @param array $response
      * @return array
-     * @throws MissingArgumentException
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function createTrustedCertificate(array $data, array $response = []): array
+    final public function createTrustedCertificate(array $data, array $response = []): array
     {
         $uri = 'trusted-certificates';
         $required = [
-            'alias' => self::TYPE_STRING,
-            'data' => self::TYPE_STRING,
-            'archived' => self::TYPE_BOOLEAN,
+            'alias' => Type::String,
+            'data' => Type::String,
+            'archived' => Type::Boolean,
         ];
         $this->throwIfInvalid($required, $data);
 
-        return $this->client->post($this->buildUrl($uri), $data, $response);
+        return $this->client->post($this->buildUrl($uri), $data, [], $response);
     }
 
     /**
@@ -38,27 +38,29 @@ class TrustedCertificates extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getAllTrustedCertificates(array $response = []): array
+    final public function getAllTrustedCertificates(array $response = []): array
     {
         $uri = 'trusted-certificates';
 
-        return $this->client->get($this->buildUrl($uri), $response);
+        return $this->client->get($this->buildUrl($uri), [], $response);
     }
 
     /**
-     * @param string $data
+     * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function getCertificateInfo(string $data, array $response = []): array
+    final public function getCertificateInfo(array $request, array $response = []): array
     {
-        $uri = 'trusted-certificate/info';
-        $request = [
-            'data' => $data,
+        $uri = 'trusted-certificates/info';
+        $required = [
+            'data' => Type::String,
         ];
+        $this->throwIfInvalid($required, $request);
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 
     /**
@@ -67,9 +69,9 @@ class TrustedCertificates extends AbstractApi
      * @return void
      * @throws GuzzleException
      */
-    public function updateTrustedCertificate(string $id, array $data = []): void
+    final public function updateTrustedCertificate(string $id, array $data = []): void
     {
-        $uri = 'trusted-certificate/{id}';
+        $uri = 'trusted-certificates/{id}';
         $uriArguments = [
             'id' => $id,
         ];
@@ -82,9 +84,9 @@ class TrustedCertificates extends AbstractApi
      * @return void
      * @throws GuzzleException
      */
-    public function deleteTrustedCertificate(string $id): void
+    final public function deleteTrustedCertificate(string $id): void
     {
-        $uri = 'trusted-certificate/{id}';
+        $uri = 'trusted-certificates/{id}';
         $uriArguments = [
             'id' => $id,
         ];

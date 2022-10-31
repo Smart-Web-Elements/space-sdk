@@ -11,26 +11,25 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\TeamDirectory\Profiles
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Timezone extends AbstractApi
+final class Timezone extends AbstractApi
 {
     /**
-     * Get profile timezone. Returns profile's working hours timezone, location timezone or device timezone, whichever
-     * is present first in this list.
+     * Get profile timezone. Returns profile's working hours timezone, location timezone or device timezone, whichever is present first in this list.
      *
      * Permissions that may be checked: Profile.View
      *
-     * @param string $profile
+     * @param array $profile
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getTimezone(string $profile, array $response = []): array
+    final public function getTimezone(array $profile, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/timezone';
         $uriArguments = [
             'profile' => $profile,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 }

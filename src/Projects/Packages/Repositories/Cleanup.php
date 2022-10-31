@@ -12,25 +12,25 @@ use Swe\SpaceSDK\Projects\Packages\Repositories\Cleanup\Dry;
  * @package Swe\SpaceSDK\Projects\Packages\Repositories
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Cleanup extends AbstractApi
+final class Cleanup extends AbstractApi
 {
     /**
-     * Cleanup specified package repository.
+     * Cleanup specified package repository
      *
      * Permissions that may be checked: PackageRepository.Admin
      *
-     * @param string $project
-     * @param string $repository
+     * @param array $project
+     * @param array $repository
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function cleanupRepository(
-        string $project,
-        string $repository,
+    final public function cleanupRepository(
+        array $project,
+        array $repository,
         array $data = [],
-        array $response = []
+        array $response = [],
     ): array {
         $uri = 'projects/{project}/packages/repositories/{repository}/cleanup';
         $uriArguments = [
@@ -38,13 +38,13 @@ class Cleanup extends AbstractApi
             'repository' => $repository,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
      * @return Dry
      */
-    public function dry(): Dry
+    final public function dry(): Dry
     {
         return new Dry($this->client);
     }

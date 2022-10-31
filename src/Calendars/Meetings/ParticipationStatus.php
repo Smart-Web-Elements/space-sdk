@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Calendars\Meetings;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class ParticipationStatus
@@ -12,10 +13,10 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Calendars\Meetings
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class ParticipationStatus extends AbstractApi
+final class ParticipationStatus extends AbstractApi
 {
     /**
-     * Update profile participation status for a meeting.
+     * Update profile participation status for a meeting
      *
      * Permissions that may be checked: Meeting.EditRsvp
      *
@@ -26,18 +27,18 @@ class ParticipationStatus extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function updateProfileParticipationStatus(string $id, array $data, array $response = []): array
+    final public function updateProfileParticipationStatus(string $id, array $data, array $response = []): array
     {
         $uri = 'calendars/meetings/{id}/participation-status';
         $required = [
-            'profileId' => self::TYPE_STRING,
-            'status' => self::TYPE_STRING,
+            'profileId' => Type::String,
+            'status' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'id' => $id,
         ];
 
-        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 }

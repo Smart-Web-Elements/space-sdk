@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Projects\Documents;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Copy
@@ -12,10 +13,10 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Projects\Documents
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Copy extends AbstractApi
+final class Copy extends AbstractApi
 {
     /**
-     * @param string $project
+     * @param array $project
      * @param string $documentId
      * @param array $data
      * @param array $response
@@ -23,12 +24,12 @@ class Copy extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function copyDocument(string $project, string $documentId, array $data, array $response = []): array
+    final public function copyDocument(array $project, string $documentId, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/documents/{documentId}/copy';
         $required = [
-            'name' => self::TYPE_STRING,
-            'folder' => self::TYPE_STRING,
+            'name' => Type::String,
+            'folder' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -36,6 +37,6 @@ class Copy extends AbstractApi
             'documentId' => $documentId,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 }

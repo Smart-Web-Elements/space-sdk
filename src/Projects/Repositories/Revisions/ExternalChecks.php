@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Projects\Repositories\Revisions;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class ExternalChecks
@@ -12,10 +13,10 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Projects\Repositories\Revisions
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class ExternalChecks extends AbstractApi
+final class ExternalChecks extends AbstractApi
 {
     /**
-     * @param string $project
+     * @param array $project
      * @param string $repository
      * @param string $revision
      * @param array $data
@@ -23,15 +24,19 @@ class ExternalChecks extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function reportExternalCheckStatus(string $project, string $repository, string $revision, array $data): void
-    {
+    final public function reportExternalCheckStatus(
+        array $project,
+        string $repository,
+        string $revision,
+        array $data,
+    ): void {
         $uri = 'projects/{project}/repositories/{repository}/revisions/{revision}/external-checks';
         $required = [
-            'executionStatus' => self::TYPE_STRING,
-            'url' => self::TYPE_STRING,
-            'externalServiceName' => self::TYPE_STRING,
-            'taskName' => self::TYPE_STRING,
-            'taskId' => self::TYPE_STRING,
+            'executionStatus' => Type::String,
+            'url' => Type::String,
+            'externalServiceName' => Type::String,
+            'taskName' => Type::String,
+            'taskId' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -44,18 +49,18 @@ class ExternalChecks extends AbstractApi
     }
 
     /**
-     * @param string $project
+     * @param array $project
      * @param string $repository
      * @param string $revision
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getExternalChecksForACommit(
-        string $project,
+    final public function getExternalChecksForACommit(
+        array $project,
         string $repository,
         string $revision,
-        array $response = []
+        array $response = [],
     ): array {
         $uri = 'projects/{project}/repositories/{repository}/revisions/{revision}/external-checks';
         $uriArguments = [
@@ -64,6 +69,6 @@ class ExternalChecks extends AbstractApi
             'revision' => $revision,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 }

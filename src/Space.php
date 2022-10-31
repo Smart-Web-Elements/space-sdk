@@ -2,20 +2,20 @@
 
 namespace Swe\SpaceSDK;
 
-
 /**
+ * Generated 2022-10-31 11:01
+ *
  * Class Space
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Space extends AbstractApi
+final class Space extends AbstractApi
 {
-
     /**
      * @return Absences
      */
-    public function absences(): Absences
+    final public function absences(): Absences
     {
         return new Absences($this->client);
     }
@@ -23,7 +23,7 @@ class Space extends AbstractApi
     /**
      * @return Administration
      */
-    public function administration(): Administration
+    final public function administration(): Administration
     {
         return new Administration($this->client);
     }
@@ -31,7 +31,7 @@ class Space extends AbstractApi
     /**
      * @return Applications
      */
-    public function applications(): Applications
+    final public function applications(): Applications
     {
         return new Applications($this->client);
     }
@@ -39,7 +39,7 @@ class Space extends AbstractApi
     /**
      * @return AuthModules
      */
-    public function authModules(): AuthModules
+    final public function authModules(): AuthModules
     {
         return new AuthModules($this->client);
     }
@@ -47,7 +47,7 @@ class Space extends AbstractApi
     /**
      * @return BillingAdmin
      */
-    public function billingAdmin(): BillingAdmin
+    final public function billingAdmin(): BillingAdmin
     {
         return new BillingAdmin($this->client);
     }
@@ -55,7 +55,7 @@ class Space extends AbstractApi
     /**
      * @return Blog
      */
-    public function blog(): Blog
+    final public function blog(): Blog
     {
         return new Blog($this->client);
     }
@@ -63,7 +63,7 @@ class Space extends AbstractApi
     /**
      * @return Calendars
      */
-    public function calendars(): Calendars
+    final public function calendars(): Calendars
     {
         return new Calendars($this->client);
     }
@@ -71,7 +71,7 @@ class Space extends AbstractApi
     /**
      * @return Calls
      */
-    public function calls(): Calls
+    final public function calls(): Calls
     {
         return new Calls($this->client);
     }
@@ -79,7 +79,7 @@ class Space extends AbstractApi
     /**
      * @return Chats
      */
-    public function chats(): Chats
+    final public function chats(): Chats
     {
         return new Chats($this->client);
     }
@@ -87,7 +87,7 @@ class Space extends AbstractApi
     /**
      * @return Checklists
      */
-    public function checklists(): Checklists
+    final public function checklists(): Checklists
     {
         return new Checklists($this->client);
     }
@@ -95,7 +95,7 @@ class Space extends AbstractApi
     /**
      * @return CustomFields
      */
-    public function customFields(): CustomFields
+    final public function customFields(): CustomFields
     {
         return new CustomFields($this->client);
     }
@@ -103,7 +103,7 @@ class Space extends AbstractApi
     /**
      * @return Emojis
      */
-    public function emojis(): Emojis
+    final public function emojis(): Emojis
     {
         return new Emojis($this->client);
     }
@@ -111,7 +111,7 @@ class Space extends AbstractApi
     /**
      * @return ExternalLinkPatterns
      */
-    public function externalLinkPatterns(): ExternalLinkPatterns
+    final public function externalLinkPatterns(): ExternalLinkPatterns
     {
         return new ExternalLinkPatterns($this->client);
     }
@@ -119,7 +119,7 @@ class Space extends AbstractApi
     /**
      * @return HttpApiModel
      */
-    public function httpApiModel(): HttpApiModel
+    final public function httpApiModel(): HttpApiModel
     {
         return new HttpApiModel($this->client);
     }
@@ -127,7 +127,7 @@ class Space extends AbstractApi
     /**
      * @return Notifications
      */
-    public function notifications(): Notifications
+    final public function notifications(): Notifications
     {
         return new Notifications($this->client);
     }
@@ -135,7 +135,7 @@ class Space extends AbstractApi
     /**
      * @return Organization
      */
-    public function organization(): Organization
+    final public function organization(): Organization
     {
         return new Organization($this->client);
     }
@@ -143,7 +143,7 @@ class Space extends AbstractApi
     /**
      * @return PermissionRoles
      */
-    public function permissionRoles(): PermissionRoles
+    final public function permissionRoles(): PermissionRoles
     {
         return new PermissionRoles($this->client);
     }
@@ -151,7 +151,7 @@ class Space extends AbstractApi
     /**
      * @return Permissions
      */
-    public function permissions(): Permissions
+    final public function permissions(): Permissions
     {
         return new Permissions($this->client);
     }
@@ -159,7 +159,7 @@ class Space extends AbstractApi
     /**
      * @return Projects
      */
-    public function projects(): Projects
+    final public function projects(): Projects
     {
         return new Projects($this->client);
     }
@@ -167,7 +167,7 @@ class Space extends AbstractApi
     /**
      * @return PublicHolidays
      */
-    public function publicHolidays(): PublicHolidays
+    final public function publicHolidays(): PublicHolidays
     {
         return new PublicHolidays($this->client);
     }
@@ -175,7 +175,7 @@ class Space extends AbstractApi
     /**
      * @return Reactions
      */
-    public function reactions(): Reactions
+    final public function reactions(): Reactions
     {
         return new Reactions($this->client);
     }
@@ -183,7 +183,7 @@ class Space extends AbstractApi
     /**
      * @return RichText
      */
-    public function richText(): RichText
+    final public function richText(): RichText
     {
         return new RichText($this->client);
     }
@@ -191,7 +191,7 @@ class Space extends AbstractApi
     /**
      * @return TeamDirectory
      */
-    public function teamDirectory(): TeamDirectory
+    final public function teamDirectory(): TeamDirectory
     {
         return new TeamDirectory($this->client);
     }
@@ -199,7 +199,7 @@ class Space extends AbstractApi
     /**
      * @return TimeTracking
      */
-    public function timeTracking(): TimeTracking
+    final public function timeTracking(): TimeTracking
     {
         return new TimeTracking($this->client);
     }
@@ -207,7 +207,7 @@ class Space extends AbstractApi
     /**
      * @return ToDoItems
      */
-    public function toDoItems(): ToDoItems
+    final public function toDoItems(): ToDoItems
     {
         return new ToDoItems($this->client);
     }
@@ -215,24 +215,24 @@ class Space extends AbstractApi
     /**
      * @return TrustedCertificates
      */
-    public function trustedCertificates(): TrustedCertificates
+    final public function trustedCertificates(): TrustedCertificates
     {
         return new TrustedCertificates($this->client);
     }
 
     /**
-     * @return Uploads
+     * @return Unfurls
      */
-    public function uploads(): Uploads
+    final public function unfurls(): Unfurls
     {
-        return new Uploads($this->client);
+        return new Unfurls($this->client);
     }
 
     /**
-     * @return Unfurls
+     * @return Uploads
      */
-    public function unfurls(): Unfurls
+    final public function uploads(): Uploads
     {
-        return new Unfurls($this->client);
+        return new Uploads($this->client);
     }
 }

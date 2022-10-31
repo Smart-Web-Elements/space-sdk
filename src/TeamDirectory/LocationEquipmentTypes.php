@@ -4,6 +4,8 @@ namespace Swe\SpaceSDK\TeamDirectory;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
+use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class LocationEquipmentTypes
@@ -11,38 +13,39 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\TeamDirectory
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class LocationEquipmentTypes extends AbstractApi
+final class LocationEquipmentTypes extends AbstractApi
 {
     /**
-     * Get all equipment types.
+     * Get all equipment types
      *
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getAllLocationEquipmentTypes(array $request = [], array $response = []): array
+    final public function getAllLocationEquipmentTypes(array $request = [], array $response = []): array
     {
         $uri = 'team-directory/location-equipment-types';
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 
     /**
-     * Archive/restore location equipment type. Setting delete to true will archive the equipment type, false will
-     * restore it.
+     * Archive/restore location equipment type. Setting delete to true will archive the equipment type, false will restore it.
      *
      * @param string $name
-     * @param bool $delete
+     * @param array $request
      * @return void
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function deleteLocationEquipmentTypeByName(string $name, bool $delete): void
+    final public function deleteLocationEquipmentTypeByName(string $name, array $request): void
     {
         $uri = 'team-directory/location-equipment-types/name:{name}';
-        $request = [
-            'delete' => $delete,
+        $required = [
+            'delete' => Type::Boolean,
         ];
+        $this->throwIfInvalid($required, $request);
         $uriArguments = [
             'name' => $name,
         ];

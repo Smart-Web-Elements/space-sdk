@@ -6,6 +6,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\TeamDirectory\Profiles\PermanentTokens\Current;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class PermanentTokens
@@ -13,69 +14,68 @@ use Swe\SpaceSDK\TeamDirectory\Profiles\PermanentTokens\Current;
  * @package Swe\SpaceSDK\TeamDirectory\Profiles
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class PermanentTokens extends AbstractApi
+final class PermanentTokens extends AbstractApi
 {
     /**
-     * Create a personal token for the given profile that can be used to access the current organization.
+     * Create a personal token for the given profile that can be used to access the current organization
      *
      * Permissions that may be checked: Profile.PermanentTokens.Create
      *
-     * @param string $profile
+     * @param array $profile
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createPermanentToken(string $profile, array $data, array $response = []): array
+    final public function createPermanentToken(array $profile, array $data, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/permanent-tokens';
         $required = [
-            'name' => self::TYPE_STRING,
-            'scope' => self::TYPE_STRING,
+            'name' => Type::String,
+            'scope' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'profile' => $profile,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
-     * Get personal tokens used to access the current organization for the given profile.
+     * Get personal tokens used to access the current organization for the given profile
      *
      * Permissions that may be checked: Profile.PermanentTokens.Edit
      *
-     * @param string $profile
+     * @param array $profile
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getAllPermanentTokens(string $profile, array $request = [], array $response = []): array
+    final public function getAllPermanentTokens(array $profile, array $request = [], array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/permanent-tokens';
         $uriArguments = [
             'profile' => $profile,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
-     * Update an existing personal token used to access the current organization. The name and/or scope of the personal
-     * token can be updated.
+     * Update an existing personal token used to access the current organization. The name and/or scope of the personal token can be updated.
      *
      * Permissions that may be checked: Profile.PermanentTokens.Edit
      *
-     * @param string $profile
+     * @param array $profile
      * @param string $tokenId
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    public function updatePermanentToken(string $profile, string $tokenId, array $data = []): void
+    final public function updatePermanentToken(array $profile, string $tokenId, array $data = []): void
     {
         $uri = 'team-directory/profiles/{profile}/permanent-tokens/{tokenId}';
         $uriArguments = [
@@ -87,16 +87,16 @@ class PermanentTokens extends AbstractApi
     }
 
     /**
-     * Delete a specific personal token used to access the current organization.
+     * Delete a specific personal token used to access the current organization
      *
      * Permissions that may be checked: Profile.PermanentTokens.Edit
      *
-     * @param string $profile
+     * @param array $profile
      * @param string $tokenId
      * @return void
      * @throws GuzzleException
      */
-    public function deletePermanentToken(string $profile, string $tokenId): void
+    final public function deletePermanentToken(array $profile, string $tokenId): void
     {
         $uri = 'team-directory/profiles/{profile}/permanent-tokens/{tokenId}';
         $uriArguments = [
@@ -110,7 +110,7 @@ class PermanentTokens extends AbstractApi
     /**
      * @return Current
      */
-    public function current(): Current
+    final public function current(): Current
     {
         return new Current($this->client);
     }

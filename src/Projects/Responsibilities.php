@@ -8,6 +8,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Projects\Responsibilities\Assignees;
 use Swe\SpaceSDK\Projects\Responsibilities\Scheme;
 use Swe\SpaceSDK\Projects\Responsibilities\Subjects;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Responsibilities
@@ -15,22 +16,23 @@ use Swe\SpaceSDK\Projects\Responsibilities\Subjects;
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Responsibilities extends AbstractApi
+final class Responsibilities extends AbstractApi
 {
     /**
-     * Add a responsibility for a given subject ID.
+     * Add a responsibility for a given subject ID
      *
      * @param array $data
+     * @param array $response
      * @return string
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function addResponsibility(array $data): string
+    final public function addResponsibility(array $data): string
     {
         $uri = 'projects/responsibilities';
         $required = [
-            'subjectId' => self::TYPE_STRING,
-            'summary' => self::TYPE_STRING,
+            'subjectId' => Type::String,
+            'summary' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -38,7 +40,7 @@ class Responsibilities extends AbstractApi
     }
 
     /**
-     * Edit an existing responsibility.
+     * Edit an existing responsibility
      *
      * @param string $responsibilityId
      * @param array $data
@@ -46,11 +48,11 @@ class Responsibilities extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function updateResponsibility(string $responsibilityId, array $data): void
+    final public function updateResponsibility(string $responsibilityId, array $data): void
     {
         $uri = 'projects/responsibilities/{responsibilityId}';
         $required = [
-            'summary' => self::TYPE_STRING,
+            'summary' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -61,13 +63,13 @@ class Responsibilities extends AbstractApi
     }
 
     /**
-     * Delete an existing responsibility.
+     * Delete an existing responsibility
      *
      * @param string $responsibilityId
      * @return void
      * @throws GuzzleException
      */
-    public function deleteResponsibility(string $responsibilityId): void
+    final public function deleteResponsibility(string $responsibilityId): void
     {
         $uri = 'projects/responsibilities/{responsibilityId}';
         $uriArguments = [
@@ -78,26 +80,26 @@ class Responsibilities extends AbstractApi
     }
 
     /**
-     * @return Assignees
+     * @return Subjects
      */
-    public function assignees(): Assignees
+    final public function subjects(): Subjects
     {
-        return new Assignees($this->client);
+        return new Subjects($this->client);
     }
 
     /**
      * @return Scheme
      */
-    public function scheme(): Scheme
+    final public function scheme(): Scheme
     {
         return new Scheme($this->client);
     }
 
     /**
-     * @return Subjects
+     * @return Assignees
      */
-    public function subjects(): Subjects
+    final public function assignees(): Assignees
     {
-        return new Subjects($this->client);
+        return new Assignees($this->client);
     }
 }

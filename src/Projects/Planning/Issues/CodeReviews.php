@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Projects\Planning\Issues;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class CodeReviews
@@ -12,25 +13,25 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Projects\Planning\Issues
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class CodeReviews extends AbstractApi
+final class CodeReviews extends AbstractApi
 {
     /**
-     * Add code review links to an existing issue in a project.
+     * Add code review links to an existing issue in a project
      *
      * Permissions that may be checked: Project.Issues.Edit
      *
-     * @param string $project
-     * @param string $issueId
+     * @param array $project
+     * @param array $issueId
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function addCodeReviewLinks(string $project, string $issueId, array $data): void
+    final public function addCodeReviewLinks(array $project, array $issueId, array $data): void
     {
         $uri = 'projects/{project}/planning/issues/{issueId}/code-reviews';
         $required = [
-            'codeReviewIds' => self::TYPE_ARRAY,
+            'codeReviewIds' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -42,22 +43,22 @@ class CodeReviews extends AbstractApi
     }
 
     /**
-     * Remove code review links from an existing issue in a project.
+     * Remove code review links from an existing issue in a project
      *
      * Permissions that may be checked: Project.Issues.Edit
      *
-     * @param string $project
-     * @param string $issueId
+     * @param array $project
+     * @param array $issueId
      * @param array $request
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function removeCodeReviewLinks(string $project, string $issueId, array $request): void
+    final public function removeCodeReviewLinks(array $project, array $issueId, array $request): void
     {
         $uri = 'projects/{project}/planning/issues/{issueId}/code-reviews';
         $required = [
-            'codeReviewIds' => self::TYPE_ARRAY,
+            'codeReviewIds' => Type::Array,
         ];
         $this->throwIfInvalid($required, $request);
         $uriArguments = [

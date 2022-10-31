@@ -11,12 +11,12 @@ use Swe\SpaceSDK\Administration\UserAgreement;
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Administration extends AbstractApi
+final class Administration extends AbstractApi
 {
     /**
      * @return Support
      */
-    public function support(): Support
+    final public function support(): Support
     {
         return new Support($this->client);
     }
@@ -24,7 +24,7 @@ class Administration extends AbstractApi
     /**
      * @return UserAgreement
      */
-    public function userAgreement(): UserAgreement
+    final public function userAgreement(): UserAgreement
     {
         return new UserAgreement($this->client);
     }

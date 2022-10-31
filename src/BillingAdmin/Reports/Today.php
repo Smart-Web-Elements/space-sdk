@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\BillingAdmin\Reports;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Today
@@ -12,10 +13,10 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\BillingAdmin\Reports
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Today extends AbstractApi
+final class Today extends AbstractApi
 {
     /**
-     * Returns a billing report for today.
+     * Returns a billing report for today
      *
      * Permissions that may be checked: Organization.ViewUsageData
      *
@@ -25,14 +26,14 @@ class Today extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function getBillingReportForToday(array $request, array $response = []): array
+    final public function getBillingReportForToday(array $request, array $response = []): array
     {
         $uri = 'billing-admin/reports/today';
         $required = [
-            'data' => self::TYPE_DATE,
+            'date' => Type::Date,
         ];
         $this->throwIfInvalid($required, $request);
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 }

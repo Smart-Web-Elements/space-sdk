@@ -11,18 +11,18 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\Projects\Planning\Checklists
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class FullChecklistTree extends AbstractApi
+final class FullChecklistTree extends AbstractApi
 {
     /**
-     * Get the content of a checklist in a project.
+     * Get the content of a checklist in a project
      *
-     * @param string $project
+     * @param array $project
      * @param string $checklistId
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getFullChecklistTree(string $project, string $checklistId, array $response = []): array
+    final public function getFullChecklistTree(array $project, string $checklistId, array $response = []): array
     {
         $uri = 'projects/{project}/planning/checklists/{checklistId}/full-checklist-tree';
         $uriArguments = [
@@ -30,6 +30,6 @@ class FullChecklistTree extends AbstractApi
             'checklistId' => $checklistId,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 }

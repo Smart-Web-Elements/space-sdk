@@ -8,6 +8,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\TeamDirectory\Memberships\ManagerCandidates;
 use Swe\SpaceSDK\TeamDirectory\Memberships\RequestRevoke;
 use Swe\SpaceSDK\TeamDirectory\Memberships\Requests;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Memberships
@@ -15,10 +16,10 @@ use Swe\SpaceSDK\TeamDirectory\Memberships\Requests;
  * @package Swe\SpaceSDK\TeamDirectory
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Memberships extends AbstractApi
+final class Memberships extends AbstractApi
 {
     /**
-     * Create a team membership.
+     * Create a team membership
      *
      * Permissions that may be checked: Team.Edit
      *
@@ -28,17 +29,17 @@ class Memberships extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createMembership(array $data, array $response = []): array
+    final public function createMembership(array $data, array $response = []): array
     {
         $uri = 'team-directory/memberships';
         $required = [
-            'member' => self::TYPE_STRING,
-            'teamId' => self::TYPE_STRING,
-            'roleId' => self::TYPE_STRING,
+            'member' => Type::Array,
+            'teamId' => Type::String,
+            'roleId' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
 
-        return $this->client->post($this->buildUrl($uri), $data, $response);
+        return $this->client->post($this->buildUrl($uri), $data, [], $response);
     }
 
     /**
@@ -51,31 +52,31 @@ class Memberships extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getAllMemberships(array $request = [], array $response = []): array
+    final public function getAllMemberships(array $request = [], array $response = []): array
     {
         $uri = 'team-directory/memberships';
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 
     /**
-     * Get a single membership by its identifier.
+     * Get a single membership by its identifier
      *
      * Permissions that may be checked: Profile.Memberships.View
      *
-     * @param string $membershipId
+     * @param array $membershipId
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getMembership(string $membershipId, array $response = []): array
+    final public function getMembership(array $membershipId, array $response = []): array
     {
-        $uri = 'directory/memberships/{membershipId}';
+        $uri = 'team-directory/memberships/{membershipId}';
         $uriArguments = [
             'membershipId' => $membershipId,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
@@ -89,14 +90,14 @@ class Memberships extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function updateMembership(string $membershipId, array $data = [], array $response = []): array
+    final public function updateMembership(string $membershipId, array $data = [], array $response = []): array
     {
         $uri = 'team-directory/memberships/{membershipId}';
         $uriArguments = [
             'membershipId' => $membershipId,
         ];
 
-        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
@@ -109,7 +110,7 @@ class Memberships extends AbstractApi
      * @return void
      * @throws GuzzleException
      */
-    public function deleteMembership(string $membershipId, array $request = []): void
+    final public function deleteMembership(string $membershipId, array $request = []): void
     {
         $uri = 'team-directory/memberships/{membershipId}';
         $uriArguments = [
@@ -120,7 +121,7 @@ class Memberships extends AbstractApi
     }
 
     /**
-     * Revoke a team membership to end at a given date/time.
+     * Revoke a team membership to end at a given date/time
      *
      * Permissions that may be checked: Team.Edit
      *
@@ -129,7 +130,7 @@ class Memberships extends AbstractApi
      * @return void
      * @throws GuzzleException
      */
-    public function revokeMembership(string $membershipId, array $request = []): void
+    final public function revokeMembership(string $membershipId, array $request = []): void
     {
         $uri = 'team-directory/memberships/{membershipId}/revoke';
         $uriArguments = [
@@ -142,24 +143,24 @@ class Memberships extends AbstractApi
     /**
      * @return ManagerCandidates
      */
-    public function managerCandidates(): ManagerCandidates
+    final public function managerCandidates(): ManagerCandidates
     {
         return new ManagerCandidates($this->client);
     }
 
     /**
-     * @return RequestRevoke
+     * @return Requests
      */
-    public function requestRevoke(): RequestRevoke
+    final public function requests(): Requests
     {
-        return new RequestRevoke($this->client);
+        return new Requests($this->client);
     }
 
     /**
-     * @return Requests
+     * @return RequestRevoke
      */
-    public function requests(): Requests
+    final public function requestRevoke(): RequestRevoke
     {
-        return new Requests($this->client);
+        return new RequestRevoke($this->client);
     }
 }

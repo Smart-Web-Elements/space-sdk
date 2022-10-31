@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Chats\Channels\Conversations;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Subject
@@ -12,22 +13,22 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Chats\Channels\Conversations
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Subject extends AbstractApi
+final class Subject extends AbstractApi
 {
     /**
      * Permissions that may be checked: Channel.UpdateChannelInfo
      *
-     * @param string $channel
+     * @param array $channel
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function changeConversationSubject(string $channel, array $data): void
+    final public function changeConversationSubject(array $channel, array $data): void
     {
         $uri = 'chats/channels/conversations/{channel}/subject';
         $required = [
-            'subject' => self::TYPE_STRING,
+            'subject' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

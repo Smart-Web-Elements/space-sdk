@@ -7,6 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\PublicHolidays\Holidays\ProfileHolidays;
 use Swe\SpaceSDK\PublicHolidays\Holidays\RelatedHolidays;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Holidays
@@ -14,10 +15,10 @@ use Swe\SpaceSDK\PublicHolidays\Holidays\RelatedHolidays;
  * @package Swe\SpaceSDK\PublicHolidays
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Holidays extends AbstractApi
+final class Holidays extends AbstractApi
 {
     /**
-     * Add a holiday to a public holiday calendar and specify if it is a working day or not.
+     * Add a holiday to a public holiday calendar and specify if it is a working day or not
      *
      * @param array $data
      * @param array $response
@@ -25,18 +26,18 @@ class Holidays extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createHoliday(array $data, array $response = []): array
+    final public function createHoliday(array $data, array $response = []): array
     {
         $uri = 'public-holidays/holidays';
         $required = [
-            'calendar' => self::TYPE_STRING,
-            'name' => self::TYPE_STRING,
-            'date' => self::TYPE_DATE,
-            'workingDay' => self::TYPE_BOOLEAN,
+            'calendar' => Type::String,
+            'name' => Type::String,
+            'date' => Type::Date,
+            'workingDay' => Type::Boolean,
         ];
         $this->throwIfInvalid($required, $data);
 
-        return $this->client->post($this->buildUrl($uri), $data, $response);
+        return $this->client->post($this->buildUrl($uri), $data, [], $response);
     }
 
     /**
@@ -47,16 +48,15 @@ class Holidays extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getAllHolidays(array $request = [], array $response = []): array
+    final public function getAllHolidays(array $request = [], array $response = []): array
     {
         $uri = 'public-holidays/holidays';
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 
     /**
-     * Update a holiday in a public holiday calendar. Optional parameters will be ignored when not specified and updated
-     * otherwise.
+     * Update a holiday in a public holiday calendar. Optional parameters will be ignored when not specified and updated otherwise.
      *
      * @param string $id
      * @param array $data
@@ -64,22 +64,24 @@ class Holidays extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function updateHoliday(string $id, array $data = [], array $response = []): array
+    final public function updateHoliday(string $id, array $data = [], array $response = []): array
     {
-        $uri = 'public-holidays/holidays/{id}}';
+        $uri = 'public-holidays/holidays/{id}';
         $uriArguments = [
             'id' => $id,
         ];
 
-        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
+     * Delete a holiday from a public holiday calendar
+     *
      * @param string $id
      * @return void
      * @throws GuzzleException
      */
-    public function deleteHoliday(string $id): void
+    final public function deleteHoliday(string $id): void
     {
         $uri = 'public-holidays/holidays/{id}';
         $uriArguments = [
@@ -92,7 +94,7 @@ class Holidays extends AbstractApi
     /**
      * @return ProfileHolidays
      */
-    public function profileHolidays(): ProfileHolidays
+    final public function profileHolidays(): ProfileHolidays
     {
         return new ProfileHolidays($this->client);
     }
@@ -100,7 +102,7 @@ class Holidays extends AbstractApi
     /**
      * @return RelatedHolidays
      */
-    public function relatedHolidays(): RelatedHolidays
+    final public function relatedHolidays(): RelatedHolidays
     {
         return new RelatedHolidays($this->client);
     }

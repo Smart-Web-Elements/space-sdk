@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Calendars;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class AbsenceEvents
@@ -12,7 +13,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Calendars
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class AbsenceEvents extends AbstractApi
+final class AbsenceEvents extends AbstractApi
 {
     /**
      * Get/search absences. Parameters are applied as 'AND' filters.
@@ -23,15 +24,15 @@ class AbsenceEvents extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function getAllAbsenceEvents(array $request, array $response = []): array
+    final public function getAllAbsenceEvents(array $request, array $response = []): array
     {
         $uri = 'calendars/absence-events';
         $required = [
-            'dateFrom' => self::TYPE_DATE,
-            'dateTo' => self::TYPE_DATE,
+            'dateFrom' => Type::Date,
+            'dateTo' => Type::Date,
         ];
         $this->throwIfInvalid($required, $request);
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 }

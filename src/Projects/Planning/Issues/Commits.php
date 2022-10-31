@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Projects\Planning\Issues;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Commits
@@ -12,26 +13,26 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Projects\Planning\Issues
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Commits extends AbstractApi
+final class Commits extends AbstractApi
 {
     /**
-     * Add commit links to an existing issue in a project.
+     * Add commit links to an existing issue in a project
      *
      * Permissions that may be checked: Project.Issues.Edit
      *
-     * @param string $project
-     * @param string $issueId
+     * @param array $project
+     * @param array $issueId
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function addCommitLinks(string $project, string $issueId, array $data): void
+    final public function addCommitLinks(array $project, array $issueId, array $data): void
     {
         $uri = 'projects/{project}/planning/issues/{issueId}/commits';
         $required = [
-            'repository' => self::TYPE_STRING,
-            'commitIds' => self::TYPE_ARRAY,
+            'repository' => Type::String,
+            'commitIds' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -43,23 +44,23 @@ class Commits extends AbstractApi
     }
 
     /**
-     * Remove commit links from an existing issue in a project.
+     * Remove commit links from an existing issue in a project
      *
      * Permissions that may be checked: Project.Issues.Edit
      *
-     * @param string $project
-     * @param string $issueId
+     * @param array $project
+     * @param array $issueId
      * @param array $request
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function removeCommitLinks(string $project, string $issueId, array $request): void
+    final public function removeCommitLinks(array $project, array $issueId, array $request): void
     {
         $uri = 'projects/{project}/planning/issues/{issueId}/commits';
         $required = [
-            'repository' => self::TYPE_STRING,
-            'commitIds' => self::TYPE_ARRAY,
+            'repository' => Type::String,
+            'commitIds' => Type::Array,
         ];
         $this->throwIfInvalid($required, $request);
         $uriArguments = [

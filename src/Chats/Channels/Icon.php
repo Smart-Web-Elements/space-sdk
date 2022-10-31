@@ -11,19 +11,19 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\Chats\Channels
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Icon extends AbstractApi
+final class Icon extends AbstractApi
 {
     /**
-     * Permissions may be checked: Channel.UpdateChannelInfo
+     * Permissions that may be checked: Channel.UpdateChannelInfo
      *
-     * @param string $channel
+     * @param array $channel
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    public function changeChannelIcon(string $channel, array $data = []): void
+    final public function changeChannelIcon(array $channel, array $data = []): void
     {
-        $uri = 'chats/channels/{channel}/icons';
+        $uri = 'chats/channels/{channel}/icon';
         $uriArguments = [
             'channel' => $channel,
         ];

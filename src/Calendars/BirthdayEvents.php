@@ -6,6 +6,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Calendars\BirthdayEvents\Starred;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class BirthdayEvents
@@ -13,7 +14,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Calendars
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class BirthdayEvents extends AbstractApi
+final class BirthdayEvents extends AbstractApi
 {
     /**
      * Get/search birthdays. Parameters are applied as 'AND' filters.
@@ -24,22 +25,22 @@ class BirthdayEvents extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function getAllBirthdayEvents(array $request, array $response = []): array
+    final public function getAllBirthdayEvents(array $request, array $response = []): array
     {
         $uri = 'calendars/birthday-events';
         $required = [
-            'dateFrom' => self::TYPE_DATE,
-            'dateTo' => self::TYPE_DATE,
+            'dateFrom' => Type::Date,
+            'dateTo' => Type::Date,
         ];
         $this->throwIfInvalid($required, $request);
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 
     /**
      * @return Starred
      */
-    public function starred(): Starred
+    final public function starred(): Starred
     {
         return new Starred($this->client);
     }

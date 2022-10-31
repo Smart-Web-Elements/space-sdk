@@ -10,18 +10,17 @@ use GuzzleHttp\Exception\GuzzleException;
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Reactions extends AbstractApi
+final class Reactions extends AbstractApi
 {
     /**
-     * Permissions that may be checked: Channel.AddMessageReactions, Profile.DirectMessages.AddReactions,
-     * Article.Comments.AddReactions, Projects.CodeReview.AddReactions
+     * Permissions that may be checked: Channel.AddMessageReactions, Profile.DirectMessages.AddReactions, Article.Comments.AddReactions, Project.CodeReview.AddReactions
      *
-     * @param string $item
+     * @param array $item
      * @param string $emoji
      * @return void
      * @throws GuzzleException
      */
-    public function addReaction(string $item, string $emoji): void
+    final public function addReaction(array $item, string $emoji): void
     {
         $uri = 'reactions/{item}/{emoji}';
         $uriArguments = [
@@ -29,39 +28,37 @@ class Reactions extends AbstractApi
             'emoji' => $emoji,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments));
+        $this->client->post($this->buildUrl($uri, $uriArguments), []);
     }
 
     /**
-     * Permissions that may be checked: Channel.ViewMessageReactions, Profile.DirectMessages.ViewReactions,
-     * Projects.CodeReview.ViewReactions, Article.Comments.ViewReactions
+     * Permissions that may be checked: Channel.ViewMessageReactions, Profile.DirectMessages.ViewReactions, Project.CodeReview.ViewReactions, Article.Comments.ViewReactions
      *
-     * @param string $item
+     * @param array $item
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function listReactions(string $item, array $response = []): array
+    final public function listReactions(array $item, array $response = []): array
     {
         $uri = 'reactions/{item}';
         $uriArguments = [
             'item' => $item,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
-     * Permissions that may be checked: Channel.ViewMessageReactions, Profile.DirectMessages.ViewReactions,
-     * Projects.CodeReview.ViewReactions, Article.Comments.ViewReactions
+     * Permissions that may be checked: Channel.ViewMessageReactions, Profile.DirectMessages.ViewReactions, Project.CodeReview.ViewReactions, Article.Comments.ViewReactions
      *
-     * @param string $item
+     * @param array $item
      * @param string $emoji
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function listReactedUsersAndApplications(string $item, string $emoji, array $response = []): array
+    final public function listReactedUsersAndApplications(array $item, string $emoji, array $response = []): array
     {
         $uri = 'reactions/{item}/{emoji}';
         $uriArguments = [
@@ -69,19 +66,18 @@ class Reactions extends AbstractApi
             'emoji' => $emoji,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
-     * Permissions that may be checked: Channel.AddMessageReactions, Profile.DirectMessages.AddReactions,
-     * Article.Comments.AddReactions, Projects.CodeReview.AddReactions
+     * Permissions that may be checked: Channel.AddMessageReactions, Profile.DirectMessages.AddReactions, Article.Comments.AddReactions, Project.CodeReview.AddReactions
      *
-     * @param string $item
+     * @param array $item
      * @param string $emoji
      * @return void
      * @throws GuzzleException
      */
-    public function removeReaction(string $item, string $emoji): void
+    final public function removeReaction(array $item, string $emoji): void
     {
         $uri = 'reactions/{item}/{emoji}';
         $uriArguments = [

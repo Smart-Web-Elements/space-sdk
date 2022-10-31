@@ -1,6 +1,6 @@
 <?php
 
-namespace Swe\SpaceSDK\TeamDirectory\Profiles\OAuthConsents;
+namespace Swe\SpaceSDK\TeamDirectory\Profiles\OauthConsents;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
@@ -8,20 +8,20 @@ use Swe\SpaceSDK\AbstractApi;
 /**
  * Class InternalApplications
  *
- * @package Swe\SpaceSDK\TeamDirectory\Profiles\OAuthConsents
+ * @package Swe\SpaceSDK\TeamDirectory\Profiles\OauthConsents
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class InternalApplications extends AbstractApi
+final class InternalApplications extends AbstractApi
 {
     /**
-     * Remove a previously approved internal application.
+     * Remove a previously approved internal application
      *
-     * @param string $owner
+     * @param array $owner
      * @param string $clientId
      * @return void
      * @throws GuzzleException
      */
-    public function deleteInternalApplication(string $owner, string $clientId): void
+    final public function deleteInternalApplication(array $owner, string $clientId): void
     {
         $uri = 'team-directory/profiles/oauth-consents/{owner}/internal-applications/{clientId}';
         $uriArguments = [

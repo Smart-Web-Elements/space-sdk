@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Notifications;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class PersonalSubscriptions
@@ -12,10 +13,10 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Notifications
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class PersonalSubscriptions extends AbstractApi
+final class PersonalSubscriptions extends AbstractApi
 {
     /**
-     * Update personal subscription settings for a member.
+     * Update personal subscription settings for a member
      *
      * Permissions that may be checked: Profile.NotificationSettings.View
      *
@@ -24,14 +25,14 @@ class PersonalSubscriptions extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function updatePersonalSubscriptionSubject(array $data): void
+    final public function updatePersonalSubscriptionSubject(array $data): void
     {
         $uri = 'notifications/personal-subscriptions/update-personal-subscription-subject';
         $required = [
-            'profile' => self::TYPE_STRING,
-            'subjectCode' => self::TYPE_STRING,
-            'feed' => self::TYPE_STRING,
-            'enabled' => self::TYPE_BOOLEAN,
+            'profile' => Type::Array,
+            'subjectCode' => Type::String,
+            'feed' => Type::String,
+            'enabled' => Type::Boolean,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -39,7 +40,7 @@ class PersonalSubscriptions extends AbstractApi
     }
 
     /**
-     * Update personal subscription settings for a member.
+     * Update personal subscription settings for a member
      *
      * Permissions that may be checked: Profile.NotificationSettings.View
      *
@@ -48,14 +49,14 @@ class PersonalSubscriptions extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function updatePersonalSubscriptionTarget(array $data): void
+    final public function updatePersonalSubscriptionTarget(array $data): void
     {
         $uri = 'notifications/personal-subscriptions/update-personal-subscription-target';
         $required = [
-            'profile' => self::TYPE_STRING,
-            'targetCode' => self::TYPE_STRING,
-            'feed' => self::TYPE_STRING,
-            'eventCodes' => self::TYPE_ARRAY,
+            'profile' => Type::Array,
+            'targetCode' => Type::String,
+            'feed' => Type::String,
+            'eventCodes' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -63,21 +64,21 @@ class PersonalSubscriptions extends AbstractApi
     }
 
     /**
-     * List all personal subscription targets.
+     * List all personal subscription targets
      *
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function allPersonalSubscriptionTargets(array $response = []): array
+    final public function allPersonalSubscriptionTargets(array $response = []): array
     {
         $uri = 'notifications/personal-subscriptions/all-personal-subscription-targets';
 
-        return $this->client->get($this->buildUrl($uri), $response);
+        return $this->client->get($this->buildUrl($uri), [], $response);
     }
 
     /**
-     * Get personal subscription settings for a member.
+     * Get personal subscription settings for a member
      *
      * Permissions that may be checked: Profile.NotificationSettings.View
      *
@@ -87,15 +88,15 @@ class PersonalSubscriptions extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function getPersonalSubscriptionSettings(array $request, array $response = []): array
+    final public function getPersonalSubscriptionSettings(array $request, array $response = []): array
     {
         $uri = 'notifications/personal-subscriptions/personal-subscription-settings';
         $required = [
-            'profile' => self::TYPE_STRING,
-            'feed' => self::TYPE_STRING,
+            'profile' => Type::Array,
+            'feed' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
 
-        return $this->client->get($this->buildUrl($uri), $response);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 }

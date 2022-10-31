@@ -11,18 +11,17 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\Applications\Webhooks
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class SigningKey extends AbstractApi
+final class SigningKey extends AbstractApi
 {
-
     /**
      * Permissions that may be checked: Applications.Edit
      *
-     * @param string $application
+     * @param array $application
      * @param string $webhookId
      * @return void
      * @throws GuzzleException
      */
-    public function regenerate(string $application, string $webhookId): void
+    final public function regenerate(array $application, string $webhookId): void
     {
         $uri = 'applications/{application}/webhooks/{webhookId}/signing-key/regenerate';
         $uriArguments = [
@@ -30,18 +29,19 @@ class SigningKey extends AbstractApi
             'webhookId' => $webhookId,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments));
+        $this->client->post($this->buildUrl($uri, $uriArguments), []);
     }
 
     /**
      * Permissions that may be checked: Applications.ViewSecrets
      *
-     * @param string $application
+     * @param array $application
      * @param string $webhookId
+     * @param array $response
      * @return string|null
      * @throws GuzzleException
      */
-    public function getSigningKey(string $application, string $webhookId): ?string
+    final public function getSigningKey(array $application, string $webhookId): ?string
     {
         $uri = 'applications/{application}/webhooks/{webhookId}/signing-key';
         $uriArguments = [
@@ -49,6 +49,6 @@ class SigningKey extends AbstractApi
             'webhookId' => $webhookId,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments))[0];
+        return (string)$this->client->get($this->buildUrl($uri, $uriArguments))[0];
     }
 }

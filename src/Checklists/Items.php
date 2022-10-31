@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Checklists;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Items
@@ -12,49 +13,48 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Checklists
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Items extends AbstractApi
+final class Items extends AbstractApi
 {
     /**
-     * Create plan item as the last element of the top level in a checklist if parent plan item is null, or as the last
-     * child if parent plan item is provided.
+     * Create plan item as the last element of the top level in a checklist if parent plan item is null, or as the last child if parent plan item is provided.
      *
-     * @param string $checklist
+     * @param array $checklist
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createPlanItem(string $checklist, array $data, array $response = []): array
+    final public function createPlanItem(array $checklist, array $data, array $response = []): array
     {
         $uri = 'checklists/{checklist}/items';
         $required = [
-            'itemText' => self::TYPE_STRING,
+            'itemText' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'checklist' => $checklist,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
-     * Move plan item in a checklist.
+     * Move plan item in a checklist
      *
-     * @param string $checklist
-     * @param string $planItem
+     * @param array $checklist
+     * @param array $planItem
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function movePlanItem(string $checklist, string $planItem, array $data, array $response = []): array
+    final public function movePlanItem(array $checklist, array $planItem, array $data, array $response = []): array
     {
         $uri = 'checklists/{checklist}/items/{planItem}/move';
         $required = [
-            'targetParent' => self::TYPE_STRING,
+            'targetParent' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -62,19 +62,19 @@ class Items extends AbstractApi
             'planItem' => $planItem,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
-     * Get plan item by its identifier in a checklist.
+     * Get plan item by its identifier in a checklist
      *
-     * @param string $checklist
-     * @param string $planItem
+     * @param array $checklist
+     * @param array $planItem
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getPlanItem(string $checklist, string $planItem, array $response = []): array
+    final public function getPlanItem(array $checklist, array $planItem, array $response = []): array
     {
         $uri = 'checklists/{checklist}/items/{planItem}';
         $uriArguments = [
@@ -82,39 +82,43 @@ class Items extends AbstractApi
             'planItem' => $planItem,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
-     * Update plan item in a checklist.
+     * Update plan item in a checklist
      *
-     * @param string $checklist
-     * @param string $planItem
+     * @param array $checklist
+     * @param array $planItem
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function updatePlanItem(string $checklist, string $planItem, array $data = [], array $response = []): array
-    {
+    final public function updatePlanItem(
+        array $checklist,
+        array $planItem,
+        array $data = [],
+        array $response = [],
+    ): array {
         $uri = 'checklists/{checklist}/items/{planItem}';
         $uriArguments = [
             'checklist' => $checklist,
             'planItem' => $planItem,
         ];
 
-        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
-     * Delete plan item and its children from a checklist.
+     * Delete plan item and its children from a checklist
      *
-     * @param string $checklist
-     * @param string $planItem
+     * @param array $checklist
+     * @param array $planItem
      * @return void
      * @throws GuzzleException
      */
-    public function deletePlanItem(string $checklist, string $planItem): void
+    final public function deletePlanItem(array $checklist, array $planItem): void
     {
         $uri = 'checklists/{checklist}/items/{planItem}';
         $uriArguments = [

@@ -12,52 +12,55 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Absences extends AbstractApi
+final class Absences extends AbstractApi
 {
     /**
+     * Create an absence for a given profile (member)
+     *
      * Permissions that may be checked: Profile.Absences.Edit
      *
      * @param array $data
      * @param array $response
      * @return array
-     * @throws MissingArgumentException
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function createAbsence(array $data, array $response): array
+    final public function createAbsence(array $data, array $response = []): array
     {
         $uri = 'absences';
         $required = [
-            'member' => self::TYPE_STRING,
-            'reason' => self::TYPE_STRING,
-            'description' => self::TYPE_STRING,
-            'since' => self::TYPE_DATE,
-            'till' => self::TYPE_DATE,
-            'icon' => self::TYPE_STRING,
+            'member' => Type::String,
+            'reason' => Type::String,
+            'description' => Type::String,
+            'since' => Type::Date,
+            'till' => Type::Date,
+            'icon' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
 
-        return $this->client->post($this->buildUrl($uri), $data, $response);
+        return $this->client->post($this->buildUrl($uri), $data, [], $response);
     }
 
     /**
-     * Approve/unapprove an existing absence. Setting approve to true will approve the absence, false will remove the
-     * approval.
+     * Approve/unapprove an existing absence. Setting approve to true will approve the absence, false will remove the approval.
      *
      * Permissions that may be checked: Profile.Absences.Approve
      *
      * @param string $id
-     * @param bool $approve
+     * @param array $data
      * @return void
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function approveAbsence(string $id, bool $approve): void
+    final public function approveAbsence(string $id, array $data): void
     {
         $uri = 'absences/{id}/approve';
+        $required = [
+            'approve' => Type::Boolean,
+        ];
+        $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'id' => $id,
-        ];
-        $data = [
-            'approve' => $approve,
         ];
 
         $this->client->post($this->buildUrl($uri, $uriArguments), $data);
@@ -73,15 +76,15 @@ class Absences extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getAllAbsences(array $request = [], array $response = []): array
+    final public function getAllAbsences(array $request = [], array $response = []): array
     {
         $uri = 'absences';
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 
     /**
-     * Get absences for a given profile ID.
+     * Get absences for a given profile ID
      *
      * Permissions that may be checked: Profile.Absences.View
      *
@@ -90,34 +93,34 @@ class Absences extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getAllAbsencesByMember(string $member, array $response = []): array
+    final public function getAllAbsencesByMember(string $member, array $response = []): array
     {
         $uri = 'absences/member:{member}';
         $uriArguments = [
             'member' => $member,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
-     * Get an absence.
+     * Get an absence
      *
      * Permissions that may be checked: Profile.Absences.View
      *
      * @param string $id
      * @param array $response
-     * @return array
+     * @return array|null
      * @throws GuzzleException
      */
-    public function getAbsence(string $id, array $response = []): array
+    final public function getAbsence(string $id, array $response = []): ?array
     {
         $uri = 'absences/{id}';
         $uriArguments = [
             'id' => $id,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
@@ -132,18 +135,18 @@ class Absences extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function updateAbsence(string $id, array $data, array $response = []): array
+    final public function updateAbsence(string $id, array $data, array $response = []): array
     {
         $uri = 'absences/{id}';
         $required = [
-            'available' => self::TYPE_BOOLEAN,
+            'available' => Type::Boolean,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'id' => $id,
         ];
 
-        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
@@ -152,25 +155,22 @@ class Absences extends AbstractApi
      * Permissions that may be checked: Profile.Absences.Edit, Profile.Absences.EditPast
      *
      * @param string $id
-     * @param bool $delete
+     * @param array $request
      * @return void
      * @throws GuzzleException
      */
-    public function deleteAbsence(string $id, bool $delete = true): void
+    final public function deleteAbsence(string $id, array $request = []): void
     {
         $uri = 'absences/{id}';
         $uriArguments = [
             'id' => $id,
-        ];
-        $request = [
-            'delete' => $delete,
         ];
 
         $this->client->delete($this->buildUrl($uri, $uriArguments), $request);
     }
 
     /**
-     * Delete approval for a given absence.
+     * Delete approval for a given absence
      *
      * Permissions that may be checked: Profile.Absences.Approve
      *
@@ -178,7 +178,7 @@ class Absences extends AbstractApi
      * @return void
      * @throws GuzzleException
      */
-    public function deleteAbsenceApproval(string $id): void
+    final public function deleteAbsenceApproval(string $id): void
     {
         $uri = 'absences/{id}/delete-approval';
         $uriArguments = [
@@ -191,7 +191,7 @@ class Absences extends AbstractApi
     /**
      * @return AbsenceReasons
      */
-    public function absenceReasons(): AbsenceReasons
+    final public function absenceReasons(): AbsenceReasons
     {
         return new AbsenceReasons($this->client);
     }

@@ -11,39 +11,40 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\Applications
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class SigningKey extends AbstractApi
+final class SigningKey extends AbstractApi
 {
     /**
      * Permissions that may be checked: Applications.Edit
      *
-     * @param string $application
+     * @param array $application
      * @return void
      * @throws GuzzleException
      */
-    public function regenerateSigningKey(string $application): void
+    final public function regenerateSigningKey(array $application): void
     {
         $uri = 'applications/{application}/signing-key/regenerate';
         $uriArguments = [
             'application' => $application,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments));
+        $this->client->post($this->buildUrl($uri, $uriArguments), []);
     }
 
     /**
      * Permissions that may be checked: Applications.ViewSecrets
      *
-     * @param string $application
+     * @param array $application
+     * @param array $response
      * @return string|null
      * @throws GuzzleException
      */
-    public function getSigningKey(string $application): ?string
+    final public function getSigningKey(array $application): ?string
     {
         $uri = 'applications/{application}/signing-key';
         $uriArguments = [
             'application' => $application,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments))[0];
+        return (string)$this->client->get($this->buildUrl($uri, $uriArguments))[0];
     }
 }

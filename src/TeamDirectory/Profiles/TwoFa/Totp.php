@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\TeamDirectory\Profiles\TwoFa;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Totp
@@ -12,47 +13,44 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\TeamDirectory\Profiles\TwoFa
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Totp extends AbstractApi
+final class Totp extends AbstractApi
 {
     /**
-     * Set up two-factor authentication using TOTP (Time-based One-time Password) for a given profile ID. The response
-     * will return a QR code (base64 encoded) that can be scanned with an app to setup two-factor authentication.
-     * The code that the app generates has to be confirmed in Space to enable TOTP.
+     * Set up two-factor authentication using TOTP (Time-based One-time Password) for a given profile ID. The response will return a QR code (base64 encoded) that can be scanned with an app to setup two-factor authentication. The code that the app generates has to be confirmed in Space to enable TOTP.
      *
      * Permissions that may be checked: Profile.TwoFactorAuthentication.Create
      *
-     * @param string $profile
+     * @param array $profile
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function SetUpTotpTwoFactorAuthentication(string $profile, array $response = []): array
+    final public function setUpTotpTwoFactorAuthentication(array $profile, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/2-fa/totp';
         $uriArguments = [
             'profile' => $profile,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), [], $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), [], [], $response);
     }
 
     /**
-     * Confirm two-factor authentication for a given profile ID using a TOTP (Time-based One-time Password) code from an
-     * app.
+     * Confirm two-factor authentication for a given profile ID using a TOTP (Time-based One-time Password) code from an app.
      *
      * Permissions that may be checked: Profile.TwoFactorAuthentication.Create
      *
-     * @param string $profile
+     * @param array $profile
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function confirmTotpTwoFactorAuthenticationSettings(string $profile, array $data): void
+    final public function confirmTotpTwoFactorAuthenticationSettings(array $profile, array $data): void
     {
         $uri = 'team-directory/profiles/{profile}/2-fa/totp/confirm';
         $required = [
-            'code' => self::TYPE_INTEGER,
+            'code' => Type::Integer,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -63,41 +61,40 @@ class Totp extends AbstractApi
     }
 
     /**
-     * Enable/disable two-factor authentication settings for a given profile ID.
+     * Enable/disable two-factor authentication settings for a given profile ID
      *
      * Permissions that may be checked: Profile.TwoFactorAuthentication.Edit
      *
-     * @param string $profile
+     * @param array $profile
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function updateTotpTwoFactorAuthenticationSettings(string $profile, array $data): void
+    final public function updateTotpTwoFactorAuthenticationSettings(array $profile, array $data): void
     {
         $uri = 'team-directory/profiles/{profile}/2-fa/totp';
         $required = [
-            'enabled' => self::TYPE_BOOLEAN,
+            'enabled' => Type::Boolean,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'profile' => $profile,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments), $data);
+        $this->client->patch($this->buildUrl($uri, $uriArguments), $data);
     }
 
     /**
-     * Remove two-factor authentication settings for a given profile ID. Previously generated TOTP (Time-based One-time
-     * Password) are rendered invalid.
+     * Remove two-factor authentication settings for a given profile ID. Previously generated TOTP (Time-based One-time Password) are rendered invalid.
      *
      * Permissions that may be checked: Profile.TwoFactorAuthentication.Edit
      *
-     * @param string $profile
+     * @param array $profile
      * @return void
      * @throws GuzzleException
      */
-    public function deleteCurrentTotpTwoFactorAuthenticationSettings(string $profile): void
+    final public function deleteCurrentTotpTwoFactorAuthenticationSettings(array $profile): void
     {
         $uri = 'team-directory/profiles/{profile}/2-fa/totp';
         $uriArguments = [

@@ -13,12 +13,12 @@ use Swe\SpaceSDK\TeamDirectory\Profiles\TwoFa\Totp;
  * @package Swe\SpaceSDK\TeamDirectory\Profiles
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class TwoFa extends AbstractApi
+final class TwoFa extends AbstractApi
 {
     /**
      * @return Requirements
      */
-    public function requirements(): Requirements
+    final public function requirements(): Requirements
     {
         return new Requirements($this->client);
     }
@@ -26,7 +26,7 @@ class TwoFa extends AbstractApi
     /**
      * @return Status
      */
-    public function status(): Status
+    final public function status(): Status
     {
         return new Status($this->client);
     }
@@ -34,7 +34,7 @@ class TwoFa extends AbstractApi
     /**
      * @return Totp
      */
-    public function totp(): Totp
+    final public function totp(): Totp
     {
         return new Totp($this->client);
     }

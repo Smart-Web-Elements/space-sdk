@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\TeamDirectory;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class MemberLocations
@@ -12,10 +13,10 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\TeamDirectory
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class MemberLocations extends AbstractApi
+final class MemberLocations extends AbstractApi
 {
     /**
-     * Add a member location, optionally from/until a given date.
+     * Add a member location, optionally from/until a given date
      *
      * Permissions that may be checked: Profile.Locations.Edit
      *
@@ -25,16 +26,16 @@ class MemberLocations extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createMemberLocation(array $data, array $response = []): array
+    final public function createMemberLocation(array $data, array $response = []): array
     {
         $uri = 'team-directory/member-locations';
         $required = [
-            'member' => self::TYPE_STRING,
-            'location' => self::TYPE_STRING,
+            'member' => Type::Array,
+            'location' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
 
-        return $this->client->post($this->buildUrl($uri), $data, $response);
+        return $this->client->post($this->buildUrl($uri), $data, [], $response);
     }
 
     /**
@@ -47,15 +48,15 @@ class MemberLocations extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getAllMemberLocations(array $request = [], array $response = []): array
+    final public function getAllMemberLocations(array $request = [], array $response = []): array
     {
         $uri = 'team-directory/member-locations';
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 
     /**
-     * Get a member location by its ID.
+     * Get a member location by its ID
      *
      * Permissions that may be checked: Profile.Locations.View
      *
@@ -64,14 +65,14 @@ class MemberLocations extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getMemberLocation(string $memberLocationId, array $response = []): array
+    final public function getMemberLocation(string $memberLocationId, array $response = []): array
     {
         $uri = 'team-directory/member-locations/{memberLocationId}';
         $uriArguments = [
             'memberLocationId' => $memberLocationId,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
@@ -85,33 +86,29 @@ class MemberLocations extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function updateMemberLocation(string $memberLocationId, array $data = [], array $response = []): array
+    final public function updateMemberLocation(string $memberLocationId, array $data = [], array $response = []): array
     {
         $uri = 'team-directory/member-locations/{memberLocationId}';
         $uriArguments = [
             'memberLocationId' => $memberLocationId,
         ];
 
-        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
-     * Archive/unarchive a member location. Setting delete to true will archive the member location, false will restore
-     * it.
+     * Archive/unarchive a member location. Setting delete to true will archive the member location, false will restore it.
      *
      * Permissions that may be checked: Profile.Locations.Edit
      *
      * @param string $memberLocationId
-     * @param bool $delete
+     * @param array $request
      * @return void
      * @throws GuzzleException
      */
-    public function deleteMemberLocation(string $memberLocationId, bool $delete): void
+    final public function deleteMemberLocation(string $memberLocationId, array $request = []): void
     {
         $uri = 'team-directory/member-locations/{memberLocationId}';
-        $request = [
-            'delete' => $delete,
-        ];
         $uriArguments = [
             'memberLocationId' => $memberLocationId,
         ];

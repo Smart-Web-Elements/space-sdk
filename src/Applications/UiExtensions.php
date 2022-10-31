@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Applications;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class UiExtensions
@@ -12,53 +13,50 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Applications
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class UiExtensions extends AbstractApi
+final class UiExtensions extends AbstractApi
 {
     /**
-     * Get UI extensions supported by the application in specified context. Omit contextIdentifier to get UI extensions
-     * in all contexts.
+     * Get UI extensions supported by the application in specified context. Omit contextIdentifier to get UI extensions in all contexts
      *
      * Permissions that may be checked: Applications.View
      *
-     * @param string $application
-     * @param array $data
+     * @param array $application
+     * @param array $request
      * @param array $response
-     * @return array
+     * @return array|null
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function getUiExtensions(string $application, array $data, array $response = []): array
+    final public function getUiExtensions(array $application, array $request, array $response = []): ?array
     {
         $uri = 'applications/{application}/ui-extensions';
         $required = [
-            'contextIdentifier' => self::TYPE_STRING,
+            'contextIdentifier' => Type::Array,
         ];
-        $this->throwIfInvalid($required, $data);
+        $this->throwIfInvalid($required, $request);
         $uriArguments = [
             'application' => $application,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
-     * Disable application UI for everybody in specified context. Requires Superadmin right for global context,
-     * AdminProject for project context, AdminChannel for channel context. Users will still be able to enable
-     * application UI individually.
+     * Disable application UI for everybody in specified context. Requires Superadmin right for global context, AdminProject for project context, AdminChannel for channel context. Users will still be able to enable application UI individually.
      *
-     * Permissions that may be checked: Applications.View, Superadmin, Projects.Admin, Channel.Admin
+     * Permissions that may be checked: Applications.View, Superadmin, Project.Admin, Channel.Admin
      *
-     * @param string $application
+     * @param array $application
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function disableApplicationUi(string $application, array $data): void
+    final public function disableApplicationUi(array $application, array $data): void
     {
         $uri = 'applications/{application}/ui-extensions/disable-for-everybody';
         $required = [
-            'contextIdentifier' => self::TYPE_STRING,
+            'contextIdentifier' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -69,21 +67,21 @@ class UiExtensions extends AbstractApi
     }
 
     /**
-     * Disable application UI in specified context for the current user.
+     * Disable application UI in specified context for the current user
      *
      * Permissions that may be checked: Applications.View
      *
-     * @param string $application
+     * @param array $application
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function disableApplicationUiForMe(string $application, array $data): void
+    final public function disableApplicationUiForMe(array $application, array $data): void
     {
         $uri = 'applications/{application}/ui-extensions/disable-for-me';
         $required = [
-            'contextIdentifier' => self::TYPE_STRING,
+            'contextIdentifier' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -94,23 +92,21 @@ class UiExtensions extends AbstractApi
     }
 
     /**
-     * Enable application UI for everybody in specified context. Requires Superadmin right for global context,
-     * AdminProject for project context, AdminChannel for channel context. Users will still be able to disable
-     * application UI individually.
+     * Enable application UI for everybody in specified context. Requires Superadmin right for global context, AdminProject for project context, AdminChannel for channel context. Users will still be able to disable application UI individually.
      *
-     * Permissions that may be checked: Applications.View, Superadmin, Projects.Admin, Channel.Admin
+     * Permissions that may be checked: Applications.View, Superadmin, Project.Admin, Channel.Admin
      *
-     * @param string $application
+     * @param array $application
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function enableApplicationUi(string $application, array $data): void
+    final public function enableApplicationUi(array $application, array $data): void
     {
         $uri = 'applications/{application}/ui-extensions/enable-for-everybody';
         $required = [
-            'contextIdentifier' => self::TYPE_STRING,
+            'contextIdentifier' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -121,21 +117,21 @@ class UiExtensions extends AbstractApi
     }
 
     /**
-     * Enable application UI in specified context for the current user.
+     * Enable application UI in specified context for the current user
      *
      * Permissions that may be checked: Applications.View
      *
-     * @param string $application
+     * @param array $application
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function enableApplicationUiForMe(string $application, array $data): void
+    final public function enableApplicationUiForMe(array $application, array $data): void
     {
         $uri = 'applications/{application}/ui-extensions/enable-for-me';
         $required = [
-            'contextIdentifier' => self::TYPE_STRING,
+            'contextIdentifier' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

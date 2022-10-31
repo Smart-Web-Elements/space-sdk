@@ -3,6 +3,7 @@
 namespace Swe\SpaceSDK;
 
 use GuzzleHttp\Exception\GuzzleException;
+use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class ToDoItems
@@ -10,28 +11,28 @@ use GuzzleHttp\Exception\GuzzleException;
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class ToDoItems extends AbstractApi
+final class ToDoItems extends AbstractApi
 {
     /**
-     * Create a new To-Do item, with an optional due date.
+     * Create a new To-Do item, with an optional due date
      *
      * Permissions that may be checked: Todo.Task.Edit
      *
      * @param array $data
      * @param array $response
      * @return array
-     * @throws Exception\MissingArgumentException
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function createToDoItem(array $data, array $response = []): array
+    final public function createToDoItem(array $data, array $response = []): array
     {
         $uri = 'todo';
         $required = [
-            'text' => self::TYPE_STRING,
+            'text' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
 
-        return $this->client->post($this->buildUrl($uri), $data, $response);
+        return $this->client->post($this->buildUrl($uri), $data, [], $response);
     }
 
     /**
@@ -44,11 +45,11 @@ class ToDoItems extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getAllToDoItems(array $request = [], array $response = []): array
+    final public function getAllToDoItems(array $request = [], array $response = []): array
     {
         $uri = 'todo';
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 
     /**
@@ -61,7 +62,7 @@ class ToDoItems extends AbstractApi
      * @return void
      * @throws GuzzleException
      */
-    public function updateToDoItem(string $id, array $data): void
+    final public function updateToDoItem(string $id, array $data = []): void
     {
         $uri = 'todo/{id}';
         $uriArguments = [
@@ -72,7 +73,7 @@ class ToDoItems extends AbstractApi
     }
 
     /**
-     * Delete an existing To-Do item.
+     * Delete an existing To-Do item
      *
      * Permissions that may be checked: Todo.Task.Edit
      *
@@ -80,7 +81,7 @@ class ToDoItems extends AbstractApi
      * @return void
      * @throws GuzzleException
      */
-    public function deleteToDoItem(string $id): void
+    final public function deleteToDoItem(string $id): void
     {
         $uri = 'todo/{id}';
         $uriArguments = [

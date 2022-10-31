@@ -11,20 +11,20 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\Projects\Planning\Issues
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Tags extends AbstractApi
+final class Tags extends AbstractApi
 {
     /**
-     * Add an existing tag to an issue in a project.
+     * Add an existing tag to an issue in a project
      *
      * Permissions that may be checked: Project.Issues.Edit
      *
-     * @param string $project
-     * @param string $issueId
+     * @param array $project
+     * @param array $issueId
      * @param string $tagId
      * @return void
      * @throws GuzzleException
      */
-    public function addIssueTag(string $project, string $issueId, string $tagId): void
+    final public function addIssueTag(array $project, array $issueId, string $tagId): void
     {
         $uri = 'projects/{project}/planning/issues/{issueId}/tags/{tagId}';
         $uriArguments = [
@@ -33,21 +33,21 @@ class Tags extends AbstractApi
             'tagId' => $tagId,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments));
+        $this->client->post($this->buildUrl($uri, $uriArguments), []);
     }
 
     /**
-     * Remove an existing tag from an issue in a project.
+     * Remove an existing tag from an issue in a project
      *
      * Permissions that may be checked: Project.Issues.Edit
      *
-     * @param string $project
-     * @param string $issueId
+     * @param array $project
+     * @param array $issueId
      * @param string $tagId
      * @return void
      * @throws GuzzleException
      */
-    public function removeIssueTag(string $project, string $issueId, string $tagId): void
+    final public function removeIssueTag(array $project, array $issueId, string $tagId): void
     {
         $uri = 'projects/{project}/planning/issues/{issueId}/tags/{tagId}';
         $uriArguments = [

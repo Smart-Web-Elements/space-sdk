@@ -11,22 +11,22 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Emojis extends AbstractApi
+final class Emojis extends AbstractApi
 {
     /**
-     * Add custom emoji.
+     * Add custom emoji
      *
      * @param array $data
      * @return void
-     * @throws MissingArgumentException
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function addEmoji(array $data): void
+    final public function addEmoji(array $data): void
     {
         $uri = 'emojis/add';
         $required = [
-            'emoji' => self::TYPE_STRING,
-            'attachmentId' => self::TYPE_STRING,
+            'emoji' => Type::String,
+            'attachmentId' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -34,35 +34,18 @@ class Emojis extends AbstractApi
     }
 
     /**
-     * Delete an emoji by name.
-     *
-     * @param string $emoji
-     * @return void
-     * @throws GuzzleException
-     */
-    public function deleteEmoji(string $emoji): void
-    {
-        $uri = 'emojis/delete';
-        $data = [
-            'emoji' => $emoji,
-        ];
-
-        $this->client->post($this->buildUrl($uri), $data);
-    }
-
-    /**
-     * Record emojis usage and update frequently used list.
+     * Delete an emoji by name
      *
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function recordEmojisUsage(array $data): void
+    final public function deleteEmoji(array $data): void
     {
-        $uri = 'emojis/record-usage';
+        $uri = 'emojis/delete';
         $required = [
-            'emojis' => self::TYPE_ARRAY,
+            'emoji' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -70,37 +53,60 @@ class Emojis extends AbstractApi
     }
 
     /**
-     * Check whether a given emoji name exists.
+     * Record emojis usage and update frequently used list
      *
-     * @param string $emoji
-     * @return bool
+     * @param array $data
+     * @return void
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function checkIfEmojiExists(string $emoji): bool
+    final public function recordEmojisUsage(array $data): void
     {
-        $uri = 'emojis/exists';
-        $request = [
-            'emoji' => $emoji,
+        $uri = 'emojis/record-usage';
+        $required = [
+            'emojis' => Type::Array,
         ];
+        $this->throwIfInvalid($required, $data);
 
-        return (bool)$this->client->get($this->buildUrl($uri), [], $request)[0];
+        $this->client->post($this->buildUrl($uri), $data);
     }
 
     /**
-     * List frequently used emojis.
+     * Check whether a given emoji name exists
      *
+     * @param array $request
+     * @param array $response
+     * @return bool
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    final public function checkIfEmojiExists(array $request): bool
+    {
+        $uri = 'emojis/exists';
+        $required = [
+            'emoji' => Type::String,
+        ];
+        $this->throwIfInvalid($required, $request);
+
+        return (bool)$this->client->get($this->buildUrl($uri), $request)[0];
+    }
+
+    /**
+     * List frequently used emojis
+     *
+     * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getFrequentlyUsedEmojis(): array
+    final public function getFrequentlyUsedEmojis(array $response = []): array
     {
         $uri = 'emojis/frequently-used';
 
-        return $this->client->get($this->buildUrl($uri));
+        return $this->client->get($this->buildUrl($uri), [], $response);
     }
 
     /**
-     * Search for emojis.
+     * Search for emoji
      *
      * @param array $request
      * @param array $response
@@ -108,14 +114,14 @@ class Emojis extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function searchEmoji(array $request, array $response = []): array
+    final public function searchEmoji(array $request, array $response = []): array
     {
         $uri = 'emojis/search';
         $required = [
-            'query' => self::TYPE_STRING,
+            'query' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 }

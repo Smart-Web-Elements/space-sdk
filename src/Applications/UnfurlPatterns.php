@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Applications;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class UnfurlPatterns
@@ -12,25 +13,25 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Applications
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class UnfurlPatterns extends AbstractApi
+final class UnfurlPatterns extends AbstractApi
 {
     /**
-     * Authorize patterns for unfurling by the application.
+     * Authorize patterns for unfurling by the application
      *
      * Permissions that may be checked: Unfurl.App.Authorize
      *
-     * @param string $application
+     * @param array $application
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function authorizeUnfurledPatterns(string $application, array $data): void
+    final public function authorizeUnfurledPatterns(array $application, array $data): void
     {
         $uri = 'applications/{application}/unfurl-patterns/authorize';
         $required = [
-            'patterns' => self::TYPE_ARRAY,
-            'approve' => self::TYPE_BOOLEAN,
+            'patterns' => Type::Array,
+            'approve' => Type::Boolean,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -41,22 +42,22 @@ class UnfurlPatterns extends AbstractApi
     }
 
     /**
-     * List patterns for unfurling by the application.
+     * List patterns for unfurling by the application
      *
      * Permissions that may be checked: Applications.View
      *
-     * @param string $application
+     * @param array $application
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getAllUnfurlPatterns(string $application, array $response = []): array
+    final public function getAllUnfurlPatterns(array $application, array $response = []): array
     {
         $uri = 'applications/{application}/unfurl-patterns';
         $uriArguments = [
             'application' => $application,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 }

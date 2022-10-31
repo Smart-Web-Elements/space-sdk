@@ -3,6 +3,7 @@
 namespace Swe\SpaceSDK;
 
 use GuzzleHttp\Exception\GuzzleException;
+use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Organization\Domains;
 use Swe\SpaceSDK\Organization\JetSales;
 
@@ -12,32 +13,32 @@ use Swe\SpaceSDK\Organization\JetSales;
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Organization extends AbstractApi
+final class Organization extends AbstractApi
 {
     /**
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getOrganization(array $response = []): array
+    final public function getOrganization(array $response = []): array
     {
         $uri = 'organization';
 
-        return $this->client->get($this->buildUrl($uri), $response);
+        return $this->client->get($this->buildUrl($uri), [], $response);
     }
 
     /**
      * @param array $data
      * @return void
-     * @throws Exception\MissingArgumentException
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function updateOrganization(array $data): void
+    final public function updateOrganization(array $data): void
     {
         $uri = 'organization';
         $required = [
             'orgData' => [
-                'name' => self::TYPE_STRING,
+                'name' => Type::String,
             ],
         ];
         $this->throwIfInvalid($required, $data);
@@ -48,7 +49,7 @@ class Organization extends AbstractApi
     /**
      * @return Domains
      */
-    public function domains(): Domains
+    final public function domains(): Domains
     {
         return new Domains($this->client);
     }
@@ -56,7 +57,7 @@ class Organization extends AbstractApi
     /**
      * @return JetSales
      */
-    public function jetSales(): JetSales
+    final public function jetSales(): JetSales
     {
         return new JetSales($this->client);
     }

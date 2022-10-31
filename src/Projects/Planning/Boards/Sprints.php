@@ -7,18 +7,18 @@ use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Projects\Planning\Boards\Sprints\Archive;
 use Swe\SpaceSDK\Projects\Planning\Boards\Sprints\Issues;
+use Swe\SpaceSDK\Type;
 
 /**
- * Class Sprint
+ * Class Sprints
  *
  * @package Swe\SpaceSDK\Projects\Planning\Boards
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Sprints extends AbstractApi
+final class Sprints extends AbstractApi
 {
     /**
-     * Create a new sprint in a board. This operation can be performed by board owners or other members who are granted
-     * permission to manage boards in a project.
+     * Create a new sprint in a board. This operation can be performed by board owners or other members who are granted permission to manage boards in a project.
      *
      * Permissions that may be checked: Project.Planning.Boards.Manage
      *
@@ -28,37 +28,36 @@ class Sprints extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createSprint(array $data, array $response = []): array
+    final public function createSprint(array $data, array $response = []): array
     {
         $uri = 'projects/planning/boards/sprints';
         $required = [
-            'board' => self::TYPE_STRING,
-            'name' => self::TYPE_STRING,
-            'from' => self::TYPE_DATE,
-            'to' => self::TYPE_DATE,
+            'board' => Type::Array,
+            'name' => Type::String,
+            'from' => Type::Date,
+            'to' => Type::Date,
         ];
         $this->throwIfInvalid($required, $data);
 
-        return $this->client->post($this->buildUrl($uri), $data, $response);
+        return $this->client->post($this->buildUrl($uri), $data, [], $response);
     }
 
     /**
-     * Launch a planned sprint. This operation can be performed by board owners or other members who are granted
-     * permission to manage boards in a project.
+     * Launch a planned sprint. This operation can be performed by board owners or other members who are granted permission to manage boards in a project.
      *
      * Permissions that may be checked: Project.Planning.Boards.Manage
      *
-     * @param string $sprint
+     * @param array $sprint
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function launchPlannedSprint(string $sprint, array $data): void
+    final public function launchPlannedSprint(array $sprint, array $data): void
     {
         $uri = 'projects/planning/boards/sprints/{sprint}/launch';
         $required = [
-            'moveUnresolvedIssuesFromCurrentSprint' => self::TYPE_BOOLEAN,
+            'moveUnresolvedIssuesFromCurrentSprint' => Type::Boolean,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -69,17 +68,16 @@ class Sprints extends AbstractApi
     }
 
     /**
-     * Update an existing sprint in a board. This operation can be performed by board owners or other members who are
-     * granted permission to manage boards in a project.
+     * Update an existing sprint in a board. This operation can be performed by board owners or other members who are granted permission to manage boards in a project.
      *
      * Permissions that may be checked: Project.Planning.Boards.Manage
      *
-     * @param string $sprint
+     * @param array $sprint
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    public function updateSprint(string $sprint, array $data = []): void
+    final public function updateSprint(array $sprint, array $data = []): void
     {
         $uri = 'projects/planning/boards/sprints/{sprint}';
         $uriArguments = [
@@ -90,30 +88,9 @@ class Sprints extends AbstractApi
     }
 
     /**
-     * Search existing sprints in a project.
-     *
-     * Permissions that may be checked: Project.Planning.Boards.View
-     *
-     * @param string $project
-     * @param array $request
-     * @param array $response
-     * @return array
-     * @throws GuzzleException
-     */
-    public function getAllSprints(string $project, array $request = [], array $response = []): array
-    {
-        $uri = 'projects/{project}/planning/boards/sprints';
-        $uriArguments = [
-            'project' => $project,
-        ];
-
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
-    }
-
-    /**
      * @return Archive
      */
-    public function archive(): Archive
+    final public function archive(): Archive
     {
         return new Archive($this->client);
     }
@@ -121,8 +98,29 @@ class Sprints extends AbstractApi
     /**
      * @return Issues
      */
-    public function issues(): Issues
+    final public function issues(): Issues
     {
         return new Issues($this->client);
+    }
+
+    /**
+     * Search existing sprints in a project
+     *
+     * Permissions that may be checked: Project.Planning.Boards.View
+     *
+     * @param array $project
+     * @param array $request
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     */
+    final public function getAllSprints(array $project, array $request = [], array $response = []): array
+    {
+        $uri = 'projects/{project}/planning/boards/sprints';
+        $uriArguments = [
+            'project' => $project,
+        ];
+
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 }

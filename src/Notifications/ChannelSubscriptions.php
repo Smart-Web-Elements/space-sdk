@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Notifications;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class ChannelSubscriptions
@@ -12,10 +13,10 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Notifications
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class ChannelSubscriptions extends AbstractApi
+final class ChannelSubscriptions extends AbstractApi
 {
     /**
-     * Add subscription for a channel.
+     * Add subscription for a channel
      *
      * Permissions that may be checked: Channel.UpdateChannelSubscriptions
      *
@@ -25,25 +26,25 @@ class ChannelSubscriptions extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createChannelSubscription(array $data, array $response = []): array
+    final public function createChannelSubscription(array $data, array $response = []): array
     {
         $uri = 'notifications/channel-subscriptions';
         $required = [
-            'channel' => self::TYPE_STRING,
-            'name' => self::TYPE_STRING,
+            'channel' => Type::Array,
+            'name' => Type::String,
             'subscription' => [
-                'subjectCode' => self::TYPE_STRING,
-                'filters' => self::TYPE_ARRAY,
-                'eventTypeCodes' => self::TYPE_ARRAY,
+                'subjectCode' => Type::String,
+                'filters' => Type::Array,
+                'eventTypeCodes' => Type::Array,
             ],
         ];
         $this->throwIfInvalid($required, $data);
 
-        return $this->client->post($this->buildUrl($uri), $data, $response);
+        return $this->client->post($this->buildUrl($uri), $data, [], $response);
     }
 
     /**
-     * Ensures that all permissions required for this subscription are requested in the corresponding permission role.
+     * Ensures that all permissions required for this subscription are requested in the corresponding permission role
      *
      * Permissions that may be checked: Channel.UpdateChannelSubscriptions
      *
@@ -51,18 +52,18 @@ class ChannelSubscriptions extends AbstractApi
      * @return void
      * @throws GuzzleException
      */
-    public function requestMissingRights(string $id): void
+    final public function requestMissingRights(string $id): void
     {
         $uri = 'notifications/channel-subscriptions/{id}/request-missing-rights';
         $uriArguments = [
             'id' => $id,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments));
+        $this->client->post($this->buildUrl($uri, $uriArguments), []);
     }
 
     /**
-     * List subscriptions for a channel.
+     * List subscriptions for a channel
      *
      * Permissions that may be checked: Channel.ViewChannel
      *
@@ -72,19 +73,19 @@ class ChannelSubscriptions extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function getAllChannelSubscriptions(array $request, array $response = []): array
+    final public function getAllChannelSubscriptions(array $request, array $response = []): array
     {
         $uri = 'notifications/channel-subscriptions';
         $required = [
-            'channel' => self::TYPE_STRING,
+            'channel' => Type::Array,
         ];
         $this->throwIfInvalid($required, $request);
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 
     /**
-     * Update subscription for a channel.
+     * Update subscription for a channel
      *
      * Permissions that may be checked: Channel.UpdateChannelSubscriptions
      *
@@ -94,18 +95,18 @@ class ChannelSubscriptions extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function updateChannelSubscription(string $id, array $data = [], array $response = []): array
+    final public function updateChannelSubscription(string $id, array $data = [], array $response = []): array
     {
         $uri = 'notifications/channel-subscriptions/{id}';
         $uriArguments = [
             'id' => $id,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
-     * Delete channel subscription.
+     * Delete channel subscription
      *
      * Permissions that may be checked: Channel.UpdateChannelSubscriptions
      *
@@ -113,7 +114,7 @@ class ChannelSubscriptions extends AbstractApi
      * @return void
      * @throws GuzzleException
      */
-    public function deleteChannelSubscription(string $id): void
+    final public function deleteChannelSubscription(string $id): void
     {
         $uri = 'notifications/channel-subscriptions/{id}';
         $uriArguments = [

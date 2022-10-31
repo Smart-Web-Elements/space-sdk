@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Projects\Documents;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Move
@@ -12,10 +13,10 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Projects\Documents
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Move extends AbstractApi
+final class Move extends AbstractApi
 {
     /**
-     * @param string $project
+     * @param array $project
      * @param string $documentId
      * @param array $data
      * @param array $response
@@ -23,11 +24,11 @@ class Move extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function moveDocument(string $project, string $documentId, array $data, array $response = []): array
+    final public function moveDocument(array $project, string $documentId, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/documents/{documentId}/move';
         $required = [
-            'folder' => self::TYPE_STRING,
+            'folder' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -35,6 +36,6 @@ class Move extends AbstractApi
             'documentId' => $documentId,
         ];
 
-        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 }

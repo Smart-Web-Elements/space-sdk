@@ -11,22 +11,22 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Unfurls extends AbstractApi
+final class Unfurls extends AbstractApi
 {
     /**
-     * Block link unfurling.
+     * Block link unfurling
      *
      * @param array $data
      * @return void
-     * @throws MissingArgumentException
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function blockUnfurl(array $data): void
+    final public function blockUnfurl(array $data): void
     {
         $uri = 'unfurls/block-unfurl';
         $required = [
-            'link' => self::TYPE_STRING,
-            'wholeHost' => self::TYPE_BOOLEAN,
+            'link' => Type::String,
+            'wholeHost' => Type::Boolean,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -34,19 +34,19 @@ class Unfurls extends AbstractApi
     }
 
     /**
-     * Block link unfurling for organization.
+     * Block link unfurling for organization
      *
      * @param array $data
      * @return void
-     * @throws MissingArgumentException
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function blockUnfurlGlobal(array $data): void
+    final public function blockUnfurlGlobal(array $data): void
     {
         $uri = 'unfurls/block-unfurl-global';
         $required = [
-            'link' => self::TYPE_STRING,
-            'wholeHost' => self::TYPE_BOOLEAN,
+            'link' => Type::String,
+            'wholeHost' => Type::Boolean,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -54,34 +54,37 @@ class Unfurls extends AbstractApi
     }
 
     /**
-     * @param string $link
+     * @param array $data
+     * @param array $response
      * @return bool
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function checkBlocked(string $link): bool
+    final public function checkBlocked(array $data): bool
     {
         $uri = 'unfurls/check-blocked';
-        $data = [
-            'link' => $link,
+        $required = [
+            'link' => Type::String,
         ];
+        $this->throwIfInvalid($required, $data);
 
         return (bool)$this->client->post($this->buildUrl($uri), $data)[0];
     }
 
     /**
-     * Block link unfurling.
+     * Unblock link unfurling
      *
      * @param array $data
      * @return void
-     * @throws MissingArgumentException
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function unblockUnfurl(array $data): void
+    final public function unblockUnfurl(array $data): void
     {
         $uri = 'unfurls/unblock-unfurl';
         $required = [
-            'link' => self::TYPE_STRING,
-            'wholeHost' => self::TYPE_BOOLEAN,
+            'link' => Type::String,
+            'wholeHost' => Type::Boolean,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -89,19 +92,19 @@ class Unfurls extends AbstractApi
     }
 
     /**
-     * Block link unfurling for organization.
+     * Unblock link unfurling for organization
      *
      * @param array $data
      * @return void
-     * @throws MissingArgumentException
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function unblockUnfurlGlobal(array $data): void
+    final public function unblockUnfurlGlobal(array $data): void
     {
         $uri = 'unfurls/unblock-unfurl-global';
         $required = [
-            'link' => self::TYPE_STRING,
-            'wholeHost' => self::TYPE_BOOLEAN,
+            'link' => Type::String,
+            'wholeHost' => Type::Boolean,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -114,10 +117,10 @@ class Unfurls extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function listBlocked(array $request = [], array $response = []): array
+    final public function listBlocked(array $request = [], array $response = []): array
     {
         $uri = 'unfurls/list-blocked';
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 }

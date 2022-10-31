@@ -11,7 +11,7 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\Projects\Automation\StepExecutions\UsedParameters
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Param extends AbstractApi
+final class Param extends AbstractApi
 {
     /**
      * @param string $parameterId
@@ -19,13 +19,13 @@ class Param extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getParam(string $parameterId, array $response = []): array
+    final public function getParam(string $parameterId, array $response = []): array
     {
         $uri = 'projects/automation/step-executions/used-parameters/param/{parameterId}';
         $uriArguments = [
             'parameterId' => $parameterId,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 }

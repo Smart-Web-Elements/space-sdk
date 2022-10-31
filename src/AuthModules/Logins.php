@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\AuthModules;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Logins
@@ -12,10 +13,10 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\AuthModules
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Logins extends AbstractApi
+final class Logins extends AbstractApi
 {
     /**
-     * Change password for a given authentication module (id) and profile (identifier).
+     * Change password for a given authentication module (id) and profile (identifier)
      *
      * @param string $id
      * @param string $identifier
@@ -24,12 +25,12 @@ class Logins extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function changePassword(string $id, string $identifier, array $data): void
+    final public function changePassword(string $id, string $identifier, array $data): void
     {
         $uri = 'auth-modules/{id}/logins/{identifier}/change';
         $required = [
-            'oldPassword' => self::TYPE_STRING,
-            'newPassword' => self::TYPE_STRING,
+            'oldPassword' => Type::String,
+            'newPassword' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -41,14 +42,14 @@ class Logins extends AbstractApi
     }
 
     /**
-     * Request a password reset for a given authentication module (id) and profile (identifier).
+     * Request a password reset for a given authentication module (id) and profile (identifier)
      *
      * @param string $id
      * @param string $identifier
      * @return void
      * @throws GuzzleException
      */
-    public function resetPassword(string $id, string $identifier): void
+    final public function resetPassword(string $id, string $identifier): void
     {
         $uri = 'auth-modules/{id}/logins/{identifier}/reset';
         $uriArguments = [
@@ -56,19 +57,18 @@ class Logins extends AbstractApi
             'identifier' => $identifier,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments));
+        $this->client->post($this->buildUrl($uri, $uriArguments), []);
     }
 
     /**
-     * Detach a profile login from an authentication module. The id parameter refers to the authentication module, the
-     * identifier parameter refers to the login.
+     * Detach a profile login from an authentication module. The id parameter refers to the authentication module, the identifier parameter refers to the login.
      *
-     * @param string $id
      * @param string $identifier
+     * @param string $id
      * @return void
      * @throws GuzzleException
      */
-    public function deleteLogin(string $id, string $identifier): void
+    final public function deleteLogin(string $identifier, string $id): void
     {
         $uri = 'auth-modules/{id}/logins/{identifier}';
         $uriArguments = [

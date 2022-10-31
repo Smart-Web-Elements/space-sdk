@@ -15,31 +15,31 @@ use Swe\SpaceSDK\Chats\Channels\Attachments\Videos;
  * @package Swe\SpaceSDK\Chats\Channels
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Attachments extends AbstractApi
+final class Attachments extends AbstractApi
 {
     /**
      * Permissions that may be checked: Channel.ViewMessages
      *
-     * @param string $channel
+     * @param array $channel
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function listAttachmentsInChannel(string $channel, array $request = [], array $response = []): array
+    final public function listAttachmentsInChannel(array $channel, array $request = [], array $response = []): array
     {
         $uri = 'chats/channels/{channel}/attachments';
         $uriArguments = [
             'channel' => $channel,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
      * @return Files
      */
-    public function files(): Files
+    final public function files(): Files
     {
         return new Files($this->client);
     }
@@ -47,7 +47,7 @@ class Attachments extends AbstractApi
     /**
      * @return Images
      */
-    public function images(): Images
+    final public function images(): Images
     {
         return new Images($this->client);
     }
@@ -55,7 +55,7 @@ class Attachments extends AbstractApi
     /**
      * @return Links
      */
-    public function links(): Links
+    final public function links(): Links
     {
         return new Links($this->client);
     }
@@ -63,7 +63,7 @@ class Attachments extends AbstractApi
     /**
      * @return Videos
      */
-    public function videos(): Videos
+    final public function videos(): Videos
     {
         return new Videos($this->client);
     }

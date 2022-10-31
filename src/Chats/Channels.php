@@ -12,15 +12,17 @@ use Swe\SpaceSDK\Chats\Channels\Icon;
 use Swe\SpaceSDK\Chats\Channels\Name;
 use Swe\SpaceSDK\Chats\Channels\Subscribers;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
+ * Class Channels
  *
+ * @package Swe\SpaceSDK\Chats
+ * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Channels extends AbstractApi
+final class Channels extends AbstractApi
 {
     /**
-     * Create a new channel.
-     *
      * Permissions that may be checked: Chat.AddChannels
      *
      * @param array $data
@@ -29,34 +31,58 @@ class Channels extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function addNewChannel(array $data, array $response = []): array
+    final public function addNewChannel(array $data, array $response = []): array
     {
         $uri = 'chats/channels';
         $required = [
-            'name' => self::TYPE_STRING,
-            'description' => self::TYPE_STRING,
-            'private' => self::TYPE_BOOLEAN,
+            'name' => Type::String,
+            'description' => Type::String,
+            'private' => Type::Boolean,
         ];
         $this->throwIfInvalid($required, $data);
 
-        return $this->client->post($this->buildUrl($uri), $data, $response);
+        return $this->client->post($this->buildUrl($uri), $data, [], $response);
+    }
+
+    /**
+     * Create or get a direct messages channel with a profile
+     *
+     * @param array $data
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     * @deprecated This method is deprecated since 2021-12-13. Use POST chats/channels/{channel}
+     */
+    final public function getOrCreateDirectMessagesChannel(array $data, array $response = []): array
+    {
+        $uri = 'chats/channels/dm';
+        $required = [
+            'profile' => Type::String,
+        ];
+        $this->throwIfInvalid($required, $data);
+
+        return $this->client->post($this->buildUrl($uri), $data, [], $response);
     }
 
     /**
      * Check whether a channel name is available. Returns true when the channel name can be used to create a new channel, false otherwise.
      *
-     * @param string $name
+     * @param array $data
+     * @param array $response
      * @return bool
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function isNameFree(string $name): bool
+    final public function isNameFree(array $data): bool
     {
         $uri = 'chats/channels/is-name-free';
-        $data = [
-            'name' => $name,
+        $required = [
+            'name' => Type::String,
         ];
+        $this->throwIfInvalid($required, $data);
 
-        return $this->client->post($this->buildUrl($uri), $data)[0];
+        return (bool)$this->client->post($this->buildUrl($uri), $data)[0];
     }
 
     /**
@@ -64,20 +90,18 @@ class Channels extends AbstractApi
      *
      * Permissions that may be checked: Channel.Admin
      *
-     * @param string $channel
-     * @return bool
+     * @param array $channel
+     * @return void
      * @throws GuzzleException
      */
-    public function restoreArchivedChannel(string $channel): bool
+    final public function restoreArchivedChannel(array $channel): void
     {
         $uri = 'chats/channels/{channel}/restore-archived';
         $uriArguments = [
             'channel' => $channel,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments));
-
-        return true;
+        $this->client->post($this->buildUrl($uri, $uriArguments), []);
     }
 
     /**
@@ -89,33 +113,33 @@ class Channels extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function listAllChannels(array $request, array $response = []): array
+    final public function listAllChannels(array $request, array $response = []): array
     {
         $uri = 'chats/channels/all-channels';
         $required = [
-            'query' => self::TYPE_STRING,
+            'query' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 
     /**
      * Permissions that may be checked: Channel.ViewChannel
      *
-     * @param string $channel
+     * @param array $channel
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getChannel(string $channel, array $response = []): array
+    final public function getChannel(array $channel, array $response = []): array
     {
         $uri = 'chats/channels/{channel}';
         $uriArguments = [
             'channel' => $channel,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
@@ -123,11 +147,11 @@ class Channels extends AbstractApi
      *
      * Permissions that may be checked: Channel.Admin
      *
-     * @param string $channel
+     * @param array $channel
      * @return void
      * @throws GuzzleException
      */
-    public function deleteChannel(string $channel): void
+    final public function deleteChannel(array $channel): void
     {
         $uri = 'chats/channels/{channel}';
         $uriArguments = [
@@ -138,16 +162,15 @@ class Channels extends AbstractApi
     }
 
     /**
-     * Archive a channel and reject new messages being added. It is still possible to view messages from an archived channel.
-     * It is possible to restore the channel later.
+     * Archive a channel and reject new messages being added. It is still possible to view messages from an archived channel. It is possible to restore the channel later.
      *
-     * Permissions may be checked: Channel.Admin
+     * Permissions that may be checked: Channel.Admin
      *
-     * @param string $channel
+     * @param array $channel
      * @return void
      * @throws GuzzleException
      */
-    public function archiveChannel(string $channel): void
+    final public function archiveChannel(array $channel): void
     {
         $uri = 'chats/channels/{channel}/archive';
         $uriArguments = [
@@ -158,9 +181,17 @@ class Channels extends AbstractApi
     }
 
     /**
+     * @return Conversations
+     */
+    final public function conversations(): Conversations
+    {
+        return new Conversations($this->client);
+    }
+
+    /**
      * @return Administrator
      */
-    public function administrator(): Administrator
+    final public function administrator(): Administrator
     {
         return new Administrator($this->client);
     }
@@ -168,23 +199,15 @@ class Channels extends AbstractApi
     /**
      * @return Attachments
      */
-    public function attachments(): Attachments
+    final public function attachments(): Attachments
     {
         return new Attachments($this->client);
     }
 
     /**
-     * @return Conversations
-     */
-    public function conversations(): Conversations
-    {
-        return new Conversations($this->client);
-    }
-
-    /**
      * @return Description
      */
-    public function description(): Description
+    final public function description(): Description
     {
         return new Description($this->client);
     }
@@ -192,7 +215,7 @@ class Channels extends AbstractApi
     /**
      * @return Icon
      */
-    public function icon(): Icon
+    final public function icon(): Icon
     {
         return new Icon($this->client);
     }
@@ -200,7 +223,7 @@ class Channels extends AbstractApi
     /**
      * @return Name
      */
-    public function name(): Name
+    final public function name(): Name
     {
         return new Name($this->client);
     }
@@ -208,7 +231,7 @@ class Channels extends AbstractApi
     /**
      * @return Subscribers
      */
-    public function subscribers(): Subscribers
+    final public function subscribers(): Subscribers
     {
         return new Subscribers($this->client);
     }

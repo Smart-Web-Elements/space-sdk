@@ -11,26 +11,26 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\TeamDirectory\Profiles
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class AuthenticationSessions extends AbstractApi
+final class AuthenticationSessions extends AbstractApi
 {
     /**
-     * Get the current authentication sessions for a given profile ID.
+     * Get the current authentication sessions for a given profile ID
      *
      * Permissions that may be checked: Profile.AuthenticationSessions.Edit
      *
-     * @param string $owner
+     * @param array $owner
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getAllAuthenticationSessions(string $owner, array $response = []): array
+    final public function getAllAuthenticationSessions(array $owner, array $response = []): array
     {
         $uri = 'team-directory/profiles/authentication-sessions/{owner}';
         $uriArguments = [
             'owner' => $owner,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
@@ -38,12 +38,12 @@ class AuthenticationSessions extends AbstractApi
      *
      * Permissions that may be checked: Profile.AuthenticationSessions.Edit
      *
-     * @param string $owner
+     * @param array $owner
      * @param string $sessionId
      * @return void
      * @throws GuzzleException
      */
-    public function terminateOwnAuthenticationSession(string $owner, string $sessionId): void
+    final public function terminateOwnAuthenticationSession(array $owner, string $sessionId): void
     {
         $uri = 'team-directory/profiles/authentication-sessions/{owner}/{sessionId}';
         $uriArguments = [

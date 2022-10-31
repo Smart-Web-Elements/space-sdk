@@ -9,6 +9,7 @@ use Swe\SpaceSDK\Projects\Documents\Folders\Documents;
 use Swe\SpaceSDK\Projects\Documents\Folders\Introduction;
 use Swe\SpaceSDK\Projects\Documents\Folders\Move;
 use Swe\SpaceSDK\Projects\Documents\Folders\Subfolders;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Folders
@@ -16,39 +17,39 @@ use Swe\SpaceSDK\Projects\Documents\Folders\Subfolders;
  * @package Swe\SpaceSDK\Projects\Documents
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Folders extends AbstractApi
+final class Folders extends AbstractApi
 {
     /**
-     * @param string $project
+     * @param array $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createFolder(string $project, array $data, array $response = []): array
+    final public function createFolder(array $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/documents/folders';
         $required = [
-            'name' => self::TYPE_STRING,
-            'parentFolder' => self::TYPE_STRING,
+            'name' => Type::String,
+            'parentFolder' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'project' => $project,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
-     * @param string $project
-     * @param string $folder
+     * @param array $project
+     * @param array $folder
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getFolder(string $project, string $folder, array $response = []): array
+    final public function getFolder(array $project, array $folder, array $response = []): array
     {
         $uri = 'projects/{project}/documents/folders/{folder}';
         $uriArguments = [
@@ -56,37 +57,39 @@ class Folders extends AbstractApi
             'folder' => $folder,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
-     * @param string $project
-     * @param string $folder
-     * @param string $name
+     * @param array $project
+     * @param array $folder
+     * @param array $data
      * @return void
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function renameFolder(string $project, string $folder, string $name): void
+    final public function renameFolder(array $project, array $folder, array $data): void
     {
         $uri = 'projects/{project}/documents/folders/{folder}';
+        $required = [
+            'name' => Type::String,
+        ];
+        $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'project' => $project,
             'folder' => $folder,
-        ];
-        $data = [
-            'name' => $name,
         ];
 
         $this->client->patch($this->buildUrl($uri, $uriArguments), $data);
     }
 
     /**
-     * @param string $project
-     * @param string $folder
+     * @param array $project
+     * @param array $folder
      * @return void
      * @throws GuzzleException
      */
-    public function archiveFolder(string $project, string $folder): void
+    final public function archiveFolder(array $project, array $folder): void
     {
         $uri = 'projects/{project}/documents/folders/{folder}';
         $uriArguments = [
@@ -100,7 +103,7 @@ class Folders extends AbstractApi
     /**
      * @return Documents
      */
-    public function documents(): Documents
+    final public function documents(): Documents
     {
         return new Documents($this->client);
     }
@@ -108,7 +111,7 @@ class Folders extends AbstractApi
     /**
      * @return Introduction
      */
-    public function introduction(): Introduction
+    final public function introduction(): Introduction
     {
         return new Introduction($this->client);
     }
@@ -116,7 +119,7 @@ class Folders extends AbstractApi
     /**
      * @return Move
      */
-    public function move(): Move
+    final public function move(): Move
     {
         return new Move($this->client);
     }
@@ -124,7 +127,7 @@ class Folders extends AbstractApi
     /**
      * @return Subfolders
      */
-    public function subfolders(): Subfolders
+    final public function subfolders(): Subfolders
     {
         return new Subfolders($this->client);
     }

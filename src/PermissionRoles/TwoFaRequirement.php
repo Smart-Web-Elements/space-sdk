@@ -11,39 +11,39 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\PermissionRoles
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class TwoFaRequirement extends AbstractApi
+final class TwoFaRequirement extends AbstractApi
 {
     /**
-     * Get 2FA requirement for permission role.
+     * Get 2FA requirement for permission role
      *
-     * Permissions that may be checked: Superadmin, Projects.Admin, Channel.Admin
+     * Permissions that may be checked: Superadmin, Project.Admin, Channel.Admin
      *
      * @param string $roleId
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function get2FARequirement(string $roleId, array $response = []): array
+    final public function get2faRequirement(string $roleId, array $response = []): array
     {
         $uri = 'permission-roles/{roleId}/2-fa-requirement';
         $uriArguments = [
             'roleId' => $roleId,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
-     * Set 2FA requirement for permission role.
+     * Set 2FA requirement for permission role
      *
-     * Permissions that may be checked: Superadmin, Projects.Admin, Channel.Admin
+     * Permissions that may be checked: Superadmin, Project.Admin, Channel.Admin
      *
      * @param string $roleId
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    public function set2FARequirement(string $roleId, array $data = []): void
+    final public function set2faRequirement(string $roleId, array $data = []): void
     {
         $uri = 'permission-roles/{roleId}/2-fa-requirement';
         $uriArguments = [

@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Projects\Automation;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class DeploymentTargets
@@ -12,82 +13,82 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Projects\Automation
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class DeploymentTargets extends AbstractApi
+final class DeploymentTargets extends AbstractApi
 {
     /**
      * Permissions that may be checked: Project.Deployments.Targets.Modify
      *
-     * @param string $project
+     * @param array $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function create(string $project, array $data, array $response = []): array
+    final public function create(array $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/automation/deployment-targets';
         $required = [
-            'key' => self::TYPE_STRING,
-            'name' => self::TYPE_STRING,
-            'description' => self::TYPE_STRING,
+            'key' => Type::String,
+            'name' => Type::String,
+            'description' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'project' => $project,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
      * Permissions that may be checked: Project.Deployments.View
      *
-     * @param string $project
+     * @param array $project
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function list(string $project, array $request = [], array $response = []): array
+    final public function list(array $project, array $request = [], array $response = []): array
     {
         $uri = 'projects/{project}/automation/deployment-targets';
         $uriArguments = [
             'project' => $project,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
      * Permissions that may be checked: Project.Deployments.View
      *
-     * @param string $project
+     * @param array $project
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function listFavorites(string $project, array $request = [], array $response = []): array
+    final public function listFavorites(array $project, array $request = [], array $response = []): array
     {
         $uri = 'projects/{project}/automation/deployment-targets/favorites';
         $uriArguments = [
             'project' => $project,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
      * Permissions that may be checked: Project.Deployments.View
      *
-     * @param string $project
-     * @param string $target
+     * @param array $project
+     * @param array $target
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function get(string $project, string $target, array $response = []): array
+    final public function get(array $project, array $target, array $response = []): array
     {
         $uri = 'projects/{project}/automation/deployment-targets/{target}';
         $uriArguments = [
@@ -95,17 +96,17 @@ class DeploymentTargets extends AbstractApi
             'target' => $target,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
-     * @param string $project
-     * @param string $target
+     * @param array $project
+     * @param array $target
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    public function update(string $project, string $target, array $data = []): void
+    final public function update(array $project, array $target, array $data = []): void
     {
         $uri = 'projects/{project}/automation/deployment-targets/{target}';
         $uriArguments = [
@@ -119,12 +120,12 @@ class DeploymentTargets extends AbstractApi
     /**
      * Permissions that may be checked: Project.Deployments.Targets.Modify
      *
-     * @param string $project
-     * @param string $target
+     * @param array $project
+     * @param array $target
      * @return void
      * @throws GuzzleException
      */
-    public function delete(string $project, string $target): void
+    final public function delete(array $project, array $target): void
     {
         $uri = 'projects/{project}/automation/deployment-targets/{target}';
         $uriArguments = [

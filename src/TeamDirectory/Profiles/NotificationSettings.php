@@ -11,31 +11,31 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\TeamDirectory\Profiles
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class NotificationSettings extends AbstractApi
+final class NotificationSettings extends AbstractApi
 {
     /**
-     * @param string $profile
+     * @param array $profile
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getSpaceGlobalNotificationSettingsForAProfile(string $profile, array $response = []): array
+    final public function getSpaceGlobalNotificationSettingsForAProfile(array $profile, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/notification-settings';
         $uriArguments = [
             'profile' => $profile,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
-     * @param string $profile
+     * @param array $profile
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    public function setSpaceGlobalNotificationSettingsForAProfile(string $profile, array $data = []): void
+    final public function setSpaceGlobalNotificationSettingsForAProfile(array $profile, array $data = []): void
     {
         $uri = 'team-directory/profiles/{profile}/notification-settings';
         $uriArguments = [

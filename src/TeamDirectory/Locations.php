@@ -6,6 +6,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\TeamDirectory\Locations\Map;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Locations
@@ -13,10 +14,10 @@ use Swe\SpaceSDK\TeamDirectory\Locations\Map;
  * @package Swe\SpaceSDK\TeamDirectory
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Locations extends AbstractApi
+final class Locations extends AbstractApi
 {
     /**
-     * Create a location.
+     * Create a location
      *
      * Permissions that may be checked: Locations.Edit
      *
@@ -26,19 +27,19 @@ class Locations extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createLocation(array $data, array $response = []): array
+    final public function createLocation(array $data, array $response = []): array
     {
         $uri = 'team-directory/locations';
         $required = [
-            'name' => self::TYPE_STRING,
+            'name' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
 
-        return $this->client->post($this->buildUrl($uri), $data, $response);
+        return $this->client->post($this->buildUrl($uri), $data, [], $response);
     }
 
     /**
-     * Restore one or more archived locations.
+     * Restore one or more archived locations
      *
      * Permissions that may be checked: Locations.Edit
      *
@@ -48,19 +49,19 @@ class Locations extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function restoreMultipleLocations(array $data, array $response = []): array
+    final public function restoreMultipleLocations(array $data, array $response = []): array
     {
         $uri = 'team-directory/locations/restore';
         $required = [
-            'ids' => self::TYPE_ARRAY,
+            'ids' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
 
-        return $this->client->post($this->buildUrl($uri), $data, $response);
+        return $this->client->post($this->buildUrl($uri), $data, [], $response);
     }
 
     /**
-     * Restore an archived location.
+     * Restore an archived location
      *
      * Permissions that may be checked: Locations.Edit
      *
@@ -69,14 +70,14 @@ class Locations extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function restoreLocation(string $id, array $response = []): array
+    final public function restoreLocation(string $id, array $response = []): array
     {
         $uri = 'team-directory/locations/{id}/restore';
         $uriArguments = [
             'id' => $id,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), [], $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), [], [], $response);
     }
 
     /**
@@ -89,31 +90,31 @@ class Locations extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getAllLocations(array $request = [], array $response = []): array
+    final public function getAllLocations(array $request = [], array $response = []): array
     {
         $uri = 'team-directory/locations';
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 
     /**
-     * Get a location by ID.
+     * Get a location by ID
      *
      * Permissions that may be checked: Locations.View
      *
      * @param string $id
      * @param array $response
-     * @return array
+     * @return array|null
      * @throws GuzzleException
      */
-    public function getLocation(string $id, array $response = []): array
+    final public function getLocation(string $id, array $response = []): ?array
     {
-        $uri = 'eam-directory/locations/{id}';
+        $uri = 'team-directory/locations/{id}';
         $uriArguments = [
             'id' => $id,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
@@ -127,18 +128,18 @@ class Locations extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function updateLocation(string $id, array $data = [], array $response = []): array
+    final public function updateLocation(string $id, array $data = [], array $response = []): array
     {
         $uri = 'team-directory/locations/{id}';
         $uriArguments = [
             'id' => $id,
         ];
 
-        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
-     * Archive a location.
+     * Archive a location
      *
      * Permissions that may be checked: Locations.Edit
      *
@@ -147,7 +148,7 @@ class Locations extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function archiveLocation(string $id, array $response = []): array
+    final public function archiveLocation(string $id, array $response = []): array
     {
         $uri = 'team-directory/locations/{id}';
         $uriArguments = [
@@ -160,7 +161,7 @@ class Locations extends AbstractApi
     /**
      * @return Map
      */
-    public function map(): Map
+    final public function map(): Map
     {
         return new Map($this->client);
     }

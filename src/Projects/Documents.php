@@ -10,6 +10,7 @@ use Swe\SpaceSDK\Projects\Documents\DeleteForever;
 use Swe\SpaceSDK\Projects\Documents\Folders;
 use Swe\SpaceSDK\Projects\Documents\Move;
 use Swe\SpaceSDK\Projects\Documents\Unarchive;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Documents
@@ -17,40 +18,41 @@ use Swe\SpaceSDK\Projects\Documents\Unarchive;
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Documents extends AbstractApi
+final class Documents extends AbstractApi
 {
     /**
-     * @param string $project
+     * @param array $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createDocument(string $project, array $data, array $response = []): array
+    final public function createDocument(array $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/documents';
         $required = [
-            'name' => self::TYPE_STRING,
-            'folder' => self::TYPE_STRING,
-            'bodyIn' => self::TYPE_ARRAY,
+            'name' => Type::String,
+            'folder' => Type::Array,
+            'bodyIn' => [
+            ],
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'project' => $project,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
-     * @param string $project
+     * @param array $project
      * @param string $documentId
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getDocument(string $project, string $documentId, array $response = []): array
+    final public function getDocument(array $project, string $documentId, array $response = []): array
     {
         $uri = 'projects/{project}/documents/{documentId}';
         $uriArguments = [
@@ -58,35 +60,39 @@ class Documents extends AbstractApi
             'documentId' => $documentId,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
-     * @param string $project
+     * @param array $project
      * @param string $documentId
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function updateDocument(string $project, string $documentId, array $data = [], array $response = []): array
-    {
+    final public function updateDocument(
+        array $project,
+        string $documentId,
+        array $data = [],
+        array $response = [],
+    ): array {
         $uri = 'projects/{project}/documents/{documentId}';
         $uriArguments = [
             'project' => $project,
             'documentId' => $documentId,
         ];
 
-        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
-     * @param string $project
+     * @param array $project
      * @param string $documentId
      * @return void
      * @throws GuzzleException
      */
-    public function archiveDocument(string $project, string $documentId): void
+    final public function archiveDocument(array $project, string $documentId): void
     {
         $uri = 'projects/{project}/documents/{documentId}';
         $uriArguments = [
@@ -98,9 +104,17 @@ class Documents extends AbstractApi
     }
 
     /**
+     * @return Folders
+     */
+    final public function folders(): Folders
+    {
+        return new Folders($this->client);
+    }
+
+    /**
      * @return Copy
      */
-    public function copy(): Copy
+    final public function copy(): Copy
     {
         return new Copy($this->client);
     }
@@ -108,23 +122,15 @@ class Documents extends AbstractApi
     /**
      * @return DeleteForever
      */
-    public function deleteForever(): DeleteForever
+    final public function deleteForever(): DeleteForever
     {
         return new DeleteForever($this->client);
     }
 
     /**
-     * @return Folders
-     */
-    public function folders(): Folders
-    {
-        return new Folders($this->client);
-    }
-
-    /**
      * @return Move
      */
-    public function move(): Move
+    final public function move(): Move
     {
         return new Move($this->client);
     }
@@ -132,7 +138,7 @@ class Documents extends AbstractApi
     /**
      * @return Unarchive
      */
-    public function unarchive(): Unarchive
+    final public function unarchive(): Unarchive
     {
         return new Unarchive($this->client);
     }

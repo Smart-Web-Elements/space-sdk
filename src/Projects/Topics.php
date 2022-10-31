@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Projects;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Topics
@@ -12,42 +13,42 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Topics extends AbstractApi
+final class Topics extends AbstractApi
 {
     /**
-     * @param string $project
+     * @param array $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createTopic(string $project, array $data, array $response = []): array
+    final public function createTopic(array $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/topics';
         $required = [
-            'name' => self::TYPE_STRING,
+            'name' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'project' => $project,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
-     * @param string $project
+     * @param array $project
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function removeTopics(string $project, array $data): void
+    final public function removeTopics(array $project, array $data): void
     {
         $uri = 'projects/{project}/topics/remove-topics';
         $required = [
-            'ids' => self::TYPE_ARRAY,
+            'ids' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -58,18 +59,18 @@ class Topics extends AbstractApi
     }
 
     /**
-     * @param string $project
+     * @param array $project
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function setResponsible(string $project, array $data): void
+    final public function setResponsible(array $project, array $data): void
     {
         $uri = 'projects/{project}/topics/set-responsible';
         $required = [
-            'topicId' => self::TYPE_STRING,
-            'responsible' => self::TYPE_ARRAY,
+            'topicId' => Type::String,
+            'responsible' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -80,30 +81,30 @@ class Topics extends AbstractApi
     }
 
     /**
-     * @param string $project
+     * @param array $project
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getTopic(string $project, array $response = []): array
+    final public function getTopic(array $project, array $response = []): array
     {
         $uri = 'projects/{project}/topics';
         $uriArguments = [
             'project' => $project,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
-     * @param string $project
+     * @param array $project
      * @param string $id
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function updateTopic(string $project, string $id, array $data = [], array $response = []): array
+    final public function updateTopic(array $project, string $id, array $data = [], array $response = []): array
     {
         $uri = 'projects/{project}/topics/{id}';
         $uriArguments = [
@@ -111,6 +112,6 @@ class Topics extends AbstractApi
             'id' => $id,
         ];
 
-        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 }

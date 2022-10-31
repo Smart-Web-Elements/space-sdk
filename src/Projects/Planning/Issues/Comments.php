@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Projects\Planning\Issues;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Comments
@@ -12,23 +13,29 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Projects\Planning\Issues
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Comments extends AbstractApi
+final class Comments extends AbstractApi
 {
     /**
      * Permissions that may be checked: Project.Issues.Import
      *
-     * @param string $project
-     * @param string $issueId
+     * @param array $project
+     * @param array $issueId
      * @param array $data
-     * @return string[]
+     * @param array $response
+     * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
+     * @deprecated This method is deprecated since 2022-10-12. Use Chats / Messages / Import messages
      */
-    public function importIssueCommentHistory(string $project, string $issueId, array $data): array
-    {
+    final public function importIssueCommentHistory(
+        array $project,
+        array $issueId,
+        array $data,
+        array $response = [],
+    ): array {
         $uri = 'projects/{project}/planning/issues/{issueId}/comments/import';
         $required = [
-            'comments' => self::TYPE_ARRAY,
+            'comments' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -36,6 +43,6 @@ class Comments extends AbstractApi
             'issueId' => $issueId,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 }

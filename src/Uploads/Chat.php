@@ -11,12 +11,12 @@ use Swe\SpaceSDK\Uploads\Chat\PublicUrl;
  * @package Swe\SpaceSDK\Uploads
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Chat extends AbstractApi
+final class Chat extends AbstractApi
 {
     /**
      * @return PublicUrl
      */
-    public function publicUrl(): PublicUrl
+    final public function publicUrl(): PublicUrl
     {
         return new PublicUrl($this->client);
     }

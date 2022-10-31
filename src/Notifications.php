@@ -14,26 +14,26 @@ use Swe\SpaceSDK\Notifications\PrivateFeeds;
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Notifications extends AbstractApi
+final class Notifications extends AbstractApi
 {
     /**
-     * List all subscription subjects.
+     * List all subscription subjects
      *
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getAllNotifications(array $response = []): array
+    final public function getAllNotifications(array $response = []): array
     {
         $uri = 'notifications';
 
-        return $this->client->get($this->buildUrl($uri), $response);
+        return $this->client->get($this->buildUrl($uri), [], $response);
     }
 
     /**
      * @return ChannelSubscriptions
      */
-    public function channelSubscriptions(): ChannelSubscriptions
+    final public function channelSubscriptions(): ChannelSubscriptions
     {
         return new ChannelSubscriptions($this->client);
     }
@@ -41,7 +41,7 @@ class Notifications extends AbstractApi
     /**
      * @return PersonalCustomSubscriptions
      */
-    public function personalCustomSubscriptions(): PersonalCustomSubscriptions
+    final public function personalCustomSubscriptions(): PersonalCustomSubscriptions
     {
         return new PersonalCustomSubscriptions($this->client);
     }
@@ -49,7 +49,7 @@ class Notifications extends AbstractApi
     /**
      * @return PersonalSubscriptions
      */
-    public function personalSubscriptions(): PersonalSubscriptions
+    final public function personalSubscriptions(): PersonalSubscriptions
     {
         return new PersonalSubscriptions($this->client);
     }
@@ -57,7 +57,7 @@ class Notifications extends AbstractApi
     /**
      * @return PrivateFeeds
      */
-    public function privateFeeds(): PrivateFeeds
+    final public function privateFeeds(): PrivateFeeds
     {
         return new PrivateFeeds($this->client);
     }

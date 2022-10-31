@@ -11,12 +11,12 @@ use Swe\SpaceSDK\Projects\Repositories\Revisions\ExternalChecks;
  * @package Swe\SpaceSDK\Projects\Repositories
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Revisions extends AbstractApi
+final class Revisions extends AbstractApi
 {
     /**
      * @return ExternalChecks
      */
-    public function externalChecks(): ExternalChecks
+    final public function externalChecks(): ExternalChecks
     {
         return new ExternalChecks($this->client);
     }

@@ -7,6 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Projects\CodeReviews\Participants;
 use Swe\SpaceSDK\Projects\CodeReviews\Revisions;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class CodeReviews
@@ -14,115 +15,115 @@ use Swe\SpaceSDK\Projects\CodeReviews\Revisions;
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class CodeReviews extends AbstractApi
+final class CodeReviews extends AbstractApi
 {
     /**
      * Permissions that may be checked: Project.SuggestedEdit.Create
      *
-     * @param string $project
+     * @param array $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createCodeDiscussion(string $project, array $data, array $response = []): array
+    final public function createCodeDiscussion(array $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/code-reviews/code-discussions';
         $required = [
-            'text' => self::TYPE_STRING,
-            'repository' => self::TYPE_STRING,
-            'revision' => self::TYPE_STRING,
+            'text' => Type::String,
+            'repository' => Type::String,
+            'revision' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'project' => $project,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
      * Permissions that may be checked: Project.CodeReview.Create
      *
-     * @param string $project
+     * @param array $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createReviewBasedOnCommitSet(string $project, array $data, array $response = []): array
+    final public function createReviewBasedOnCommitSet(array $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/code-reviews/commit-set-review';
         $required = [
-            'repository' => self::TYPE_STRING,
-            'revisions' => self::TYPE_ARRAY,
+            'repository' => Type::String,
+            'revisions' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'project' => $project,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
      * Permissions that may be checked: Project.CodeReview.Create
      *
-     * @param string $project
+     * @param array $project
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createMergeRequest(string $project, array $data, array $response = []): array
+    final public function createMergeRequest(array $project, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/code-reviews/merge-requests';
         $required = [
-            'repository' => self::TYPE_STRING,
-            'sourceBranch' => self::TYPE_STRING,
-            'targetBranch' => self::TYPE_STRING,
-            'title' => self::TYPE_STRING,
+            'repository' => Type::String,
+            'sourceBranch' => Type::String,
+            'targetBranch' => Type::String,
+            'title' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'project' => $project,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
      * Permissions that may be checked: Project.CodeReview.View
      *
-     * @param string $project
+     * @param array $project
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getAllCodeReviews(string $project, array $request = [], array $response = []): array
+    final public function getAllCodeReviews(array $project, array $request = [], array $response = []): array
     {
         $uri = 'projects/{project}/code-reviews';
         $uriArguments = [
             'project' => $project,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
      * Permissions that may be checked: Project.CodeReview.View
      *
-     * @param string $project
-     * @param string $reviewId
+     * @param array $project
+     * @param array $reviewId
      * @param array $response
-     * @return array
+     * @return array|null
      * @throws GuzzleException
      */
-    public function getCodeReview(string $project, string $reviewId, array $response = []): array
+    final public function getCodeReview(array $project, array $reviewId, array $response = []): ?array
     {
         $uri = 'projects/{project}/code-reviews/{reviewId}';
         $uriArguments = [
@@ -130,19 +131,19 @@ class CodeReviews extends AbstractApi
             'reviewId' => $reviewId,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
      * Permissions that may be checked: Project.CodeReview.View
      *
-     * @param string $project
-     * @param string $reviewId
+     * @param array $project
+     * @param array $reviewId
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getReviewDetails(string $project, string $reviewId, array $response = []): array
+    final public function getReviewDetails(array $project, array $reviewId, array $response = []): array
     {
         $uri = 'projects/{project}/code-reviews/{reviewId}/details';
         $uriArguments = [
@@ -150,24 +151,24 @@ class CodeReviews extends AbstractApi
             'reviewId' => $reviewId,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
      * Permissions that may be checked: Project.CodeReview.View
      *
-     * @param string $project
-     * @param string $reviewId
+     * @param array $project
+     * @param array $reviewId
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getTheModifiedFilesInCodeReview(
-        string $project,
-        string $reviewId,
+    final public function getTheModifiedFilesInCodeReview(
+        array $project,
+        array $reviewId,
         array $request = [],
-        array $response = []
+        array $response = [],
     ): array {
         $uri = 'projects/{project}/code-reviews/{reviewId}/files';
         $uriArguments = [
@@ -175,24 +176,24 @@ class CodeReviews extends AbstractApi
             'reviewId' => $reviewId,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
      * Permissions that may be checked: Project.CodeReview.View
      *
-     * @param string $project
-     * @param string $reviewId
+     * @param array $project
+     * @param array $reviewId
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getTheMergeRequestFiles(
-        string $project,
-        string $reviewId,
+    final public function getTheMergeRequestFiles(
+        array $project,
+        array $reviewId,
         array $request = [],
-        array $response = []
+        array $response = [],
     ): array {
         $uri = 'projects/{project}/code-reviews/{reviewId}/merge-files';
         $uriArguments = [
@@ -200,19 +201,19 @@ class CodeReviews extends AbstractApi
             'reviewId' => $reviewId,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
      * Permissions that may be checked: Project.CodeReview.View
      *
-     * @param string $project
-     * @param string $reviewId
+     * @param array $project
+     * @param array $reviewId
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getSuggestedReviewers(string $project, string $reviewId, array $response = []): array
+    final public function getSuggestedReviewers(array $project, array $reviewId, array $response = []): array
     {
         $uri = 'projects/{project}/code-reviews/{reviewId}/suggested-reviewers';
         $uriArguments = [
@@ -220,24 +221,24 @@ class CodeReviews extends AbstractApi
             'reviewId' => $reviewId,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
      * Permissions that may be checked: Project.CodeReview.Edit
      *
-     * @param string $project
-     * @param string $reviewId
+     * @param array $project
+     * @param array $reviewId
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function editReviewState(string $project, string $reviewId, array $data): void
+    final public function editReviewState(array $project, array $reviewId, array $data): void
     {
         $uri = 'projects/{project}/code-reviews/{reviewId}/state';
         $required = [
-            'state' => self::TYPE_STRING,
+            'state' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -251,18 +252,18 @@ class CodeReviews extends AbstractApi
     /**
      * Permissions that may be checked: Project.CodeReview.Edit
      *
-     * @param string $project
-     * @param string $reviewId
+     * @param array $project
+     * @param array $reviewId
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function editReviewTitle(string $project, string $reviewId, array $data): void
+    final public function editReviewTitle(array $project, array $reviewId, array $data): void
     {
         $uri = 'projects/{project}/code-reviews/{reviewId}/title';
         $required = [
-            'title' => self::TYPE_STRING,
+            'title' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -276,20 +277,20 @@ class CodeReviews extends AbstractApi
     /**
      * Permissions that may be checked: Project.CodeReview.View, VcsRepository.Write
      *
-     * @param string $project
-     * @param string $reviewId
+     * @param array $project
+     * @param array $reviewId
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function mergeAMergeRequest(string $project, string $reviewId, array $data, array $response = []): array
+    final public function mergeAMergeRequest(array $project, array $reviewId, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/code-reviews/{reviewId}/merge';
         $required = [
-            'deleteSourceBranch' => self::TYPE_BOOLEAN,
-            'mergeMode' => self::TYPE_STRING,
+            'deleteSourceBranch' => Type::Boolean,
+            'mergeMode' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -297,27 +298,27 @@ class CodeReviews extends AbstractApi
             'reviewId' => $reviewId,
         ];
 
-        return $this->client->put($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->put($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
      * Permissions that may be checked: Project.CodeReview.View, VcsRepository.Write
      *
-     * @param string $project
-     * @param string $reviewId
+     * @param array $project
+     * @param array $reviewId
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function rebaseAMergeRequest(string $project, string $reviewId, array $data, array $response = []): array
+    final public function rebaseAMergeRequest(array $project, array $reviewId, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/code-reviews/{reviewId}/rebase';
         $required = [
-            'deleteSourceBranch' => self::TYPE_BOOLEAN,
-            'rebaseMode' => self::TYPE_STRING,
-            'squash' => self::TYPE_BOOLEAN,
+            'deleteSourceBranch' => Type::Boolean,
+            'rebaseMode' => Type::String,
+            'squash' => Type::Boolean,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -325,13 +326,13 @@ class CodeReviews extends AbstractApi
             'reviewId' => $reviewId,
         ];
 
-        return $this->client->put($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->put($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
      * @return Participants
      */
-    public function participants(): Participants
+    final public function participants(): Participants
     {
         return new Participants($this->client);
     }
@@ -339,7 +340,7 @@ class CodeReviews extends AbstractApi
     /**
      * @return Revisions
      */
-    public function revisions(): Revisions
+    final public function revisions(): Revisions
     {
         return new Revisions($this->client);
     }

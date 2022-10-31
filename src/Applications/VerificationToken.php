@@ -11,39 +11,40 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\Applications
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class VerificationToken extends AbstractApi
+final class VerificationToken extends AbstractApi
 {
     /**
      * Permissions that may be checked: Applications.Edit
      *
-     * @param string $application
+     * @param array $application
      * @return void
      * @throws GuzzleException
      */
-    public function regenerateVerificationToken(string $application): void
+    final public function regenerateVerificationToken(array $application): void
     {
         $uri = 'applications/{application}/verification-token/regenerate';
         $uriArguments = [
             'application' => $application,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments));
+        $this->client->post($this->buildUrl($uri, $uriArguments), []);
     }
 
     /**
      * Permissions that may be checked: Applications.ViewSecrets
      *
-     * @param string $application
+     * @param array $application
+     * @param array $response
      * @return string|null
      * @throws GuzzleException
      */
-    public function getVerificationToken(string $application): ?string
+    final public function getVerificationToken(array $application): ?string
     {
         $uri = 'applications/{application}/verification-token';
         $uriArguments = [
             'application' => $application,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments))[0];
+        return (string)$this->client->get($this->buildUrl($uri, $uriArguments))[0];
     }
 }

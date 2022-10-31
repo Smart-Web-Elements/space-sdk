@@ -15,77 +15,76 @@ use Swe\SpaceSDK\PermissionRoles\TwoFaRequirement;
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class PermissionRoles extends AbstractApi
+final class PermissionRoles extends AbstractApi
 {
     /**
-     * Create new custom permission role in specified permission context.
+     * Create new custom permission role in specified permission context
      *
-     * Permissions that may be checked: Superadmin, Projects.Admin, Channel.Admin
-     *
-     * @param array $data
-     * @param array $response
-     * @return array
-     * @throws MissingArgumentException
-     * @throws GuzzleException
-     */
-    public function createRole(array $data, array $response = []): array
-    {
-        $uri = 'permission-roles/create';
-        $required = [
-            'contextIdentifier' => self::TYPE_STRING,
-            'name' => self::TYPE_STRING,
-        ];
-        $this->throwIfInvalid($required, $data);
-
-        return $this->client->post($this->buildUrl($uri), $data, $response);
-    }
-
-    /**
-     * List all permission roles in permission context.
-     *
-     * Permissions that may be checked: Superadmin, Projects.View, Channel.ViewChannel
+     * Permissions that may be checked: Superadmin, Project.Admin, Channel.Admin
      *
      * @param array $data
      * @param array $response
      * @return array
-     * @throws MissingArgumentException
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function getRoles(array $data, array $response = []): array
+    final public function createRole(array $data, array $response = []): array
     {
         $uri = 'permission-roles/create';
         $required = [
-            'contextIdentifier' => self::TYPE_STRING,
+            'contextIdentifier' => Type::Array,
+            'name' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
 
-        return $this->client->post($this->buildUrl($uri), $data, $response);
+        return $this->client->post($this->buildUrl($uri), $data, [], $response);
     }
 
     /**
-     * Reset permissions for the role to the standard ones. Only applicable to roles with
-     * PermissionRoleType = PREDEFINED, not applicable to custom roles.
+     * List all permission roles in permission context
      *
-     * Permissions that may be checked: Superadmin, Projects.Admin, Channel.Admin
+     * Permissions that may be checked: Superadmin, Project.View, Channel.ViewChannel
+     *
+     * @param array $data
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    final public function getRoles(array $data, array $response = []): array
+    {
+        $uri = 'permission-roles/get';
+        $required = [
+            'contextIdentifier' => Type::Array,
+        ];
+        $this->throwIfInvalid($required, $data);
+
+        return $this->client->post($this->buildUrl($uri), $data, [], $response);
+    }
+
+    /**
+     * Reset permissions for the role to the standard ones. Only applicable to roles with PermissionRoleType = PREDEFINED, not applicable to custom roles.
+     *
+     * Permissions that may be checked: Superadmin, Project.Admin, Channel.Admin
      *
      * @param string $roleId
      * @return void
      * @throws GuzzleException
      */
-    public function resetRolePermissionsToDefault(string $roleId): void
+    final public function resetRolePermissionsToDefault(string $roleId): void
     {
         $uri = 'permission-roles/{roleId}/reset-role-permissions-to-default';
         $uriArguments = [
             'roleId' => $roleId,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments));
+        $this->client->post($this->buildUrl($uri, $uriArguments), []);
     }
 
     /**
-     * Update custom permission role name.
+     * Update custom permission role name
      *
-     * Permissions that may be checked: Superadmin, Projects.Admin, Channel.Admin
+     * Permissions that may be checked: Superadmin, Project.Admin, Channel.Admin
      *
      * @param string $roleId
      * @param array $data
@@ -93,11 +92,11 @@ class PermissionRoles extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function updateRole(string $roleId, array $data): void
+    final public function updateRole(string $roleId, array $data): void
     {
         $uri = 'permission-roles/{roleId}';
         $required = [
-            'name' => self::TYPE_STRING,
+            'name' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -108,15 +107,15 @@ class PermissionRoles extends AbstractApi
     }
 
     /**
-     * Delete custom permission role.
+     * Delete custom permission role
      *
-     * Permissions that may be checked: Superadmin, Projects.Admin, Channel.Admin
+     * Permissions that may be checked: Superadmin, Project.Admin, Channel.Admin
      *
      * @param string $roleId
      * @return void
      * @throws GuzzleException
      */
-    public function deleteRole(string $roleId): void
+    final public function deleteRole(string $roleId): void
     {
         $uri = 'permission-roles/{roleId}';
         $uriArguments = [
@@ -127,9 +126,17 @@ class PermissionRoles extends AbstractApi
     }
 
     /**
+     * @return TwoFaRequirement
+     */
+    final public function twoFaRequirement(): TwoFaRequirement
+    {
+        return new TwoFaRequirement($this->client);
+    }
+
+    /**
      * @return Permissions
      */
-    public function permissions(): Permissions
+    final public function permissions(): Permissions
     {
         return new Permissions($this->client);
     }
@@ -137,7 +144,7 @@ class PermissionRoles extends AbstractApi
     /**
      * @return Profiles
      */
-    public function profiles(): Profiles
+    final public function profiles(): Profiles
     {
         return new Profiles($this->client);
     }
@@ -145,16 +152,8 @@ class PermissionRoles extends AbstractApi
     /**
      * @return Teams
      */
-    public function teams(): Teams
+    final public function teams(): Teams
     {
         return new Teams($this->client);
-    }
-
-    /**
-     * @return TwoFaRequirement
-     */
-    public function twoFaRequirement(): TwoFaRequirement
-    {
-        return new TwoFaRequirement($this->client);
     }
 }

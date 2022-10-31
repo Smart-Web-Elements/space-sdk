@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Projects\Params;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class DefaultBundle
@@ -12,25 +13,26 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Projects\Params
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class DefaultBundle extends AbstractApi
+final class DefaultBundle extends AbstractApi
 {
     /**
-     * Create a new project parameter in the default parameter bundle.
+     * Create a new project parameter in the default parameter bundle
      *
      * Permissions that may be checked: Project.Params.Modify
      *
      * @param array $data
+     * @param array $response
      * @return string
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createDefaultBundle(array $data): string
+    final public function createDefaultBundle(array $data): string
     {
         $uri = 'projects/params/default-bundle';
         $required = [
-            'project' => self::TYPE_STRING,
-            'key' => self::TYPE_STRING,
-            'value' => self::TYPE_STRING,
+            'project' => Type::Array,
+            'key' => Type::String,
+            'value' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -38,7 +40,7 @@ class DefaultBundle extends AbstractApi
     }
 
     /**
-     * List project parameters in a parameter bundle.
+     * List project parameters in a parameter bundle
      *
      * Permissions that may be checked: Project.Params.View
      *
@@ -48,14 +50,14 @@ class DefaultBundle extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function getAllDefaultBundle(array $request, array $response = []): array
+    final public function getAllDefaultBundle(array $request, array $response = []): array
     {
         $uri = 'projects/params/default-bundle';
         $required = [
-            'project' => self::TYPE_STRING,
+            'project' => Type::Array,
         ];
         $this->throwIfInvalid($required, $request);
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 }

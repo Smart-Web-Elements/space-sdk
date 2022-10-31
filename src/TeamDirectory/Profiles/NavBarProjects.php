@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\TeamDirectory\Profiles;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class NavBarProjects
@@ -12,22 +13,22 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\TeamDirectory\Profiles
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class NavBarProjects extends AbstractApi
+final class NavBarProjects extends AbstractApi
 {
     /**
-     * Add a project to the navigation bar.
+     * Add a project to the navigation bar
      *
-     * @param string $profile
+     * @param array $profile
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createNavBarProject(string $profile, array $data): void
+    final public function createNavBarProject(array $profile, array $data): void
     {
         $uri = 'team-directory/profiles/{profile}/nav-bar-projects';
         $required = [
-            'project' => self::TYPE_STRING,
+            'project' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -38,32 +39,32 @@ class NavBarProjects extends AbstractApi
     }
 
     /**
-     * Add a project to the navigation bar.
+     * Add a project to the navigation bar
      *
-     * @param string $profile
+     * @param array $profile
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getAllNavBarProjects(string $profile, array $response = []): array
+    final public function getAllNavBarProjects(array $profile, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/nav-bar-projects';
         $uriArguments = [
             'profile' => $profile,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
-     * Remove a project from the navigation bar.
+     * Remove a project from the navigation bar
      *
-     * @param string $profile
-     * @param string $project
+     * @param array $profile
+     * @param array $project
      * @return void
      * @throws GuzzleException
      */
-    public function deleteNavBarProject(string $profile, string $project): void
+    final public function deleteNavBarProject(array $profile, array $project): void
     {
         $uri = 'team-directory/profiles/{profile}/nav-bar-projects/{project}';
         $uriArguments = [

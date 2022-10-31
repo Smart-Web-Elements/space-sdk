@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\TimeTracking;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Items
@@ -12,13 +13,12 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\TimeTracking
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Items extends AbstractApi
+final class Items extends AbstractApi
 {
     /**
      * Create work item.
      *
-     * Permissions that may be checked: Project.Issues.Edit, Project.TimeTracking.EditOwn,
-     * Project.TimeTracking.EditOthers
+     * Permissions that may be checked: Project.Issues.Edit, Project.TimeTracking.EditOwn, Project.TimeTracking.EditOthers
      *
      * @param array $data
      * @param array $response
@@ -26,22 +26,22 @@ class Items extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function createItem(array $data, array $response = []): array
+    final public function createItem(array $data, array $response = []): array
     {
         $uri = 'time-tracking/items';
         $required = [
-            'subject' => self::TYPE_STRING,
-            'userId' => self::TYPE_STRING,
-            'date' => self::TYPE_DATE,
-            'duration' => self::TYPE_INTEGER,
+            'subject' => Type::Array,
+            'userId' => Type::Array,
+            'date' => Type::Date,
+            'duration' => Type::Integer,
         ];
         $this->throwIfInvalid($required, $data);
 
-        return $this->client->post($this->buildUrl($uri), $data, $response);
+        return $this->client->post($this->buildUrl($uri), $data, [], $response);
     }
 
     /**
-     * Get items for subject.
+     * Get items for subject
      *
      * Permissions that may be checked: Project.TimeTracking.View
      *
@@ -51,15 +51,15 @@ class Items extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function getAllItems(array $request, array $response = []): array
+    final public function getAllItems(array $request, array $response = []): array
     {
         $uri = 'time-tracking/items';
         $required = [
-            'subject' => self::TYPE_STRING,
+            'subject' => Type::Array,
         ];
         $this->throwIfInvalid($required, $request);
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 
     /**
@@ -72,7 +72,7 @@ class Items extends AbstractApi
      * @return void
      * @throws GuzzleException
      */
-    public function updateItem(string $itemId, array $data = []): void
+    final public function updateItem(string $itemId, array $data = []): void
     {
         $uri = 'time-tracking/items/{itemId}';
         $uriArguments = [
@@ -83,7 +83,7 @@ class Items extends AbstractApi
     }
 
     /**
-     * Delete single work item.
+     * Delete single work item
      *
      * Permissions that may be checked: Project.TimeTracking.EditOwn, Project.TimeTracking.EditOthers
      *
@@ -91,7 +91,7 @@ class Items extends AbstractApi
      * @return void
      * @throws GuzzleException
      */
-    public function deleteItem(string $itemId): void
+    final public function deleteItem(string $itemId): void
     {
         $uri = 'time-tracking/items/{itemId}';
         $uriArguments = [

@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Applications\Unfurls;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Queue
@@ -12,7 +13,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Applications\Unfurls
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Queue extends AbstractApi
+final class Queue extends AbstractApi
 {
     /**
      * Provide Space with unfurls content. Method is to be called by the application providing unfurls.
@@ -25,20 +26,19 @@ class Queue extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function postUnfurlsContent(array $data, array $response = []): array
+    final public function postUnfurlsContent(array $data, array $response = []): array
     {
         $uri = 'applications/unfurls/queue/content';
         $required = [
-            'unfurls' => self::TYPE_ARRAY,
+            'unfurls' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
 
-        return $this->client->post($this->buildUrl($uri), $data, $response);
+        return $this->client->post($this->buildUrl($uri), $data, [], $response);
     }
 
     /**
-     * Request user to authenticate in external system to provide unfurls from it. Method is to be called by the
-     * application providing unfurls.
+     * Request user to authenticate in external system to provide unfurls from it. Method is to be called by the application providing unfurls.
      *
      * Permissions that may be checked: Unfurl.App.ProvideAttachment
      *
@@ -47,14 +47,14 @@ class Queue extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function requestExternalSystemAuthentication(array $data): void
+    final public function requestExternalSystemAuthentication(array $data): void
     {
         $uri = 'applications/unfurls/queue/request-external-auth';
         $required = [
-            'queueItemId' => self::TYPE_STRING,
+            'queueItemId' => Type::String,
             'message' => [
-                'style' => self::TYPE_STRING,
-                'sections' => self::TYPE_ARRAY,
+                'style' => Type::String,
+                'sections' => Type::Array,
             ],
         ];
         $this->throwIfInvalid($required, $data);
@@ -63,8 +63,7 @@ class Queue extends AbstractApi
     }
 
     /**
-     * Clear all external system authentication requests for the specified user. Method is to be called by the
-     * application providing unfurls.
+     * Clear all external system authentication requests for the specified user. Method is to be called by the application providing unfurls.
      *
      * Permissions that may be checked: Unfurl.App.ProvideAttachment
      *
@@ -73,11 +72,11 @@ class Queue extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function clearExternalSystemAuthenticationRequests(array $data): void
+    final public function clearExternalSystemAuthenticationRequests(array $data): void
     {
         $uri = 'applications/unfurls/queue/reset-external-auth-requests';
         $required = [
-            'userId' => self::TYPE_STRING,
+            'userId' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
 
@@ -95,14 +94,14 @@ class Queue extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function getUnfurlQueueItems(array $request, array $response = []): array
+    final public function getUnfurlQueueItems(array $request, array $response = []): array
     {
         $uri = 'applications/unfurls/queue';
         $required = [
-            'batchSize' => self::TYPE_INTEGER,
+            'batchSize' => Type::Integer,
         ];
         $this->throwIfInvalid($required, $request);
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 }

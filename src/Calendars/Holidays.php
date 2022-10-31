@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Calendars;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Holidays
@@ -12,7 +13,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Calendars
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Holidays extends AbstractApi
+final class Holidays extends AbstractApi
 {
     /**
      * Get/search holidays. Parameters are applied as 'AND' filters.
@@ -23,15 +24,15 @@ class Holidays extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function getAllHolidays(array $request, array $response = []): array
+    final public function getAllHolidays(array $request, array $response = []): array
     {
         $uri = 'calendars/holidays';
         $required = [
-            'dateFrom' => self::TYPE_DATE,
-            'dateTo' => self::TYPE_DATE,
+            'startDate' => Type::Date,
+            'endDate' => Type::Date,
         ];
         $this->throwIfInvalid($required, $request);
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 }

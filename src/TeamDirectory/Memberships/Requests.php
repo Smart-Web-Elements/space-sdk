@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\TeamDirectory\Memberships;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Requests
@@ -12,7 +13,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\TeamDirectory\Memberships
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Requests extends AbstractApi
+final class Requests extends AbstractApi
 {
     /**
      * Get/search all membership requests. Parameters are applied as 'AND' filters.
@@ -24,16 +25,15 @@ class Requests extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getAllRequests(array $request = [], array $response = []): array
+    final public function getAllRequests(array $request = [], array $response = []): array
     {
         $uri = 'team-directory/memberships/requests';
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 
     /**
-     * Approve/reject a team membership request. Setting approved to true will approve the membership request, false
-     * will reject it.
+     * Approve/reject a team membership request. Setting approved to true will approve the membership request, false will reject it.
      *
      * Permissions that may be checked: Team.Edit
      *
@@ -43,11 +43,11 @@ class Requests extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function updateRequest(string $membershipRequestId, array $data): void
+    final public function updateRequest(string $membershipRequestId, array $data): void
     {
         $uri = 'team-directory/memberships/requests/{membershipRequestId}';
         $required = [
-            'approved' => self::TYPE_BOOLEAN,
+            'approved' => Type::Boolean,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -58,7 +58,7 @@ class Requests extends AbstractApi
     }
 
     /**
-     * Delete a team membership request.
+     * Delete a team membership request
      *
      * Permissions that may be checked: Profile.Edit.2
      *
@@ -67,7 +67,7 @@ class Requests extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function deleteRequest(string $membershipRequestId, array $response = []): array
+    final public function deleteRequest(string $membershipRequestId, array $response = []): array
     {
         $uri = 'team-directory/memberships/requests/{membershipRequestId}';
         $uriArguments = [

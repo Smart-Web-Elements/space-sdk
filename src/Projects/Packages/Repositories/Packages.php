@@ -7,6 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Projects\Packages\Repositories\Packages\Metadata;
 use Swe\SpaceSDK\Projects\Packages\Repositories\Packages\Versions;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Packages
@@ -14,26 +15,26 @@ use Swe\SpaceSDK\Projects\Packages\Repositories\Packages\Versions;
  * @package Swe\SpaceSDK\Projects\Packages\Repositories
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Packages extends AbstractApi
+final class Packages extends AbstractApi
 {
     /**
-     * Gets a list of repository packages for a given project ID.
+     * Gets a list of repository packages for a given project ID
      *
      * Permissions that may be checked: PackageRepository.Read
      *
-     * @param string $project
-     * @param string $repository
+     * @param array $project
+     * @param array $repository
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function getAllPackages(string $project, string $repository, array $request, array $response = []): array
+    final public function getAllPackages(array $project, array $repository, array $request, array $response = []): array
     {
         $uri = 'projects/{project}/packages/repositories/{repository}/packages';
         $required = [
-            'query' => self::TYPE_STRING,
+            'query' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
         $uriArguments = [
@@ -41,21 +42,21 @@ class Packages extends AbstractApi
             'repository' => $repository,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
-     * Removes all package versions in repository for a given project ID.
+     * Removes all package versions in repository for a given project ID
      *
      * Permissions that may be checked: PackageRepository.Write
      *
-     * @param string $project
-     * @param string $repository
+     * @param array $project
+     * @param array $repository
      * @param string $packageName
      * @return void
      * @throws GuzzleException
      */
-    public function deletePackage(string $project, string $repository, string $packageName): void
+    final public function deletePackage(array $project, array $repository, string $packageName): void
     {
         $uri = 'projects/{project}/packages/repositories/{repository}/packages/name:{packageName}';
         $uriArguments = [
@@ -70,7 +71,7 @@ class Packages extends AbstractApi
     /**
      * @return Metadata
      */
-    public function metadata(): Metadata
+    final public function metadata(): Metadata
     {
         return new Metadata($this->client);
     }
@@ -78,7 +79,7 @@ class Packages extends AbstractApi
     /**
      * @return Versions
      */
-    public function versions(): Versions
+    final public function versions(): Versions
     {
         return new Versions($this->client);
     }

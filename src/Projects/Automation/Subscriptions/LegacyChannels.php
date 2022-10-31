@@ -11,17 +11,16 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\Projects\Automation\Subscriptions
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class LegacyChannels extends AbstractApi
+final class LegacyChannels extends AbstractApi
 {
     /**
-     * Delete the legacy subscription channels matching the given filters (applied as AND). If no filter is provided,
-     * all subscription channels corresponding to unsubscribed jobs for the logged in user are deleted.
+     * Delete the legacy subscription channels matching the given filters (applied as AND). If no filter is provided, all subscription channels corresponding to unsubscribed jobs for the logged in user are deleted.
      *
      * @param array $request
      * @return void
      * @throws GuzzleException
      */
-    public function deleteLegacyChannels(array $request = []): void
+    final public function deleteLegacyChannels(array $request = []): void
     {
         $uri = 'projects/automation/subscriptions/legacy-channels';
 

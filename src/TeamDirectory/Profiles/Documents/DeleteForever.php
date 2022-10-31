@@ -11,15 +11,15 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\TeamDirectory\Profiles\Documents
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class DeleteForever extends AbstractApi
+final class DeleteForever extends AbstractApi
 {
     /**
-     * @param string $profile
+     * @param array $profile
      * @param string $documentId
      * @return void
      * @throws GuzzleException
      */
-    public function deleteDocumentForever(string $profile, string $documentId): void
+    final public function deleteDocumentForever(array $profile, string $documentId): void
     {
         $uri = 'team-directory/profiles/{profile}/documents/{documentId}/delete-forever';
         $uriArguments = [

@@ -11,20 +11,20 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\PublicHolidays\Holidays
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class RelatedHolidays extends AbstractApi
+final class RelatedHolidays extends AbstractApi
 {
     /**
-     * Search related holidays in all public holiday calendars, during the selected period.
+     * Search related holidays in all public holiday calendars, during the selected period
      *
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getAllRelatedHolidays(array $request = [], array $response = []): array
+    final public function getAllRelatedHolidays(array $request = [], array $response = []): array
     {
         $uri = 'public-holidays/holidays/related-holidays';
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 }

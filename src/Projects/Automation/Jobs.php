@@ -2,10 +2,10 @@
 
 namespace Swe\SpaceSDK\Projects\Automation;
 
-
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Jobs
@@ -13,7 +13,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Projects\Automation
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Jobs extends AbstractApi
+final class Jobs extends AbstractApi
 {
     /**
      * Permissions that may be checked: Automation.Execution.View
@@ -21,53 +21,52 @@ class Jobs extends AbstractApi
      * @param string $jobId
      * @param array $request
      * @param array $response
-     * @return array
+     * @return array|null
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function getJob(string $jobId, array $request, array $response = []): array
+    final public function getJob(string $jobId, array $request, array $response = []): ?array
     {
         $uri = 'projects/automation/jobs/{jobId}';
-        $requiredFields = [
-            'project' => self::TYPE_STRING,
+        $required = [
+            'project' => Type::Array,
         ];
-        $this->throwIfInvalid($requiredFields, $request);
+        $this->throwIfInvalid($required, $request);
         $uriArguments = [
             'jobId' => $jobId,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
-     * Start job. Returns ExecutionId.
+     * Start job. Returns ExecutionId, see projects/automation/graph-executions/{id}.
      *
      * Permissions that may be checked: Automation.Execution.Start
      *
-     * @param string $project
+     * @param array $project
      * @param string $jobId
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
-     * @see GraphExecutions::getGraphExecution()
      */
-    public function startJob(string $project, string $jobId, array $data, array $response = []): array
+    final public function startJob(array $project, string $jobId, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/automation/jobs/{jobId}/start';
-        $requiredFields = [
+        $required = [
             'branch' => [
-                'branchName' => self::TYPE_STRING,
+                'branchName' => Type::String,
             ],
         ];
-        $this->throwIfInvalid($requiredFields, $data);
+        $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'project' => $project,
             'jobId' => $jobId,
         ];
 
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, $response);
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
@@ -75,25 +74,25 @@ class Jobs extends AbstractApi
      *
      * Permissions that may be checked: Automation.Execution.View
      *
-     * @param string $project
+     * @param array $project
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function getAllJobs(string $project, array $request, array $response = []): array
+    final public function getAllJobs(array $project, array $request, array $response = []): array
     {
         $uri = 'projects/{project}/automation/jobs';
-        $requiredFields = [
-            'repoFilter' => self::TYPE_STRING,
-            'branchFilter' => self::TYPE_STRING,
+        $required = [
+            'repoFilter' => Type::String,
+            'branchFilter' => Type::String,
         ];
-        $this->throwIfInvalid($requiredFields, $request);
+        $this->throwIfInvalid($required, $request);
         $uriArguments = [
             'project' => $project,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 }

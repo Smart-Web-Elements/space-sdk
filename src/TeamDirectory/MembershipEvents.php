@@ -11,7 +11,7 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\TeamDirectory
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class MembershipEvents extends AbstractApi
+final class MembershipEvents extends AbstractApi
 {
     /**
      * Get/search membership events. Parameters are applied as 'AND' filters.
@@ -21,10 +21,10 @@ class MembershipEvents extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getAllMembershipEvents(array $request = [], array $response = []): array
+    final public function getAllMembershipEvents(array $request = [], array $response = []): array
     {
         $uri = 'team-directory/membership-events';
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 }

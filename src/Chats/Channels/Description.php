@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Chats\Channels;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Description
@@ -12,22 +13,22 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Chats\Channels
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Description extends AbstractApi
+final class Description extends AbstractApi
 {
     /**
      * Permissions that may be checked: Channel.UpdateChannelInfo
      *
-     * @param string $channel
+     * @param array $channel
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function changeChannelDescription(string $channel, array $data): void
+    final public function changeChannelDescription(array $channel, array $data): void
     {
         $uri = 'chats/channels/{channel}/description';
         $required = [
-            'description' => self::TYPE_STRING,
+            'description' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

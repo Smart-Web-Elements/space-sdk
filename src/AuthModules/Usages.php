@@ -11,10 +11,10 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\AuthModules
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Usages extends AbstractApi
+final class Usages extends AbstractApi
 {
     /**
-     * Retrieve a list of authentication module usage count.
+     * Retrieve a list of authentication module usage count
      *
      * Permissions that may be checked: AuthModule.Manage
      *
@@ -22,10 +22,10 @@ class Usages extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    public function getAllUsages(array $response = []): array
+    final public function getAllUsages(array $response = []): array
     {
         $uri = 'auth-modules/usages';
 
-        return $this->client->get($this->buildUrl($uri), $response);
+        return $this->client->get($this->buildUrl($uri), [], $response);
     }
 }

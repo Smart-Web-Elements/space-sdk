@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Projects\Packages\Repositories\Packages;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Versions
@@ -12,15 +13,15 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Projects\Packages\Repositories\Packages
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Versions extends AbstractApi
+final class Versions extends AbstractApi
 {
     /**
-     * Gets a list of repository package versions for a given project ID.
+     * Gets a list of repository package versions for a given project ID
      *
      * Permissions that may be checked: PackageRepository.Read
      *
-     * @param string $project
-     * @param string $repository
+     * @param array $project
+     * @param array $repository
      * @param string $packageName
      * @param array $request
      * @param array $response
@@ -28,18 +29,18 @@ class Versions extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function getAllPackageVersions(
-        string $project,
-        string $repository,
+    final public function getAllPackageVersions(
+        array $project,
+        array $repository,
         string $packageName,
         array $request,
-        array $response = []
+        array $response = [],
     ): array {
         $uri = 'projects/{project}/packages/repositories/{repository}/packages/name:{packageName}/versions';
         $required = [
-            'query' => self::TYPE_STRING,
-            'sortColumn' => self::TYPE_STRING,
-            'sortOrder' => self::TYPE_STRING,
+            'query' => Type::String,
+            'sortColumn' => Type::String,
+            'sortOrder' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
         $uriArguments = [
@@ -48,29 +49,29 @@ class Versions extends AbstractApi
             'packageName' => $packageName,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response, $request);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
-     * Gets a details for repository package version for a given project ID.
+     * Gets a details for repository package version for a given project ID
      *
      * Permissions that may be checked: PackageRepository.Read
      *
-     * @param string $project
-     * @param string $repository
+     * @param array $project
+     * @param array $repository
      * @param string $packageName
      * @param string $packageVersion
      * @param array $response
-     * @return array
+     * @return array|null
      * @throws GuzzleException
      */
-    public function getPackageVersionDetails(
-        string $project,
-        string $repository,
+    final public function getPackageVersionDetails(
+        array $project,
+        array $repository,
         string $packageName,
         string $packageVersion,
-        array $response = []
-    ): array {
+        array $response = [],
+    ): ?array {
         $uri = 'projects/{project}/packages/repositories/{repository}/packages/name:{packageName}/versions/version:{packageVersion}';
         $uriArguments = [
             'project' => $project,
@@ -79,26 +80,26 @@ class Versions extends AbstractApi
             'packageVersion' => $packageVersion,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
-     * Gets a details for repository package version for a given project ID.
+     * Removes a package version in repository for a given project ID
      *
      * Permissions that may be checked: PackageRepository.Write
      *
-     * @param string $project
-     * @param string $repository
+     * @param array $project
+     * @param array $repository
      * @param string $packageName
      * @param string $packageVersion
      * @return void
      * @throws GuzzleException
      */
-    public function deletePackageVersion(
-        string $project,
-        string $repository,
+    final public function deletePackageVersion(
+        array $project,
+        array $repository,
         string $packageName,
-        string $packageVersion
+        string $packageVersion,
     ): void {
         $uri = 'projects/{project}/packages/repositories/{repository}/packages/name:{packageName}/versions/version:{packageVersion}';
         $uriArguments = [

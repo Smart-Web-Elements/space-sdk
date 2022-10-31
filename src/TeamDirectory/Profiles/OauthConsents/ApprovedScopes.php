@@ -1,6 +1,6 @@
 <?php
 
-namespace Swe\SpaceSDK\TeamDirectory\Profiles\OAuthConsents;
+namespace Swe\SpaceSDK\TeamDirectory\Profiles\OauthConsents;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
@@ -8,20 +8,20 @@ use Swe\SpaceSDK\AbstractApi;
 /**
  * Class ApprovedScopes
  *
- * @package Swe\SpaceSDK\TeamDirectory\Profiles\OAuthConsents
+ * @package Swe\SpaceSDK\TeamDirectory\Profiles\OauthConsents
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class ApprovedScopes extends AbstractApi
+final class ApprovedScopes extends AbstractApi
 {
     /**
-     * Remove a previously approved scope.
+     * Remove a previously approved scope
      *
-     * @param string $owner
+     * @param array $owner
      * @param string $id
      * @return void
      * @throws GuzzleException
      */
-    public function deleteApprovedScope(string $owner, string $id): void
+    final public function deleteApprovedScope(array $owner, string $id): void
     {
         $uri = 'team-directory/profiles/oauth-consents/{owner}/approved-scopes/{id}';
         $uriArguments = [

@@ -13,12 +13,12 @@ use Swe\SpaceSDK\Projects\Packages\Types;
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Packages extends AbstractApi
+final class Packages extends AbstractApi
 {
     /**
      * @return Repositories
      */
-    public function repositories(): Repositories
+    final public function repositories(): Repositories
     {
         return new Repositories($this->client);
     }
@@ -26,7 +26,7 @@ class Packages extends AbstractApi
     /**
      * @return Search
      */
-    public function search(): Search
+    final public function search(): Search
     {
         return new Search($this->client);
     }
@@ -34,7 +34,7 @@ class Packages extends AbstractApi
     /**
      * @return Types
      */
-    public function types(): Types
+    final public function types(): Types
     {
         return new Types($this->client);
     }

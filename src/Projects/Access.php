@@ -15,12 +15,12 @@ use Swe\SpaceSDK\Projects\Access\Viewers;
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Access extends AbstractApi
+final class Access extends AbstractApi
 {
     /**
      * @return Admins
      */
-    public function admins(): Admins
+    final public function admins(): Admins
     {
         return new Admins($this->client);
     }
@@ -28,7 +28,7 @@ class Access extends AbstractApi
     /**
      * @return Collaborators
      */
-    public function collaborators(): Collaborators
+    final public function collaborators(): Collaborators
     {
         return new Collaborators($this->client);
     }
@@ -36,7 +36,7 @@ class Access extends AbstractApi
     /**
      * @return MemberProfiles
      */
-    public function memberProfiles(): MemberProfiles
+    final public function memberProfiles(): MemberProfiles
     {
         return new MemberProfiles($this->client);
     }
@@ -44,7 +44,7 @@ class Access extends AbstractApi
     /**
      * @return Members
      */
-    public function members(): Members
+    final public function members(): Members
     {
         return new Members($this->client);
     }
@@ -52,7 +52,7 @@ class Access extends AbstractApi
     /**
      * @return Viewers
      */
-    public function viewers(): Viewers
+    final public function viewers(): Viewers
     {
         return new Viewers($this->client);
     }

@@ -10,21 +10,19 @@ use GuzzleHttp\Exception\GuzzleException;
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class HttpApiModel extends AbstractApi
+final class HttpApiModel extends AbstractApi
 {
     /**
-     * Get the HTTP API model that describes the available HTTP APIs.
-     *
-     * This endpoint doesn't require any permissions.
+     * Get the HTTP API model that describes the available HTTP APIs
      *
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function getHttpApiModel(array $response = []): array
+    final public function getHttpApiModel(array $response = []): array
     {
         $uri = 'http-api-model';
 
-        return $this->client->get($this->buildUrl($uri), $response);
+        return $this->client->get($this->buildUrl($uri), [], $response);
     }
 }

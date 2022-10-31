@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\TeamDirectory\Profiles;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class SshKeys
@@ -12,24 +13,24 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\TeamDirectory\Profiles
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class SshKeys extends AbstractApi
+final class SshKeys extends AbstractApi
 {
     /**
-     * Associate an SSH public key with the profile.
+     * Associate an SSH public key with the profile
      *
      * Permissions that may be checked: Profile.Edit.2
      *
-     * @param string $profile
+     * @param array $profile
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function addSshKey(string $profile, array $data): void
+    final public function addSshKey(array $profile, array $data): void
     {
         $uri = 'team-directory/profiles/{profile}/ssh-keys';
         $required = [
-            'key' => self::TYPE_STRING,
+            'key' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -40,36 +41,34 @@ class SshKeys extends AbstractApi
     }
 
     /**
-     * List SSH public keys associated with the profile.
+     * List SSH public keys associated with the profile
      *
-     * This endpoint doesn't require any permissions.
-     *
-     * @param string $profile
+     * @param array $profile
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    public function sshKeys(string $profile, array $response = []): array
+    final public function sshKeys(array $profile, array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/ssh-keys';
         $uriArguments = [
             'profile' => $profile,
         ];
 
-        return $this->client->get($this->buildUrl($uri, $uriArguments), $response);
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
-     * Remove association between the profile and the SSH public key.
+     * Remove association between the profile and the SSH public key
      *
      * Permissions that may be checked: Profile.Edit.2
      *
-     * @param string $profile
+     * @param array $profile
      * @param string $fingerprint
      * @return void
      * @throws GuzzleException
      */
-    public function deleteSshKey(string $profile, string $fingerprint): void
+    final public function deleteSshKey(array $profile, string $fingerprint): void
     {
         $uri = 'team-directory/profiles/{profile}/ssh-keys/{fingerprint}';
         $uriArguments = [

@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Projects\Access\Admins;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class Profiles
@@ -12,24 +13,24 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Projects\Access\Admins
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Profiles extends AbstractApi
+final class Profiles extends AbstractApi
 {
     /**
-     * Add a member as administrator to a project.
+     * Add a member as administrator to a project
      *
      * Permissions that may be checked: Project.Admin
      *
-     * @param string $project
+     * @param array $project
      * @param array $data
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function addAdministrator(string $project, array $data): void
+    final public function addAdministrator(array $project, array $data): void
     {
         $uri = 'projects/{project}/access/admins/profiles';
         $required = [
-            'profile' => self::TYPE_STRING,
+            'profile' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -40,16 +41,16 @@ class Profiles extends AbstractApi
     }
 
     /**
-     * Remove a member as administrator from a project.
+     * Remove a member as administrator from a project
      *
      * Permissions that may be checked: Project.Admin
      *
-     * @param string $project
-     * @param string $profile
+     * @param array $project
+     * @param array $profile
      * @return void
      * @throws GuzzleException
      */
-    public function removeAdministrator(string $project, string $profile): void
+    final public function removeAdministrator(array $project, array $profile): void
     {
         $uri = 'projects/{project}/access/admins/profiles/{profile}';
         $uriArguments = [

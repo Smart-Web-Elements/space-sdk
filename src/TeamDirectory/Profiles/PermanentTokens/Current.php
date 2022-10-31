@@ -11,18 +11,16 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\TeamDirectory\Profiles\PermanentTokens
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class Current extends AbstractApi
+final class Current extends AbstractApi
 {
     /**
-     * Delete personal token of the given profile.
+     * Delete personal token of the given profile
      *
-     * This endpoint doesn't require any permissions.
-     *
-     * @param string $profile
+     * @param array $profile
      * @return void
      * @throws GuzzleException
      */
-    public function deleteCurrentPermanentToken(string $profile): void
+    final public function deleteCurrentPermanentToken(array $profile): void
     {
         $uri = 'team-directory/profiles/{profile}/permanent-tokens/current';
         $uriArguments = [

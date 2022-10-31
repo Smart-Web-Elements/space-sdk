@@ -11,21 +11,21 @@ use Swe\SpaceSDK\CustomFields\Values;
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class CustomFields extends AbstractApi
+final class CustomFields extends AbstractApi
 {
-    /**
-     * @return Fields
-     */
-    public function fields(): Fields
-    {
-        return new Fields($this->client);
-    }
-
     /**
      * @return Values
      */
-    public function values(): Values
+    final public function values(): Values
     {
         return new Values($this->client);
+    }
+
+    /**
+     * @return Fields
+     */
+    final public function fields(): Fields
+    {
+        return new Fields($this->client);
     }
 }

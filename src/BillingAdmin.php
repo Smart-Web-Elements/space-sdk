@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\BillingAdmin\Overdrafts;
 use Swe\SpaceSDK\BillingAdmin\Reports;
+use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class BillingAdmin
@@ -12,29 +13,31 @@ use Swe\SpaceSDK\BillingAdmin\Reports;
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class BillingAdmin extends AbstractApi
+final class BillingAdmin extends AbstractApi
 {
     /**
      * Permissions that may be checked: Superadmin
      *
-     * @param string $trailTier
+     * @param array $data
      * @return void
      * @throws GuzzleException
+     * @throws MissingArgumentException
      */
-    public function activateTrial(string $trailTier): void
+    final public function activateTrial(array $data): void
     {
-        $uri = 'billing-admin/trail';
-        $data = [
-            'trailTier' => $trailTier,
+        $uri = 'billing-admin/trial';
+        $required = [
+            'trialTier' => Type::String,
         ];
+        $this->throwIfInvalid($required, $data);
 
-        $this->client->post($this->buildUrl($uri), $data);
+        $this->client->put($this->buildUrl($uri), $data);
     }
 
     /**
      * @return Overdrafts
      */
-    public function overdrafts(): Overdrafts
+    final public function overdrafts(): Overdrafts
     {
         return new Overdrafts($this->client);
     }
@@ -42,7 +45,7 @@ class BillingAdmin extends AbstractApi
     /**
      * @return Reports
      */
-    public function reports(): Reports
+    final public function reports(): Reports
     {
         return new Reports($this->client);
     }

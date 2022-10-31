@@ -11,16 +11,17 @@ use Swe\SpaceSDK\AbstractApi;
  * @package Swe\SpaceSDK\Organization
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class JetSales extends AbstractApi
+final class JetSales extends AbstractApi
 {
     /**
+     * @param array $response
      * @return string|null
      * @throws GuzzleException
      */
-    public function checkDomainAvailability(): ?string
+    final public function checkDomainAvailability(): ?string
     {
         $uri = 'organization/jet-sales/url';
 
-        return $this->client->get($this->buildUrl($uri))[0];
+        return (string)$this->client->get($this->buildUrl($uri))[0];
     }
 }

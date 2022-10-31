@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Calendars;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Type;
 
 /**
  * Class NonWorkingDaysEvents
@@ -12,12 +13,10 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
  * @package Swe\SpaceSDK\Calendars
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-class NonWorkingDaysEvents extends AbstractApi
+final class NonWorkingDaysEvents extends AbstractApi
 {
     /**
-     * Get/search membership events. Parameters are applied as 'AND' filters.
-     *
-     * Permissions that may be checked: Profile.Memberships.View
+     * Get/search non-working day events. Parameters are applied as 'AND' filters.
      *
      * @param array $request
      * @param array $response
@@ -25,15 +24,15 @@ class NonWorkingDaysEvents extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    public function getAllNonWorkingDaysEvents(array $request, array $response = []): array
+    final public function getAllNonWorkingDaysEvents(array $request, array $response = []): array
     {
         $uri = 'calendars/non-working-days-events';
         $required = [
-            'dateFrom' => self::TYPE_DATE,
-            'dateTo' => self::TYPE_DATE,
+            'dateFrom' => Type::Date,
+            'dateTo' => Type::Date,
         ];
         $this->throwIfInvalid($required, $request);
 
-        return $this->client->get($this->buildUrl($uri), $response, $request);
+        return $this->client->get($this->buildUrl($uri), $request, $response);
     }
 }
