@@ -24,7 +24,7 @@ php ./build.php
 rm -rf ./build/space-sdk/src
 cp -r ./build/src ./space-sdk/src
 
-cd ./build/space-sdk
+cd ./space-sdk
 
 php ../../space-sdk/composer.phar update
 php ./vendor/bin/phpunit --configuration ./phpunit.xml
