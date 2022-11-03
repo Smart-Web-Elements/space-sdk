@@ -13,7 +13,7 @@ php -r "if (hash_file('sha384', 'composer-setup.php') === '55ce33d7678c5a6110855
 php composer-setup.php
 php -r "unlink('composer-setup.php');"
 
-php ./composer.phar update
+php ./composer.phar install --dev -o -n --no-progress
 
 [ $? -eq 0 ] || exit 1
 
