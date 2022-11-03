@@ -139,7 +139,7 @@ class SpaceTestCase extends ClientTestCase
         $method = $endpoint['functionName'];
 
         $missingTemplate = 'Missing method "' . get_class($class) . '::%s" -> %s';
-        $deprecatedTemplate = 'Method "' . get_class($class) . '::%s" is deprecated';
+        $deprecatedTemplate = 'Method "' . get_class($class) . '::%s" is deprecated since %s';
         $experimentalTemplate = 'Method "' . get_class($class) . '::%s" is experimental';
         $methodExists = method_exists($class, $endpoint['functionName']);
 
@@ -152,7 +152,7 @@ class SpaceTestCase extends ClientTestCase
         }
 
         if ($deprecated) {
-            $this->addWarning(sprintf($deprecatedTemplate, $method));
+            $this->addWarning(sprintf($deprecatedTemplate, $method, $endpoint['deprecation']['since']));
         }
 
         if ($experimental) {
