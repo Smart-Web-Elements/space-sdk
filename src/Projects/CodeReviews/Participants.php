@@ -9,6 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Participants
+ * Generated at 2022-11-15 07:46
  *
  * @package Swe\SpaceSDK\Projects\CodeReviews
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -53,8 +54,12 @@ final class Participants extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function removeReviewParticipant(string $project, string $reviewId, string $user, array $request): void
-    {
+    final public function removeReviewParticiopant(
+        string $project,
+        string $reviewId,
+        string $user,
+        array $request,
+    ): void {
         $uri = 'projects/{project}/code-reviews/{reviewId}/participants/{user}';
         $required = [
             'role' => Type::String,

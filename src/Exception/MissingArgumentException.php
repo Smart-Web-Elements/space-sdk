@@ -15,6 +15,8 @@ class MissingArgumentException extends Exception
     private const MESSAGE = 'You have to fill all required fields: %s';
 
     /**
+     * Throw an exception with some fields for the message.
+     *
      * @param array $fields
      * @return MissingArgumentException
      */

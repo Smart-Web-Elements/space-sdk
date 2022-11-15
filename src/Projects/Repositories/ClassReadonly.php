@@ -9,6 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class ClassReadonly
+ * Generated at 2022-11-15 07:46
  *
  * @package Swe\SpaceSDK\Projects\Repositories
  * @author Luca Braun <l.braun@s-w-e.com>

@@ -11,6 +11,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Checklists
+ * Generated at 2022-11-15 07:46
  *
  * @package Swe\SpaceSDK\Projects\Planning
  * @author Luca Braun <l.braun@s-w-e.com>

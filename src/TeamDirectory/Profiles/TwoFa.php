@@ -9,6 +9,7 @@ use Swe\SpaceSDK\TeamDirectory\Profiles\TwoFa\Totp;
 
 /**
  * Class TwoFa
+ * Generated at 2022-11-15 07:46
  *
  * @package Swe\SpaceSDK\TeamDirectory\Profiles
  * @author Luca Braun <l.braun@s-w-e.com>

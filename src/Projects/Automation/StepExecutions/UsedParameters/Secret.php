@@ -7,6 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class Secret
+ * Generated at 2022-11-15 07:46
  *
  * @package Swe\SpaceSDK\Projects\Automation\StepExecutions\UsedParameters
  * @author Luca Braun <l.braun@s-w-e.com>

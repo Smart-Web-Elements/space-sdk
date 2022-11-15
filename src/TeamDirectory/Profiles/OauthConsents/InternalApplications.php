@@ -7,6 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class InternalApplications
+ * Generated at 2022-11-15 07:46
  *
  * @package Swe\SpaceSDK\TeamDirectory\Profiles\OauthConsents
  * @author Luca Braun <l.braun@s-w-e.com>

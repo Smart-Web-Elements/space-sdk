@@ -9,6 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Find
+ * Generated at 2022-11-15 07:46
  *
  * @package Swe\SpaceSDK\Projects\Repositories
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -16,13 +17,17 @@ use Swe\SpaceSDK\Type;
 final class Find extends AbstractApi
 {
     /**
+     * Find repositories by name substring.
+     *
+     * Permissions that may be checked: VcsRepository.Read
+     *
      * @param array $request
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function getAllFind(array $request, array $response = []): array
+    final public function findRepositories(array $request, array $response = []): array
     {
         $uri = 'projects/repositories/find';
         $required = [

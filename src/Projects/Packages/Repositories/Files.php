@@ -7,6 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class Files
+ * Generated at 2022-11-15 07:46
  *
  * @package Swe\SpaceSDK\Projects\Packages\Repositories
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -66,6 +67,29 @@ final class Files extends AbstractApi
         ];
 
         return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
+    }
+
+    /**
+     * Removes a folder in repository for a given project ID
+     *
+     * Permissions that may be checked: PackageRepository.Write
+     *
+     * @param string $project
+     * @param string $repository
+     * @param string $folderPath
+     * @return void
+     * @throws GuzzleException
+     */
+    final public function deleteFolder(string $project, string $repository, string $folderPath): void
+    {
+        $uri = 'projects/{project}/packages/repositories/{repository}/files/folder:{folderPath}';
+        $uriArguments = [
+            'project' => $project,
+            'repository' => $repository,
+            'folderPath' => $folderPath,
+        ];
+
+        $this->client->delete($this->buildUrl($uri, $uriArguments));
     }
 
     /**

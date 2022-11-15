@@ -45,6 +45,8 @@ final class HttpClient
     }
 
     /**
+     * Perform a get request.
+     *
      * @param string $uri
      * @param array $responseFields
      * @param array $requestFields
@@ -60,6 +62,8 @@ final class HttpClient
     }
 
     /**
+     * Perform a post request.
+     *
      * @param string $uri
      * @param array $data
      * @param array $responseFields
@@ -76,6 +80,8 @@ final class HttpClient
     }
 
     /**
+     * Perform a put request.
+     *
      * @param string $uri
      * @param array $data
      * @param array $responseFields
@@ -92,6 +98,8 @@ final class HttpClient
     }
 
     /**
+     * Perform a patch request.
+     *
      * @param string $uri
      * @param array $data
      * @param array $responseFields
@@ -108,6 +116,8 @@ final class HttpClient
     }
 
     /**
+     * Perform a delete request.
+     *
      * @param string $uri
      * @param array $responseFields
      * @param array $requestFields
@@ -123,6 +133,8 @@ final class HttpClient
     }
 
     /**
+     * Get the full built uri with request fields and response fields.
+     *
      * @param string $uri
      * @param array $responseFields
      * @param array $requestFields
@@ -149,6 +161,8 @@ final class HttpClient
     }
 
     /**
+     * Parse an array of request fields for the uri.
+     *
      * @param array $fields
      * @return string
      */
@@ -168,6 +182,8 @@ final class HttpClient
     }
 
     /**
+     * Parse an array of response fields for the uri.
+     *
      * @param array $fields
      * @param bool $first
      * @return string
@@ -199,6 +215,8 @@ final class HttpClient
     }
 
     /**
+     * Get the client instance.
+     *
      * @param bool $withAuth
      * @param array $options
      * @return Client
@@ -223,6 +241,8 @@ final class HttpClient
     }
 
     /**
+     * Try to fetch the oauth token for requests.
+     *
      * @throws GuzzleException
      */
     private function fetchToken(): void

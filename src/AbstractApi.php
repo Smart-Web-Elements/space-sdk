@@ -35,11 +35,13 @@ abstract class AbstractApi
     }
 
     /**
+     * Validate the required properties.
+     *
      * @param array<string, Type|array<string, Type>> $required
      * @param array $fields
      * @return bool
      */
-    protected function validateRequiredPost(array $required, array $fields): bool
+    protected function validateRequired(array $required, array $fields): bool
     {
         foreach ($required as $field => $type) {
             if (!isset($fields[$field])) {
@@ -49,7 +51,7 @@ abstract class AbstractApi
             $value = $fields[$field];
 
             if (is_array($type)) {
-                if (!is_array($value) || !$this->validateRequiredPost($type, $value)) {
+                if (!is_array($value) || !$this->validateRequired($type, $value)) {
                     return false;
                 }
 
@@ -75,6 +77,8 @@ abstract class AbstractApi
     }
 
     /**
+     * Build the uri with variable replacement.
+     *
      * @param string $uri
      * @param array $arguments
      * @return string
@@ -89,13 +93,15 @@ abstract class AbstractApi
     }
 
     /**
+     * Throw an exception when the validation failed.
+     *
      * @param array $required
      * @param array $data
      * @throws MissingArgumentException
      */
     protected function throwIfInvalid(array $required, array $data): void
     {
-        if (!$this->validateRequiredPost($required, $data)) {
+        if (!$this->validateRequired($required, $data)) {
             throw MissingArgumentException::throwWithFields($required);
         }
     }

@@ -11,6 +11,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class CodeReviews
+ * Generated at 2022-11-15 07:46
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -155,6 +156,8 @@ final class CodeReviews extends AbstractApi
     }
 
     /**
+     * List files changed in commits under code review
+     *
      * Permissions that may be checked: Project.CodeReview.View
      *
      * @param string $project
@@ -180,6 +183,8 @@ final class CodeReviews extends AbstractApi
     }
 
     /**
+     * List files in merge request which will be merged into target branch
+     *
      * Permissions that may be checked: Project.CodeReview.View
      *
      * @param string $project
@@ -285,12 +290,8 @@ final class CodeReviews extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function mergeAMergeRequest(
-        string $project,
-        string $reviewId,
-        array $data,
-        array $response = [],
-    ): array {
+    final public function mergeMergeRequest(string $project, string $reviewId, array $data, array $response = []): array
+    {
         $uri = 'projects/{project}/code-reviews/{reviewId}/merge';
         $required = [
             'deleteSourceBranch' => Type::Boolean,
@@ -316,7 +317,7 @@ final class CodeReviews extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function rebaseAMergeRequest(
+    final public function rebaseMergeRequest(
         string $project,
         string $reviewId,
         array $data,

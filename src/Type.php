@@ -3,7 +3,7 @@
 namespace Swe\SpaceSDK;
 
 /**
- * Class Type
+ * Enum Type
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>

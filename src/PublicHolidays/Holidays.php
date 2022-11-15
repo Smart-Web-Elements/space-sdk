@@ -11,6 +11,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Holidays
+ * Generated at 2022-11-15 07:46
  *
  * @package Swe\SpaceSDK\PublicHolidays
  * @author Luca Braun <l.braun@s-w-e.com>
