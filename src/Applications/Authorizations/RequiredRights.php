@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class RequiredRights
- * Generated at 2022-11-15 07:46
+ * Generated at 2022-12-03 02:00
  *
  * @package Swe\SpaceSDK\Applications\Authorizations
  * @author Luca Braun <l.braun@s-w-e.com>

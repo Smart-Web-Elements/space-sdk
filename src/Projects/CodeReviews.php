@@ -5,45 +5,20 @@ namespace Swe\SpaceSDK\Projects;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Projects\CodeReviews\CodeDiscussions;
 use Swe\SpaceSDK\Projects\CodeReviews\Participants;
 use Swe\SpaceSDK\Projects\CodeReviews\Revisions;
 use Swe\SpaceSDK\Type;
 
 /**
  * Class CodeReviews
- * Generated at 2022-11-15 07:46
+ * Generated at 2022-12-03 02:00
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
  */
 final class CodeReviews extends AbstractApi
 {
-    /**
-     * Permissions that may be checked: Project.SuggestedEdit.Create
-     *
-     * @param string $project
-     * @param array $data
-     * @param array $response
-     * @return array
-     * @throws GuzzleException
-     * @throws MissingArgumentException
-     */
-    final public function createCodeDiscussion(string $project, array $data, array $response = []): array
-    {
-        $uri = 'projects/{project}/code-reviews/code-discussions';
-        $required = [
-            'text' => Type::String,
-            'repository' => Type::String,
-            'revision' => Type::String,
-        ];
-        $this->throwIfInvalid($required, $data);
-        $uriArguments = [
-            'project' => $project,
-        ];
-
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
-    }
-
     /**
      * Permissions that may be checked: Project.CodeReview.Create
      *
@@ -239,6 +214,31 @@ final class CodeReviews extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
+    final public function editReviewDescription(string $project, string $reviewId, array $data): void
+    {
+        $uri = 'projects/{project}/code-reviews/{reviewId}/description';
+        $required = [
+            'description' => Type::String,
+        ];
+        $this->throwIfInvalid($required, $data);
+        $uriArguments = [
+            'project' => $project,
+            'reviewId' => $reviewId,
+        ];
+
+        $this->client->patch($this->buildUrl($uri, $uriArguments), $data);
+    }
+
+    /**
+     * Permissions that may be checked: Project.CodeReview.Edit
+     *
+     * @param string $project
+     * @param string $reviewId
+     * @param array $data
+     * @return void
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
     final public function editReviewState(string $project, string $reviewId, array $data): void
     {
         $uri = 'projects/{project}/code-reviews/{reviewId}/state';
@@ -336,6 +336,14 @@ final class CodeReviews extends AbstractApi
         ];
 
         return $this->client->put($this->buildUrl($uri, $uriArguments), $data, [], $response);
+    }
+
+    /**
+     * @return CodeDiscussions
+     */
+    final public function codeDiscussions(): CodeDiscussions
+    {
+        return new CodeDiscussions($this->client);
     }
 
     /**
