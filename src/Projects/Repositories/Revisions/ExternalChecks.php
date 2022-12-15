@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class ExternalChecks
- * Generated at 2022-12-15 02:00
+ * Generated at 2022-12-15 11:10
  *
  * @package Swe\SpaceSDK\Projects\Repositories\Revisions
  * @author Luca Braun <l.braun@s-w-e.com>

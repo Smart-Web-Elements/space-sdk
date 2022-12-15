@@ -11,7 +11,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Authorizations
- * Generated at 2022-12-15 02:00
+ * Generated at 2022-12-15 11:10
  *
  * @package Swe\SpaceSDK\Applications
  * @author Luca Braun <l.braun@s-w-e.com>

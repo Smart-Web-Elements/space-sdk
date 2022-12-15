@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class Status
- * Generated at 2022-12-15 02:00
+ * Generated at 2022-12-15 11:10
  *
  * @package Swe\SpaceSDK\Administration\UserAgreement
  * @author Luca Braun <l.braun@s-w-e.com>

@@ -8,7 +8,7 @@ use Swe\SpaceSDK\Chats\Channels\Subscribers\Users;
 
 /**
  * Class Subscribers
- * Generated at 2022-12-15 02:00
+ * Generated at 2022-12-15 11:10
  *
  * @package Swe\SpaceSDK\Chats\Channels
  * @author Luca Braun <l.braun@s-w-e.com>
