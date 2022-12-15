@@ -11,7 +11,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Checklists
- * Generated at 2022-12-03 02:00
+ * Generated at 2022-12-15 02:00
  *
  * @package Swe\SpaceSDK\TeamDirectory\Profiles
  * @author Luca Braun <l.braun@s-w-e.com>

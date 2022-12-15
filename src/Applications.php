@@ -18,7 +18,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class Applications
- * Generated at 2022-12-03 02:00
+ * Generated at 2022-12-15 02:00
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -26,6 +26,10 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 final class Applications extends AbstractApi
 {
     /**
+     * Creates a new application. Marketplace application cannot be installed using this endpoint.
+     *
+     * To create a multi-org application (and connect application server to the current Space instance), pass `connectToSpace = true`. Learn more about multi-org applications in the [documentation](https://www.jetbrains.com/help/space/distribute-your-application.html).
+     *
      * Permissions that may be checked: Applications.Create
      *
      * @param array $data
@@ -172,6 +176,8 @@ final class Applications extends AbstractApi
     }
 
     /**
+     * Update existing application. Multi-org applications (created with the parameter `connectToSpace = true` or installed from JetBrains Marketplace) can only be updated by the application itself. Learn more about multi-org applications in the [documentation](https://www.jetbrains.com/help/space/distribute-your-application.html).
+     *
      * Permissions that may be checked: Applications.Edit
      *
      * @param string $application

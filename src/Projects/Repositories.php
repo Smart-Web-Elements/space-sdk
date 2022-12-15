@@ -8,11 +8,12 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Projects\Repositories\ClassReadonly;
 use Swe\SpaceSDK\Projects\Repositories\Find;
 use Swe\SpaceSDK\Projects\Repositories\Revisions;
+use Swe\SpaceSDK\Projects\Repositories\Settings;
 use Swe\SpaceSDK\Type;
 
 /**
  * Class Repositories
- * Generated at 2022-12-03 02:00
+ * Generated at 2022-12-15 02:00
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -215,5 +216,13 @@ final class Repositories extends AbstractApi
     final public function revisions(): Revisions
     {
         return new Revisions($this->client);
+    }
+
+    /**
+     * @return Settings
+     */
+    final public function settings(): Settings
+    {
+        return new Settings($this->client);
     }
 }

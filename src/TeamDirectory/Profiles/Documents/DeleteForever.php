@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class DeleteForever
- * Generated at 2022-12-03 02:00
+ * Generated at 2022-12-15 02:00
  *
  * @package Swe\SpaceSDK\TeamDirectory\Profiles\Documents
  * @author Luca Braun <l.braun@s-w-e.com>

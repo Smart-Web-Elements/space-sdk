@@ -14,7 +14,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Documents
- * Generated at 2022-12-03 02:00
+ * Generated at 2022-12-15 02:00
  *
  * @package Swe\SpaceSDK\TeamDirectory\Profiles
  * @author Luca Braun <l.braun@s-w-e.com>

@@ -8,13 +8,13 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Type;
 
 /**
- * Class ClassReadonly
+ * Class Settings
  * Generated at 2022-12-15 02:00
  *
  * @package Swe\SpaceSDK\Projects\Repositories
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-final class ClassReadonly extends AbstractApi
+final class Settings extends AbstractApi
 {
     /**
      * @param string $project
@@ -24,11 +24,13 @@ final class ClassReadonly extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function setRepositoryFrozenState(string $project, string $repository, array $data): void
+    final public function setSettings(string $project, string $repository, array $data): void
     {
-        $uri = 'projects/{project}/repositories/{repository}/readonly';
+        $uri = 'projects/{project}/repositories/{repository}/settings';
         $required = [
-            'freeze' => Type::Boolean,
+            'settings' => [
+                'version' => Type::String,
+            ],
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -43,17 +45,17 @@ final class ClassReadonly extends AbstractApi
      * @param string $project
      * @param string $repository
      * @param array $response
-     * @return bool
+     * @return array
      * @throws GuzzleException
      */
-    final public function getRepositoryFrozenState(string $project, string $repository): bool
+    final public function getSettings(string $project, string $repository, array $response = []): array
     {
-        $uri = 'projects/{project}/repositories/{repository}/readonly';
+        $uri = 'projects/{project}/repositories/{repository}/settings';
         $uriArguments = [
             'project' => $project,
             'repository' => $repository,
         ];
 
-        return (bool)$this->client->get($this->buildUrl($uri, $uriArguments))[0];
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 }
