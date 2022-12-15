@@ -1,7 +1,55 @@
 # Space SDK Changelog
 
-## Space SDK vv2.0.6
+## Space SDK v2.0.7
 
+- Fixed changelog.md
+
+## Space SDK v2.0.6
+
+- Updated changelog.md
+
+## Space SDK v2.0.5
+
+- Added class `Swe\SpaceSDK\Projects\Repositories\Settings`
+    - Added method `getSettings` in `Settings`
+    - Added method `setSettings` in `Settings`
+- Added method `settings` in `Swe\SpaceSDK\Projects\Repositories`
+
+## Space SDK v2.0.4
+
+- Added class `Swe\SpaceSDK\Projects\CodeReviews\CodeDiscussions\SuggestedEdit`
+    - Added method `alterSuggestedEdit` in `SuggestedEdit`
+- Added class `Swe\SpaceSDK\Projects\CodeReviews\CodeDiscussions`
+    - Added method `createCodeDiscussion` in `CodeDiscussions`
+    - Added method `acceptSuggestedEdit` in `CodeDiscussions`
+    - Added method `rejectSuggestedEdit` in `CodeDiscussions`
+    - Added method `reopenSuggestedEdit` in `CodeDiscussions`
+    - Added method `suggestedEdit` in `CodeDiscussions`
+- Added method `codeDiscussions` in `Swe\SpaceSDK\Projects\CodeReviews`
+- Added method `editReviewDescription` in `Swe\SpaceSDK\Projects\CodeReviews`
+- Removed method `createCodeDiscussion` from `Swe\SpaceSDK\Projects\CodeReviews`
+
+## Space SDK v2.0.3
+
+- Added method `removeReviewParticiopant` in `Swe\SpaceSDK\Projects\CodeReviews\Participants`
+- Removed method `removeReviewParticipant` from `Swe\SpaceSDK\Projects\CodeReviews\Participants`
+- Added method `deleteFolder` in `Swe\SpaceSDK\Projects\Packages\Repositories\Files`
+- Added method `findRepositories` in `Swe\SpaceSDK\Projects\Repositories\Find`
+- Removed method `getAllFind` from `Swe\SpaceSDK\Projects\Repositories\Find`
+- Added method `mergeMergeRequest` in `Swe\SpaceSDK\Projects\CodeReviews`
+- Removed method `mergeAMergeRequest` from `Swe\SpaceSDK\Projects\CodeReviews`
+- Added method `rebaseMergeRequest` in `Swe\SpaceSDK\Projects\CodeReviews`
+- Removed method `rebaseAMergeRequest` from `Swe\SpaceSDK\Projects\CodeReviews`
+- Moved `Swe\SpaceSDK\Exception\MissingArgumentException` in correct directory
+- Added generation date in all generated classes
+
+## Space SDK v2.0.2
+
+- Updated readme
+
+## Space SDK v2.0.1
+
+- Fixed some issues
 
 ## Space SDK v2.0.0
 
