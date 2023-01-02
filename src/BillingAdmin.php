@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class BillingAdmin
- * Generated at 2022-12-15 11:10
+ * Generated at 2023-01-02 09:05
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -24,7 +24,7 @@ final class BillingAdmin extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function activateTrial(array $data): void
+    final public function activateTrialNotAvailableForOnPremisesInstallations(array $data): void
     {
         $uri = 'billing-admin/trial';
         $required = [

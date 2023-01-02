@@ -1,5 +1,17 @@
 # Space SDK Changelog
 
+## Space SDK v2.1.7
+
+- Added method `rebaseBranch` in `Swe\SpaceSDK\Projects\Repositories`
+- Added method `mergeBranch` in `Swe\SpaceSDK\Projects\Repositories`
+- Added method `deleteBranch` in `Swe\SpaceSDK\Projects\Repositories`
+- Added method `cherryPickCommit` in `Swe\SpaceSDK\Projects\Repositories`
+- Removed method `checkDomainAvailability` from `Swe\SpaceSDK\Organization\JetSales`
+- Added method `getJetsalesUrl` in `Swe\SpaceSDK\Organization\JetSales`
+- Added method `getLicenseActivationUrl` in `Swe\SpaceSDK\Organization\JetSales`
+- Removed method `activateTrial` from `Swe\SpaceSDK\BillingAdmin`
+- Added method `activateTrialNotAvailableForOnPremisesInstallations` in `Swe\SpaceSDK\BillingAdmin`
+
 ## Space SDK v2.0.7
 
 - Fixed changelog.md

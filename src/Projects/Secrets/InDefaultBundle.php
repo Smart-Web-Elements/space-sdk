@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class InDefaultBundle
- * Generated at 2022-12-15 11:10
+ * Generated at 2023-01-02 09:05
  *
  * @package Swe\SpaceSDK\Projects\Secrets
  * @author Luca Braun <l.braun@s-w-e.com>

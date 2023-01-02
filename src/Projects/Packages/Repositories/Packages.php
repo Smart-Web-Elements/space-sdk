@@ -11,7 +11,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Packages
- * Generated at 2022-12-15 11:10
+ * Generated at 2023-01-02 09:05
  *
  * @package Swe\SpaceSDK\Projects\Packages\Repositories
  * @author Luca Braun <l.braun@s-w-e.com>

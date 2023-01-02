@@ -13,7 +13,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Repositories
- * Generated at 2022-12-15 11:10
+ * Generated at 2023-01-02 09:05
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -60,6 +60,35 @@ final class Repositories extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
+    final public function cherryPickCommit(
+        string $project,
+        string $repository,
+        array $data,
+        array $response = [],
+    ): array {
+        $uri = 'projects/{project}/repositories/{repository}/cherry-pick-commit';
+        $required = [
+            'commit' => Type::String,
+            'targetBranch' => Type::String,
+        ];
+        $this->throwIfInvalid($required, $data);
+        $uriArguments = [
+            'project' => $project,
+            'repository' => $repository,
+        ];
+
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
+    }
+
+    /**
+     * @param string $project
+     * @param string $repository
+     * @param array $data
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
     final public function commit(string $project, string $repository, array $data, array $response = []): array
     {
         $uri = 'projects/{project}/repositories/{repository}/commit';
@@ -81,6 +110,29 @@ final class Repositories extends AbstractApi
     /**
      * @param string $project
      * @param string $repository
+     * @param array $data
+     * @return void
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    final public function deleteBranch(string $project, string $repository, array $data): void
+    {
+        $uri = 'projects/{project}/repositories/{repository}/delete-branch';
+        $required = [
+            'branch' => Type::String,
+        ];
+        $this->throwIfInvalid($required, $data);
+        $uriArguments = [
+            'project' => $project,
+            'repository' => $repository,
+        ];
+
+        $this->client->post($this->buildUrl($uri, $uriArguments), $data);
+    }
+
+    /**
+     * @param string $project
+     * @param string $repository
      * @return void
      * @throws GuzzleException
      */
@@ -93,6 +145,57 @@ final class Repositories extends AbstractApi
         ];
 
         $this->client->post($this->buildUrl($uri, $uriArguments), []);
+    }
+
+    /**
+     * @param string $project
+     * @param string $repository
+     * @param array $data
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    final public function mergeBranch(string $project, string $repository, array $data, array $response = []): array
+    {
+        $uri = 'projects/{project}/repositories/{repository}/merge-branch';
+        $required = [
+            'sourceBranch' => Type::String,
+            'mergeMode' => Type::String,
+        ];
+        $this->throwIfInvalid($required, $data);
+        $uriArguments = [
+            'project' => $project,
+            'repository' => $repository,
+        ];
+
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
+    }
+
+    /**
+     * @param string $project
+     * @param string $repository
+     * @param array $data
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    final public function rebaseBranch(string $project, string $repository, array $data, array $response = []): array
+    {
+        $uri = 'projects/{project}/repositories/{repository}/rebase-branch';
+        $required = [
+            'sourceBranch' => Type::String,
+            'rebaseMode' => Type::String,
+            'squash' => Type::String,
+        ];
+        $this->throwIfInvalid($required, $data);
+        $uriArguments = [
+            'project' => $project,
+            'repository' => $repository,
+        ];
+
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**

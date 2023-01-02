@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class JetSales
- * Generated at 2022-12-15 11:10
+ * Generated at 2023-01-02 09:05
  *
  * @package Swe\SpaceSDK\Organization
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -19,7 +19,19 @@ final class JetSales extends AbstractApi
      * @return string|null
      * @throws GuzzleException
      */
-    final public function checkDomainAvailability(): ?string
+    final public function getLicenseActivationUrl(): ?string
+    {
+        $uri = 'organization/jet-sales/license-activation-url';
+
+        return (string)$this->client->get($this->buildUrl($uri))[0];
+    }
+
+    /**
+     * @param array $response
+     * @return string|null
+     * @throws GuzzleException
+     */
+    final public function getJetsalesUrl(): ?string
     {
         $uri = 'organization/jet-sales/url';
 

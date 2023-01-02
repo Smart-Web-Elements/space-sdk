@@ -10,7 +10,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class PermanentTokens
- * Generated at 2022-12-15 11:10
+ * Generated at 2023-01-02 09:05
  *
  * @package Swe\SpaceSDK\Applications
  * @author Luca Braun <l.braun@s-w-e.com>
