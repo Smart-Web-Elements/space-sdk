@@ -23,6 +23,8 @@ if [ -z ${FORCE+x} ]; then
     [ $? -ne 0 ] || exit 0
 fi
 
+export URL=$JB_SPACE_API_URL
+
 chmod +x ../space-sdk-builder/upgrade.sh
 ../space-sdk-builder/upgrade.sh
 
