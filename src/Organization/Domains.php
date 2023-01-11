@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Domains
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK\Organization
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -30,7 +30,6 @@ final class Domains extends AbstractApi
 
     /**
      * @param array $request
-     * @param array $response
      * @return string
      * @throws GuzzleException
      * @throws MissingArgumentException

@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class Status
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK\TeamDirectory\Profiles\TwoFa
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -20,7 +20,6 @@ final class Status extends AbstractApi
      * Permissions that may be checked: Profile.View
      *
      * @param string $profile
-     * @param array $response
      * @return string
      * @throws GuzzleException
      */

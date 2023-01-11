@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class Introduction
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Folders
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -30,7 +30,7 @@ final class Introduction extends AbstractApi
             'documentId' => $documentId,
         ];
 
-        $this->client->patch($this->buildUrl($uri, $uriArguments), []);
+        $this->client->patch($this->buildUrl($uri, $uriArguments));
     }
 
     /**

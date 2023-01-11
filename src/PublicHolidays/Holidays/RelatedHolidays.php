@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class RelatedHolidays
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK\PublicHolidays\Holidays
  * @author Luca Braun <l.braun@s-w-e.com>

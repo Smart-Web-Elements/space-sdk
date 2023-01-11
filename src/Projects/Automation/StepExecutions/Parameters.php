@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Parameters
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK\Projects\Automation\StepExecutions
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -19,7 +19,6 @@ final class Parameters extends AbstractApi
     /**
      * @param string $stepExecId
      * @param string $key
-     * @param array $response
      * @return string|null
      * @throws GuzzleException
      */

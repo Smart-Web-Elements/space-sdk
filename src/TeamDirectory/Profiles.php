@@ -27,7 +27,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Profiles
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK\TeamDirectory
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -121,7 +121,6 @@ final class Profiles extends AbstractApi
      *
      * @param string $profile
      * @param array $request
-     * @param array $response
      * @return bool
      * @throws GuzzleException
      * @throws MissingArgumentException
@@ -154,6 +153,64 @@ final class Profiles extends AbstractApi
     final public function updateProfile(string $profile, array $data = [], array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}';
+        $uriArguments = [
+            'profile' => $profile,
+        ];
+
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, [], $response);
+    }
+
+    /**
+     * Convert to guest profile
+     *
+     * Permissions that may be checked: Profile.Edit.2
+     *
+     * @param string $profile
+     * @param array $data
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    final public function convertOrganizationMemberIntoGuestUser(
+        string $profile,
+        array $data,
+        array $response = [],
+    ): array {
+        $uri = 'team-directory/profiles/{profile}/convert-to-guest';
+        $required = [
+            'dryrun' => Type::Boolean,
+        ];
+        $this->throwIfInvalid($required, $data);
+        $uriArguments = [
+            'profile' => $profile,
+        ];
+
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, [], $response);
+    }
+
+    /**
+     * Convert to organization member
+     *
+     * Permissions that may be checked: Profile.Edit.2
+     *
+     * @param string $profile
+     * @param array $data
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    final public function convertGuestUserIntoOrganizationMember(
+        string $profile,
+        array $data,
+        array $response = [],
+    ): array {
+        $uri = 'team-directory/profiles/{profile}/convert-to-member';
+        $required = [
+            'dryrun' => Type::Boolean,
+        ];
+        $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'profile' => $profile,
         ];

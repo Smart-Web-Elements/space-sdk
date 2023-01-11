@@ -2,6 +2,12 @@
 
 ## Space SDK v2.1.7
 
+- Added method `convertGuestUserIntoOrganizationMember` in `Swe\SpaceSDK\TeamDirectory\Profiles`
+- Added method `convertOrganizationMemberIntoGuestUser` in `Swe\SpaceSDK\TeamDirectory\Profiles`
+- Added method `forceRemoveApplication` in `Swe\SpaceSDK\Applications`
+
+## Space SDK v2.1.7
+
 - Added method `rebaseBranch` in `Swe\SpaceSDK\Projects\Repositories`
 - Added method `mergeBranch` in `Swe\SpaceSDK\Projects\Repositories`
 - Added method `deleteBranch` in `Swe\SpaceSDK\Projects\Repositories`

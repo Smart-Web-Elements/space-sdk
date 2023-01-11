@@ -18,7 +18,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class Applications
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -50,6 +50,25 @@ final class Applications extends AbstractApi
     }
 
     /**
+     * Removes the application that has previously failed to respond with code 200 to `ApplicationUninstalledPayload` request, without sending additional `ApplicationUninstalledPayload` requests. The application is archived and its access terminated.
+     *
+     * Permissions that may be checked: Applications.Delete
+     *
+     * @param string $application
+     * @return void
+     * @throws GuzzleException
+     */
+    final public function forceRemoveApplication(string $application): void
+    {
+        $uri = 'applications/{application}/force-remove';
+        $uriArguments = [
+            'application' => $application,
+        ];
+
+        $this->client->post($this->buildUrl($uri, $uriArguments));
+    }
+
+    /**
      * Permissions that may be checked: Applications.Edit
      *
      * @param string $application
@@ -63,7 +82,7 @@ final class Applications extends AbstractApi
             'application' => $application,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments), []);
+        $this->client->post($this->buildUrl($uri, $uriArguments));
     }
 
     /**
@@ -103,7 +122,6 @@ final class Applications extends AbstractApi
      * Permissions that may be checked: Applications.ViewSecrets
      *
      * @param string $application
-     * @param array $response
      * @return string|null
      * @throws GuzzleException
      */
@@ -141,7 +159,6 @@ final class Applications extends AbstractApi
      * Permissions that may be checked: Applications.View
      *
      * @param string $application
-     * @param array $response
      * @return string
      * @throws GuzzleException
      */
@@ -197,6 +214,12 @@ final class Applications extends AbstractApi
     }
 
     /**
+     * Removes specified application. If the application is connected (installed from Marketplace or through an install link), Space sends `ApplicationUninstalledPayload` to the application's server. The application is only actually deleted when the application server responds or when the `ApplicationUninstalledPayload` request times out multiple times.
+     *
+     * This API method does not wait until the `ApplicationUninstalledPayload` request is finished and instead returns immediately. Consequently, the application may still be active right after this API method call.
+     *
+     * If sending `ApplicationUninstalledPayload` has failed at least one time, a user may choose to force-remove the application. In this case the access for the application is terminated and it can no longer make requests.
+     *
      * Permissions that may be checked: Applications.Delete
      *
      * @param string $application

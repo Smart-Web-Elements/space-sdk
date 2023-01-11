@@ -10,7 +10,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class CodeDiscussions
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK\Projects\CodeReviews
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -18,7 +18,7 @@ use Swe\SpaceSDK\Type;
 final class CodeDiscussions extends AbstractApi
 {
     /**
-     * Permissions that may be checked: Project.SuggestedEdit.Create
+     * Permissions that may be checked: Project.CodeReview.View, Project.SuggestedEdit.Create
      *
      * @param string $project
      * @param array $data
@@ -83,7 +83,7 @@ final class CodeDiscussions extends AbstractApi
             'discussionId' => $discussionId,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments), []);
+        $this->client->post($this->buildUrl($uri, $uriArguments));
     }
 
     /**
@@ -102,7 +102,7 @@ final class CodeDiscussions extends AbstractApi
             'discussionId' => $discussionId,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments), []);
+        $this->client->post($this->buildUrl($uri, $uriArguments));
     }
 
     /**

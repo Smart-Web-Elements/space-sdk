@@ -12,7 +12,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Responsibilities
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -23,7 +23,6 @@ final class Responsibilities extends AbstractApi
      * Add a responsibility for a given subject ID
      *
      * @param array $data
-     * @param array $response
      * @return string
      * @throws GuzzleException
      * @throws MissingArgumentException

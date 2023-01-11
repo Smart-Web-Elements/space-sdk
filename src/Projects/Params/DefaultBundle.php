@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class DefaultBundle
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK\Projects\Params
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -22,7 +22,6 @@ final class DefaultBundle extends AbstractApi
      * Permissions that may be checked: Project.Params.Modify
      *
      * @param array $data
-     * @param array $response
      * @return string
      * @throws GuzzleException
      * @throws MissingArgumentException

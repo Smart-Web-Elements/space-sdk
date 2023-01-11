@@ -10,7 +10,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Teams
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK\TeamDirectory
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -55,7 +55,7 @@ final class Teams extends AbstractApi
             'id' => $id,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments), []);
+        $this->client->post($this->buildUrl($uri, $uriArguments));
     }
 
     /**

@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class Issues
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK\Projects\Planning\Boards\Sprints
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -32,7 +32,7 @@ final class Issues extends AbstractApi
             'issue' => $issue,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments), []);
+        $this->client->post($this->buildUrl($uri, $uriArguments));
     }
 
     /**

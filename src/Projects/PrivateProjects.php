@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class PrivateProjects
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -30,7 +30,7 @@ final class PrivateProjects extends AbstractApi
             'project' => $project,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments), []);
+        $this->client->post($this->buildUrl($uri, $uriArguments));
     }
 
     /**

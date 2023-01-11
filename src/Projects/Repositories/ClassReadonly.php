@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class ClassReadonly
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK\Projects\Repositories
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -42,7 +42,6 @@ final class ClassReadonly extends AbstractApi
     /**
      * @param string $project
      * @param string $repository
-     * @param array $response
      * @return bool
      * @throws GuzzleException
      */

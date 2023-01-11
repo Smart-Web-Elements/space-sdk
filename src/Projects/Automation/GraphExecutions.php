@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class GraphExecutions
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK\Projects\Automation
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -32,7 +32,7 @@ final class GraphExecutions extends AbstractApi
             'id' => $id,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments), []);
+        $this->client->post($this->buildUrl($uri, $uriArguments));
     }
 
     /**

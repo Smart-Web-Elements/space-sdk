@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Enabled
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK\Administration\UserAgreement
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -36,7 +36,6 @@ final class Enabled extends AbstractApi
     }
 
     /**
-     * @param array $response
      * @return bool
      * @throws GuzzleException
      */

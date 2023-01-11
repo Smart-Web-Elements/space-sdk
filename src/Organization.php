@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Organization\JetSales;
 
 /**
  * Class Organization
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -39,7 +39,6 @@ final class Organization extends AbstractApi
         $uri = 'organization';
         $required = [
             'orgData' => [
-                'name' => Type::String,
             ],
         ];
         $this->throwIfInvalid($required, $data);

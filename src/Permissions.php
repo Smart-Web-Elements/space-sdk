@@ -7,7 +7,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class Permissions
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -16,7 +16,6 @@ final class Permissions extends AbstractApi
 {
     /**
      * @param array $data
-     * @param array $response
      * @return bool
      * @throws GuzzleException
      * @throws MissingArgumentException

@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class Subjects
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK\Projects\Responsibilities
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -37,7 +37,6 @@ final class Subjects extends AbstractApi
      *
      * @param string $project
      * @param array $data
-     * @param array $response
      * @return string
      * @throws GuzzleException
      */

@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class Url
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK\Projects\Packages\Repositories
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -21,7 +21,6 @@ final class Url extends AbstractApi
      *
      * @param string $project
      * @param string $repository
-     * @param array $response
      * @return string
      * @throws GuzzleException
      */

@@ -11,7 +11,7 @@ use Swe\SpaceSDK\Projects\Access\Viewers;
 
 /**
  * Class Access
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>

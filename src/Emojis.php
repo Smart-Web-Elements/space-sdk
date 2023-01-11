@@ -7,7 +7,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class Emojis
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -76,7 +76,6 @@ final class Emojis extends AbstractApi
      * Check whether a given emoji name exists
      *
      * @param array $request
-     * @param array $response
      * @return bool
      * @throws GuzzleException
      * @throws MissingArgumentException

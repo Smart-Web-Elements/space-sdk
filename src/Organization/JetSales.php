@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class JetSales
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK\Organization
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -15,7 +15,6 @@ use Swe\SpaceSDK\AbstractApi;
 final class JetSales extends AbstractApi
 {
     /**
-     * @param array $response
      * @return string|null
      * @throws GuzzleException
      */
@@ -27,7 +26,6 @@ final class JetSales extends AbstractApi
     }
 
     /**
-     * @param array $response
      * @return string|null
      * @throws GuzzleException
      */

@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class ClientSecret
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK\Applications
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -28,14 +28,13 @@ final class ClientSecret extends AbstractApi
             'application' => $application,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments), []);
+        $this->client->post($this->buildUrl($uri, $uriArguments));
     }
 
     /**
      * Permissions that may be checked: Applications.ViewSecrets
      *
      * @param string $application
-     * @param array $response
      * @return string
      * @throws GuzzleException
      */

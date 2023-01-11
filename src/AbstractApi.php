@@ -65,7 +65,6 @@ abstract class AbstractApi
                 Type::Array => is_array($value),
                 Type::Integer => is_int($value),
                 Type::String => is_string($value),
-                default => false,
             };
 
             if (!$valid) {

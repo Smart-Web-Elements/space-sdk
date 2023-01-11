@@ -8,7 +8,7 @@ use Swe\SpaceSDK\Projects\Packages\Repositories\Connections\Publish;
 
 /**
  * Class Connections
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK\Projects\Packages\Repositories
  * @author Luca Braun <l.braun@s-w-e.com>

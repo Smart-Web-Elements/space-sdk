@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Uploads\Image;
 
 /**
  * Class Uploads
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -23,7 +23,6 @@ final class Uploads extends AbstractApi
      * The 'mediaType' parameter can be omitted for all uploads. For image uploads that need to be resized automatically for specific use, such as chat stickers or emoji, use one of `chat-image-attachment`, `chat-sticker`, `emoji`.
      *
      * @param array $data
-     * @param array $response
      * @return string
      * @throws GuzzleException
      * @throws MissingArgumentException

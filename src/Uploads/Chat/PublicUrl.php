@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class PublicUrl
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK\Uploads\Chat
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -20,7 +20,6 @@ final class PublicUrl extends AbstractApi
      * @param string $channel
      * @param string $message
      * @param string $attachmentId
-     * @param array $response
      * @return string
      * @throws GuzzleException
      */

@@ -12,7 +12,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Webhooks
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK\Applications
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -64,7 +64,7 @@ final class Webhooks extends AbstractApi
             'webhookId' => $webhookId,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments), []);
+        $this->client->post($this->buildUrl($uri, $uriArguments));
     }
 
     /**
@@ -93,7 +93,6 @@ final class Webhooks extends AbstractApi
      *
      * @param string $application
      * @param string $webhookId
-     * @param array $response
      * @return string|null
      * @throws GuzzleException
      */

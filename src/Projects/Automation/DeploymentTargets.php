@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class DeploymentTargets
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK\Projects\Automation
  * @author Luca Braun <l.braun@s-w-e.com>

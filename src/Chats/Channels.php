@@ -16,7 +16,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Channels
- * Generated at 2023-01-02 09:05
+ * Generated at 2023-01-11 02:01
  *
  * @package Swe\SpaceSDK\Chats
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -70,7 +70,6 @@ final class Channels extends AbstractApi
      * Check whether a channel name is available. Returns true when the channel name can be used to create a new channel, false otherwise.
      *
      * @param array $data
-     * @param array $response
      * @return bool
      * @throws GuzzleException
      * @throws MissingArgumentException
@@ -102,7 +101,7 @@ final class Channels extends AbstractApi
             'channel' => $channel,
         ];
 
-        $this->client->post($this->buildUrl($uri, $uriArguments), []);
+        $this->client->post($this->buildUrl($uri, $uriArguments));
     }
 
     /**
