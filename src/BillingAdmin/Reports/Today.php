@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Today
- * Generated at 2023-01-11 02:01
+ * Generated at 2023-01-12 02:00
  *
  * @package Swe\SpaceSDK\BillingAdmin\Reports
  * @author Luca Braun <l.braun@s-w-e.com>

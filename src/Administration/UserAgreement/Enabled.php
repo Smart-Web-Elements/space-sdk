@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Enabled
- * Generated at 2023-01-11 02:01
+ * Generated at 2023-01-12 02:00
  *
  * @package Swe\SpaceSDK\Administration\UserAgreement
  * @author Luca Braun <l.braun@s-w-e.com>

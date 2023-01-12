@@ -1,5 +1,8 @@
 # Space SDK Changelog
 
+## Space SDK 2.2.0
+
+
 ## Space SDK v2.1.7
 
 - Added method `convertGuestUserIntoOrganizationMember` in `Swe\SpaceSDK\TeamDirectory\Profiles`
