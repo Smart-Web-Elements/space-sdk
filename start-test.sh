@@ -13,17 +13,17 @@ php -r "if (hash_file('sha384', 'composer-setup.php') === '55ce33d7678c5a6110855
 php composer-setup.php
 php -r "unlink('composer-setup.php');"
 
-php ./composer.phar install --dev -o -n --no-progress
+php ./composer.phar install -o -n --no-progress
 
 [ $? -eq 0 ] || exit 1
+
+export URL=$JB_SPACE_API_URL
 
 if [ -z ${FORCE+x} ]; then
     php ./vendor/bin/phpunit --configuration ./phpunit.xml
 
     [ $? -ne 0 ] || exit 0
 fi
-
-export URL=$JB_SPACE_API_URL
 
 chmod +x ../space-sdk-builder/upgrade.sh
 ../space-sdk-builder/upgrade.sh
