@@ -13,7 +13,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Folders
- * Generated at 2023-01-12 02:00
+ * Generated at 2023-01-27 02:00
  *
  * @package Swe\SpaceSDK\Projects\Documents
  * @author Luca Braun <l.braun@s-w-e.com>

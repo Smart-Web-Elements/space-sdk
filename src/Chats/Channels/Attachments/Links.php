@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class Links
- * Generated at 2023-01-12 02:00
+ * Generated at 2023-01-27 02:00
  *
  * @package Swe\SpaceSDK\Chats\Channels\Attachments
  * @author Luca Braun <l.braun@s-w-e.com>

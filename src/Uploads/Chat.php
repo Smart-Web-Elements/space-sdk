@@ -7,7 +7,7 @@ use Swe\SpaceSDK\Uploads\Chat\PublicUrl;
 
 /**
  * Class Chat
- * Generated at 2023-01-12 02:00
+ * Generated at 2023-01-27 02:00
  *
  * @package Swe\SpaceSDK\Uploads
  * @author Luca Braun <l.braun@s-w-e.com>

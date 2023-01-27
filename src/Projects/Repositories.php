@@ -7,13 +7,14 @@ use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Projects\Repositories\ClassReadonly;
 use Swe\SpaceSDK\Projects\Repositories\Find;
+use Swe\SpaceSDK\Projects\Repositories\Migrate;
 use Swe\SpaceSDK\Projects\Repositories\Revisions;
 use Swe\SpaceSDK\Projects\Repositories\Settings;
 use Swe\SpaceSDK\Type;
 
 /**
  * Class Repositories
- * Generated at 2023-01-12 02:00
+ * Generated at 2023-01-27 02:00
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -26,6 +27,30 @@ final class Repositories extends AbstractApi
     final public function find(): Find
     {
         return new Find($this->client);
+    }
+
+    /**
+     * @param string $project
+     * @param array $data
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    final public function testRemoteConnection(string $project, array $data, array $response = []): array
+    {
+        $uri = 'projects/{project}/repositories/test-connection';
+        $required = [
+            'remote' => [
+                'url' => Type::String,
+            ],
+        ];
+        $this->throwIfInvalid($required, $data);
+        $uriArguments = [
+            'project' => $project,
+        ];
+
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
@@ -303,6 +328,14 @@ final class Repositories extends AbstractApi
         ];
 
         $this->client->delete($this->buildUrl($uri, $uriArguments));
+    }
+
+    /**
+     * @return Migrate
+     */
+    final public function migrate(): Migrate
+    {
+        return new Migrate($this->client);
     }
 
     /**

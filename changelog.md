@@ -1,12 +1,15 @@
 # Space SDK Changelog
 
-## Space SDK 2.2.0
-
-
 ## Space SDK v2.1.7
 
+- Added method `suspendUserProfile` in `Swe\SpaceSDK\TeamDirectory\Profiles`
+- Added method `restoreSuspendedUserProfile` in `Swe\SpaceSDK\TeamDirectory\Profiles`
 - Added method `convertGuestUserIntoOrganizationMember` in `Swe\SpaceSDK\TeamDirectory\Profiles`
 - Added method `convertOrganizationMemberIntoGuestUser` in `Swe\SpaceSDK\TeamDirectory\Profiles`
+- Added class `Swe\SpaceSDK\Projects\Repositories\Migrate`
+  - Added method `migrateRepository` in `Migrate`
+- Added method `migrate` in `Swe\SpaceSDK\Projects\Repositories`
+- Added method `testRemoteConnection` in `Swe\SpaceSDK\Projects\Repositories`
 - Added method `forceRemoveApplication` in `Swe\SpaceSDK\Applications`
 
 ## Space SDK v2.1.7

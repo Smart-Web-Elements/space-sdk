@@ -8,7 +8,7 @@ use Swe\SpaceSDK\Projects\Automation\StepExecutions\UsedParameters\Secret;
 
 /**
  * Class UsedParameters
- * Generated at 2023-01-12 02:00
+ * Generated at 2023-01-27 02:00
  *
  * @package Swe\SpaceSDK\Projects\Automation\StepExecutions
  * @author Luca Braun <l.braun@s-w-e.com>

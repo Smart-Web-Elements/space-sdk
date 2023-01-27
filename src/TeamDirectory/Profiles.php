@@ -27,7 +27,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Profiles
- * Generated at 2023-01-12 02:00
+ * Generated at 2023-01-27 02:00
  *
  * @package Swe\SpaceSDK\TeamDirectory
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -232,6 +232,47 @@ final class Profiles extends AbstractApi
     final public function reactivateUserProfile(string $profile, array $data = [], array $response = []): array
     {
         $uri = 'team-directory/profiles/{profile}/reactivate';
+        $uriArguments = [
+            'profile' => $profile,
+        ];
+
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, [], $response);
+    }
+
+    /**
+     * Restore a suspended user profile
+     *
+     * Permissions that may be checked: Profile.Edit.2
+     *
+     * @param string $profile
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     */
+    final public function restoreSuspendedUserProfile(string $profile, array $response = []): array
+    {
+        $uri = 'team-directory/profiles/{profile}/restore';
+        $uriArguments = [
+            'profile' => $profile,
+        ];
+
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), [], [], $response);
+    }
+
+    /**
+     * Suspend a user profile
+     *
+     * Permissions that may be checked: Profile.Edit.2
+     *
+     * @param string $profile
+     * @param array $data
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     */
+    final public function suspendUserProfile(string $profile, array $data = [], array $response = []): array
+    {
+        $uri = 'team-directory/profiles/{profile}/suspend';
         $uriArguments = [
             'profile' => $profile,
         ];
