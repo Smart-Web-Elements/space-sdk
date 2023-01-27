@@ -1,6 +1,6 @@
 # Space SDK Changelog
 
-## Space SDK v2.1.7
+## Space SDK v2.2.0
 
 - Added method `suspendUserProfile` in `Swe\SpaceSDK\TeamDirectory\Profiles`
 - Added method `restoreSuspendedUserProfile` in `Swe\SpaceSDK\TeamDirectory\Profiles`
