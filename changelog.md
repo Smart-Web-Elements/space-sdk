@@ -1,12 +1,16 @@
 # Space SDK Changelog
 
-## Space SDK v2.2.0
+## Space SDK v3.0.1
+
+- Fixed changelog.md
+
+## Space SDK v3.0.0
 
 - Removed method `migrate` from `Swe\SpaceSDK\Projects\Repositories`
 - Added method `migrateRepository` in `Swe\SpaceSDK\Projects\Repositories`
 - Added method `setHead` in `Swe\SpaceSDK\Projects\Repositories`
 
-## Space SDK v2.1.7
+## Space SDK v2.2.0
 
 - Added method `suspendUserProfile` in `Swe\SpaceSDK\TeamDirectory\Profiles`
 - Added method `restoreSuspendedUserProfile` in `Swe\SpaceSDK\TeamDirectory\Profiles`
