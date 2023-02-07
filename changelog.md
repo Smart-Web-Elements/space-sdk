@@ -2,6 +2,12 @@
 
 ## Space SDK v2.2.0
 
+- Removed method `migrate` from `Swe\SpaceSDK\Projects\Repositories`
+- Added method `migrateRepository` in `Swe\SpaceSDK\Projects\Repositories`
+- Added method `setHead` in `Swe\SpaceSDK\Projects\Repositories`
+
+## Space SDK v2.1.7
+
 - Added method `suspendUserProfile` in `Swe\SpaceSDK\TeamDirectory\Profiles`
 - Added method `restoreSuspendedUserProfile` in `Swe\SpaceSDK\TeamDirectory\Profiles`
 - Added method `convertGuestUserIntoOrganizationMember` in `Swe\SpaceSDK\TeamDirectory\Profiles`

@@ -7,14 +7,13 @@ use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Projects\Repositories\ClassReadonly;
 use Swe\SpaceSDK\Projects\Repositories\Find;
-use Swe\SpaceSDK\Projects\Repositories\Migrate;
 use Swe\SpaceSDK\Projects\Repositories\Revisions;
 use Swe\SpaceSDK\Projects\Repositories\Settings;
 use Swe\SpaceSDK\Type;
 
 /**
  * Class Repositories
- * Generated at 2023-01-27 02:00
+ * Generated at 2023-02-07 02:00
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -176,6 +175,30 @@ final class Repositories extends AbstractApi
      * @param string $project
      * @param string $repository
      * @param array $data
+     * @return void
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    final public function setHead(string $project, string $repository, array $data): void
+    {
+        $uri = 'projects/{project}/repositories/{repository}/head';
+        $required = [
+            'head' => Type::String,
+            'target' => Type::String,
+        ];
+        $this->throwIfInvalid($required, $data);
+        $uriArguments = [
+            'project' => $project,
+            'repository' => $repository,
+        ];
+
+        $this->client->post($this->buildUrl($uri, $uriArguments), $data);
+    }
+
+    /**
+     * @param string $project
+     * @param string $repository
+     * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
@@ -187,6 +210,37 @@ final class Repositories extends AbstractApi
         $required = [
             'sourceBranch' => Type::String,
             'mergeMode' => Type::String,
+        ];
+        $this->throwIfInvalid($required, $data);
+        $uriArguments = [
+            'project' => $project,
+            'repository' => $repository,
+        ];
+
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
+    }
+
+    /**
+     * @param string $project
+     * @param string $repository
+     * @param array $data
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    final public function migrateRepository(
+        string $project,
+        string $repository,
+        array $data,
+        array $response = [],
+    ): array {
+        $uri = 'projects/{project}/repositories/{repository}/migrate';
+        $required = [
+            'description' => Type::String,
+            'remote' => [
+                'url' => Type::String,
+            ],
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
@@ -328,14 +382,6 @@ final class Repositories extends AbstractApi
         ];
 
         $this->client->delete($this->buildUrl($uri, $uriArguments));
-    }
-
-    /**
-     * @return Migrate
-     */
-    final public function migrate(): Migrate
-    {
-        return new Migrate($this->client);
     }
 
     /**

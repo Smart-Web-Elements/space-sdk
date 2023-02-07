@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Totp
- * Generated at 2023-01-27 02:00
+ * Generated at 2023-02-07 02:00
  *
  * @package Swe\SpaceSDK\TeamDirectory\Profiles\TwoFa
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -92,16 +92,17 @@ final class Totp extends AbstractApi
      * Permissions that may be checked: Profile.TwoFactorAuthentication.Edit
      *
      * @param string $profile
+     * @param array $request
      * @return void
      * @throws GuzzleException
      */
-    final public function deleteCurrentTotpTwoFactorAuthenticationSettings(string $profile): void
+    final public function deleteCurrentTotpTwoFactorAuthenticationSettings(string $profile, array $request = []): void
     {
         $uri = 'team-directory/profiles/{profile}/2-fa/totp';
         $uriArguments = [
             'profile' => $profile,
         ];
 
-        $this->client->delete($this->buildUrl($uri, $uriArguments));
+        $this->client->delete($this->buildUrl($uri, $uriArguments), $request);
     }
 }
