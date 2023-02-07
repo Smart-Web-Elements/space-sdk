@@ -14,7 +14,7 @@ job("Build and run generated tests") {
     git("space-sdk-builder")
 
     container(displayName = "Test PHP 8.1", image = "mistermarlu/testing:8.1") {
-        env["CLIENT_ID"] = Secrets("space_client_id")
+        env["CLIENT_ID"] = Params("space_client_id")
         env["CLIENT_SECRET"] = Secrets("space_client_secret")
         shellScript {
             interpreter = "/bin/sh"
@@ -37,9 +37,8 @@ job("Force rebuild and run generated tests") {
     git("space-sdk-builder")
 
     container(displayName = "Test PHP 8.1", image = "mistermarlu/testing:8.1") {
-        env["CLIENT_ID"] = Secrets("space_client_id")
+        env["CLIENT_ID"] = Params("space_client_id")
         env["CLIENT_SECRET"] = Secrets("space_client_secret")
-        env["URL"] = Params("space_url")
         shellScript {
             interpreter = "/bin/sh"
             location = "./start-test.sh"
