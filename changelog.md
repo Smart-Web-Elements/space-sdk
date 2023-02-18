@@ -2,6 +2,21 @@
 
 ## Space SDK v3.0.1
 
+- Added class `Swe\SpaceSDK\Projects\Repositories\DefaultBranch`
+  - Added method `getRepositoryDefaultBranch` in `DefaultBranch`
+  - Added method `setRepositoryDefaultBranch` in `DefaultBranch`
+- Added method `defaultBranch` in `Swe\SpaceSDK\Projects\Repositories`
+- Added method `getRepositoryInfo` in `Swe\SpaceSDK\Projects\Repositories`
+- Added method `setRepositoryDescription` in `Swe\SpaceSDK\Projects\Repositories`
+- Added method `secrets` in `Swe\SpaceSDK\Projects\Automation\StepExecutions`
+- Added class `Swe\SpaceSDK\Projects\Automation\StepExecutions\Secrets`
+  - Added method `setReference` in `Secrets`
+- Added class `Swe\SpaceSDK\Projects\Automation\StepExecutions\Secrets\SetReference`
+  - Added method `update` in `SetReference`
+- Added method `getFeatures` in `Swe\SpaceSDK\BillingAdmin`
+
+## Space SDK v3.0.1
+
 - Fixed changelog.md
 
 ## Space SDK v3.0.0

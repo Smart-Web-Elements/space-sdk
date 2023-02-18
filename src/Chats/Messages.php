@@ -10,7 +10,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Messages
- * Generated at 2023-02-07 02:00
+ * Generated at 2023-02-18 02:00
  *
  * @package Swe\SpaceSDK\Chats
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -66,7 +66,7 @@ final class Messages extends AbstractApi
     /**
      * This API method is intended to be used only by applications. The `createdAtUtc` and `editedAtUtc` parameters are Unix epoch timestamps in *milliseconds*.
      *
-     * Permissions that may be checked: Channel.ImportMessages
+     * Permissions that may be checked: Channel.ImportMessages, Project.Issues.Import
      *
      * @param array $data
      * @return void

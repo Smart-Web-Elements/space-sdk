@@ -6,6 +6,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Projects\Repositories\ClassReadonly;
+use Swe\SpaceSDK\Projects\Repositories\DefaultBranch;
 use Swe\SpaceSDK\Projects\Repositories\Find;
 use Swe\SpaceSDK\Projects\Repositories\Revisions;
 use Swe\SpaceSDK\Projects\Repositories\Settings;
@@ -13,7 +14,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Repositories
- * Generated at 2023-02-07 02:00
+ * Generated at 2023-02-18 02:00
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -157,6 +158,29 @@ final class Repositories extends AbstractApi
     /**
      * @param string $project
      * @param string $repository
+     * @param array $data
+     * @return void
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    final public function setRepositoryDescription(string $project, string $repository, array $data): void
+    {
+        $uri = 'projects/{project}/repositories/{repository}/description';
+        $required = [
+            'description' => Type::String,
+        ];
+        $this->throwIfInvalid($required, $data);
+        $uriArguments = [
+            'project' => $project,
+            'repository' => $repository,
+        ];
+
+        $this->client->post($this->buildUrl($uri, $uriArguments), $data);
+    }
+
+    /**
+     * @param string $project
+     * @param string $repository
      * @return void
      * @throws GuzzleException
      */
@@ -280,6 +304,24 @@ final class Repositories extends AbstractApi
     /**
      * @param string $project
      * @param string $repository
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     */
+    final public function getRepositoryInfo(string $project, string $repository, array $response = []): array
+    {
+        $uri = 'projects/{project}/repositories/{repository}';
+        $uriArguments = [
+            'project' => $project,
+            'repository' => $repository,
+        ];
+
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
+    }
+
+    /**
+     * @param string $project
+     * @param string $repository
      * @param array $request
      * @param array $response
      * @return array
@@ -382,6 +424,14 @@ final class Repositories extends AbstractApi
         ];
 
         $this->client->delete($this->buildUrl($uri, $uriArguments));
+    }
+
+    /**
+     * @return DefaultBranch
+     */
+    final public function defaultBranch(): DefaultBranch
+    {
+        return new DefaultBranch($this->client);
     }
 
     /**

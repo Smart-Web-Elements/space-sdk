@@ -9,13 +9,25 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class BillingAdmin
- * Generated at 2023-02-07 02:00
+ * Generated at 2023-02-18 02:00
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
 final class BillingAdmin extends AbstractApi
 {
+    /**
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     */
+    final public function getFeatures(array $response = []): array
+    {
+        $uri = 'billing-admin/features';
+
+        return $this->client->get($this->buildUrl($uri), [], $response);
+    }
+
     /**
      * Permissions that may be checked: Superadmin
      *

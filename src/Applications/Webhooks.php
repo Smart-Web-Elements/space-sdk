@@ -12,7 +12,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Webhooks
- * Generated at 2023-02-07 02:00
+ * Generated at 2023-02-18 02:00
  *
  * @package Swe\SpaceSDK\Applications
  * @author Luca Braun <l.braun@s-w-e.com>
