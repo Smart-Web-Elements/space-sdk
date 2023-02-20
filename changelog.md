@@ -1,6 +1,6 @@
 # Space SDK Changelog
 
-## Space SDK v3.0.1
+## Space SDK v3.1.0
 
 - Added class `Swe\SpaceSDK\Projects\Repositories\DefaultBranch`
   - Added method `getRepositoryDefaultBranch` in `DefaultBranch`
