@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Deployments
- * Generated at 2023-02-18 02:00
+ * Generated at 2023-03-09 02:00
  *
  * @package Swe\SpaceSDK\Projects\Automation
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -179,7 +179,7 @@ final class Deployments extends AbstractApi
             'project' => $project,
         ];
 
-        return $this->client->put($this->buildUrl($uri, $uriArguments), $data, [], $response);
+        return $this->client->patch($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**

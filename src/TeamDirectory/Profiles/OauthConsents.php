@@ -11,7 +11,7 @@ use Swe\SpaceSDK\TeamDirectory\Profiles\OauthConsents\RefreshTokens;
 
 /**
  * Class OauthConsents
- * Generated at 2023-02-18 02:00
+ * Generated at 2023-03-09 02:00
  *
  * @package Swe\SpaceSDK\TeamDirectory\Profiles
  * @author Luca Braun <l.braun@s-w-e.com>

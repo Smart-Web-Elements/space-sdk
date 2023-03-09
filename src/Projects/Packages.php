@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Projects\Packages\Types;
 
 /**
  * Class Packages
- * Generated at 2023-02-18 02:00
+ * Generated at 2023-03-09 02:00
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>

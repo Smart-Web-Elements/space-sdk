@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\TeamDirectory\Profiles;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Access;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Copy;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Documents\DeleteForever;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Folders;
@@ -14,7 +15,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Documents
- * Generated at 2023-02-18 02:00
+ * Generated at 2023-03-09 02:00
  *
  * @package Swe\SpaceSDK\TeamDirectory\Profiles
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -110,6 +111,14 @@ final class Documents extends AbstractApi
     final public function folders(): Folders
     {
         return new Folders($this->client);
+    }
+
+    /**
+     * @return Access
+     */
+    final public function access(): Access
+    {
+        return new Access($this->client);
     }
 
     /**

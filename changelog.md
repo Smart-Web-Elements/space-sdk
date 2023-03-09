@@ -1,6 +1,45 @@
 # Space SDK Changelog
 
-## Space SDK v3.1.0
+## Space SDK 3.2.0
+
+- Added method `widgetSettings` in `Swe\SpaceSDK\TeamDirectory\Profiles`
+- Added method `access` in `Swe\SpaceSDK\TeamDirectory\Profiles\Documents`
+- Added class `Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Access`
+  - Added method `updateDocumentAccessPermissions` in `Access`
+  - Added method `documentOwnAccessPermissions` in `Access`
+- Added method `access` in `Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Folders`
+- Added class `Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Folders\Access`
+  - Added method `updateFolderAccessPermissions` in `Access`
+  - Added method `folderOwnAccessPermissions` in `Access`
+- Added class `Swe\SpaceSDK\TeamDirectory\Profiles\WidgetSettings`
+  - Added method `updateWidgetSetting` in `WidgetSettings`
+  - Added method `getWidgetSetting` in `WidgetSettings`
+- Added method `fields` in `Swe\SpaceSDK\Projects\Planning\Issues`
+- Added class `Swe\SpaceSDK\Projects\Planning\Issues\Fields`
+  - Added method `visibility` in `Fields`
+  - Added method `order` in `Fields`
+- Added class `Swe\SpaceSDK\Projects\Planning\Issues\Fields\Visibility`
+  - Added method `updateIssueFieldVisibility` in `Visibility`
+  - Added method `getIssueFieldVisibility` in `Visibility`
+- Added class `Swe\SpaceSDK\Projects\Planning\Issues\Fields\Order`
+  - Added method `setIssueFieldOrder` in `Order`
+  - Added method `getIssueFieldOrder` in `Order`
+- Added method `access` in `Swe\SpaceSDK\Projects\Documents`
+- Added class `Swe\SpaceSDK\Projects\Documents\Access`
+  - Added method `updateDocumentAccessPermissions` in `Access`
+  - Added method `documentOwnAccessPermissions` in `Access`
+- Added method `access` in `Swe\SpaceSDK\Projects\Documents\Folders`
+- Added class `Swe\SpaceSDK\Projects\Documents\Folders\Access`
+  - Added method `updateFolderAccessPermissions` in `Access`
+  - Added method `folderOwnAccessPermissions` in `Access`
+- Added method `unboundDiscussions` in `Swe\SpaceSDK\Projects\CodeReviews`
+- Added class `Swe\SpaceSDK\Projects\CodeReviews\UnboundDiscussions`
+  - Added method `toggleUnboundDiscussionResolution` in `UnboundDiscussions`
+  - Added method `getAllUnboundDiscussions` in `UnboundDiscussions`
+  - Added method `createUnboundDiscussion` in `UnboundDiscussions`
+- Added method `getAllDeploymentTargets` in `Swe\SpaceSDK\Projects\Automation\DeploymentTargets`
+
+## Space SDK v3.0.1
 
 - Added class `Swe\SpaceSDK\Projects\Repositories\DefaultBranch`
   - Added method `getRepositoryDefaultBranch` in `DefaultBranch`

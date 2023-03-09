@@ -8,11 +8,12 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Projects\CodeReviews\CodeDiscussions;
 use Swe\SpaceSDK\Projects\CodeReviews\Participants;
 use Swe\SpaceSDK\Projects\CodeReviews\Revisions;
+use Swe\SpaceSDK\Projects\CodeReviews\UnboundDiscussions;
 use Swe\SpaceSDK\Type;
 
 /**
  * Class CodeReviews
- * Generated at 2023-02-18 02:00
+ * Generated at 2023-03-09 02:00
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -360,5 +361,13 @@ final class CodeReviews extends AbstractApi
     final public function revisions(): Revisions
     {
         return new Revisions($this->client);
+    }
+
+    /**
+     * @return UnboundDiscussions
+     */
+    final public function unboundDiscussions(): UnboundDiscussions
+    {
+        return new UnboundDiscussions($this->client);
     }
 }

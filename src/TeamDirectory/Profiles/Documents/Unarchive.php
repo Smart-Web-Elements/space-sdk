@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class Unarchive
- * Generated at 2023-02-18 02:00
+ * Generated at 2023-03-09 02:00
  *
  * @package Swe\SpaceSDK\TeamDirectory\Profiles\Documents
  * @author Luca Braun <l.braun@s-w-e.com>

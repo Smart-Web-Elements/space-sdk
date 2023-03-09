@@ -7,7 +7,7 @@ use Swe\SpaceSDK\Projects\Automation\StepExecutions\Secrets\SetReference;
 
 /**
  * Class Secrets
- * Generated at 2023-02-18 02:00
+ * Generated at 2023-03-09 02:00
  *
  * @package Swe\SpaceSDK\Projects\Automation\StepExecutions
  * @author Luca Braun <l.braun@s-w-e.com>

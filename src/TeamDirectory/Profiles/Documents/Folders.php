@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\TeamDirectory\Profiles\Documents;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Folders\Access;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Folders\Documents;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Folders\Introduction;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Folders\Move;
@@ -13,7 +14,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Folders
- * Generated at 2023-02-18 02:00
+ * Generated at 2023-03-09 02:00
  *
  * @package Swe\SpaceSDK\TeamDirectory\Profiles\Documents
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -99,6 +100,14 @@ final class Folders extends AbstractApi
         ];
 
         $this->client->delete($this->buildUrl($uri, $uriArguments));
+    }
+
+    /**
+     * @return Access
+     */
+    final public function access(): Access
+    {
+        return new Access($this->client);
     }
 
     /**

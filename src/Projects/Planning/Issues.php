@@ -10,13 +10,14 @@ use Swe\SpaceSDK\Projects\Planning\Issues\Checklists;
 use Swe\SpaceSDK\Projects\Planning\Issues\CodeReviews;
 use Swe\SpaceSDK\Projects\Planning\Issues\Comments;
 use Swe\SpaceSDK\Projects\Planning\Issues\Commits;
+use Swe\SpaceSDK\Projects\Planning\Issues\Fields;
 use Swe\SpaceSDK\Projects\Planning\Issues\Statuses;
 use Swe\SpaceSDK\Projects\Planning\Issues\Tags;
 use Swe\SpaceSDK\Type;
 
 /**
  * Class Issues
- * Generated at 2023-02-18 02:00
+ * Generated at 2023-03-09 02:00
  *
  * @package Swe\SpaceSDK\Projects\Planning
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -244,6 +245,14 @@ final class Issues extends AbstractApi
         ];
 
         $this->client->delete($this->buildUrl($uri, $uriArguments));
+    }
+
+    /**
+     * @return Fields
+     */
+    final public function fields(): Fields
+    {
+        return new Fields($this->client);
     }
 
     /**

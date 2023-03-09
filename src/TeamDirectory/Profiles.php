@@ -22,12 +22,13 @@ use Swe\SpaceSDK\TeamDirectory\Profiles\SpokenLanguages;
 use Swe\SpaceSDK\TeamDirectory\Profiles\SshKeys;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Timezone;
 use Swe\SpaceSDK\TeamDirectory\Profiles\TwoFa;
+use Swe\SpaceSDK\TeamDirectory\Profiles\WidgetSettings;
 use Swe\SpaceSDK\TeamDirectory\Profiles\WorkingDays;
 use Swe\SpaceSDK\Type;
 
 /**
  * Class Profiles
- * Generated at 2023-02-18 02:00
+ * Generated at 2023-03-09 02:00
  *
  * @package Swe\SpaceSDK\TeamDirectory
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -348,6 +349,14 @@ final class Profiles extends AbstractApi
     final public function oauthConsents(): OauthConsents
     {
         return new OauthConsents($this->client);
+    }
+
+    /**
+     * @return WidgetSettings
+     */
+    final public function widgetSettings(): WidgetSettings
+    {
+        return new WidgetSettings($this->client);
     }
 
     /**

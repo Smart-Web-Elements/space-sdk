@@ -9,13 +9,28 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class DeploymentTargets
- * Generated at 2023-02-18 02:00
+ * Generated at 2023-03-09 02:00
  *
  * @package Swe\SpaceSDK\Projects\Automation
  * @author Luca Braun <l.braun@s-w-e.com>
  */
 final class DeploymentTargets extends AbstractApi
 {
+    /**
+     * Permissions that may be checked: Project.Deployments.View
+     *
+     * @param array $request
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     */
+    final public function getAllDeploymentTargets(array $request = [], array $response = []): array
+    {
+        $uri = 'projects/automation/deployment-targets';
+
+        return $this->client->get($this->buildUrl($uri), $request, $response);
+    }
+
     /**
      * Permissions that may be checked: Project.Deployments.Targets.Modify
      *
@@ -50,6 +65,7 @@ final class DeploymentTargets extends AbstractApi
      * @param array $response
      * @return array
      * @throws GuzzleException
+     * @deprecated This method is deprecated since 2023-02-28. Use GET projects/automation/deployment-targets`
      */
     final public function list(string $project, array $request = [], array $response = []): array
     {
@@ -115,7 +131,7 @@ final class DeploymentTargets extends AbstractApi
             'target' => $target,
         ];
 
-        $this->client->put($this->buildUrl($uri, $uriArguments), $data);
+        $this->client->patch($this->buildUrl($uri, $uriArguments), $data);
     }
 
     /**
