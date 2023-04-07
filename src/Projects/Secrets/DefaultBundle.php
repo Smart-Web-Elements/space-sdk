@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class DefaultBundle
- * Generated at 2023-03-09 02:00
+ * Generated at 2023-04-07 02:00
  *
  * @package Swe\SpaceSDK\Projects\Secrets
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -17,7 +17,7 @@ use Swe\SpaceSDK\Type;
 final class DefaultBundle extends AbstractApi
 {
     /**
-     * Create a new secret in the default parameter bundle. Value is base64 encoded bytes of the secret value, possibly after client side encryption. If the secret value bytes are encrypted then the id of the Space public key must be provided
+     * Create a new project secret. The secret value should be provided either as a base64-encoded value in [valueBase64], or as a reference to another secret in [secretReference].
      *
      * Permissions that may be checked: Project.Secrets.Create
      *
@@ -32,7 +32,6 @@ final class DefaultBundle extends AbstractApi
         $required = [
             'project' => Type::String,
             'key' => Type::String,
-            'valueBase64' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
 

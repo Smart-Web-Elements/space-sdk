@@ -1,5 +1,14 @@
 # Space SDK Changelog
 
+## Space SDK 3.3.0
+
+- Added method `safeMerge` in `Swe\SpaceSDK\Projects\CodeReviews`
+- Added class `Swe\SpaceSDK\Projects\CodeReviews\SafeMerge`
+  - Added method `stopSafeMerge` in `SafeMerge`
+  - Added method `getSafeMerge` in `SafeMerge`
+  - Added method `startSafeMerge` in `SafeMerge`
+- Added method `changes` in `Swe\SpaceSDK\Projects\Repositories`
+
 ## Space SDK 3.2.0
 
 - Added method `widgetSettings` in `Swe\SpaceSDK\TeamDirectory\Profiles`

@@ -4,14 +4,12 @@ namespace Swe\SpaceSDK\Projects;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
-use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Projects\Secrets\DefaultBundle;
 use Swe\SpaceSDK\Projects\Secrets\InDefaultBundle;
-use Swe\SpaceSDK\Type;
 
 /**
  * Class Secrets
- * Generated at 2023-03-09 02:00
+ * Generated at 2023-04-07 02:00
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -27,15 +25,10 @@ final class Secrets extends AbstractApi
      * @param array $data
      * @return void
      * @throws GuzzleException
-     * @throws MissingArgumentException
      */
-    final public function updateSecret(string $id, array $data): void
+    final public function updateSecret(string $id, array $data = []): void
     {
         $uri = 'projects/secrets/{id}';
-        $required = [
-            'valueBase64' => Type::String,
-        ];
-        $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'id' => $id,
         ];

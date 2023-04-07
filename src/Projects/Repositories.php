@@ -14,7 +14,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Repositories
- * Generated at 2023-03-09 02:00
+ * Generated at 2023-04-07 02:00
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -317,6 +317,31 @@ final class Repositories extends AbstractApi
         ];
 
         return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
+    }
+
+    /**
+     * @param string $project
+     * @param string $repository
+     * @param array $request
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    final public function changes(string $project, string $repository, array $request, array $response = []): array
+    {
+        $uri = 'projects/{project}/repositories/{repository}/changes';
+        $required = [
+            'commit' => Type::String,
+            'limit' => Type::Integer,
+        ];
+        $this->throwIfInvalid($required, $request);
+        $uriArguments = [
+            'project' => $project,
+            'repository' => $repository,
+        ];
+
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
     }
 
     /**
