@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class Profiles
- * Generated at 2023-04-07 02:00
+ * Generated at 2023-05-05 02:00
  *
  * @package Swe\SpaceSDK\PermissionRoles
  * @author Luca Braun <l.braun@s-w-e.com>

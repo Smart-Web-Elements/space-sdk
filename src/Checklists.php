@@ -6,7 +6,7 @@ use Swe\SpaceSDK\Checklists\Items;
 
 /**
  * Class Checklists
- * Generated at 2023-04-07 02:00
+ * Generated at 2023-05-05 02:00
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>

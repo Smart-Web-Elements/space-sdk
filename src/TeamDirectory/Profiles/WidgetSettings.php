@@ -8,7 +8,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class WidgetSettings
- * Generated at 2023-04-07 02:00
+ * Generated at 2023-05-05 02:00
  *
  * @package Swe\SpaceSDK\TeamDirectory\Profiles
  * @author Luca Braun <l.braun@s-w-e.com>

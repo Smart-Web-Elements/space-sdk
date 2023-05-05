@@ -9,13 +9,35 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class DeploymentTargets
- * Generated at 2023-04-07 02:00
+ * Generated at 2023-05-05 02:00
  *
  * @package Swe\SpaceSDK\Projects\Automation
  * @author Luca Braun <l.braun@s-w-e.com>
  */
 final class DeploymentTargets extends AbstractApi
 {
+    /**
+     * Permissions that may be checked: Project.Deployments.View
+     *
+     * @param array $data
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    final public function search(array $data, array $response = []): array
+    {
+        $uri = 'projects/automation/deployment-targets/search';
+        $required = [
+            'expression' => [
+                'filters' => Type::Array,
+            ],
+        ];
+        $this->throwIfInvalid($required, $data);
+
+        return $this->client->post($this->buildUrl($uri), $data, [], $response);
+    }
+
     /**
      * Permissions that may be checked: Project.Deployments.View
      *
@@ -29,6 +51,24 @@ final class DeploymentTargets extends AbstractApi
         $uri = 'projects/automation/deployment-targets';
 
         return $this->client->get($this->buildUrl($uri), $request, $response);
+    }
+
+    /**
+     * Permissions that may be checked: Project.Deployments.View
+     *
+     * @param string $fullNumberId
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     */
+    final public function get(string $fullNumberId, array $response = []): array
+    {
+        $uri = 'projects/automation/deployment-targets/{fullNumberId}';
+        $uriArguments = [
+            'fullNumberId' => $fullNumberId,
+        ];
+
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
@@ -94,26 +134,6 @@ final class DeploymentTargets extends AbstractApi
         ];
 
         return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
-    }
-
-    /**
-     * Permissions that may be checked: Project.Deployments.View
-     *
-     * @param string $project
-     * @param string $target
-     * @param array $response
-     * @return array
-     * @throws GuzzleException
-     */
-    final public function get(string $project, string $target, array $response = []): array
-    {
-        $uri = 'projects/{project}/automation/deployment-targets/{target}';
-        $uriArguments = [
-            'project' => $project,
-            'target' => $target,
-        ];
-
-        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**

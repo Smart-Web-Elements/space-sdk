@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class MembershipEvents
- * Generated at 2023-04-07 02:00
+ * Generated at 2023-05-05 02:00
  *
  * @package Swe\SpaceSDK\Calendars
  * @author Luca Braun <l.braun@s-w-e.com>

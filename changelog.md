@@ -1,5 +1,9 @@
 # Space SDK Changelog
 
+## Space SDK 3.4.0
+
+- Added method `search` in `Swe\SpaceSDK\Projects\Automation\DeploymentTargets`
+
 ## Space SDK 3.3.0
 
 - Added method `safeMerge` in `Swe\SpaceSDK\Projects\CodeReviews`
