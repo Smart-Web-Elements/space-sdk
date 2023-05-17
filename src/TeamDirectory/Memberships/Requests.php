@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Requests
- * Generated at 2023-05-05 02:00
+ * Generated at 2023-05-17 02:00
  *
  * @package Swe\SpaceSDK\TeamDirectory\Memberships
  * @author Luca Braun <l.braun@s-w-e.com>

@@ -1,5 +1,9 @@
 # Space SDK Changelog
 
+## Space SDK 3.5.0
+
+- Added method `getHeads` in `Swe\SpaceSDK\Projects\Repositories`
+
 ## Space SDK 3.4.0
 
 - Added method `search` in `Swe\SpaceSDK\Projects\Automation\DeploymentTargets`

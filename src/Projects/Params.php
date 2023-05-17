@@ -11,7 +11,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Params
- * Generated at 2023-05-05 02:00
+ * Generated at 2023-05-17 02:00
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
