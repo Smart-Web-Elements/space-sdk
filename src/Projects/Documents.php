@@ -7,7 +7,6 @@ use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Projects\Documents\Access;
 use Swe\SpaceSDK\Projects\Documents\Copy;
-use Swe\SpaceSDK\Projects\Documents\DeleteForever;
 use Swe\SpaceSDK\Projects\Documents\Folders;
 use Swe\SpaceSDK\Projects\Documents\Move;
 use Swe\SpaceSDK\Projects\Documents\Unarchive;
@@ -15,7 +14,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Documents
- * Generated at 2023-05-17 02:00
+ * Generated at 2023-07-13 02:15
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -127,14 +126,6 @@ final class Documents extends AbstractApi
     final public function copy(): Copy
     {
         return new Copy($this->client);
-    }
-
-    /**
-     * @return DeleteForever
-     */
-    final public function deleteForever(): DeleteForever
-    {
-        return new DeleteForever($this->client);
     }
 
     /**

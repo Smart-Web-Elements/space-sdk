@@ -9,12 +9,13 @@ use Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Folders\Access;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Folders\Documents;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Folders\Introduction;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Folders\Move;
+use Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Folders\Search;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Folders\Subfolders;
 use Swe\SpaceSDK\Type;
 
 /**
  * Class Folders
- * Generated at 2023-05-17 02:00
+ * Generated at 2023-07-13 02:15
  *
  * @package Swe\SpaceSDK\TeamDirectory\Profiles\Documents
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -132,6 +133,14 @@ final class Folders extends AbstractApi
     final public function move(): Move
     {
         return new Move($this->client);
+    }
+
+    /**
+     * @return Search
+     */
+    final public function search(): Search
+    {
+        return new Search($this->client);
     }
 
     /**

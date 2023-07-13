@@ -5,12 +5,13 @@ namespace Swe\SpaceSDK\Chats;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Chats\Messages\PinnedMessages;
+use Swe\SpaceSDK\Chats\Messages\SyncBatch;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Type;
 
 /**
  * Class Messages
- * Generated at 2023-05-17 02:00
+ * Generated at 2023-07-13 02:15
  *
  * @package Swe\SpaceSDK\Chats
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -224,5 +225,13 @@ final class Messages extends AbstractApi
     final public function pinnedMessages(): PinnedMessages
     {
         return new PinnedMessages($this->client);
+    }
+
+    /**
+     * @return SyncBatch
+     */
+    final public function syncBatch(): SyncBatch
+    {
+        return new SyncBatch($this->client);
     }
 }

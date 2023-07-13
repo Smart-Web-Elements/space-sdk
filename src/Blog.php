@@ -7,7 +7,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class Blog
- * Generated at 2023-05-17 02:00
+ * Generated at 2023-07-13 02:15
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -28,7 +28,6 @@ final class Blog extends AbstractApi
         $uri = 'blog';
         $required = [
             'title' => Type::String,
-            'content' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
 

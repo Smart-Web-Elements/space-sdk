@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class Files
- * Generated at 2023-05-17 02:00
+ * Generated at 2023-07-13 02:15
  *
  * @package Swe\SpaceSDK\Projects\Packages\Repositories
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -72,7 +72,7 @@ final class Files extends AbstractApi
     /**
      * Removes a folder in repository for a given project ID
      *
-     * Permissions that may be checked: PackageRepository.Write
+     * Permissions that may be checked: PackageRepository.Delete
      *
      * @param string $project
      * @param string $repository
@@ -95,7 +95,7 @@ final class Files extends AbstractApi
     /**
      * Removes a file in repository for a given project ID
      *
-     * Permissions that may be checked: PackageRepository.Write
+     * Permissions that may be checked: PackageRepository.Delete
      *
      * @param string $project
      * @param string $repository

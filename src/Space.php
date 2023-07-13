@@ -4,7 +4,7 @@ namespace Swe\SpaceSDK;
 
 /**
  * Class Space
- * Generated at 2023-05-17 02:00
+ * Generated at 2023-07-13 02:15
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -105,6 +105,14 @@ final class Space extends AbstractApi
     final public function emojis(): Emojis
     {
         return new Emojis($this->client);
+    }
+
+    /**
+     * @return ExternalIssues
+     */
+    final public function externalIssues(): ExternalIssues
+    {
+        return new ExternalIssues($this->client);
     }
 
     /**

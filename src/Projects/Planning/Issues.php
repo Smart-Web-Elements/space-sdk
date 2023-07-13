@@ -17,7 +17,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Issues
- * Generated at 2023-05-17 02:00
+ * Generated at 2023-07-13 02:15
  *
  * @package Swe\SpaceSDK\Projects\Planning
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -147,6 +147,32 @@ final class Issues extends AbstractApi
         $required = [
             'sorting' => Type::String,
             'descending' => Type::Boolean,
+        ];
+        $this->throwIfInvalid($required, $request);
+        $uriArguments = [
+            'project' => $project,
+        ];
+
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
+    }
+
+    /**
+     * Get issues in specified project for synchronization with third-party system. Issues with etag greater than specified value are returned. Read more in the [documentation](https://www.jetbrains.com/help/space/sync-api.html).
+     *
+     * Permissions that may be checked: Project.Issues.View
+     *
+     * @param string $project
+     * @param array $request
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    final public function getSyncBatch(string $project, array $request, array $response = []): array
+    {
+        $uri = 'projects/{project}/planning/issues/sync-batch';
+        $required = [
+            'batchInfo' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
         $uriArguments = [

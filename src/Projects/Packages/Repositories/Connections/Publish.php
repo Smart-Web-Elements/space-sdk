@@ -8,7 +8,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class Publish
- * Generated at 2023-05-17 02:00
+ * Generated at 2023-07-13 02:15
  *
  * @package Swe\SpaceSDK\Projects\Packages\Repositories\Connections
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -18,7 +18,7 @@ final class Publish extends AbstractApi
     /**
      * Publishes packages to remote repository
      *
-     * Permissions that may be checked: PackageRepository.Write
+     * Permissions that may be checked: PackageRepository.Write2
      *
      * @param string $project
      * @param string $repository

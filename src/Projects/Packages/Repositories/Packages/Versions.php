@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Versions
- * Generated at 2023-05-17 02:00
+ * Generated at 2023-07-13 02:15
  *
  * @package Swe\SpaceSDK\Projects\Packages\Repositories\Packages
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -87,7 +87,7 @@ final class Versions extends AbstractApi
     /**
      * Removes a package version in repository for a given project ID
      *
-     * Permissions that may be checked: PackageRepository.Write
+     * Permissions that may be checked: PackageRepository.Delete
      *
      * @param string $project
      * @param string $repository

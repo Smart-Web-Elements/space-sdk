@@ -1,5 +1,69 @@
 # Space SDK Changelog
 
+## Space SDK 4.0.0
+
+- Added method `externalIssues` in `Swe\SpaceSDK\Space`
+- Added method `getSyncBatch` in `Swe\SpaceSDK\TeamDirectory\Teams`
+- Removed method `deleteForever` from `Swe\SpaceSDK\TeamDirectory\Profiles\Documents`
+- Added method `search` in `Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Folders`
+- Added class `Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Folders\Search`
+  - Added method `searchDocumentsAndFolders` in `Search`
+- Added method `personalFeaturePins` in `Swe\SpaceSDK\Projects`
+- Added method `people` in `Swe\SpaceSDK\Projects`
+- Added method `featurePins` in `Swe\SpaceSDK\Projects`
+- Added method `getSyncBatch` in `Swe\SpaceSDK\Projects\Planning\Issues`
+- Added class `Swe\SpaceSDK\Projects\PersonalFeaturePins`
+  - Added method `updatePersonalFeaturePin` in `PersonalFeaturePins`
+- Added class `Swe\SpaceSDK\Projects\People`
+  - Added method `teams` in `People`
+  - Added method `members` in `People`
+- Added class `Swe\SpaceSDK\Projects\People\Teams`
+  - Added method `removeParticipant` in `Teams`
+  - Added method `getParticipantsByTeams` in `Teams`
+  - Added method `getAllParticipants` in `Teams`
+  - Added method `updateParticipantRoles` in `Teams`
+- Added class `Swe\SpaceSDK\Projects\People\Members`
+  - Added method `removeParticipant` in `Members`
+  - Added method `getParticipantsByProfiles` in `Members`
+  - Added method `getAllParticipants` in `Members`
+  - Added method `updateParticipantRoles` in `Members`
+- Added class `Swe\SpaceSDK\Projects\FeaturePins`
+  - Added method `updateFeaturePin` in `FeaturePins`
+- Removed method `deleteForever` from `Swe\SpaceSDK\Projects\Documents`
+- Added method `search` in `Swe\SpaceSDK\Projects\Documents\Folders`
+- Added class `Swe\SpaceSDK\Projects\Documents\Folders\Search`
+  - Added method `searchDocumentsAndFolders` in `Search`
+- Removed method `addTeam` from `Swe\SpaceSDK\Projects\Access\Members\Teams`
+- Removed method `secrets` from `Swe\SpaceSDK\Projects\Automation\StepExecutions`
+- Added class `Swe\SpaceSDK\ExternalIssues`
+  - Added method `issues` in `ExternalIssues`
+  - Added method `externalTrackerProjects` in `ExternalIssues`
+  - Added method `getExternalIssueEventQueueItems` in `ExternalIssues`
+  - Added method `markExternalIssuesAsDeleted` in `ExternalIssues`
+  - Added method `provideAllPossibleStatusesForExternalIssues` in `ExternalIssues`
+  - Added method `postExternalIssueData` in `ExternalIssues`
+  - Added method `setDefaultTargetIssueStatusForMergeRequestMerge` in `ExternalIssues`
+- Added class `Swe\SpaceSDK\ExternalIssues\Issues`
+  - Added method `commits` in `Issues`
+  - Added method `codeReviews` in `Issues`
+- Added class `Swe\SpaceSDK\ExternalIssues\Issues\Commits`
+  - Added method `unlinkCommitsFromExternalIssue` in `Commits`
+  - Added method `linkCommitsToExternalIssue` in `Commits`
+- Added class `Swe\SpaceSDK\ExternalIssues\Issues\CodeReviews`
+  - Added method `unlinkCodeReviewsFromExternalIssue` in `CodeReviews`
+  - Added method `linkCodeReviewsToExternalIssue` in `CodeReviews`
+- Added class `Swe\SpaceSDK\ExternalIssues\ExternalTrackerProjects`
+  - Added method `disconnectExternalIssueTrackerProject` in `ExternalTrackerProjects`
+  - Added method `getAllConnectedExternalIssueTrackerProjects` in `ExternalTrackerProjects`
+  - Added method `connectExternalIssueTrackerProjects` in `ExternalTrackerProjects`
+- Added method `getSyncBatch` in `Swe\SpaceSDK\Emojis`
+- Added method `syncBatch` in `Swe\SpaceSDK\Chats\Messages`
+- Added class `Swe\SpaceSDK\Chats\Messages\SyncBatch`
+  - Added method `currentEtag` in `SyncBatch`
+  - Added method `getSyncBatch` in `SyncBatch`
+- Added class `Swe\SpaceSDK\Chats\Messages\SyncBatch\CurrentEtag`
+  - Added method `getCurrentSyncEtag` in `CurrentEtag`
+
 ## Space SDK 3.5.0
 
 - Added method `getHeads` in `Swe\SpaceSDK\Projects\Repositories`

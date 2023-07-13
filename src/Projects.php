@@ -8,8 +8,11 @@ use Swe\SpaceSDK\Projects\Access;
 use Swe\SpaceSDK\Projects\Automation;
 use Swe\SpaceSDK\Projects\CodeReviews;
 use Swe\SpaceSDK\Projects\Documents;
+use Swe\SpaceSDK\Projects\FeaturePins;
 use Swe\SpaceSDK\Projects\Packages;
 use Swe\SpaceSDK\Projects\Params;
+use Swe\SpaceSDK\Projects\People;
+use Swe\SpaceSDK\Projects\PersonalFeaturePins;
 use Swe\SpaceSDK\Projects\Planning;
 use Swe\SpaceSDK\Projects\PrivateProjects;
 use Swe\SpaceSDK\Projects\Repositories;
@@ -21,7 +24,7 @@ use Swe\SpaceSDK\Projects\Vault;
 
 /**
  * Class Projects
- * Generated at 2023-05-17 02:00
+ * Generated at 2023-07-13 02:15
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -331,11 +334,35 @@ final class Projects extends AbstractApi
     }
 
     /**
+     * @return FeaturePins
+     */
+    final public function featurePins(): FeaturePins
+    {
+        return new FeaturePins($this->client);
+    }
+
+    /**
      * @return Packages
      */
     final public function packages(): Packages
     {
         return new Packages($this->client);
+    }
+
+    /**
+     * @return People
+     */
+    final public function people(): People
+    {
+        return new People($this->client);
+    }
+
+    /**
+     * @return PersonalFeaturePins
+     */
+    final public function personalFeaturePins(): PersonalFeaturePins
+    {
+        return new PersonalFeaturePins($this->client);
     }
 
     /**
