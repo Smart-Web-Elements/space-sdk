@@ -24,7 +24,7 @@ use Swe\SpaceSDK\Projects\Vault;
 
 /**
  * Class Projects
- * Generated at 2023-07-13 02:15
+ * Generated at 2023-07-20 02:00
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -83,6 +83,7 @@ final class Projects extends AbstractApi
      * @param array $response
      * @return array
      * @throws GuzzleException
+     * @deprecated This method is deprecated since 2023-07-01. Project collaborators are no longer supported
      */
     final public function getAllProjectsByCollaborator(
         string $profile,

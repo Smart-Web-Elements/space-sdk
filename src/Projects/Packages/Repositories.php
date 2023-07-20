@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Projects\Packages;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Projects\Packages\Repositories\Access;
 use Swe\SpaceSDK\Projects\Packages\Repositories\Cleanup;
 use Swe\SpaceSDK\Projects\Packages\Repositories\Connections;
 use Swe\SpaceSDK\Projects\Packages\Repositories\Files;
@@ -14,7 +15,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Repositories
- * Generated at 2023-07-13 02:15
+ * Generated at 2023-07-20 02:00
  *
  * @package Swe\SpaceSDK\Projects\Packages
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -132,6 +133,14 @@ final class Repositories extends AbstractApi
         ];
 
         $this->client->delete($this->buildUrl($uri, $uriArguments));
+    }
+
+    /**
+     * @return Access
+     */
+    final public function access(): Access
+    {
+        return new Access($this->client);
     }
 
     /**

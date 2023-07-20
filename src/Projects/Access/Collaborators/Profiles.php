@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Profiles
- * Generated at 2023-07-13 02:15
+ * Generated at 2023-07-20 02:00
  *
  * @package Swe\SpaceSDK\Projects\Access\Collaborators
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -24,6 +24,7 @@ final class Profiles extends AbstractApi
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
+     * @deprecated This method is deprecated since 2023-07-01. Project collaborators are no longer supported
      */
     final public function addACollaborator(string $project, array $data): void
     {
@@ -46,6 +47,7 @@ final class Profiles extends AbstractApi
      * @param array $response
      * @return array
      * @throws GuzzleException
+     * @deprecated This method is deprecated since 2023-07-01. Project collaborators are no longer supported
      */
     final public function getAllIndividualCollaborators(string $project, array $response = []): array
     {
@@ -65,6 +67,7 @@ final class Profiles extends AbstractApi
      * @return void
      * @throws GuzzleException
      * @throws MissingArgumentException
+     * @deprecated This method is deprecated since 2023-07-01. Project collaborators are no longer supported
      */
     final public function removeACollaborator(string $project, array $request): void
     {

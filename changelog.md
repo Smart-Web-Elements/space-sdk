@@ -1,6 +1,6 @@
 # Space SDK Changelog
 
-## Space SDK 4.0.0
+## Space SDK 5.0.0
 
 - Added method `externalIssues` in `Swe\SpaceSDK\Space`
 - Added method `getSyncBatch` in `Swe\SpaceSDK\TeamDirectory\Teams`
@@ -8,6 +8,7 @@
 - Added method `search` in `Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Folders`
 - Added class `Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Folders\Search`
   - Added method `searchDocumentsAndFolders` in `Search`
+- Added method `getSyncBatch` in `Swe\SpaceSDK\TeamDirectory\Memberships`
 - Added method `personalFeaturePins` in `Swe\SpaceSDK\Projects`
 - Added method `people` in `Swe\SpaceSDK\Projects`
 - Added method `featurePins` in `Swe\SpaceSDK\Projects`
@@ -27,6 +28,10 @@
   - Added method `getParticipantsByProfiles` in `Members`
   - Added method `getAllParticipants` in `Members`
   - Added method `updateParticipantRoles` in `Members`
+- Added method `access` in `Swe\SpaceSDK\Projects\Packages\Repositories`
+- Added class `Swe\SpaceSDK\Projects\Packages\Repositories\Access`
+  - Added method `updateRepositoryOwnAccess` in `Access`
+  - Added method `getRepositoryOwnAccess` in `Access`
 - Added class `Swe\SpaceSDK\Projects\FeaturePins`
   - Added method `updateFeaturePin` in `FeaturePins`
 - Removed method `deleteForever` from `Swe\SpaceSDK\Projects\Documents`

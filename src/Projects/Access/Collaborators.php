@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Projects\Access\Collaborators\Teams;
 
 /**
  * Class Collaborators
- * Generated at 2023-07-13 02:15
+ * Generated at 2023-07-20 02:00
  *
  * @package Swe\SpaceSDK\Projects\Access
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -23,6 +23,7 @@ final class Collaborators extends AbstractApi
      * @param array $response
      * @return array
      * @throws GuzzleException
+     * @deprecated This method is deprecated since 2023-07-01. Project collaborators are no longer supported
      */
     final public function getAllCollaboratorsProfiles(string $project, array $response = []): array
     {

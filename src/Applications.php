@@ -18,7 +18,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class Applications
- * Generated at 2023-07-13 02:15
+ * Generated at 2023-07-20 02:00
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>

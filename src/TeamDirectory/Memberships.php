@@ -12,7 +12,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Memberships
- * Generated at 2023-07-13 02:15
+ * Generated at 2023-07-20 02:00
  *
  * @package Swe\SpaceSDK\TeamDirectory
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -56,6 +56,28 @@ final class Memberships extends AbstractApi
     final public function getAllMemberships(array $request = [], array $response = []): array
     {
         $uri = 'team-directory/memberships';
+
+        return $this->client->get($this->buildUrl($uri), $request, $response);
+    }
+
+    /**
+     * Get memberships for synchronization with third-party system. Memberships with etag greater than specified value are returned. Read more in the [documentation](https://www.jetbrains.com/help/space/sync-api.html).
+     *
+     * Permissions that may be checked: Profile.Memberships.View
+     *
+     * @param array $request
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    final public function getSyncBatch(array $request, array $response = []): array
+    {
+        $uri = 'team-directory/memberships/sync-batch';
+        $required = [
+            'batchInfo' => Type::String,
+        ];
+        $this->throwIfInvalid($required, $request);
 
         return $this->client->get($this->buildUrl($uri), $request, $response);
     }
