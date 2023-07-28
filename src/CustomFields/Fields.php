@@ -10,7 +10,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Fields
- * Generated at 2023-07-20 02:00
+ * Generated at 2023-07-28 02:08
  *
  * @package Swe\SpaceSDK\CustomFields
  * @author Luca Braun <l.braun@s-w-e.com>

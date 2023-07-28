@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class EnumValues
- * Generated at 2023-07-20 02:00
+ * Generated at 2023-07-28 02:08
  *
  * @package Swe\SpaceSDK\CustomFields\Fields
  * @author Luca Braun <l.braun@s-w-e.com>

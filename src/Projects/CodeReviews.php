@@ -14,7 +14,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class CodeReviews
- * Generated at 2023-07-20 02:00
+ * Generated at 2023-07-28 02:08
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -229,6 +229,25 @@ final class CodeReviews extends AbstractApi
         ];
 
         $this->client->patch($this->buildUrl($uri, $uriArguments), $data);
+    }
+
+    /**
+     * Permissions that may be checked: Project.CodeReview.Edit
+     *
+     * @param string $project
+     * @param string $reviewId
+     * @return void
+     * @throws GuzzleException
+     */
+    final public function makeReviewReadOnly(string $project, string $reviewId): void
+    {
+        $uri = 'projects/{project}/code-reviews/{reviewId}/make-read-only';
+        $uriArguments = [
+            'project' => $project,
+            'reviewId' => $reviewId,
+        ];
+
+        $this->client->patch($this->buildUrl($uri, $uriArguments));
     }
 
     /**

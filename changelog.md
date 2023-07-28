@@ -1,6 +1,6 @@
 # Space SDK Changelog
 
-## Space SDK 5.0.0
+## Space SDK 6.0.0
 
 - Added method `externalIssues` in `Swe\SpaceSDK\Space`
 - Added method `getSyncBatch` in `Swe\SpaceSDK\TeamDirectory\Teams`
@@ -38,6 +38,7 @@
 - Added method `search` in `Swe\SpaceSDK\Projects\Documents\Folders`
 - Added class `Swe\SpaceSDK\Projects\Documents\Folders\Search`
   - Added method `searchDocumentsAndFolders` in `Search`
+- Added method `makeReviewReadOnly` in `Swe\SpaceSDK\Projects\CodeReviews`
 - Removed method `addTeam` from `Swe\SpaceSDK\Projects\Access\Members\Teams`
 - Removed method `secrets` from `Swe\SpaceSDK\Projects\Automation\StepExecutions`
 - Added class `Swe\SpaceSDK\ExternalIssues`

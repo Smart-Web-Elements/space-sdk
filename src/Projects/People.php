@@ -8,7 +8,7 @@ use Swe\SpaceSDK\Projects\People\Teams;
 
 /**
  * Class People
- * Generated at 2023-07-20 02:00
+ * Generated at 2023-07-28 02:08
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>

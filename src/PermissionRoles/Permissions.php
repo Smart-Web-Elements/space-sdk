@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Permissions
- * Generated at 2023-07-20 02:00
+ * Generated at 2023-07-28 02:08
  *
  * @package Swe\SpaceSDK\PermissionRoles
  * @author Luca Braun <l.braun@s-w-e.com>
