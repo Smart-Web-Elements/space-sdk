@@ -10,7 +10,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Conversations
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\Chats\Channels
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -47,7 +47,11 @@ final class Conversations extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function convertConversationToPrivateChannel(string $channel, array $data, array $response = []): array
+    final public function convertConversationToPrivateChannel(
+        string $channel,
+        array $data,
+        array $response = [],
+    ): array
     {
         $uri = 'chats/channels/conversations/{channel}/convert';
         $required = [

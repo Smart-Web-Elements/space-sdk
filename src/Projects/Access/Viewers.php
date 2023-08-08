@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Viewers
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\Projects\Access
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -32,7 +32,8 @@ final class Viewers extends AbstractApi
         string $project,
         array $request,
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'projects/{project}/access/viewers';
         $required = [
             'term' => Type::String,

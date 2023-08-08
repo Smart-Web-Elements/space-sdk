@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class Assignees
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\Projects\Responsibilities
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -29,7 +29,8 @@ final class Assignees extends AbstractApi
         string $responsibilityId,
         string $profileId,
         array $data = [],
-    ): void {
+    ): void
+    {
         $uri = 'projects/{project}/responsibilities/{responsibilityId}/assignees/{profileId}';
         $uriArguments = [
             'project' => $project,
@@ -55,7 +56,8 @@ final class Assignees extends AbstractApi
         string $responsibilityId,
         string $profileId,
         array $request = [],
-    ): void {
+    ): void
+    {
         $uri = 'projects/{project}/responsibilities/{responsibilityId}/assignees/{profileId}';
         $uriArguments = [
             'project' => $project,

@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class CodeReviews
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\ExternalIssues\Issues
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -52,7 +52,11 @@ final class CodeReviews extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function unlinkCodeReviewsFromExternalIssue(string $issuePrefix, string $issueId, array $request): void
+    final public function unlinkCodeReviewsFromExternalIssue(
+        string $issuePrefix,
+        string $issueId,
+        array $request,
+    ): void
     {
         $uri = 'external-issues/issues/{issuePrefix}/{issueId}/code-reviews';
         $required = [

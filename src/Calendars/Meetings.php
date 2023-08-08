@@ -11,7 +11,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Meetings
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\Calendars
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -122,7 +122,10 @@ final class Meetings extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function getMeetingOccurrencesForPeriodForMultipleMeetings(array $request, array $response = []): array
+    final public function getMeetingOccurrencesForPeriodForMultipleMeetings(
+        array $request,
+        array $response = [],
+    ): array
     {
         $uri = 'calendars/meetings/occurrences-by-meeting';
         $required = [

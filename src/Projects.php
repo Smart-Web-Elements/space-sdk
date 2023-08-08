@@ -24,7 +24,7 @@ use Swe\SpaceSDK\Projects\Vault;
 
 /**
  * Class Projects
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -89,7 +89,8 @@ final class Projects extends AbstractApi
         string $profile,
         array $request = [],
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'projects/collaborator:{profile}';
         $uriArguments = [
             'profile' => $profile,

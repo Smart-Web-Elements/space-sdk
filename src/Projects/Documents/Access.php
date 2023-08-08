@@ -8,7 +8,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class Access
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\Projects\Documents
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -22,7 +22,11 @@ final class Access extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    final public function documentOwnAccessPermissions(string $project, string $documentId, array $response = []): array
+    final public function documentOwnAccessPermissions(
+        string $project,
+        string $documentId,
+        array $response = [],
+    ): array
     {
         $uri = 'projects/{project}/documents/{documentId}/access';
         $uriArguments = [

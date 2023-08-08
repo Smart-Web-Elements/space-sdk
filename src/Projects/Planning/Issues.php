@@ -17,7 +17,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Issues
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\Projects\Planning
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -199,7 +199,8 @@ final class Issues extends AbstractApi
         int $number,
         array $request = [],
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'projects/{project}/planning/issues/number:{number}';
         $uriArguments = [
             'project' => $project,

@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class ExternalChecks
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\Projects\Repositories\Revisions
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -30,7 +30,8 @@ final class ExternalChecks extends AbstractApi
         string $repository,
         string $revision,
         array $data,
-    ): void {
+    ): void
+    {
         $uri = 'projects/{project}/repositories/{repository}/revisions/{revision}/external-checks';
         $required = [
             'executionStatus' => Type::String,
@@ -62,7 +63,8 @@ final class ExternalChecks extends AbstractApi
         string $repository,
         string $revision,
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'projects/{project}/repositories/{repository}/revisions/{revision}/external-checks';
         $uriArguments = [
             'project' => $project,

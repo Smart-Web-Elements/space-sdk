@@ -7,7 +7,7 @@ use Swe\SpaceSDK\CustomFields\Values;
 
 /**
  * Class CustomFields
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>

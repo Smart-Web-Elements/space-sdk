@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Comments
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\Projects\Planning\Issues
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -33,7 +33,8 @@ final class Comments extends AbstractApi
         string $issueId,
         array $data,
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'projects/{project}/planning/issues/{issueId}/comments/import';
         $required = [
             'comments' => Type::Array,

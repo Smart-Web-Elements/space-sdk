@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Search
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Folders
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -32,7 +32,8 @@ final class Search extends AbstractApi
         string $folder,
         array $request,
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'team-directory/profiles/{profile}/documents/folders/{folder}/search';
         $required = [
             'query' => Type::String,

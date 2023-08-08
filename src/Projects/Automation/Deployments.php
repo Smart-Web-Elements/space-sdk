@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Deployments
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\Projects\Automation
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -146,7 +146,8 @@ final class Deployments extends AbstractApi
         string $targetIdentifier,
         string $deploymentIdentifier,
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'projects/{project}/automation/deployments/{targetIdentifier}/{deploymentIdentifier}';
         $uriArguments = [
             'project' => $project,

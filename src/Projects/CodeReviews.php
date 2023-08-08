@@ -14,7 +14,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class CodeReviews
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -149,7 +149,8 @@ final class CodeReviews extends AbstractApi
         string $reviewId,
         array $request = [],
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'projects/{project}/code-reviews/{reviewId}/files';
         $uriArguments = [
             'project' => $project,
@@ -176,7 +177,8 @@ final class CodeReviews extends AbstractApi
         string $reviewId,
         array $request = [],
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'projects/{project}/code-reviews/{reviewId}/merge-files';
         $uriArguments = [
             'project' => $project,
@@ -311,7 +313,12 @@ final class CodeReviews extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function mergeMergeRequest(string $project, string $reviewId, array $data, array $response = []): array
+    final public function mergeMergeRequest(
+        string $project,
+        string $reviewId,
+        array $data,
+        array $response = [],
+    ): array
     {
         $uri = 'projects/{project}/code-reviews/{reviewId}/merge';
         $required = [
@@ -343,7 +350,8 @@ final class CodeReviews extends AbstractApi
         string $reviewId,
         array $data,
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'projects/{project}/code-reviews/{reviewId}/rebase';
         $required = [
             'deleteSourceBranch' => Type::Boolean,

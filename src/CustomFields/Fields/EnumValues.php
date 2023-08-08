@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class EnumValues
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\CustomFields\Fields
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -30,7 +30,8 @@ final class EnumValues extends AbstractApi
         string $customField,
         array $data,
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'custom-fields-v2/{entityType}/fields/{customField}/enum-values';
         $required = [
             'enumValueToAdd' => Type::String,
@@ -80,7 +81,8 @@ final class EnumValues extends AbstractApi
         string $customField,
         array $request = [],
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'custom-fields-v2/{entityType}/fields/{customField}/enum-values';
         $uriArguments = [
             'entityType' => $entityType,

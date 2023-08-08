@@ -11,7 +11,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Packages
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\Projects\Packages\Repositories
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -36,7 +36,8 @@ final class Packages extends AbstractApi
         string $repository,
         array $request,
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'projects/{project}/packages/repositories/{repository}/packages';
         $required = [
             'query' => Type::String,

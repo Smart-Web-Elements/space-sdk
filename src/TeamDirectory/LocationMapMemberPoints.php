@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class LocationMapMemberPoints
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\TeamDirectory
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -78,7 +78,8 @@ final class LocationMapMemberPoints extends AbstractApi
         string $locationPointId,
         array $data = [],
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'team-directory/location-map-member-points/{locationPointId}';
         $uriArguments = [
             'locationPointId' => $locationPointId,

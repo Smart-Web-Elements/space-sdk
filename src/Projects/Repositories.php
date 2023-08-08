@@ -8,13 +8,14 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Projects\Repositories\ClassReadonly;
 use Swe\SpaceSDK\Projects\Repositories\DefaultBranch;
 use Swe\SpaceSDK\Projects\Repositories\Find;
+use Swe\SpaceSDK\Projects\Repositories\MergeDiff;
 use Swe\SpaceSDK\Projects\Repositories\Revisions;
 use Swe\SpaceSDK\Projects\Repositories\Settings;
 use Swe\SpaceSDK\Type;
 
 /**
  * Class Repositories
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -66,7 +67,8 @@ final class Repositories extends AbstractApi
         string $repository,
         array $data = [],
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'projects/{project}/repositories/{repository}';
         $uriArguments = [
             'project' => $project,
@@ -90,7 +92,8 @@ final class Repositories extends AbstractApi
         string $repository,
         array $data,
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'projects/{project}/repositories/{repository}/cherry-pick-commit';
         $required = [
             'commit' => Type::String,
@@ -258,7 +261,8 @@ final class Repositories extends AbstractApi
         string $repository,
         array $data,
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'projects/{project}/repositories/{repository}/migrate';
         $required = [
             'description' => Type::String,
@@ -358,7 +362,8 @@ final class Repositories extends AbstractApi
         string $repository,
         array $request,
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'projects/{project}/repositories/{repository}/commit-branches';
         $required = [
             'commit' => Type::String,
@@ -380,7 +385,12 @@ final class Repositories extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    final public function commits(string $project, string $repository, array $request = [], array $response = []): array
+    final public function commits(
+        string $project,
+        string $repository,
+        array $request = [],
+        array $response = [],
+    ): array
     {
         $uri = 'projects/{project}/repositories/{repository}/commits';
         $uriArguments = [
@@ -429,7 +439,8 @@ final class Repositories extends AbstractApi
         string $repository,
         array $request = [],
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'projects/{project}/repositories/{repository}/heads';
         $uriArguments = [
             'project' => $project,
@@ -480,6 +491,14 @@ final class Repositories extends AbstractApi
     final public function defaultBranch(): DefaultBranch
     {
         return new DefaultBranch($this->client);
+    }
+
+    /**
+     * @return MergeDiff
+     */
+    final public function mergeDiff(): MergeDiff
+    {
+        return new MergeDiff($this->client);
     }
 
     /**

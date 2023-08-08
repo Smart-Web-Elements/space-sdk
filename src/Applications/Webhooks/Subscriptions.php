@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Subscriptions
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\Applications\Webhooks
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -34,7 +34,8 @@ final class Subscriptions extends AbstractApi
         string $webhookId,
         array $data,
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'applications/{application}/webhooks/{webhookId}/subscriptions';
         $required = [
             'name' => Type::String,
@@ -115,7 +116,8 @@ final class Subscriptions extends AbstractApi
         string $subscriptionId,
         array $data = [],
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'applications/{application}/webhooks/{webhookId}/subscriptions/{subscriptionId}';
         $uriArguments = [
             'application' => $application,

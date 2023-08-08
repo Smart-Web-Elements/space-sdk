@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class MemberLocations
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\TeamDirectory
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -87,7 +87,11 @@ final class MemberLocations extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    final public function updateMemberLocation(string $memberLocationId, array $data = [], array $response = []): array
+    final public function updateMemberLocation(
+        string $memberLocationId,
+        array $data = [],
+        array $response = [],
+    ): array
     {
         $uri = 'team-directory/member-locations/{memberLocationId}';
         $uriArguments = [

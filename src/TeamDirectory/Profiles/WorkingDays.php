@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class WorkingDays
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\TeamDirectory\Profiles
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -68,7 +68,11 @@ final class WorkingDays extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    final public function queryWorkingDaysForAProfile(string $profile, array $request = [], array $response = []): array
+    final public function queryWorkingDaysForAProfile(
+        string $profile,
+        array $request = [],
+        array $response = [],
+    ): array
     {
         $uri = 'team-directory/profiles/{profile}/working-days';
         $uriArguments = [
@@ -94,7 +98,8 @@ final class WorkingDays extends AbstractApi
         string $workingDaysId,
         array $data,
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'team-directory/profiles/{profile}/working-days/{workingDaysId}';
         $required = [
             'workingDaysSpec' => [

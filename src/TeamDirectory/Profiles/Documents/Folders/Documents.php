@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class Documents
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\TeamDirectory\Profiles\Documents\Folders
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -27,7 +27,8 @@ final class Documents extends AbstractApi
         string $folder,
         array $request = [],
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'team-directory/profiles/{profile}/documents/folders/{folder}/documents';
         $uriArguments = [
             'profile' => $profile,

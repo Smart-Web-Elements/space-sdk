@@ -1,6 +1,6 @@
 <?php
 
-namespace Swe\SpaceSDK\Projects\Repositories;
+namespace Swe\SpaceSDK\Projects\Automation\DeploymentTargets;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
@@ -8,18 +8,16 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Type;
 
 /**
- * Class Find
+ * Class AuditLog
  * Generated at 2023-08-08 02:41
  *
- * @package Swe\SpaceSDK\Projects\Repositories
+ * @package Swe\SpaceSDK\Projects\Automation\DeploymentTargets
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-final class Find extends AbstractApi
+final class AuditLog extends AbstractApi
 {
     /**
-     * Find repositories by name substring.
-     *
-     * Permissions that may be checked: VcsRepository.Read
+     * Permissions that may be checked: Project.Deployments.View
      *
      * @param array $request
      * @param array $response
@@ -27,11 +25,11 @@ final class Find extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function findRepositories(array $request, array $response = []): array
+    final public function auditLog(array $request, array $response = []): array
     {
-        $uri = 'projects/repositories/find';
+        $uri = 'projects/automation/deployment-targets/audit-log';
         $required = [
-            'term' => Type::String,
+            'targetIdentifier' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
 

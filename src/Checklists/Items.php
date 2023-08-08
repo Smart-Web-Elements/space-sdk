@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Items
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\Checklists
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -101,7 +101,8 @@ final class Items extends AbstractApi
         string $planItem,
         array $data = [],
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'checklists/{checklist}/items/{planItem}';
         $uriArguments = [
             'checklist' => $checklist,

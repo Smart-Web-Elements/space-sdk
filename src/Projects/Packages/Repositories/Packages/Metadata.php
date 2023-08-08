@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Metadata
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\Projects\Packages\Repositories\Packages
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -31,7 +31,8 @@ final class Metadata extends AbstractApi
         string $repository,
         string $packageName,
         array $response = [],
-    ): ?array {
+    ): ?array
+    {
         $uri = 'projects/{project}/packages/repositories/{repository}/packages/name:{packageName}/metadata';
         $uriArguments = [
             'project' => $project,
@@ -57,7 +58,8 @@ final class Metadata extends AbstractApi
         string $repository,
         string $packageName,
         array $data = [],
-    ): void {
+    ): void
+    {
         $uri = 'projects/{project}/packages/repositories/{repository}/packages/name:{packageName}/metadata';
         $uriArguments = [
             'project' => $project,
@@ -86,7 +88,8 @@ final class Metadata extends AbstractApi
         string $packageName,
         string $packageVersion,
         array $data,
-    ): void {
+    ): void
+    {
         $uri = 'projects/{project}/packages/repositories/{repository}/packages/name:{packageName}/metadata/version:{packageVersion}';
         $required = [
             'pin' => Type::Boolean,

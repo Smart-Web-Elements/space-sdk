@@ -5,11 +5,12 @@ namespace Swe\SpaceSDK\Projects\Automation;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Projects\Automation\DeploymentTargets\AuditLog;
 use Swe\SpaceSDK\Type;
 
 /**
  * Class DeploymentTargets
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\Projects\Automation
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -69,6 +70,14 @@ final class DeploymentTargets extends AbstractApi
         ];
 
         return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
+    }
+
+    /**
+     * @return AuditLog
+     */
+    final public function auditLog(): AuditLog
+    {
+        return new AuditLog($this->client);
     }
 
     /**

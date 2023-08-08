@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Versions
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\Projects\Packages\Repositories\Packages
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -36,7 +36,8 @@ final class Versions extends AbstractApi
         string $packageName,
         array $request,
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'projects/{project}/packages/repositories/{repository}/packages/name:{packageName}/versions';
         $required = [
             'query' => Type::String,
@@ -72,7 +73,8 @@ final class Versions extends AbstractApi
         string $packageName,
         string $packageVersion,
         array $response = [],
-    ): ?array {
+    ): ?array
+    {
         $uri = 'projects/{project}/packages/repositories/{repository}/packages/name:{packageName}/versions/version:{packageVersion}';
         $uriArguments = [
             'project' => $project,
@@ -101,7 +103,8 @@ final class Versions extends AbstractApi
         string $repository,
         string $packageName,
         string $packageVersion,
-    ): void {
+    ): void
+    {
         $uri = 'projects/{project}/packages/repositories/{repository}/packages/name:{packageName}/versions/version:{packageVersion}';
         $uriArguments = [
             'project' => $project,

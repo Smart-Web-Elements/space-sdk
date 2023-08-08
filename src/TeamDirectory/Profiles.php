@@ -28,7 +28,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Profiles
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\TeamDirectory
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -177,7 +177,8 @@ final class Profiles extends AbstractApi
         string $profile,
         array $data,
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'team-directory/profiles/{profile}/convert-to-guest';
         $required = [
             'dryrun' => Type::Boolean,
@@ -206,7 +207,8 @@ final class Profiles extends AbstractApi
         string $profile,
         array $data,
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'team-directory/profiles/{profile}/convert-to-member';
         $required = [
             'dryrun' => Type::Boolean,

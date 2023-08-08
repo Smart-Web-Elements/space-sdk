@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Dry
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\Projects\Packages\Repositories\Cleanup
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -34,7 +34,8 @@ final class Dry extends AbstractApi
         string $repository,
         array $data,
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'projects/{project}/packages/repositories/{repository}/cleanup/dry';
         $required = [
             'retentionParams' => [

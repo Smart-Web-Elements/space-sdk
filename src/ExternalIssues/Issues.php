@@ -8,7 +8,7 @@ use Swe\SpaceSDK\ExternalIssues\Issues\Commits;
 
 /**
  * Class Issues
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\ExternalIssues
  * @author Luca Braun <l.braun@s-w-e.com>

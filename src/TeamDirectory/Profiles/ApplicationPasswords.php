@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class ApplicationPasswords
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\TeamDirectory\Profiles
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -46,7 +46,11 @@ final class ApplicationPasswords extends AbstractApi
      * @return array
      * @throws GuzzleException
      */
-    final public function getAllApplicationPasswords(string $profile, array $request = [], array $response = []): array
+    final public function getAllApplicationPasswords(
+        string $profile,
+        array $request = [],
+        array $response = [],
+    ): array
     {
         $uri = 'team-directory/profiles/{profile}/application-passwords';
         $uriArguments = [

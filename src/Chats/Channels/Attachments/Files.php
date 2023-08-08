@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class Files
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\Chats\Channels\Attachments
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -27,7 +27,8 @@ final class Files extends AbstractApi
         string $channel,
         array $request = [],
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'chats/channels/{channel}/attachments/files';
         $uriArguments = [
             'channel' => $channel,

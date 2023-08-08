@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class UnboundDiscussions
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\Projects\CodeReviews
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -30,7 +30,8 @@ final class UnboundDiscussions extends AbstractApi
         string $reviewId,
         array $data,
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'projects/{project}/code-reviews/{reviewId}/unbound-discussions';
         $required = [
             'channelItemId' => Type::String,
@@ -57,7 +58,8 @@ final class UnboundDiscussions extends AbstractApi
         string $reviewId,
         array $request = [],
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'projects/{project}/code-reviews/{reviewId}/unbound-discussions';
         $uriArguments = [
             'project' => $project,
@@ -80,7 +82,8 @@ final class UnboundDiscussions extends AbstractApi
         string $reviewId,
         string $discussionId,
         array $data = [],
-    ): void {
+    ): void
+    {
         $uri = 'projects/{project}/code-reviews/{reviewId}/unbound-discussions/{discussionId}/toggle';
         $uriArguments = [
             'project' => $project,

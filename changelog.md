@@ -1,5 +1,14 @@
 # Space SDK Changelog
 
+## Space SDK 6.1.0
+
+- Added class `Swe\SpaceSDK\Projects\Repositories\MergeDiff`
+  - Added method `getInlineDiff` in `MergeDiff`
+- Added method `mergeDiff` in `Swe\SpaceSDK\Projects\Repositories`
+- Added method `auditLog` in `Swe\SpaceSDK\Projects\Automation\DeploymentTargets`
+- Added class `Swe\SpaceSDK\Projects\Automation\DeploymentTargets\AuditLog`
+  - Added method `auditLog` in `AuditLog`
+
 ## Space SDK 6.0.0
 
 - Added method `externalIssues` in `Swe\SpaceSDK\Space`

@@ -10,7 +10,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class SyncBatch
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\Chats\Messages
  * @author Luca Braun <l.braun@s-w-e.com>

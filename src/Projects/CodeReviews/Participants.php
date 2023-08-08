@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Participants
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\Projects\CodeReviews
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -59,7 +59,8 @@ final class Participants extends AbstractApi
         string $reviewId,
         string $user,
         array $request,
-    ): void {
+    ): void
+    {
         $uri = 'projects/{project}/code-reviews/{reviewId}/participants/{user}';
         $required = [
             'role' => Type::String,

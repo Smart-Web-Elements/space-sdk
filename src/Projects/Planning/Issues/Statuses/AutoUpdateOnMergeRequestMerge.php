@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class AutoUpdateOnMergeRequestMerge
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\Projects\Planning\Issues\Statuses
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -27,7 +27,8 @@ final class AutoUpdateOnMergeRequestMerge extends AbstractApi
     final public function getAutoUpdateTargetIssueStatusForMergeRequestMerge(
         string $project,
         array $response = [],
-    ): ?array {
+    ): ?array
+    {
         $uri = 'projects/{project}/planning/issues/statuses/auto-update-on-merge-request-merge';
         $uriArguments = [
             'project' => $project,

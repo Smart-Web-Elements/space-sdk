@@ -8,7 +8,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class Publish
- * Generated at 2023-07-28 02:08
+ * Generated at 2023-08-08 02:41
  *
  * @package Swe\SpaceSDK\Projects\Packages\Repositories\Connections
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -33,7 +33,8 @@ final class Publish extends AbstractApi
         string $repository,
         string $connectionId,
         array $data,
-    ): string {
+    ): string
+    {
         $uri = 'projects/{project}/packages/repositories/{repository}/connections/{connectionId}/publish';
         $required = [
             'source' => [
@@ -68,7 +69,8 @@ final class Publish extends AbstractApi
         string $connectionId,
         array $request = [],
         array $response = [],
-    ): array {
+    ): array
+    {
         $uri = 'projects/{project}/packages/repositories/{repository}/connections/{connectionId}/publish';
         $uriArguments = [
             'project' => $project,
