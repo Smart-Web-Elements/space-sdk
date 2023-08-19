@@ -12,7 +12,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Webhooks
- * Generated at 2023-08-08 02:41
+ * Generated at 2023-08-19 02:00
  *
  * @package Swe\SpaceSDK\Applications
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -36,7 +36,6 @@ final class Webhooks extends AbstractApi
         $uri = 'applications/{application}/webhooks';
         $required = [
             'name' => Type::String,
-            'acceptedHttpResponseCodes' => Type::Array,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [

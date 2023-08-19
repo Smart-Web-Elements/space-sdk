@@ -1,6 +1,6 @@
 <?php
 
-namespace Swe\SpaceSDK\TeamDirectory\Profiles;
+namespace Swe\SpaceSDK\Applications;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
@@ -11,67 +11,67 @@ use Swe\SpaceSDK\Type;
  * Class GpgKeys
  * Generated at 2023-08-19 02:00
  *
- * @package Swe\SpaceSDK\TeamDirectory\Profiles
+ * @package Swe\SpaceSDK\Applications
  * @author Luca Braun <l.braun@s-w-e.com>
  */
 final class GpgKeys extends AbstractApi
 {
     /**
-     * Permissions that may be checked: Profile.Edit.2
+     * Permissions that may be checked: Applications.Edit
      *
-     * @param string $profile
+     * @param string $application
      * @param array $data
      * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function addPublicGpgKey(string $profile, array $data, array $response = []): array
+    final public function addGpgKey(string $application, array $data, array $response = []): array
     {
-        $uri = 'team-directory/profiles/{profile}/gpg-keys';
+        $uri = 'applications/{application}/gpg-keys';
         $required = [
-            'key' => Type::String,
+            'publicKey' => Type::String,
         ];
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
-            'profile' => $profile,
+            'application' => $application,
         ];
 
         return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
     }
 
     /**
-     * List GPG public keys associated with a profile
+     * Permissions that may be checked: Applications.View
      *
-     * @param string $profile
+     * @param string $application
      * @param array $response
      * @return array
      * @throws GuzzleException
      */
-    final public function listPublicGpgKeys(string $profile, array $response = []): array
+    final public function getGpgKeys(string $application, array $response = []): array
     {
-        $uri = 'team-directory/profiles/{profile}/gpg-keys';
+        $uri = 'applications/{application}/gpg-keys';
         $uriArguments = [
-            'profile' => $profile,
+            'application' => $application,
         ];
 
         return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
     }
 
     /**
-     * Permissions that may be checked: Profile.Edit.2
+     * Permissions that may be checked: Applications.Edit
      *
-     * @param string $profile
+     * @param string $application
      * @param string $fingerprint
      * @param array $data
      * @return void
      * @throws GuzzleException
      */
-    final public function revokePublicGpgKey(string $profile, string $fingerprint, array $data = []): void
+    final public function revokeGpgKey(string $application, string $fingerprint, array $data = []): void
     {
-        $uri = 'team-directory/profiles/{profile}/gpg-keys/{fingerprint}';
+        $uri = 'applications/{application}/gpg-keys/{fingerprint}';
         $uriArguments = [
-            'profile' => $profile,
+            'application' => $application,
             'fingerprint' => $fingerprint,
         ];
 
@@ -79,18 +79,18 @@ final class GpgKeys extends AbstractApi
     }
 
     /**
-     * Permissions that may be checked: Profile.Edit.2
+     * Permissions that may be checked: Applications.Edit
      *
-     * @param string $profile
+     * @param string $application
      * @param string $fingerprint
      * @return void
      * @throws GuzzleException
      */
-    final public function deletePublicGpgKey(string $profile, string $fingerprint): void
+    final public function deleteGpgKey(string $application, string $fingerprint): void
     {
-        $uri = 'team-directory/profiles/{profile}/gpg-keys/{fingerprint}';
+        $uri = 'applications/{application}/gpg-keys/{fingerprint}';
         $uriArguments = [
-            'profile' => $profile,
+            'application' => $application,
             'fingerprint' => $fingerprint,
         ];
 

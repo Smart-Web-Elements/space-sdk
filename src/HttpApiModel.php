@@ -6,7 +6,7 @@ use GuzzleHttp\Exception\GuzzleException;
 
 /**
  * Class HttpApiModel
- * Generated at 2023-08-08 02:41
+ * Generated at 2023-08-19 02:00
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>

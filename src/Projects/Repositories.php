@@ -15,7 +15,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Repositories
- * Generated at 2023-08-08 02:41
+ * Generated at 2023-08-19 02:00
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -442,6 +442,68 @@ final class Repositories extends AbstractApi
     ): array
     {
         $uri = 'projects/{project}/repositories/{repository}/heads';
+        $uriArguments = [
+            'project' => $project,
+            'repository' => $repository,
+        ];
+
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
+    }
+
+    /**
+     * @param string $project
+     * @param string $repository
+     * @param array $request
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    final public function mergePreview(
+        string $project,
+        string $repository,
+        array $request,
+        array $response = [],
+    ): array
+    {
+        $uri = 'projects/{project}/repositories/{repository}/merge-preview';
+        $required = [
+            'sourceBranch' => Type::String,
+            'targetBranch' => Type::String,
+        ];
+        $this->throwIfInvalid($required, $request);
+        $uriArguments = [
+            'project' => $project,
+            'repository' => $repository,
+        ];
+
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
+    }
+
+    /**
+     * Dry run merge source branch into target without modifying the repository. Please note that conflicting status is based on per-file analysis, so it may not be accurate on too diverged branches.
+     *
+     * @param string $project
+     * @param string $repository
+     * @param array $request
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    final public function mergePreviewStatus(
+        string $project,
+        string $repository,
+        array $request,
+        array $response = [],
+    ): array
+    {
+        $uri = 'projects/{project}/repositories/{repository}/merge-preview-status';
+        $required = [
+            'sourceBranch' => Type::String,
+            'targetBranch' => Type::String,
+        ];
+        $this->throwIfInvalid($required, $request);
         $uriArguments = [
             'project' => $project,
             'repository' => $repository,

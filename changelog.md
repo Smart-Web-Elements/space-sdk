@@ -1,5 +1,18 @@
 # Space SDK Changelog
 
+## Space SDK 6.2.0
+
+- Added method `mergePreviewStatus` in `Swe\SpaceSDK\Projects\Repositories`
+- Added method `mergePreview` in `Swe\SpaceSDK\Projects\Repositories`
+- Added method `gpgKeys` in `Swe\SpaceSDK\Applications`
+- Added method `reportApplicationAsHealthy` in `Swe\SpaceSDK\Applications`
+- Added method `setErrorMessage` in `Swe\SpaceSDK\Applications`
+- Added class `Swe\SpaceSDK\Applications\GpgKeys`
+  - Added method `deleteGpgKey` in `GpgKeys`
+  - Added method `revokeGpgKey` in `GpgKeys`
+  - Added method `getGpgKeys` in `GpgKeys`
+  - Added method `addGpgKey` in `GpgKeys`
+
 ## Space SDK 6.1.0
 
 - Added class `Swe\SpaceSDK\Projects\Repositories\MergeDiff`

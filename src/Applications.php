@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\Applications\Authorizations;
 use Swe\SpaceSDK\Applications\ClientSecret;
+use Swe\SpaceSDK\Applications\GpgKeys;
 use Swe\SpaceSDK\Applications\PermanentTokens;
 use Swe\SpaceSDK\Applications\SigningKey;
 use Swe\SpaceSDK\Applications\SshKeys;
@@ -18,7 +19,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class Applications
- * Generated at 2023-08-08 02:41
+ * Generated at 2023-08-19 02:00
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -47,6 +48,33 @@ final class Applications extends AbstractApi
         $this->throwIfInvalid($required, $data);
 
         return $this->client->post($this->buildUrl($uri), $data, [], $response);
+    }
+
+    /**
+     * Provide error message to display on application page in Space UI. Provide `null` message to remove it.
+     *
+     * @param array $data
+     * @return void
+     * @throws GuzzleException
+     */
+    final public function setErrorMessage(array $data = []): void
+    {
+        $uri = 'applications/error-message';
+
+        $this->client->post($this->buildUrl($uri), $data);
+    }
+
+    /**
+     * Application may periodically call this api method to notify Space that it is functioning properly. This is mandatory for applications that connect external issue trackers.
+     *
+     * @return void
+     * @throws GuzzleException
+     */
+    final public function reportApplicationAsHealthy(): void
+    {
+        $uri = 'applications/report-application-as-healthy';
+
+        $this->client->post($this->buildUrl($uri));
     }
 
     /**
@@ -258,6 +286,14 @@ final class Applications extends AbstractApi
     final public function clientSecret(): ClientSecret
     {
         return new ClientSecret($this->client);
+    }
+
+    /**
+     * @return GpgKeys
+     */
+    final public function gpgKeys(): GpgKeys
+    {
+        return new GpgKeys($this->client);
     }
 
     /**
