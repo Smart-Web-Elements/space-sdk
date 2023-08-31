@@ -7,7 +7,7 @@ use Swe\SpaceSDK\Projects\Repositories\Revisions\ExternalChecks;
 
 /**
  * Class Revisions
- * Generated at 2023-08-19 02:00
+ * Generated at 2023-08-31 02:00
  *
  * @package Swe\SpaceSDK\Projects\Repositories
  * @author Luca Braun <l.braun@s-w-e.com>

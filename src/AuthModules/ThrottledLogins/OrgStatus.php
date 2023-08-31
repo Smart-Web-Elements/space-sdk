@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class OrgStatus
- * Generated at 2023-08-19 02:00
+ * Generated at 2023-08-31 02:00
  *
  * @package Swe\SpaceSDK\AuthModules\ThrottledLogins
  * @author Luca Braun <l.braun@s-w-e.com>

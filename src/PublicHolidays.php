@@ -7,7 +7,7 @@ use Swe\SpaceSDK\PublicHolidays\Holidays;
 
 /**
  * Class PublicHolidays
- * Generated at 2023-08-19 02:00
+ * Generated at 2023-08-31 02:00
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>

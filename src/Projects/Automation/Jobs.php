@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Jobs
- * Generated at 2023-08-19 02:00
+ * Generated at 2023-08-31 02:00
  *
  * @package Swe\SpaceSDK\Projects\Automation
  * @author Luca Braun <l.braun@s-w-e.com>

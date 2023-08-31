@@ -8,14 +8,13 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Projects\Repositories\ClassReadonly;
 use Swe\SpaceSDK\Projects\Repositories\DefaultBranch;
 use Swe\SpaceSDK\Projects\Repositories\Find;
-use Swe\SpaceSDK\Projects\Repositories\MergeDiff;
 use Swe\SpaceSDK\Projects\Repositories\Revisions;
 use Swe\SpaceSDK\Projects\Repositories\Settings;
 use Swe\SpaceSDK\Type;
 
 /**
  * Class Repositories
- * Generated at 2023-08-19 02:00
+ * Generated at 2023-08-31 02:00
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -455,6 +454,35 @@ final class Repositories extends AbstractApi
      * @param string $repository
      * @param array $request
      * @param array $response
+     * @return array|null
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    final public function getInlineMergeDiff(
+        string $project,
+        string $repository,
+        array $request,
+        array $response = [],
+    ): ?array
+    {
+        $uri = 'projects/{project}/repositories/{repository}/inline-merge-diff';
+        $required = [
+            'entryType' => Type::String,
+        ];
+        $this->throwIfInvalid($required, $request);
+        $uriArguments = [
+            'project' => $project,
+            'repository' => $repository,
+        ];
+
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
+    }
+
+    /**
+     * @param string $project
+     * @param string $repository
+     * @param array $request
+     * @param array $response
      * @return array
      * @throws GuzzleException
      * @throws MissingArgumentException
@@ -553,14 +581,6 @@ final class Repositories extends AbstractApi
     final public function defaultBranch(): DefaultBranch
     {
         return new DefaultBranch($this->client);
-    }
-
-    /**
-     * @return MergeDiff
-     */
-    final public function mergeDiff(): MergeDiff
-    {
-        return new MergeDiff($this->client);
     }
 
     /**

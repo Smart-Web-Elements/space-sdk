@@ -8,7 +8,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class Absences
- * Generated at 2023-08-19 02:00
+ * Generated at 2023-08-31 02:00
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>

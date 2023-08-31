@@ -6,6 +6,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\Applications\Authorizations;
 use Swe\SpaceSDK\Applications\ClientSecret;
 use Swe\SpaceSDK\Applications\GpgKeys;
+use Swe\SpaceSDK\Applications\Parameters;
 use Swe\SpaceSDK\Applications\PermanentTokens;
 use Swe\SpaceSDK\Applications\SigningKey;
 use Swe\SpaceSDK\Applications\SshKeys;
@@ -19,7 +20,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class Applications
- * Generated at 2023-08-19 02:00
+ * Generated at 2023-08-31 02:00
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -270,6 +271,14 @@ final class Applications extends AbstractApi
     final public function authorizations(): Authorizations
     {
         return new Authorizations($this->client);
+    }
+
+    /**
+     * @return Parameters
+     */
+    final public function parameters(): Parameters
+    {
+        return new Parameters($this->client);
     }
 
     /**

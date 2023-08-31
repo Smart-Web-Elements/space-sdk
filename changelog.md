@@ -1,5 +1,26 @@
 # Space SDK Changelog
 
+## Space SDK 7.0.0
+
+- Added method `attachment` in `Swe\SpaceSDK\Projects\Planning\Issues`
+- Added class `Swe\SpaceSDK\Projects\Planning\Issues\Attachment`
+  - Added method `removeAttachment` in `Attachment`
+  - Added method `addAttachment` in `Attachment`
+- Removed method `mergeDiff` from `Swe\SpaceSDK\Projects\Repositories`
+- Added method `getInlineMergeDiff` in `Swe\SpaceSDK\Projects\Repositories`
+- Added method `parameters` in `Swe\SpaceSDK\Applications`
+- Added class `Swe\SpaceSDK\Applications\Parameters`
+  - Added method `profile` in `Parameters`
+  - Added method `removeParameter` in `Parameters`
+  - Added method `setParameter` in `Parameters`
+  - Added method `getParameter` in `Parameters`
+  - Added method `getAllParameters` in `Parameters`
+- Added class `Swe\SpaceSDK\Applications\Parameters\Profile`
+  - Added method `removeProfileParameter` in `Profile`
+  - Added method `setProfileParameter` in `Profile`
+  - Added method `getProfileParameter` in `Profile`
+  - Added method `getAllProfileParameters` in `Profile`
+
 ## Space SDK 6.2.0
 
 - Added method `mergePreviewStatus` in `Swe\SpaceSDK\Projects\Repositories`

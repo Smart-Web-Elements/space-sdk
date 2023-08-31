@@ -5,6 +5,7 @@ namespace Swe\SpaceSDK\Projects\Planning;
 use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
+use Swe\SpaceSDK\Projects\Planning\Issues\Attachment;
 use Swe\SpaceSDK\Projects\Planning\Issues\Attachments;
 use Swe\SpaceSDK\Projects\Planning\Issues\Checklists;
 use Swe\SpaceSDK\Projects\Planning\Issues\CodeReviews;
@@ -17,7 +18,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Issues
- * Generated at 2023-08-19 02:00
+ * Generated at 2023-08-31 02:00
  *
  * @package Swe\SpaceSDK\Projects\Planning
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -288,6 +289,14 @@ final class Issues extends AbstractApi
     final public function statuses(): Statuses
     {
         return new Statuses($this->client);
+    }
+
+    /**
+     * @return Attachment
+     */
+    final public function attachment(): Attachment
+    {
+        return new Attachment($this->client);
     }
 
     /**
