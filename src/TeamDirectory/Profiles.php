@@ -10,6 +10,7 @@ use Swe\SpaceSDK\TeamDirectory\Profiles\AuthenticationSessions;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Checklists;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Dashboards;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Documents;
+use Swe\SpaceSDK\TeamDirectory\Profiles\Favorites;
 use Swe\SpaceSDK\TeamDirectory\Profiles\GpgKeys;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Leads;
 use Swe\SpaceSDK\TeamDirectory\Profiles\NavBarMenuItems;
@@ -28,7 +29,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Profiles
- * Generated at 2023-08-31 02:00
+ * Generated at 2023-09-20 02:00
  *
  * @package Swe\SpaceSDK\TeamDirectory
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -343,6 +344,14 @@ final class Profiles extends AbstractApi
     final public function dashboards(): Dashboards
     {
         return new Dashboards($this->client);
+    }
+
+    /**
+     * @return Favorites
+     */
+    final public function favorites(): Favorites
+    {
+        return new Favorites($this->client);
     }
 
     /**

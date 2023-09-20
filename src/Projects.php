@@ -19,12 +19,11 @@ use Swe\SpaceSDK\Projects\Repositories;
 use Swe\SpaceSDK\Projects\Responsibilities;
 use Swe\SpaceSDK\Projects\Secrets;
 use Swe\SpaceSDK\Projects\Tags;
-use Swe\SpaceSDK\Projects\Topics;
 use Swe\SpaceSDK\Projects\Vault;
 
 /**
  * Class Projects
- * Generated at 2023-08-31 02:00
+ * Generated at 2023-09-20 02:00
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -365,13 +364,5 @@ final class Projects extends AbstractApi
     final public function personalFeaturePins(): PersonalFeaturePins
     {
         return new PersonalFeaturePins($this->client);
-    }
-
-    /**
-     * @return Topics
-     */
-    final public function topics(): Topics
-    {
-        return new Topics($this->client);
     }
 }

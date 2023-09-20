@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class Videos
- * Generated at 2023-08-31 02:00
+ * Generated at 2023-09-20 02:00
  *
  * @package Swe\SpaceSDK\Chats\Channels\Attachments
  * @author Luca Braun <l.braun@s-w-e.com>

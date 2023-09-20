@@ -4,7 +4,7 @@ namespace Swe\SpaceSDK;
 
 /**
  * Class Space
- * Generated at 2023-08-31 02:00
+ * Generated at 2023-09-20 02:00
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -129,6 +129,14 @@ final class Space extends AbstractApi
     final public function httpApiModel(): HttpApiModel
     {
         return new HttpApiModel($this->client);
+    }
+
+    /**
+     * @return Issues
+     */
+    final public function issues(): Issues
+    {
+        return new Issues($this->client);
     }
 
     /**

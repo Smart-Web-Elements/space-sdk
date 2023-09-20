@@ -10,7 +10,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Locations
- * Generated at 2023-08-31 02:00
+ * Generated at 2023-09-20 02:00
  *
  * @package Swe\SpaceSDK\TeamDirectory
  * @author Luca Braun <l.braun@s-w-e.com>

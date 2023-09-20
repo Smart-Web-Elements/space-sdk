@@ -18,7 +18,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Issues
- * Generated at 2023-08-31 02:00
+ * Generated at 2023-09-20 02:00
  *
  * @package Swe\SpaceSDK\Projects\Planning
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -212,6 +212,8 @@ final class Issues extends AbstractApi
     }
 
     /**
+     * Retrieve issue by identifier. To retrieve multiple issues at once, use [Get issues by identifiers](/extensions/httpApiPlayground?resource=issues&parent-resource=issues&endpoint=http_post_get-by-ids) (`/issues/get-by-ids`)
+     *
      * Permissions that may be checked: Project.Issues.View
      *
      * @param string $project

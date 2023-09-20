@@ -1,13 +1,31 @@
 # Space SDK Changelog
 
-## Space SDK 7.0.0
+## Space SDK 8.0.0
 
+- Added method `issues` in `Swe\SpaceSDK\Space`
+- Added method `favorites` in `Swe\SpaceSDK\TeamDirectory\Profiles`
+- Added class `Swe\SpaceSDK\TeamDirectory\Profiles\Favorites`
+  - Added method `removeFavorite` in `Favorites`
+  - Added method `getFavoriteTeams` in `Favorites`
+  - Added method `getFavoriteRepositories` in `Favorites`
+  - Added method `getFavoriteProjects` in `Favorites`
+  - Added method `getFollowedProfiles` in `Favorites`
+  - Added method `getFavoriteLocations` in `Favorites`
+  - Added method `getFavoriteJobs` in `Favorites`
+  - Added method `getFavoriteDocuments` in `Favorites`
+  - Added method `getFavoriteDeploymentTargets` in `Favorites`
+  - Added method `addFavorite` in `Favorites`
+- Removed method `topics` from `Swe\SpaceSDK\Projects`
 - Added method `attachment` in `Swe\SpaceSDK\Projects\Planning\Issues`
 - Added class `Swe\SpaceSDK\Projects\Planning\Issues\Attachment`
   - Added method `removeAttachment` in `Attachment`
   - Added method `addAttachment` in `Attachment`
 - Removed method `mergeDiff` from `Swe\SpaceSDK\Projects\Repositories`
 - Added method `getInlineMergeDiff` in `Swe\SpaceSDK\Projects\Repositories`
+- Removed method `deleteParameter` from `Swe\SpaceSDK\Projects\Automation\StepExecutions\Parameters`
+- Added class `Swe\SpaceSDK\Issues`
+  - Added method `getIssue` in `Issues`
+  - Added method `getIssuesByIdentifiers` in `Issues`
 - Added method `parameters` in `Swe\SpaceSDK\Applications`
 - Added class `Swe\SpaceSDK\Applications\Parameters`
   - Added method `profile` in `Parameters`

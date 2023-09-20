@@ -16,7 +16,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Channels
- * Generated at 2023-08-31 02:00
+ * Generated at 2023-09-20 02:00
  *
  * @package Swe\SpaceSDK\Chats
  * @author Luca Braun <l.braun@s-w-e.com>

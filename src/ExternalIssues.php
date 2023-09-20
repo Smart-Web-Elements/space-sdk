@@ -9,7 +9,7 @@ use Swe\SpaceSDK\ExternalIssues\Issues;
 
 /**
  * Class ExternalIssues
- * Generated at 2023-08-31 02:00
+ * Generated at 2023-09-20 02:00
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
