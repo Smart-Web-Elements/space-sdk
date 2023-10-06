@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class CurrentEtag
- * Generated at 2023-09-20 02:00
+ * Generated at 2023-10-06 07:26
  *
  * @package Swe\SpaceSDK\Chats\Messages\SyncBatch
  * @author Luca Braun <l.braun@s-w-e.com>

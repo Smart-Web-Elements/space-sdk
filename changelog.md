@@ -1,5 +1,19 @@
 # Space SDK Changelog
 
+## Space SDK 9.0.0
+
+- Removed method `starred` from `Swe\SpaceSDK\TeamDirectory\Profiles\Checklists`
+- Removed method `getAllChecklists` from `Swe\SpaceSDK\TeamDirectory\Profiles\Checklists`
+- Added method `me` in `Swe\SpaceSDK\TeamDirectory\Profiles\OauthConsents`
+- Added class `Swe\SpaceSDK\TeamDirectory\Profiles\OauthConsents\Me`
+  - Added method `refreshTokens` in `Me`
+- Added class `Swe\SpaceSDK\TeamDirectory\Profiles\OauthConsents\Me\RefreshTokens`
+  - Added method `classSelf` in `RefreshTokens`
+- Added class `Swe\SpaceSDK\TeamDirectory\Profiles\OauthConsents\Me\RefreshTokens\ClassSelf`
+  - Added method `deleteSelf` in `ClassSelf`
+- Added method `getDismissedCodeIssues` in `Swe\SpaceSDK\Projects\CodeReviews`
+- Added method `getAdditionalRepositoryInfo` in `Swe\SpaceSDK\Projects\Repositories`
+
 ## Space SDK 8.0.0
 
 - Added method `issues` in `Swe\SpaceSDK\Space`

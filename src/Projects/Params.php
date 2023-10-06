@@ -11,7 +11,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Params
- * Generated at 2023-09-20 02:00
+ * Generated at 2023-10-06 07:26
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -19,7 +19,7 @@ use Swe\SpaceSDK\Type;
 final class Params extends AbstractApi
 {
     /**
-     * Update an existing project parameter
+     * Update a project parameter
      *
      * Permissions that may be checked: Project.Params.Modify
      *
@@ -44,7 +44,7 @@ final class Params extends AbstractApi
     }
 
     /**
-     * Delete an existing project parameter
+     * Delete a project parameter
      *
      * Permissions that may be checked: Project.Params.Delete
      *

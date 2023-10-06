@@ -14,7 +14,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Repositories
- * Generated at 2023-09-20 02:00
+ * Generated at 2023-10-06 07:26
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -314,6 +314,28 @@ final class Repositories extends AbstractApi
     final public function getRepositoryInfo(string $project, string $repository, array $response = []): array
     {
         $uri = 'projects/{project}/repositories/{repository}';
+        $uriArguments = [
+            'project' => $project,
+            'repository' => $repository,
+        ];
+
+        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
+    }
+
+    /**
+     * @param string $project
+     * @param string $repository
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     */
+    final public function getAdditionalRepositoryInfo(
+        string $project,
+        string $repository,
+        array $response = [],
+    ): array
+    {
+        $uri = 'projects/{project}/repositories/{repository}/additional-info';
         $uriArguments = [
             'project' => $project,
             'repository' => $repository,

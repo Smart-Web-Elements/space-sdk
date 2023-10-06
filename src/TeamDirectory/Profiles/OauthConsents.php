@@ -7,11 +7,12 @@ use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\TeamDirectory\Profiles\OauthConsents\Applications;
 use Swe\SpaceSDK\TeamDirectory\Profiles\OauthConsents\ApprovedScopes;
 use Swe\SpaceSDK\TeamDirectory\Profiles\OauthConsents\InternalApplications;
+use Swe\SpaceSDK\TeamDirectory\Profiles\OauthConsents\Me;
 use Swe\SpaceSDK\TeamDirectory\Profiles\OauthConsents\RefreshTokens;
 
 /**
  * Class OauthConsents
- * Generated at 2023-09-20 02:00
+ * Generated at 2023-10-06 07:26
  *
  * @package Swe\SpaceSDK\TeamDirectory\Profiles
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -34,6 +35,14 @@ final class OauthConsents extends AbstractApi
         ];
 
         return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
+    }
+
+    /**
+     * @return Me
+     */
+    final public function me(): Me
+    {
+        return new Me($this->client);
     }
 
     /**

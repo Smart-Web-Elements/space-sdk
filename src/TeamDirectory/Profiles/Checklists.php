@@ -6,12 +6,11 @@ use GuzzleHttp\Exception\GuzzleException;
 use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Checklists\FullChecklistTree;
-use Swe\SpaceSDK\TeamDirectory\Profiles\Checklists\Starred;
 use Swe\SpaceSDK\Type;
 
 /**
  * Class Checklists
- * Generated at 2023-09-20 02:00
+ * Generated at 2023-10-06 07:26
  *
  * @package Swe\SpaceSDK\TeamDirectory\Profiles
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -99,25 +98,6 @@ final class Checklists extends AbstractApi
     }
 
     /**
-     * Get all existing checklists associated with the profile
-     *
-     * @param string $profile
-     * @param array $response
-     * @return array
-     * @throws GuzzleException
-     * @deprecated This method is deprecated since 2022-04-08. Use GET team-directory/profiles/{profile}/documents/folders/{folder}/documents
-     */
-    final public function getAllChecklists(string $profile, array $response = []): array
-    {
-        $uri = 'team-directory/profiles/{profile}/checklists';
-        $uriArguments = [
-            'profile' => $profile,
-        ];
-
-        return $this->client->get($this->buildUrl($uri, $uriArguments), [], $response);
-    }
-
-    /**
      * Update an existing checklist associated with the profile
      *
      * @param string $profile
@@ -156,14 +136,6 @@ final class Checklists extends AbstractApi
         ];
 
         $this->client->delete($this->buildUrl($uri, $uriArguments));
-    }
-
-    /**
-     * @return Starred
-     */
-    final public function starred(): Starred
-    {
-        return new Starred($this->client);
     }
 
     /**

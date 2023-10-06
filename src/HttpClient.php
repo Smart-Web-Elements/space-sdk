@@ -4,6 +4,7 @@ namespace Swe\SpaceSDK;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class HttpClient
@@ -55,10 +56,7 @@ final class HttpClient
      */
     public function get(string $uri, array $requestFields = [], array $responseFields = []): array
     {
-        $response = $this->getClient()->get($this->getUri($uri, $requestFields, $responseFields));
-        $jsonResponse = json_decode($response->getBody()->getContents(), true);
-
-        return is_array($jsonResponse) ? $jsonResponse : [$jsonResponse];
+        return $this->sendRequest(HttpMethod::GET, $uri, [], $requestFields, $responseFields);
     }
 
     /**
@@ -73,10 +71,7 @@ final class HttpClient
      */
     public function post(string $uri, array $data = [], array $requestFields = [], array $responseFields = []): array
     {
-        $response = $this->getClient()->post($this->getUri($uri, $requestFields, $responseFields), ['json' => $data]);
-        $jsonResponse = json_decode($response->getBody()->getContents(), true);
-
-        return is_array($jsonResponse) ? $jsonResponse : [$jsonResponse];
+        return $this->sendRequest(HttpMethod::POST, $uri, $data, $requestFields, $responseFields);
     }
 
     /**
@@ -91,10 +86,7 @@ final class HttpClient
      */
     public function put(string $uri, array $data = [], array $requestFields = [], array $responseFields = []): array
     {
-        $response = $this->getClient()->put($this->getUri($uri, $requestFields, $responseFields), ['json' => $data]);
-        $jsonResponse = json_decode($response->getBody()->getContents(), true);
-
-        return is_array($jsonResponse) ? $jsonResponse : [$jsonResponse];
+        return $this->sendRequest(HttpMethod::PUT, $uri, $data, $requestFields, $responseFields);
     }
 
     /**
@@ -109,10 +101,7 @@ final class HttpClient
      */
     public function patch(string $uri, array $data = [], array $requestFields = [], array $responseFields = []): array
     {
-        $response = $this->getClient()->patch($this->getUri($uri, $requestFields, $responseFields), ['json' => $data]);
-        $jsonResponse = json_decode($response->getBody()->getContents(), true);
-
-        return is_array($jsonResponse) ? $jsonResponse : [$jsonResponse];
+        return $this->sendRequest(HttpMethod::PATCH, $uri, $data, $requestFields, $responseFields);
     }
 
     /**
@@ -126,7 +115,44 @@ final class HttpClient
      */
     public function delete(string $uri, array $requestFields = [], array $responseFields = []): array
     {
-        $response = $this->getClient()->delete($this->getUri($uri, $requestFields, $responseFields));
+        return $this->sendRequest(HttpMethod::DELETE, $uri, [], $requestFields, $responseFields);
+    }
+
+    /**
+     * Send the request based on given method and parameters.
+     *
+     * @param HttpMethod $method
+     * @param string $uri
+     * @param array $data
+     * @param array $requestFields
+     * @param array $responseFields
+     * @return array
+     * @throws GuzzleException
+     */
+    private function sendRequest(
+        HttpMethod $method,
+        string $uri,
+        array $data = [],
+        array $requestFields = [],
+        array $responseFields = [],
+    ): array
+    {
+        $response = $this->getClient()->{$method->value}(
+            $this->getUri($uri, $requestFields, $responseFields),
+            !empty($data) ? ['json' => $data] : []
+        );
+
+        return $this->handleResponse($response);
+    }
+
+    /**
+     * Handle the response, decoding the JSON content.
+     *
+     * @param ResponseInterface $response
+     * @return array
+     */
+    private function handleResponse(ResponseInterface $response): array
+    {
         $jsonResponse = json_decode($response->getBody()->getContents(), true);
 
         return is_array($jsonResponse) ? $jsonResponse : [$jsonResponse];

@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class AuditLog
- * Generated at 2023-09-20 02:00
+ * Generated at 2023-10-06 07:26
  *
  * @package Swe\SpaceSDK\Projects\Automation\DeploymentTargets
  * @author Luca Braun <l.braun@s-w-e.com>
