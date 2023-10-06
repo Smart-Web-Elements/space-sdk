@@ -29,6 +29,7 @@ class SpaceTestCase extends ClientTestCase
      */
     private static array $exceptionClassNames = [
         'Readonly' => 'ClassReadonly',
+  		'Self' => 'ClassSelf',
     ];
 
     /**
