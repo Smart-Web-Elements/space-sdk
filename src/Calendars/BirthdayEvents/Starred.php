@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Starred
- * Generated at 2023-10-06 07:26
+ * Generated at 2023-10-24 02:15
  *
  * @package Swe\SpaceSDK\Calendars\BirthdayEvents
  * @author Luca Braun <l.braun@s-w-e.com>

@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class PublicUrl
- * Generated at 2023-10-06 07:26
+ * Generated at 2023-10-24 02:15
  *
  * @package Swe\SpaceSDK\Uploads\Chat
  * @author Luca Braun <l.braun@s-w-e.com>

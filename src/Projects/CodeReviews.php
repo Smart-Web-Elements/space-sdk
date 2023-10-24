@@ -14,13 +14,38 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class CodeReviews
- * Generated at 2023-10-06 07:26
+ * Generated at 2023-10-24 02:15
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
  */
 final class CodeReviews extends AbstractApi
 {
+    /**
+     * @param string $project
+     * @param array $data
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    final public function getUserFeedbackOnCodeIssues(string $project, array $data, array $response = []): array
+    {
+        $uri = 'projects/{project}/code-reviews/code-issues-feedback';
+        $required = [
+            'tool' => Type::String,
+            'batchInfo' => [
+                'batchSize' => Type::Integer,
+            ],
+        ];
+        $this->throwIfInvalid($required, $data);
+        $uriArguments = [
+            'project' => $project,
+        ];
+
+        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
+    }
+
     /**
      * Permissions that may be checked: Project.CodeReview.Create
      *
@@ -68,38 +93,6 @@ final class CodeReviews extends AbstractApi
         $this->throwIfInvalid($required, $data);
         $uriArguments = [
             'project' => $project,
-        ];
-
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
-    }
-
-    /**
-     * @param string $project
-     * @param string $reviewId
-     * @param array $data
-     * @param array $response
-     * @return array
-     * @throws GuzzleException
-     * @throws MissingArgumentException
-     */
-    final public function getDismissedCodeIssues(
-        string $project,
-        string $reviewId,
-        array $data,
-        array $response = [],
-    ): array
-    {
-        $uri = 'projects/{project}/code-reviews/{reviewId}/dismissed-issues';
-        $required = [
-            'tool' => Type::String,
-            'filesBatchInfo' => [
-                'batchSize' => Type::Integer,
-            ],
-        ];
-        $this->throwIfInvalid($required, $data);
-        $uriArguments = [
-            'project' => $project,
-            'reviewId' => $reviewId,
         ];
 
         return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);

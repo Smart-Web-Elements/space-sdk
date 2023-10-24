@@ -1,7 +1,11 @@
 # Space SDK Changelog
 
-## Space SDK 9.0.0
+## Space SDK 10.0.0
 
+- Added method `grammarDictionary` in `Swe\SpaceSDK\TeamDirectory\Profiles`
+- Added method `deleteForever` in `Swe\SpaceSDK\TeamDirectory\Profiles\Documents`
+- Added class `Swe\SpaceSDK\TeamDirectory\Profiles\Documents\DeleteForever`
+  - Added method `deleteDocumentForever` in `DeleteForever`
 - Removed method `starred` from `Swe\SpaceSDK\TeamDirectory\Profiles\Checklists`
 - Removed method `getAllChecklists` from `Swe\SpaceSDK\TeamDirectory\Profiles\Checklists`
 - Added method `me` in `Swe\SpaceSDK\TeamDirectory\Profiles\OauthConsents`
@@ -11,7 +15,16 @@
   - Added method `classSelf` in `RefreshTokens`
 - Added class `Swe\SpaceSDK\TeamDirectory\Profiles\OauthConsents\Me\RefreshTokens\ClassSelf`
   - Added method `deleteSelf` in `ClassSelf`
-- Added method `getDismissedCodeIssues` in `Swe\SpaceSDK\Projects\CodeReviews`
+- Added class `Swe\SpaceSDK\TeamDirectory\Profiles\GrammarDictionary`
+  - Added method `remove` in `GrammarDictionary`
+  - Added method `add` in `GrammarDictionary`
+  - Added method `getThePersonalDictionaryEntries` in `GrammarDictionary`
+- Added class `Swe\SpaceSDK\TeamDirectory\Profiles\GrammarDictionary\Remove`
+  - Added method `removeTheEntryFromThePersonalDictionary` in `Remove`
+- Added class `Swe\SpaceSDK\TeamDirectory\Profiles\GrammarDictionary\Add`
+  - Added method `addTheEntryToThePersonalDictionary` in `Add`
+- Added method `getUserFeedbackOnCodeIssues` in `Swe\SpaceSDK\Projects\CodeReviews`
+- Added method `getDeclarationScopesForFile` in `Swe\SpaceSDK\Projects\Repositories`
 - Added method `getAdditionalRepositoryInfo` in `Swe\SpaceSDK\Projects\Repositories`
 
 ## Space SDK 8.0.0

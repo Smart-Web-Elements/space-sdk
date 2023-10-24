@@ -12,6 +12,7 @@ use Swe\SpaceSDK\TeamDirectory\Profiles\Dashboards;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Documents;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Favorites;
 use Swe\SpaceSDK\TeamDirectory\Profiles\GpgKeys;
+use Swe\SpaceSDK\TeamDirectory\Profiles\GrammarDictionary;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Leads;
 use Swe\SpaceSDK\TeamDirectory\Profiles\NavBarMenuItems;
 use Swe\SpaceSDK\TeamDirectory\Profiles\NavBarProjects;
@@ -29,7 +30,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Profiles
- * Generated at 2023-10-06 07:26
+ * Generated at 2023-10-24 02:15
  *
  * @package Swe\SpaceSDK\TeamDirectory
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -352,6 +353,14 @@ final class Profiles extends AbstractApi
     final public function favorites(): Favorites
     {
         return new Favorites($this->client);
+    }
+
+    /**
+     * @return GrammarDictionary
+     */
+    final public function grammarDictionary(): GrammarDictionary
+    {
+        return new GrammarDictionary($this->client);
     }
 
     /**

@@ -14,7 +14,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Repositories
- * Generated at 2023-10-06 07:26
+ * Generated at 2023-10-24 02:15
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -552,6 +552,36 @@ final class Repositories extends AbstractApi
         $required = [
             'sourceBranch' => Type::String,
             'targetBranch' => Type::String,
+        ];
+        $this->throwIfInvalid($required, $request);
+        $uriArguments = [
+            'project' => $project,
+            'repository' => $repository,
+        ];
+
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
+    }
+
+    /**
+     * @param string $project
+     * @param string $repository
+     * @param array $request
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    final public function getDeclarationScopesForFile(
+        string $project,
+        string $repository,
+        array $request,
+        array $response = [],
+    ): array
+    {
+        $uri = 'projects/{project}/repositories/{repository}/scopes';
+        $required = [
+            'filename' => Type::String,
+            'blobId' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
         $uriArguments = [

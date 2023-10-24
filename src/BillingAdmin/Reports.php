@@ -8,7 +8,7 @@ use Swe\SpaceSDK\BillingAdmin\Reports\Today;
 
 /**
  * Class Reports
- * Generated at 2023-10-06 07:26
+ * Generated at 2023-10-24 02:15
  *
  * @package Swe\SpaceSDK\BillingAdmin
  * @author Luca Braun <l.braun@s-w-e.com>
