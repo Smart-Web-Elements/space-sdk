@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class Config
- * Generated at 2023-10-24 02:15
+ * Generated at 2023-11-10 04:08
  *
  * @package Swe\SpaceSDK\AuthModules
  * @author Luca Braun <l.braun@s-w-e.com>

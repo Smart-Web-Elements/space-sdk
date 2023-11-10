@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class Distribution
- * Generated at 2023-10-24 02:15
+ * Generated at 2023-11-10 04:08
  *
  * @package Swe\SpaceSDK\Projects\Planning\Issues\Statuses
  * @author Luca Braun <l.braun@s-w-e.com>

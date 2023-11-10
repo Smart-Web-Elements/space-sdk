@@ -1,7 +1,8 @@
 # Space SDK Changelog
 
-## Space SDK 10.0.0
+## Space SDK 11.0.0
 
+- Added method `rd` in `Swe\SpaceSDK\Space`
 - Added method `grammarDictionary` in `Swe\SpaceSDK\TeamDirectory\Profiles`
 - Added method `deleteForever` in `Swe\SpaceSDK\TeamDirectory\Profiles\Documents`
 - Added class `Swe\SpaceSDK\TeamDirectory\Profiles\Documents\DeleteForever`
@@ -23,6 +24,8 @@
   - Added method `removeTheEntryFromThePersonalDictionary` in `Remove`
 - Added class `Swe\SpaceSDK\TeamDirectory\Profiles\GrammarDictionary\Add`
   - Added method `addTheEntryToThePersonalDictionary` in `Add`
+- Added class `Swe\SpaceSDK\Rd`
+  - Added method `getAvailableWarmupExecutions` in `Rd`
 - Added method `getUserFeedbackOnCodeIssues` in `Swe\SpaceSDK\Projects\CodeReviews`
 - Added method `getDeclarationScopesForFile` in `Swe\SpaceSDK\Projects\Repositories`
 - Added method `getAdditionalRepositoryInfo` in `Swe\SpaceSDK\Projects\Repositories`

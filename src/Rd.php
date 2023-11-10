@@ -1,23 +1,21 @@
 <?php
 
-namespace Swe\SpaceSDK\Calendars\BirthdayEvents;
+namespace Swe\SpaceSDK;
 
 use GuzzleHttp\Exception\GuzzleException;
-use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
-use Swe\SpaceSDK\Type;
 
 /**
- * Class Starred
+ * Class Rd
  * Generated at 2023-11-10 04:08
  *
- * @package Swe\SpaceSDK\Calendars\BirthdayEvents
+ * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
  */
-final class Starred extends AbstractApi
+final class Rd extends AbstractApi
 {
     /**
-     * Get/search birthdays in a specific time period for starred profiles.
+     * Permissions that may be checked: Rd.Workspaces.Create
      *
      * @param array $request
      * @param array $response
@@ -25,12 +23,12 @@ final class Starred extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function getAllStarredBirthdayEvents(array $request, array $response = []): array
+    final public function getAvailableWarmupExecutions(array $request, array $response = []): array
     {
-        $uri = 'calendars/birthday-events/starred';
+        $uri = 'rd/warmups';
         $required = [
-            'dateFrom' => Type::Date,
-            'dateTo' => Type::Date,
+            'projectIdentifier' => Type::String,
+            'repositoryName' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
 
