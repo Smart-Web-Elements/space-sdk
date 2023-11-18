@@ -1,6 +1,6 @@
 # Space SDK Changelog
 
-## Space SDK 11.0.0
+## Space SDK 12.0.0
 
 - Added method `rd` in `Swe\SpaceSDK\Space`
 - Added method `grammarDictionary` in `Swe\SpaceSDK\TeamDirectory\Profiles`
@@ -26,9 +26,21 @@
   - Added method `addTheEntryToThePersonalDictionary` in `Add`
 - Added class `Swe\SpaceSDK\Rd`
   - Added method `getAvailableWarmupExecutions` in `Rd`
+- Added method `branches` in `Swe\SpaceSDK\Projects\Planning\Issues`
+- Added class `Swe\SpaceSDK\Projects\Planning\Issues\Branches`
+  - Added method `removeBranchLinks` in `Branches`
+  - Added method `addBranchLinks` in `Branches`
+- Added method `deleteForever` in `Swe\SpaceSDK\Projects\Documents`
+- Added class `Swe\SpaceSDK\Projects\Documents\DeleteForever`
+  - Added method `deleteDocumentForever` in `DeleteForever`
 - Added method `getUserFeedbackOnCodeIssues` in `Swe\SpaceSDK\Projects\CodeReviews`
 - Added method `getDeclarationScopesForFile` in `Swe\SpaceSDK\Projects\Repositories`
 - Added method `getAdditionalRepositoryInfo` in `Swe\SpaceSDK\Projects\Repositories`
+- Added method `secrets` in `Swe\SpaceSDK\Projects\Automation\StepExecutions`
+- Added class `Swe\SpaceSDK\Projects\Automation\StepExecutions\Secrets`
+  - Added method `setReference` in `Secrets`
+- Added class `Swe\SpaceSDK\Projects\Automation\StepExecutions\Secrets\SetReference`
+  - Added method `update` in `SetReference`
 
 ## Space SDK 8.0.0
 

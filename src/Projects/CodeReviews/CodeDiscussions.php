@@ -10,7 +10,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class CodeDiscussions
- * Generated at 2023-11-10 04:08
+ * Generated at 2023-11-18 04:46
  *
  * @package Swe\SpaceSDK\Projects\CodeReviews
  * @author Luca Braun <l.braun@s-w-e.com>

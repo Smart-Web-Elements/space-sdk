@@ -7,6 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\Projects\Planning\Issues\Attachment;
 use Swe\SpaceSDK\Projects\Planning\Issues\Attachments;
+use Swe\SpaceSDK\Projects\Planning\Issues\Branches;
 use Swe\SpaceSDK\Projects\Planning\Issues\Checklists;
 use Swe\SpaceSDK\Projects\Planning\Issues\CodeReviews;
 use Swe\SpaceSDK\Projects\Planning\Issues\Comments;
@@ -18,7 +19,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Issues
- * Generated at 2023-11-10 04:08
+ * Generated at 2023-11-18 04:46
  *
  * @package Swe\SpaceSDK\Projects\Planning
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -307,6 +308,14 @@ final class Issues extends AbstractApi
     final public function attachments(): Attachments
     {
         return new Attachments($this->client);
+    }
+
+    /**
+     * @return Branches
+     */
+    final public function branches(): Branches
+    {
+        return new Branches($this->client);
     }
 
     /**

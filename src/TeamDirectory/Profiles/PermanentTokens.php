@@ -10,7 +10,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class PermanentTokens
- * Generated at 2023-11-10 04:08
+ * Generated at 2023-11-18 04:46
  *
  * @package Swe\SpaceSDK\TeamDirectory\Profiles
  * @author Luca Braun <l.braun@s-w-e.com>
