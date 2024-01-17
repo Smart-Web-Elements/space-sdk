@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class Current
- * Generated at 2023-11-18 04:46
+ * Generated at 2024-01-17 02:00
  *
  * @package Swe\SpaceSDK\TeamDirectory\Profiles\PermanentTokens
  * @author Luca Braun <l.braun@s-w-e.com>

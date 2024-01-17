@@ -4,7 +4,7 @@ namespace Swe\SpaceSDK;
 
 /**
  * Class Space
- * Generated at 2023-11-18 04:46
+ * Generated at 2024-01-17 02:00
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -65,14 +65,6 @@ final class Space extends AbstractApi
     final public function calendars(): Calendars
     {
         return new Calendars($this->client);
-    }
-
-    /**
-     * @return Calls
-     */
-    final public function calls(): Calls
-    {
-        return new Calls($this->client);
     }
 
     /**

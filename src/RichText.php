@@ -7,7 +7,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class RichText
- * Generated at 2023-11-18 04:46
+ * Generated at 2024-01-17 02:00
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -15,7 +15,8 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 final class RichText extends AbstractApi
 {
     /**
-     * Parses [Space markdown syntax](https://www.jetbrains.com/help/space/markdown-syntax.html) into a tree presentation
+     * Parses [Space markdown syntax](https://www.jetbrains.com/help/space/markdown-syntax.html) into a tree presentation.
+     * Warning: we are currently refining the hierarchy of the RtDocument, and it is likely to undergo changes in the near future. This hierarchy will be utilized in various subsystems such as documents, chats, and issues.
      *
      * @param array $data
      * @param array $response

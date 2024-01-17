@@ -20,7 +20,7 @@ use Swe\SpaceSDK\TeamDirectory\Teams;
 
 /**
  * Class TeamDirectory
- * Generated at 2023-11-18 04:46
+ * Generated at 2024-01-17 02:00
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>

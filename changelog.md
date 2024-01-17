@@ -1,8 +1,11 @@
 # Space SDK Changelog
 
-## Space SDK 12.0.0
+## Space SDK 13.0.0
 
+- Removed method `calls` from `Swe\SpaceSDK\Space`
 - Added method `rd` in `Swe\SpaceSDK\Space`
+- Removed method `widgetSettings` from `Swe\SpaceSDK\TeamDirectory\Profiles`
+- Removed method `dashboards` from `Swe\SpaceSDK\TeamDirectory\Profiles`
 - Added method `grammarDictionary` in `Swe\SpaceSDK\TeamDirectory\Profiles`
 - Added method `deleteForever` in `Swe\SpaceSDK\TeamDirectory\Profiles\Documents`
 - Added class `Swe\SpaceSDK\TeamDirectory\Profiles\Documents\DeleteForever`
@@ -33,7 +36,10 @@
 - Added method `deleteForever` in `Swe\SpaceSDK\Projects\Documents`
 - Added class `Swe\SpaceSDK\Projects\Documents\DeleteForever`
   - Added method `deleteDocumentForever` in `DeleteForever`
+- Added method `sarif` in `Swe\SpaceSDK\Projects\CodeReviews`
 - Added method `getUserFeedbackOnCodeIssues` in `Swe\SpaceSDK\Projects\CodeReviews`
+- Added class `Swe\SpaceSDK\Projects\CodeReviews\Sarif`
+  - Added method `uploadSarifReport` in `Sarif`
 - Added method `getDeclarationScopesForFile` in `Swe\SpaceSDK\Projects\Repositories`
 - Added method `getAdditionalRepositoryInfo` in `Swe\SpaceSDK\Projects\Repositories`
 - Added method `secrets` in `Swe\SpaceSDK\Projects\Automation\StepExecutions`

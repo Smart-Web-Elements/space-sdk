@@ -8,7 +8,6 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 use Swe\SpaceSDK\TeamDirectory\Profiles\ApplicationPasswords;
 use Swe\SpaceSDK\TeamDirectory\Profiles\AuthenticationSessions;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Checklists;
-use Swe\SpaceSDK\TeamDirectory\Profiles\Dashboards;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Documents;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Favorites;
 use Swe\SpaceSDK\TeamDirectory\Profiles\GpgKeys;
@@ -24,13 +23,12 @@ use Swe\SpaceSDK\TeamDirectory\Profiles\SpokenLanguages;
 use Swe\SpaceSDK\TeamDirectory\Profiles\SshKeys;
 use Swe\SpaceSDK\TeamDirectory\Profiles\Timezone;
 use Swe\SpaceSDK\TeamDirectory\Profiles\TwoFa;
-use Swe\SpaceSDK\TeamDirectory\Profiles\WidgetSettings;
 use Swe\SpaceSDK\TeamDirectory\Profiles\WorkingDays;
 use Swe\SpaceSDK\Type;
 
 /**
  * Class Profiles
- * Generated at 2023-11-18 04:46
+ * Generated at 2024-01-17 02:00
  *
  * @package Swe\SpaceSDK\TeamDirectory
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -340,14 +338,6 @@ final class Profiles extends AbstractApi
     }
 
     /**
-     * @return Dashboards
-     */
-    final public function dashboards(): Dashboards
-    {
-        return new Dashboards($this->client);
-    }
-
-    /**
      * @return Favorites
      */
     final public function favorites(): Favorites
@@ -369,14 +359,6 @@ final class Profiles extends AbstractApi
     final public function oauthConsents(): OauthConsents
     {
         return new OauthConsents($this->client);
-    }
-
-    /**
-     * @return WidgetSettings
-     */
-    final public function widgetSettings(): WidgetSettings
-    {
-        return new WidgetSettings($this->client);
     }
 
     /**

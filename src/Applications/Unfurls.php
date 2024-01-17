@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Applications\Unfurls\Queue;
 
 /**
  * Class Unfurls
- * Generated at 2023-11-18 04:46
+ * Generated at 2024-01-17 02:00
  *
  * @package Swe\SpaceSDK\Applications
  * @author Luca Braun <l.braun@s-w-e.com>

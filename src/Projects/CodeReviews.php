@@ -9,12 +9,13 @@ use Swe\SpaceSDK\Projects\CodeReviews\CodeDiscussions;
 use Swe\SpaceSDK\Projects\CodeReviews\Participants;
 use Swe\SpaceSDK\Projects\CodeReviews\Revisions;
 use Swe\SpaceSDK\Projects\CodeReviews\SafeMerge;
+use Swe\SpaceSDK\Projects\CodeReviews\Sarif;
 use Swe\SpaceSDK\Projects\CodeReviews\UnboundDiscussions;
 use Swe\SpaceSDK\Type;
 
 /**
  * Class CodeReviews
- * Generated at 2023-11-18 04:46
+ * Generated at 2024-01-17 02:00
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -422,6 +423,14 @@ final class CodeReviews extends AbstractApi
     final public function revisions(): Revisions
     {
         return new Revisions($this->client);
+    }
+
+    /**
+     * @return Sarif
+     */
+    final public function sarif(): Sarif
+    {
+        return new Sarif($this->client);
     }
 
     /**
