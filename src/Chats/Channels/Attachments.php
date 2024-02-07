@@ -11,7 +11,7 @@ use Swe\SpaceSDK\Chats\Channels\Attachments\Videos;
 
 /**
  * Class Attachments
- * Generated at 2024-01-17 02:00
+ * Generated at 2024-02-07 02:00
  *
  * @package Swe\SpaceSDK\Chats\Channels
  * @author Luca Braun <l.braun@s-w-e.com>

@@ -14,7 +14,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Repositories
- * Generated at 2024-01-17 02:00
+ * Generated at 2024-02-07 02:00
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -571,17 +571,17 @@ final class Repositories extends AbstractApi
      * @throws GuzzleException
      * @throws MissingArgumentException
      */
-    final public function getDeclarationScopesForFile(
+    final public function getFileTextContent(
         string $project,
         string $repository,
         array $request,
         array $response = [],
     ): array
     {
-        $uri = 'projects/{project}/repositories/{repository}/scopes';
+        $uri = 'projects/{project}/repositories/{repository}/text-content';
         $required = [
-            'filename' => Type::String,
-            'blobId' => Type::String,
+            'commit' => Type::String,
+            'path' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
         $uriArguments = [

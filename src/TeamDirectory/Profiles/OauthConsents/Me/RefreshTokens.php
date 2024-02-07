@@ -7,7 +7,7 @@ use Swe\SpaceSDK\TeamDirectory\Profiles\OauthConsents\Me\RefreshTokens\ClassSelf
 
 /**
  * Class RefreshTokens
- * Generated at 2024-01-17 02:00
+ * Generated at 2024-02-07 02:00
  *
  * @package Swe\SpaceSDK\TeamDirectory\Profiles\OauthConsents\Me
  * @author Luca Braun <l.braun@s-w-e.com>

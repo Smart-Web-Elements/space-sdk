@@ -15,7 +15,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class CodeReviews
- * Generated at 2024-01-17 02:00
+ * Generated at 2024-02-07 02:00
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -279,7 +279,7 @@ final class CodeReviews extends AbstractApi
     }
 
     /**
-     * Permissions that may be checked: Project.CodeReview.Edit
+     * Permissions that may be checked: Project.CodeReview.Edit, Project.CodeReview.Delete, Project.CodeReview.View
      *
      * @param string $project
      * @param string $reviewId

@@ -1,6 +1,6 @@
 # Space SDK Changelog
 
-## Space SDK 13.0.0
+## Space SDK 14.0.0
 
 - Removed method `calls` from `Swe\SpaceSDK\Space`
 - Added method `rd` in `Swe\SpaceSDK\Space`
@@ -40,7 +40,7 @@
 - Added method `getUserFeedbackOnCodeIssues` in `Swe\SpaceSDK\Projects\CodeReviews`
 - Added class `Swe\SpaceSDK\Projects\CodeReviews\Sarif`
   - Added method `uploadSarifReport` in `Sarif`
-- Added method `getDeclarationScopesForFile` in `Swe\SpaceSDK\Projects\Repositories`
+- Added method `getFileTextContent` in `Swe\SpaceSDK\Projects\Repositories`
 - Added method `getAdditionalRepositoryInfo` in `Swe\SpaceSDK\Projects\Repositories`
 - Added method `secrets` in `Swe\SpaceSDK\Projects\Automation\StepExecutions`
 - Added class `Swe\SpaceSDK\Projects\Automation\StepExecutions\Secrets`
