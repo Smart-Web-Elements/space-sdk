@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Domains
- * Generated at 2024-02-07 02:00
+ * Generated at 2024-02-28 02:00
  *
  * @package Swe\SpaceSDK\Applications\Unfurls
  * @author Luca Braun <l.braun@s-w-e.com>

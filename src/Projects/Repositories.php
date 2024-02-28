@@ -14,7 +14,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Repositories
- * Generated at 2024-02-07 02:00
+ * Generated at 2024-02-28 02:00
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -552,6 +552,37 @@ final class Repositories extends AbstractApi
         $required = [
             'sourceBranch' => Type::String,
             'targetBranch' => Type::String,
+        ];
+        $this->throwIfInvalid($required, $request);
+        $uriArguments = [
+            'project' => $project,
+            'repository' => $repository,
+        ];
+
+        return $this->client->get($this->buildUrl($uri, $uriArguments), $request, $response);
+    }
+
+    /**
+     * Extracts head prefix and branch. `path` can contain a branch name or a revision, following by file path.
+     *
+     * @param string $project
+     * @param string $repository
+     * @param array $request
+     * @param array $response
+     * @return array
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    final public function parseHeadPrefix(
+        string $project,
+        string $repository,
+        array $request,
+        array $response = [],
+    ): array
+    {
+        $uri = 'projects/{project}/repositories/{repository}/parse-head-prefix';
+        $required = [
+            'path' => Type::String,
         ];
         $this->throwIfInvalid($required, $request);
         $uriArguments = [

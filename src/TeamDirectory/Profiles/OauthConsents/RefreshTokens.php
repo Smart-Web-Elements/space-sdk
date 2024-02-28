@@ -7,7 +7,7 @@ use Swe\SpaceSDK\AbstractApi;
 
 /**
  * Class RefreshTokens
- * Generated at 2024-02-07 02:00
+ * Generated at 2024-02-28 02:00
  *
  * @package Swe\SpaceSDK\TeamDirectory\Profiles\OauthConsents
  * @author Luca Braun <l.braun@s-w-e.com>

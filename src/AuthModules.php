@@ -12,7 +12,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class AuthModules
- * Generated at 2024-02-07 02:00
+ * Generated at 2024-02-28 02:00
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>

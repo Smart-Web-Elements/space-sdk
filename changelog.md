@@ -1,6 +1,6 @@
 # Space SDK Changelog
 
-## Space SDK 14.0.0
+## Space SDK 15.0.0
 
 - Removed method `calls` from `Swe\SpaceSDK\Space`
 - Added method `rd` in `Swe\SpaceSDK\Space`
@@ -37,10 +37,14 @@
 - Added class `Swe\SpaceSDK\Projects\Documents\DeleteForever`
   - Added method `deleteDocumentForever` in `DeleteForever`
 - Added method `sarif` in `Swe\SpaceSDK\Projects\CodeReviews`
-- Added method `getUserFeedbackOnCodeIssues` in `Swe\SpaceSDK\Projects\CodeReviews`
+- Added method `waitAuthorReply` in `Swe\SpaceSDK\Projects\CodeReviews`
+- Added method `resumeReview` in `Swe\SpaceSDK\Projects\CodeReviews`
+- Added method `changeAuthorState` in `Swe\SpaceSDK\Projects\CodeReviews`
+- Added method `acceptChanges` in `Swe\SpaceSDK\Projects\CodeReviews`
 - Added class `Swe\SpaceSDK\Projects\CodeReviews\Sarif`
   - Added method `uploadSarifReport` in `Sarif`
 - Added method `getFileTextContent` in `Swe\SpaceSDK\Projects\Repositories`
+- Added method `parseHeadPrefix` in `Swe\SpaceSDK\Projects\Repositories`
 - Added method `getAdditionalRepositoryInfo` in `Swe\SpaceSDK\Projects\Repositories`
 - Added method `secrets` in `Swe\SpaceSDK\Projects\Automation\StepExecutions`
 - Added class `Swe\SpaceSDK\Projects\Automation\StepExecutions\Secrets`

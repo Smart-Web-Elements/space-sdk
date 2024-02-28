@@ -15,38 +15,13 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class CodeReviews
- * Generated at 2024-02-07 02:00
+ * Generated at 2024-02-28 02:00
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
  */
 final class CodeReviews extends AbstractApi
 {
-    /**
-     * @param string $project
-     * @param array $data
-     * @param array $response
-     * @return array
-     * @throws GuzzleException
-     * @throws MissingArgumentException
-     */
-    final public function getUserFeedbackOnCodeIssues(string $project, array $data, array $response = []): array
-    {
-        $uri = 'projects/{project}/code-reviews/code-issues-feedback';
-        $required = [
-            'tool' => Type::String,
-            'batchInfo' => [
-                'batchSize' => Type::Integer,
-            ],
-        ];
-        $this->throwIfInvalid($required, $data);
-        $uriArguments = [
-            'project' => $project,
-        ];
-
-        return $this->client->post($this->buildUrl($uri, $uriArguments), $data, [], $response);
-    }
-
     /**
      * Permissions that may be checked: Project.CodeReview.Create
      *
@@ -329,6 +304,56 @@ final class CodeReviews extends AbstractApi
     }
 
     /**
+     * Permissions that may be checked: Project.CodeReview.View
+     *
+     * @param string $project
+     * @param string $reviewId
+     * @param array $data
+     * @return void
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    final public function acceptChanges(string $project, string $reviewId, array $data): void
+    {
+        $uri = 'projects/{project}/code-reviews/{reviewId}/accept-changes';
+        $required = [
+            'forever' => Type::Boolean,
+        ];
+        $this->throwIfInvalid($required, $data);
+        $uriArguments = [
+            'project' => $project,
+            'reviewId' => $reviewId,
+        ];
+
+        $this->client->put($this->buildUrl($uri, $uriArguments), $data);
+    }
+
+    /**
+     * Permissions that may be checked: Project.CodeReview.View
+     *
+     * @param string $project
+     * @param string $reviewId
+     * @param array $data
+     * @return void
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    final public function changeAuthorState(string $project, string $reviewId, array $data): void
+    {
+        $uri = 'projects/{project}/code-reviews/{reviewId}/change-author-state';
+        $required = [
+            'theirTurn' => Type::Boolean,
+        ];
+        $this->throwIfInvalid($required, $data);
+        $uriArguments = [
+            'project' => $project,
+            'reviewId' => $reviewId,
+        ];
+
+        $this->client->put($this->buildUrl($uri, $uriArguments), $data);
+    }
+
+    /**
      * Permissions that may be checked: Project.CodeReview.View, VcsRepository.Write
      *
      * @param string $project
@@ -391,6 +416,44 @@ final class CodeReviews extends AbstractApi
         ];
 
         return $this->client->put($this->buildUrl($uri, $uriArguments), $data, [], $response);
+    }
+
+    /**
+     * Permissions that may be checked: Project.CodeReview.View
+     *
+     * @param string $project
+     * @param string $reviewId
+     * @return void
+     * @throws GuzzleException
+     */
+    final public function resumeReview(string $project, string $reviewId): void
+    {
+        $uri = 'projects/{project}/code-reviews/{reviewId}/resume-review';
+        $uriArguments = [
+            'project' => $project,
+            'reviewId' => $reviewId,
+        ];
+
+        $this->client->put($this->buildUrl($uri, $uriArguments));
+    }
+
+    /**
+     * Permissions that may be checked: Project.CodeReview.View
+     *
+     * @param string $project
+     * @param string $reviewId
+     * @return void
+     * @throws GuzzleException
+     */
+    final public function waitAuthorReply(string $project, string $reviewId): void
+    {
+        $uri = 'projects/{project}/code-reviews/{reviewId}/wait-author-reply';
+        $uriArguments = [
+            'project' => $project,
+            'reviewId' => $reviewId,
+        ];
+
+        $this->client->put($this->buildUrl($uri, $uriArguments));
     }
 
     /**

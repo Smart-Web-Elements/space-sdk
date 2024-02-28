@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Add
- * Generated at 2024-02-07 02:00
+ * Generated at 2024-02-28 02:00
  *
  * @package Swe\SpaceSDK\TeamDirectory\Profiles\GrammarDictionary
  * @author Luca Braun <l.braun@s-w-e.com>
