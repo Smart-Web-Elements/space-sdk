@@ -1,6 +1,6 @@
 # Space SDK Changelog
 
-## Space SDK 15.0.0
+## Space SDK 16.0.0
 
 - Removed method `calls` from `Swe\SpaceSDK\Space`
 - Added method `rd` in `Swe\SpaceSDK\Space`
@@ -41,6 +41,7 @@
 - Added method `resumeReview` in `Swe\SpaceSDK\Projects\CodeReviews`
 - Added method `changeAuthorState` in `Swe\SpaceSDK\Projects\CodeReviews`
 - Added method `acceptChanges` in `Swe\SpaceSDK\Projects\CodeReviews`
+- Added method `runAIInspections` in `Swe\SpaceSDK\Projects\CodeReviews`
 - Added class `Swe\SpaceSDK\Projects\CodeReviews\Sarif`
   - Added method `uploadSarifReport` in `Sarif`
 - Added method `getFileTextContent` in `Swe\SpaceSDK\Projects\Repositories`

@@ -15,13 +15,34 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class CodeReviews
- * Generated at 2024-02-28 02:00
+ * Generated at 2024-03-06 02:53
  *
  * @package Swe\SpaceSDK\Projects
  * @author Luca Braun <l.braun@s-w-e.com>
  */
 final class CodeReviews extends AbstractApi
 {
+    /**
+     * @param string $project
+     * @param array $data
+     * @return void
+     * @throws GuzzleException
+     * @throws MissingArgumentException
+     */
+    final public function runAIInspections(string $project, array $data): void
+    {
+        $uri = 'projects/{project}/code-reviews/ai-inspections';
+        $required = [
+            'review' => Type::String,
+        ];
+        $this->throwIfInvalid($required, $data);
+        $uriArguments = [
+            'project' => $project,
+        ];
+
+        $this->client->post($this->buildUrl($uri, $uriArguments), $data);
+    }
+
     /**
      * Permissions that may be checked: Project.CodeReview.Create
      *

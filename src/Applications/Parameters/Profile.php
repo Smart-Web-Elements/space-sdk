@@ -9,7 +9,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Profile
- * Generated at 2024-02-28 02:00
+ * Generated at 2024-03-06 02:53
  *
  * @package Swe\SpaceSDK\Applications\Parameters
  * @author Luca Braun <l.braun@s-w-e.com>

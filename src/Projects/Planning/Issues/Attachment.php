@@ -8,7 +8,7 @@ use Swe\SpaceSDK\Exception\MissingArgumentException;
 
 /**
  * Class Attachment
- * Generated at 2024-02-28 02:00
+ * Generated at 2024-03-06 02:53
  *
  * @package Swe\SpaceSDK\Projects\Planning\Issues
  * @author Luca Braun <l.braun@s-w-e.com>
