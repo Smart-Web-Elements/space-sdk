@@ -11,7 +11,7 @@ use Swe\SpaceSDK\Type;
 
 /**
  * Class Statuses
- * Generated at 2024-03-06 02:53
+ * Generated at 2024-03-16 02:07
  *
  * @package Swe\SpaceSDK\Projects\Planning\Issues
  * @author Luca Braun <l.braun@s-w-e.com>

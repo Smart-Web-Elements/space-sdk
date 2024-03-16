@@ -7,10 +7,11 @@ use Swe\SpaceSDK\Notifications\ChannelSubscriptions;
 use Swe\SpaceSDK\Notifications\PersonalCustomSubscriptions;
 use Swe\SpaceSDK\Notifications\PersonalSubscriptions;
 use Swe\SpaceSDK\Notifications\PrivateFeeds;
+use Swe\SpaceSDK\Notifications\Slack;
 
 /**
  * Class Notifications
- * Generated at 2024-03-06 02:53
+ * Generated at 2024-03-16 02:07
  *
  * @package Swe\SpaceSDK
  * @author Luca Braun <l.braun@s-w-e.com>
@@ -62,5 +63,13 @@ final class Notifications extends AbstractApi
     final public function privateFeeds(): PrivateFeeds
     {
         return new PrivateFeeds($this->client);
+    }
+
+    /**
+     * @return Slack
+     */
+    final public function slack(): Slack
+    {
+        return new Slack($this->client);
     }
 }

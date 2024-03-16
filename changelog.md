@@ -1,6 +1,6 @@
 # Space SDK Changelog
 
-## Space SDK 16.0.0
+## Space SDK 17.0.0
 
 - Removed method `calls` from `Swe\SpaceSDK\Space`
 - Added method `rd` in `Swe\SpaceSDK\Space`
@@ -52,6 +52,9 @@
   - Added method `setReference` in `Secrets`
 - Added class `Swe\SpaceSDK\Projects\Automation\StepExecutions\Secrets\SetReference`
   - Added method `update` in `SetReference`
+- Added method `slack` in `Swe\SpaceSDK\Notifications`
+- Added class `Swe\SpaceSDK\Notifications\Slack`
+  - Added method `installIncomingWebhook` in `Slack`
 
 ## Space SDK 8.0.0
 
